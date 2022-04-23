@@ -28,7 +28,7 @@ export default function Index({ preview, allPosts }) {
         }
       `}</style>
         <div className="site-main">
-          {allPosts.map(post => <FrontPage {...post} />)}
+          {allPosts.map(post => <FrontPage {...post} key={post.sys.id} />)}
         </div>
       </Layout>
     </>

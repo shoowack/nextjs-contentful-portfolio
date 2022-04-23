@@ -1,9 +1,16 @@
+import Navigation from '../components/navigation'
 import Section from '../components/section'
 import { getAllSectionSections } from '../lib/api'
 
-export default function Designs({preview, entries}) {
-  console.log(entries)
-  return entries.map(entry => <Section {...entry} />)
+export default function Designs({ preview, entries }) {
+  // console.log(entries, 'entries')
+
+  return (
+    <>
+      <Navigation />
+      {entries.map(entry => <Section {...entry} key={entry.title.replace(/\s/g, '-').toLowerCase()} />)}
+    </>
+  )
 }
 
 export async function getStaticProps({ preview = false }) {

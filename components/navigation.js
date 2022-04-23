@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import Link from 'next/link'
 import HeaderInfoLink from "./header-info-link";
-import backIcon from "./../img/back_arrow.svg";
+// import backIcon from "./../img/back_arrow.svg";
 import { Container, Row, Col } from "reactstrap";
 
 export default function Navigation({ items }) {
@@ -10,16 +10,14 @@ export default function Navigation({ items }) {
         <Row>
           <Col sm={12}>
             <div className="d-flex align-items-center">
-              <Link className="back-button mr-4" to="/">
-                <img src={backIcon} alt="Go back" />
-              </Link>
+              {/* <Link className="back-button mr-4" href="/"> */}
+              {/* <img src={backIcon} alt="Go back" /> */}
+              {/* </Link> */}
               <div className="mr-auto">
                 <h1>Ivan Suvak Martinovic</h1>
               </div>
               <div className="header-info-links">
-                {items?.map((headerLink) => (
-                  <HeaderInfoLink {...headerLink} />
-                ))}
+                {items?.map((headerLink) => <HeaderInfoLink {...headerLink} key={headerLink.title.replace(/\s/g, '-').toLowerCase()} />)}
               </div>
             </div>
           </Col>
