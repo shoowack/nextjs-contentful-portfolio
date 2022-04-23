@@ -67,6 +67,8 @@ Next, go to **Settings > API > Content management tokens** and create a new toke
 
 With the space ID and management access token at hand run the following command:
 
+npx cross-env CONTENTFUL_SPACE_ID=8gwjxlncuroo CONTENTFUL_MANAGEMENT_TOKEN=MBcoHHQdcP7gleKiH0Wj8mflQ158fv24OqM6sDMG-Sg npm run setup
+
 ```
 npx cross-env CONTENTFUL_SPACE_ID=YOUR_SPACE_ID CONTENTFUL_MANAGEMENT_TOKEN=XXX npm run setup
 ```
