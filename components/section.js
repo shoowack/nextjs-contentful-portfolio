@@ -34,7 +34,7 @@ export default function Section({
   backgroundColor = "#ffffff",
   title,
   description,
-  gallery = []
+  gallery
 }) {
   const [toggler, setToggler] = useState(false);
   const [productIndex, setProductIndex] = useState(0);
@@ -149,9 +149,8 @@ export default function Section({
           </Col>
 
           <Col md={12}>
-            {gallery?.map((item, i) => {
-              const { title, type, images } = item.fields;
-
+            {console.log(gallery)}
+            {gallery?.map(({ fields: { title, type, images }, i }) => {
               return (
                 <>
                   <h3>{title}</h3>
@@ -159,11 +158,7 @@ export default function Section({
                     {...sliderOptions}
                     className={type.replace(/ /g, "-").toLowerCase()}
                   >
-                    {images?.map((image, i) => {
-                      const {
-                        file: { url }
-                      } = image.fields;
-
+                    {images?.map(({ fields: { file: { url } } }, i) => {
                       return (
                         <img
                           key={i}

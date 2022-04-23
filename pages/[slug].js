@@ -2,9 +2,10 @@ import Navigation from '../components/navigation'
 import Section from '../components/section'
 import { getAllSectionSections } from '../lib/api'
 import { getHeaderLinks } from '../lib/api';
+import { fetchEntries } from '../lib/fetchEntries';
 
 export default function Designs({ preview, entries, headerItems }) {
-  console.log(headerItems, 'headerItems in design')
+  console.log(entries, 'entries')
   return (
     <>
       <Navigation headerItems={headerItems} />
@@ -13,11 +14,28 @@ export default function Designs({ preview, entries, headerItems }) {
   )
 }
 
-export async function getStaticProps({ preview = false }) {
-  const entries = (await getAllSectionSections(preview, "Design")) ?? []
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { slug: 'designs' } },
+      { params: { slug: 'websites' } }
+    ],
+    fallback: false
+  }
+}
+
+export async function getStaticProps({ params, preview = false }) {
   const headerItems = (await getHeaderLinks(preview)) ?? []
 
+  const res = await fetchEntries(params.slug)
+  const entries = await res.map((entry) => {
+    return entry.fields
+  })
+
   return {
-    props: { preview, entries, headerItems },
+    props: {
+      entries,
+      headerItems
+    },
   }
 }
