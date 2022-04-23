@@ -192,6 +192,6 @@ Section.propTypes = {
   bgColor: PropTypes.string,
   layout: PropTypes.string,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  description: PropTypes.object,
   gallery: PropTypes.array
 };

@@ -3,7 +3,7 @@ import HeaderInfoLink from "./header-info-link";
 // import backIcon from "./../img/back_arrow.svg";
 import { Container, Row, Col } from "reactstrap";
 
-export default function Navigation({ items }) {
+export default function Navigation({ headerItems }) {
   return (
     <Container fluid className="aboutme py-5">
       <Container fluid="lg">
@@ -17,7 +17,7 @@ export default function Navigation({ items }) {
                 <h1>Ivan Suvak Martinovic</h1>
               </div>
               <div className="header-info-links">
-                {items?.map((headerLink) => <HeaderInfoLink {...headerLink} key={headerLink.title.replace(/\s/g, '-').toLowerCase()} />)}
+                {headerItems?.map((headerLink) => <HeaderInfoLink {...headerLink} key={headerLink.sys.id} />)}
               </div>
             </div>
           </Col>

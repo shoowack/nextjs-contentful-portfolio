@@ -5,42 +5,38 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "reactstrap";
 
 export default function HeaderInfoLink({
-  isLoading,
   sys: { id },
-  fields: {
-    link,
-    tooltipText,
-    icon,
-    openInNewTab = false,
-    size = "lg",
-    tooltipPlacement = "top",
-    iconColor
-  }
+  link,
+  tooltipText,
+  icon,
+  openInNewTab = false,
+  size = "lg",
+  tooltipPlacement = "top",
+  iconColor
 }) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
 
   const toggle = () => setTooltipOpen(!tooltipOpen);
 
-  console.log(link);
-
-  if (!isLoading) {
-    return <FontAwesomeIcon icon={["fas", "circleNotch"]} color={"#fff"} />;
-  }
-
   return (
     <>
-      <a
-        key={id}
-        href={link}
-        target={openInNewTab ? "_blank" : ""}
-        rel="noreferrer"
+      <Button
+        color={"link"}
         id={`tooltip-${id}`}
       >
-        <FontAwesomeIcon icon={icon.split(",")} size={size} color={iconColor} />
-      </a>
+        <a
+          key={id}
+          href={link}
+          target={openInNewTab ? "_blank" : ""}
+          rel="noreferrer"
+        >
+          <FontAwesomeIcon icon={icon.split(",")} size={size} color={iconColor} />
+        </a>
+      </Button>
       {tooltipText && (
         <Tooltip
           placement={tooltipPlacement}
