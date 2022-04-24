@@ -8,7 +8,7 @@ export default function Designs({ preview, entries, headerItems }) {
   return (
     <>
       <Navigation headerItems={headerItems} />
-      {entries.map(entry => <Section {...entry} key={entry.title.replace(/\s/g, '-').toLowerCase()} />)}
+      {entries[0].sections.map(entry => <Section {...entry.fields} key={entry.sys.id} />)}
     </>
   )
 }
