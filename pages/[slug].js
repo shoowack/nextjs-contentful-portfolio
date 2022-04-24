@@ -5,7 +5,6 @@ import { getHeaderLinks } from '../lib/api';
 import { fetchEntries } from '../lib/fetchEntries';
 
 export default function Designs({ preview, entries, headerItems }) {
-  console.log(entries, 'entries')
   return (
     <>
       <Navigation headerItems={headerItems} />

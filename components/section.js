@@ -8,7 +8,6 @@ import { getContrast } from "./getContrast";
 import hexToRgbA from "./hexToRgba";
 import { StickyContainer, Sticky } from "react-sticky";
 import PostBody from "./post-body";
-// import styles from './../styles/slick.module.scss';
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -153,6 +152,7 @@ export default function Section({
                   <h3>{title}</h3>
                   <Slider
                     {...sliderOptions}
+                    infinite={images.length > 6 ? true : false}
                     className={type.replace(/ /g, "-").toLowerCase()}
                   >
                     {images?.map(({ fields: { file: { url } } }, i) => {
@@ -176,7 +176,7 @@ export default function Section({
           </Col>
         </Row>
       </Container>
-    </StickyContainer>
+    </StickyContainer >
   );
 }
 
