@@ -160,9 +160,13 @@ export default function Section({
                   >
                     {images?.map(({ fields: { file: { url, fileName } } }, i) => {
                       return (
-                        <Link href={`/designs?property=${fileName}`} scroll={false}>
+                        <Link
+                          href={`/designs?property=${fileName}`}
+                          scroll={false}
+                          key={i}
+
+                        >
                           <img
-                            key={i}
                             src={url}
                             alt=""
 
