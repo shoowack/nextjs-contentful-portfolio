@@ -149,7 +149,7 @@ export default function Section({
           </Col>
 
           <Col md={12}>
-            {gallery?.map(({ fields: { title, type, images }, i }) => {
+            {gallery?.map(({ fields: { title, type, images } }, i) => {
               return (
                 <>
                   <h3>{title}</h3>
@@ -164,7 +164,6 @@ export default function Section({
                           href={`/designs?property=${fileName}`}
                           scroll={false}
                           key={i}
-
                         >
                           <img
                             src={url}
