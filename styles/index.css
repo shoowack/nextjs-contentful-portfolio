@@ -321,7 +321,9 @@
         transform: matrix3d(1.5, 0, 0, 0, 0, 1.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
    }
 }
-.slick-dots span .owl-dot-el-1, .slick-dots span .owl-dot-el-2, .slick-dots span .owl-dot-el-3 {
+.slick-dots span .owl-dot-el-1,
+.slick-dots span .owl-dot-el-2,
+.slick-dots span .owl-dot-el-3 {
     position: absolute;
     z-index: 20;
 }
@@ -496,4 +498,137 @@
 }
 .slick-arrow.slick-hidden {
     display: none;
+}
+
+
+.lighter hr {
+    background: rgba(255, 255, 255, .1);
+}
+.lighter code {
+    color: #000;
+}
+.lighter h2 {
+    color: #fff;
+}
+.lighter p {
+    color: rgba(255, 255, 255, .75);
+}
+.lighter a, .lighter a:hover, .lighter a:visited {
+    color: #fff !important;
+    font-weight: 600;
+}
+.lighter h3 {
+    color: rgba(255, 255, 255, .5);
+}
+.lighter .slick-dots li span {
+    background: #fff !important;
+}
+
+.lighter hr {
+    background: rgba(255, 255, 255, .1);
+}
+.lighter code {
+    color: #000;
+}
+.lighter h2 {
+    color: #fff;
+}
+.lighter p {
+    color: rgba(255, 255, 255, .75);
+}
+.lighter a, .lighter a:hover, .lighter a:visited {
+    color: #fff !important;
+    font-weight: 600;
+}
+.lighter h3 {
+    color: rgba(255, 255, 255, .5);
+}
+.lighter .slick-dots li span {
+    background: #fff !important;
+}
+
+
+
+.aboutme {
+    background-image: radial-gradient(#c8c8c8 5%, #fff 5%);
+    background-position: 0 0;
+    background-size: 20px 20px;
+    color: #000;
+}
+.aboutme .back-button {
+    opacity: 0.3;
+    transition: 0.25s all ease-in-out;
+}
+.aboutme .back-button:hover {
+    opacity: 0.6;
+    transition: 0.25s all ease-in-out;
+}
+.aboutme .back-button img {
+    height: 17px;
+    width: 20px;
+}
+.aboutme-title p {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+.aboutme-title a {
+    background: rgba(0, 0, 0, .1);
+}
+@keyframes preload {
+    30% {
+        top: 20px;
+        opacity: 0;
+   }
+    100% {
+        opacity: 1;
+        top: 8px;
+   }
+}
+.aboutme .header-info-links {
+    display: flex;
+}
+.aboutme .header-info-links a {
+    height: 36px;
+    width: 36px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.aboutme .header-info-links a .svg-inline--fa {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    animation: preload 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.aboutme .header-info-links a:nth-child(1n) .svg-inline--fa {
+    animation-delay: 0.1s;
+}
+.aboutme .header-info-links a:nth-child(2n) .svg-inline--fa {
+    animation-delay: 0.2s;
+}
+.aboutme .header-info-links a:nth-child(3n) .svg-inline--fa {
+    animation-delay: 0.3s;
+}
+.aboutme .header-info-links a:nth-child(4n) .svg-inline--fa {
+    animation-delay: 0.4s;
+}
+.aboutme .header-info-links a:nth-child(5n) .svg-inline--fa {
+    animation-delay: 0.5s;
+}
+.aboutme .header-info-links a:nth-child(6n) .svg-inline--fa {
+    animation-delay: 0.6s;
+}
+.aboutme .header-info-links a:nth-child(7n) .svg-inline--fa {
+    animation-delay: 0.7s;
+}
+.aboutme .header-info-links a:nth-child(8n) .svg-inline--fa {
+    animation-delay: 0.8s;
+}
+.aboutme .header-info-links a:nth-child(9n) .svg-inline--fa {
+    animation-delay: 0.9s;
+}
+.aboutme .header-info-links a:nth-child(10n) .svg-inline--fa {
+    animation-delay: 1s;
 }

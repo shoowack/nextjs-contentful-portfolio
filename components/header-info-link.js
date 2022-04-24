@@ -24,19 +24,15 @@ export default function HeaderInfoLink({
 
   return (
     <>
-      <Button
-        color={"link"}
+      <a
+        key={id}
+        href={link}
+        target={openInNewTab ? "_blank" : ""}
+        rel="noreferrer"
         id={`tooltip-${id}`}
       >
-        <a
-          key={id}
-          href={link}
-          target={openInNewTab ? "_blank" : ""}
-          rel="noreferrer"
-        >
-          <FontAwesomeIcon icon={icon.split(",")} size={size} color={iconColor} />
-        </a>
-      </Button>
+        <FontAwesomeIcon icon={icon.split(",")} size={size} color={iconColor} />
+      </a>
       {tooltipText && (
         <Tooltip
           placement={tooltipPlacement}

@@ -376,39 +376,6 @@
   background: red;
 }
 
-.lighter {
-  hr {
-    background: rgba(255, 255, 255, .1);
-  }
-  
-  code {
-    color: #000;
-  }  
-  
-  h2 {
-    color: #fff;
-  }
-
-  p {
-    color: rgba(255,255,255,.75);
-  }
-
-  a,
-  a:hover,
-  a:visited {
-    color: #fff !important;
-    font-weight: 600;
-  }
-
-  h3 {
-    color: rgba(255,255,255,.5);
-  }
-
-  .slick-dots li span {
-    background: #fff !important;
-  }
-}
-
 // [class*='col-'] {
 //   background: rgba(0, 0, 0, .1);
 // }
