@@ -597,7 +597,8 @@
     min-height: 1px;
     padding: 40px 40px 60px 40px;
 }
-.slick-slide img {
+.slick-slide > div > img {
+    width: 100%;
     display: block;
     border-radius: 8px;
     overflow: hidden;

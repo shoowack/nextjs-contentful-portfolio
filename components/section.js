@@ -8,6 +8,8 @@ import { getContrast } from "./getContrast";
 import hexToRgbA from "./hexToRgba";
 import { StickyContainer, Sticky } from "react-sticky";
 import PostBody from "./post-body";
+import Link from "next/link";
+import { useRouter } from 'next/router';
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -33,6 +35,7 @@ export default function Section({
   description,
   gallery
 }) {
+  const router = useRouter();
   const [toggler, setToggler] = useState(false);
   const [productIndex, setProductIndex] = useState(0);
   const sliderOptions = {
@@ -155,17 +158,20 @@ export default function Section({
                     infinite={images.length > 6 ? true : false}
                     className={type.replace(/ /g, "-").toLowerCase()}
                   >
-                    {images?.map(({ fields: { file: { url } } }, i) => {
+                    {images?.map(({ fields: { file: { url, fileName } } }, i) => {
                       return (
-                        <img
-                          key={i}
-                          src={url}
-                          alt=""
-                          onClick={() => {
-                            setToggler(!toggler);
-                            setProductIndex(1);
-                          }}
-                        />
+                        <Link href={`/designs?property=${fileName}`} scroll={false}>
+                          <img
+                            key={i}
+                            src={url}
+                            alt=""
+
+                          // onClick={() => {
+                          //   setToggler(!toggler);
+                          //   setProductIndex(1);
+                          // }}
+                          />
+                        </Link>
                       );
                     })}
                   </Slider>
