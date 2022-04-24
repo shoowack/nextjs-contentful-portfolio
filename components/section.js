@@ -2,15 +2,13 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import Slider from "react-slick";
 import { Container, Row, Col } from "reactstrap";
-// import RichText from "@madebyconnor/rich-text-to-jsx";
+import RichText from "@madebyconnor/rich-text-to-jsx";
 import { getContrast } from "./getContrast";
 // import FsLightbox from "fslightbox-react";
 import hexToRgbA from "./hexToRgba";
 import { StickyContainer, Sticky } from "react-sticky";
 import PostBody from "./post-body";
-
-// import("./../components/slick.scss");
-// import("./../components/slick-theme.scss");
+// import styles from './../styles/slick.module.scss';
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -144,12 +142,11 @@ export default function Section({
           <Col md={12}>
             <Container fluid="lg" className="pb-4 text-center">
               {description && <PostBody content={description} />}
-              {/* <RichText richText={description} /> */}
+              <RichText richText={description} />
             </Container>
           </Col>
 
           <Col md={12}>
-            {console.log(gallery)}
             {gallery?.map(({ fields: { title, type, images }, i }) => {
               return (
                 <>
