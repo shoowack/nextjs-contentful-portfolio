@@ -5,6 +5,7 @@ import { getHeaderLinks } from '../lib/api';
 import { fetchEntries } from '../lib/fetchEntries';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 import { useRouter } from 'next/router';
+import Footer from '../components/footer';
 
 export default function Designs({ slug, preview, entries, headerItems }) {
   const router = useRouter();
@@ -50,6 +51,7 @@ export default function Designs({ slug, preview, entries, headerItems }) {
       }
 
       {entries[0].sections.map(entry => <Section {...entry.fields} key={entry.sys.id} />)}
+      <Footer />
     </>
   )
 }

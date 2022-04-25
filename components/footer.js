@@ -6,30 +6,30 @@ import {
   faCircleNotch
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, Row, Col, Label, Form, Input, Button } from "reactstrap";
-
-const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
+import axios from "axios";
 
 export default function Footer() {
   const [isLoading, setIsLoading] = useState(false);
   const [sentState, setSentState] = useState(false);
+  const [errors, setErrors] = useState();
   const [form, setForm] = useState({
     email: "",
-    message: ""
+    message: "",
   });
 
   const handleSubmit = (e) => {
     setIsLoading(true);
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact-me", ...form })
+    axios({
+      url: 'https://formspree.io/f/mqkngagb',
+      method: 'post',
+      headers: {
+        'Accept': 'application/json'
+      },
+      data: form
     })
       .then(() => {
+        setErrors(null);
         setIsLoading(true);
         setSentState(false);
 
@@ -47,7 +47,23 @@ export default function Footer() {
           }, 5000);
         }, 2000);
       })
-      .catch((error) => alert(error));
+      .catch(({ response }) => {
+        setErrors(null);
+        setIsLoading(true);
+        setSentState(false);
+
+        setTimeout(() => {
+          setIsLoading(false);
+          setSentState(true);
+          setErrors(response.data.errors)
+
+          setTimeout(() => {
+            setSentState(false);
+          }, 5000);
+        }, 2000);
+      }
+
+      );
 
     e.preventDefault();
   };
@@ -59,7 +75,7 @@ export default function Footer() {
   const { email, message } = form;
 
   return (
-    <div className="footer container-fluid">
+    <Container fluid className="footer">
       <Container>
         <Row>
           <Col sm={12}>
@@ -69,7 +85,7 @@ export default function Footer() {
             <Form
               onSubmit={handleSubmit}
               className="pt-4 pb-4"
-              data-netlify-recaptcha="true"
+            // data-netlify-recaptcha="true"
             >
               <Row className="mt-2">
                 <Col sm={6} className=" text-right">
@@ -107,7 +123,7 @@ export default function Footer() {
               <Row className="mt-2">
                 <Col sm={{ offset: 6, size: 4 }}>
                   <Button
-                    color={sentState ? "success" : "primary"}
+                    color={!errors && sentState ? "success" : "primary"}
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -120,7 +136,7 @@ export default function Footer() {
                           className="ml-2"
                         />
                       </>
-                    ) : sentState ? (
+                    ) : !errors && sentState ? (
                       <>
                         Sent
                         <FontAwesomeIcon
@@ -144,13 +160,18 @@ export default function Footer() {
               </Row>
               <Row className="mt-2">
                 <Col sm={{ offset: 6, size: 4 }}>
-                  {sentState ? "Your message has been sent!" : <br />}
+                  {errors && (
+                    <><p className="text-danger mb-0">Errors:</p>
+                      {errors.map((error, i) => error.field ? <p key={i}><span className="text-capitalize">{error.field}</span>: {error.message}</p> : <p>{error.message}</p>)}
+                    </>
+                  )}
+                  {!errors && sentState ? "Your message has been sent!" : <br />}
                 </Col>
               </Row>
             </Form>
           </Col>
         </Row>
       </Container>
-    </div>
+    </Container>
   );
 }
