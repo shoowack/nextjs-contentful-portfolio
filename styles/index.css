@@ -773,7 +773,7 @@
     height: 626px;
     background-color: hsla(360, 2%, 96%, 0.65);
     backdrop-filter: blur(50px);
-    border-radius: 15px;
+    border-radius: 12px;
     box-shadow: 
     0 0 0 2px rgba(0, 0, 0, .15),
     0 60px 300px rgba(0, 0, 0, .4);
@@ -788,7 +788,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 2;
     background: hsla(0, 0%, 0%, .25);
 }
 
@@ -832,6 +832,14 @@
     transition: all 0.5s;
 }
 
+.nearlock-app-sidebar-content {
+    position: absolute;
+    width: 210px;
+    left: 10px;
+    padding-top: 40px;
+    overflow: hidden;
+}
+
 /* .nearlock-app-sidebar:before {
     content: "";
     width: 1px;
@@ -852,6 +860,7 @@
     flex-direction: row;
     margin: 10px;
     gap: 10px;
+    z-index: 2;
     /* justify-content: space-between; */
     /* align-items: center; */
     /* margin-bottom: 10px; */
@@ -893,6 +902,7 @@
 
 .nearlock-app-sidebar__item {
     display: block;
+    font-size: 14px;
     font-weight: 400 !important;
     background: transparent !important;
     color: #000 !important;
@@ -921,6 +931,7 @@
 .nearlock-app-content {
     background: #fff;
     flex-grow: 1;
+    z-index: 1;
 }
 
 .nearlock-app-content-header {

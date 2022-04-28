@@ -2,7 +2,21 @@ import React, {useState} from "react";
 import {TabContent, TabPane, Row, Col} from "reactstrap";
 import classnames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck, faPaperPlane, faCircleNotch} from "@fortawesome/free-solid-svg-icons";
+import {
+  faCog,
+  faMusic,
+  faQuestionCircle,
+  faWifi,
+  faCheck,
+  faPaperPlane,
+  faCircleNotch,
+  faCamera,
+  faSync,
+  faExternalLinkAlt,
+  faClipboard,
+  faImage,
+  faLaptop
+} from "@fortawesome/free-solid-svg-icons";
 import Lottie from "lottie-react";
 import btConnect from "./btConnect.json";
 // import btOff from "./btOff.json";
@@ -28,17 +42,41 @@ function NearLockApp() {
   const content = [
     {
       title: "Advanced",
-      icon: faCircleNotch,
+      icon: faLaptop,
       disabled: true
     }, {
       title: "Clipboard",
-      icon: faPaperPlane
+      icon: faClipboard
     }, {
       title: "Devices",
       icon: faCheck
     }, {
+      title: "Music",
+      icon: faMusic,
+      disabled: true
+    }, {
+      title: "WiFi Unlock",
+      icon: faWifi,
+      disabled: true
+    }, {
+      title: "Help",
+      icon: faQuestionCircle,
+      disabled: true
+    }, {
       title: "Setup",
-      icon: faCheck
+      icon: faCog
+    }, {
+      title: "Photos and History",
+      icon: faImage,
+      disabled: true
+    }, {
+      title: "Updates",
+      icon: faSync,
+      disabled: true
+    }, {
+      title: "Share",
+      icon: faExternalLinkAlt,
+      disabled: true
     }
   ];
 
@@ -68,7 +106,7 @@ function NearLockApp() {
       <div className="nearlock-app-sidebar-header-controls">
         {Array.from({length: 3}).map((_, i) => (<div key={`nearlock-app-sidebar-header-controls__item-${i}`} className="nearlock-app-sidebar-header-controls__item"/>))}
       </div>
-      <div className="pt-5 p-3">
+      <div className="nearlock-app-sidebar-content">
         <div className="nearlock-app-sidebar-header mb-3">
           <input className="nearlock-app-sidebar-search mt-3 w-100" placeholder="Search"/>
         </div>
@@ -80,7 +118,7 @@ function NearLockApp() {
             disabled
           }, i) => disabled
             ? (<div key={`nearlock-app-sidebar__item-${i}`} className={"nearlock-app-sidebar__item m-0 disabled"}>
-              <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1" color="#368EFC"/>{" "}
+              <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1 fa-fw" color="#368EFC"/>{" "}
               {title}
             </div>)
             : (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
@@ -88,7 +126,7 @@ function NearLockApp() {
               }, "nearlock-app-sidebar__item m-0")} onClick={() => {
                 toggleTab(title);
               }}>
-              <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1" color="#368EFC"/>{" "}
+              <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1 fa-fw" color="#368EFC"/>{" "}
               {title}
             </a>))
         }
