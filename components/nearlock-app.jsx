@@ -31,7 +31,8 @@ function NearLockApp() {
   const content = [
     {
       title: "Advanced",
-      icon: faCircleNotch
+      icon: faCircleNotch,
+      disabled: true
     }, {
       title: "Clipboard",
       icon: faPaperPlane
@@ -74,17 +75,24 @@ function NearLockApp() {
         <input className="nearlock-app-sidebar-search mt-3 w-100" placeholder="Search"/>
       </div>
       {
-        content.map(({
+        content.map(
+          ({
           title,
-          icon
-        }, i) => (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
-            active: activeTab === title
-          }, "nearlock-app-sidebar__item m-0")} onClick={() => {
-            toggleTab(title);
-          }}>
-          <FontAwesomeIcon icon={icon} size="sm" className="mx-1" color="#368EFC"/>{" "}
-          {title}
-        </a>))
+          icon,
+          disabled
+        }, i) => disabled
+          ? (<div key={`nearlock-app-sidebar__item-${i}`} className={"nearlock-app-sidebar__item m-0 disabled"}>
+            <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1" color="#368EFC"/>{" "}
+            {title}
+          </div>)
+          : (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
+              active: activeTab === title
+            }, "nearlock-app-sidebar__item m-0")} onClick={() => {
+              toggleTab(title);
+            }}>
+            <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1" color="#368EFC"/>{" "}
+            {title}
+          </a>))
       }
     </div>
     <div className="nearlock-app-content">

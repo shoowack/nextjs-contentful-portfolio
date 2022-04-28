@@ -884,20 +884,29 @@
     color: hsla(0, 0%, 0%, .43);
 }
 
-a.nearlock-app-sidebar__item {
-    background: transparent;
+.nearlock-app-sidebar__item {
+    font-weight: 400 !important;
+    background: transparent !important;
     color: #000 !important;
     padding: 7px 8px;
-    text-decoration: none;
+    text-decoration: unset !important;
 }
 
-a.nearlock-app-sidebar__item:hover {
-    background: transparent;
-    cursor: pointer;
+.nearlock-app-sidebar__item.disabled {
+    opacity: 0.5;
 }
 
-a.nearlock-app-sidebar__item.active {
-    background: hsla(0, 0%, 0%, .09);
+.nearlock-app-sidebar__item.disabled:hover {
+    cursor: default !important;
+}
+
+.nearlock-app-sidebar__item:not(disabled):hover {
+    cursor: pointer !important;
+    text-decoration: unset !important;
+}
+
+.nearlock-app-sidebar__item.active {
+    background: hsla(0, 0%, 0%, .09) !important;
     border-radius: 7px;
 }
 
