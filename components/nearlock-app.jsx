@@ -77,7 +77,7 @@ function NearLockApp() {
         content.map(({
           title,
           icon
-        }, index) => (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
+        }, i) => (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
             active: activeTab === title
           }, "nearlock-app-sidebar__item m-0")} onClick={() => {
             toggleTab(title);
