@@ -818,14 +818,18 @@
 }
 
 .nearlock-app-sidebar {
-    padding: 10px;
-    width: 230px;
-    min-width: 230px;
+    width: 0;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    /* gap: 5px; */
+    transition: all 0.5s;
+}
+
+.nearlock-app-sidebar.open {
+    width: 230px;
+    min-width: 230px;    
     border-right: 1.25px solid hsla(0, 0%, 0%, 0.15);
-    /* position: relative; */
+    transition: all 0.5s;
 }
 
 /* .nearlock-app-sidebar:before {
@@ -841,6 +845,9 @@
 } */
 
 .nearlock-app-sidebar-header-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
     display: flex;
     flex-direction: row;
     margin: 10px;
@@ -885,6 +892,7 @@
 }
 
 .nearlock-app-sidebar__item {
+    display: block;
     font-weight: 400 !important;
     background: transparent !important;
     color: #000 !important;
@@ -920,8 +928,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 13px;
+    padding: 14px;
     border-bottom: 1px solid hsla(0, 0%, 0%, 0.09);
+    transition: all 0.5s;
+}
+
+.nearlock-app-content-header.open {
+    padding-left: 100px;
+    transition: all 0.5s;
 }
 
 .nearlock-app-content-header__left-items {
