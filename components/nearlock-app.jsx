@@ -69,7 +69,7 @@ function NearLockApp() {
     <div className="nearlock-app-sidebar">
       <div className="nearlock-app-sidebar-header mb-3">
         <div className="nearlock-app-sidebar-header-controls">
-          {Array.from({length: 3}).map((_, i) => (<div className="nearlock-app-sidebar-header-controls__item"></div>))}
+          {Array.from({length: 3}).map((_, i) => (<div key={`nearlock-app-sidebar-header-controls__item-${i}`} className="nearlock-app-sidebar-header-controls__item"/>))}
         </div>
         <input className="nearlock-app-sidebar-search mt-3 w-100" placeholder="Search"/>
       </div>
@@ -77,7 +77,7 @@ function NearLockApp() {
         content.map(({
           title,
           icon
-        }, index) => (<a className={classnames({
+        }, index) => (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
             active: activeTab === title
           }, "nearlock-app-sidebar__item m-0")} onClick={() => {
             toggleTab(title);
