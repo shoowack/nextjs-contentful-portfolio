@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "San Francisco";
+    font-weight: 400;
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+  }
+  
 /* Slider */
 .slick-slider
 {
@@ -751,4 +757,205 @@
 }
 .aboutme .header-info-links a:nth-child(10n) .svg-inline--fa {
     animation-delay: 1s;
+}
+
+.nearlock-app-wrapper {
+    background: url("https://images.unsplash.com/photo-1575761344173-aa186491c120");
+    background-size: cover;
+    /* background: #0849C6;
+    background: -webkit-linear-gradient(top left, #0849C6, #13A759);
+    background: -moz-linear-gradient(top left, #0849C6, #13A759);
+    background: linear-gradient(to bottom right, #0849C6, #13A759); */
+}
+.nearlock-app {
+    margin: auto;
+    width: 1082px;
+    height: 626px;
+    background-color: hsla(360, 2%, 96%, 0.65);
+    backdrop-filter: blur(50px);
+    border-radius: 15px;
+    box-shadow: 
+    0 0 0 2px rgba(0, 0, 0, .15),
+    0 60px 300px rgba(0, 0, 0, .4);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.nearlock-app-modal__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: hsla(0, 0%, 0%, .25);
+}
+
+.nearlock-app-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+    background: hsla(0, 0%, 100%, 1);
+    border-radius: 10px;
+    box-shadow: 
+    0 0 0 1px hsla(0, 0%, 0%, .15),
+    0 25px 60px -15px hsla(0, 0%, 0%, 0.35);
+}
+
+.nearlock-app-modal__footer {
+    background-image: linear-gradient(180deg, #D3CECE 1%, #CBC3C5 100%);
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.nearlock-app-sidebar,
+.nearlock-app-content {
+    height: 100%;
+}
+
+.nearlock-app-sidebar {
+    padding: 10px;
+    width: 230px;
+    min-width: 230px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+    border-right: 1.25px solid hsla(0, 0%, 0%, 0.15);
+    /* position: relative; */
+}
+
+/* .nearlock-app-sidebar:before {
+    content: "";
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: hsla(0, 0%, 0%, 0.5);
+    mix-blend-mode: soft-light;
+} */
+
+.nearlock-app-sidebar-header-controls {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    gap: 10px;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* margin-bottom: 10px; */
+}
+
+.nearlock-app-sidebar-header-controls__item {
+    width: 13px;
+    height: 13px;
+    border-radius: 999em;
+}
+
+.nearlock-app-sidebar-header-controls__item:nth-child(1) {
+    background: #FF6157;
+    box-shadow: 0 0 0 1px #E24640;
+}
+
+.nearlock-app-sidebar-header-controls__item:nth-child(2) {
+    background: #FFC12F;
+    box-shadow: 0 0 0 1px #DFA023;
+}
+
+.nearlock-app-sidebar-header-controls__item:nth-child(3) {
+    background: #2ACB42;
+    box-shadow: 0 0 0 1px #1BAC2C;
+}
+
+.nearlock-app-sidebar-search {
+    background: hsla(0, 0%, 0%, .06);
+    box-shadow: 0 0 0 1.5px hsla(0, 0%, 0%, .09);
+    border-radius: 7px;
+    border: none;
+    font-size: 13px;
+    padding: 7px;
+}
+
+.nearlock-app-sidebar-search::placeholder {
+    color: hsla(0, 0%, 0%, .43);
+}
+
+a.nearlock-app-sidebar__item {
+    background: transparent;
+    color: #000 !important;
+    padding: 7px 8px;
+    text-decoration: none;
+}
+
+a.nearlock-app-sidebar__item:hover {
+    background: transparent;
+    cursor: pointer;
+}
+
+a.nearlock-app-sidebar__item.active {
+    background: hsla(0, 0%, 0%, .09);
+    border-radius: 7px;
+}
+
+.nearlock-app-content {
+    background: #fff;
+    flex-grow: 1;
+}
+
+.nearlock-app-content-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.09);
+}
+
+.nearlock-app-content-header__left-items {
+    /* font-family: 'Font Awesome 5 Pro'; */
+    font-family: "San Francisco";
+    font-weight: 900;
+    /* content: "\F304"; */
+    content: 'tray.and.arrow.up';
+}
+
+.nearlock-app-content .tab-content {
+    overflow: scroll;
+    height: 100%;
+}
+
+.setup-bt-wrapper {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 800px;
+    width: 800px;
+}
+
+.setup-bt-text {
+    position: absolute;
+    top: 600px;
+    text-align: center;
+    width: 100%;
+}
+
+.nearlock-app__btn {
+    border: unset;
+    background: hsla(0, 0%, 0%, .15);
+    border-radius: 7px;
+    padding: 6px 14px;
+    font-size: 12px;
+}
+
+.nearlock-app__btn-link {
+    border: unset;
+    font-size: 25px;
+    color: #303030;
+    padding: 6px 14px;
+    font-size: 12px;
 }

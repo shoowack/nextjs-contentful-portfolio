@@ -10,6 +10,7 @@ import { StickyContainer, Sticky } from "react-sticky";
 import PostBody from "./post-body";
 import Link from "next/link";
 import { useRouter } from 'next/router';
+import NearLockApp from "../components/nearlock-app";
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -36,6 +37,7 @@ export default function Section({
   gallery
 }) {
   const router = useRouter();
+  const { slug } = router.query;
   const [toggler, setToggler] = useState(false);
   const [productIndex, setProductIndex] = useState(0);
   const sliderOptions = {
@@ -184,7 +186,17 @@ export default function Section({
             })}
           </Col>
         </Row>
-      </Container>
+        {/* render MacOS Nearlock app */}
+        {(title === "Near Lock" && slug === 'designs') && (
+          <Row>
+            <div className="nearlock-app-wrapper p-5 w-100">
+              <NearLockApp />
+            </div>
+          </Row>
+        )
+        }
+        {console.log(title)}
+      </Container >
     </StickyContainer >
   );
 }
