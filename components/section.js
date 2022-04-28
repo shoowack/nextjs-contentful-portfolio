@@ -193,9 +193,7 @@ export default function Section({
               <NearLockApp />
             </div>
           </Row>
-        )
-        }
-        {console.log(title)}
+        )}
       </Container >
     </StickyContainer >
   );

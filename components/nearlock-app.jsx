@@ -1,24 +1,17 @@
 import React, {useState} from "react";
-import {
-  TabContent,
-  TabPane,
-  Row,
-  Col,
-  Card,
-  CardTitle,
-  CardText
-} from "reactstrap";
+import {TabContent, TabPane, Row, Col} from "reactstrap";
 import classnames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faPaperPlane, faCircleNotch} from "@fortawesome/free-solid-svg-icons";
 import Lottie from "lottie-react";
-import btOff from "./btOff.json";
 import btConnect from "./btConnect.json";
-import wifiConnected from "./wifiConnected.json";
+// import btOff from "./btOff.json";
+// import wifiConnected from "./wifiConnected.json";
 
 function NearLockApp() {
   const [activeTab, setActiveTab] = useState("Advanced");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleTab = tab => {
     if (activeTab !== tab) 
@@ -28,6 +21,10 @@ function NearLockApp() {
       setIsModalOpen(true);
     };
   
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   const content = [
     {
       title: "Advanced",
@@ -46,11 +43,9 @@ function NearLockApp() {
   ];
 
   return (<div className="nearlock-app">
-    <div className="nearlock-app-modal__background" style={{
-        display: isModalOpen
-          ? "block"
-          : "none"
-      }}>
+    <div className={classnames({
+        "d-none": !isModalOpen
+      }, "nearlock-app-modal__background")}>
       <div className="nearlock-app-modal">
         <div className="nearlock-app-modal__content d-flex flex-column p-5  text-center">
           <FontAwesomeIcon icon={faPaperPlane} size="10x" className="mb-3 mx-5" color="#368EFC"/>
@@ -67,37 +62,45 @@ function NearLockApp() {
         </div>
       </div>
     </div>
-    <div className="nearlock-app-sidebar">
-      <div className="nearlock-app-sidebar-header mb-3">
-        <div className="nearlock-app-sidebar-header-controls">
-          {Array.from({length: 3}).map((_, i) => (<div key={`nearlock-app-sidebar-header-controls__item-${i}`} className="nearlock-app-sidebar-header-controls__item"/>))}
-        </div>
-        <input className="nearlock-app-sidebar-search mt-3 w-100" placeholder="Search"/>
+    <div className={classnames({
+        open: isSidebarOpen
+      }, "nearlock-app-sidebar")}>
+      <div className="nearlock-app-sidebar-header-controls">
+        {Array.from({length: 3}).map((_, i) => (<div key={`nearlock-app-sidebar-header-controls__item-${i}`} className="nearlock-app-sidebar-header-controls__item"/>))}
       </div>
-      {
-        content.map(
-          ({
-          title,
-          icon,
-          disabled
-        }, i) => disabled
-          ? (<div key={`nearlock-app-sidebar__item-${i}`} className={"nearlock-app-sidebar__item m-0 disabled"}>
-            <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1" color="#368EFC"/>{" "}
-            {title}
-          </div>)
-          : (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
-              active: activeTab === title
-            }, "nearlock-app-sidebar__item m-0")} onClick={() => {
-              toggleTab(title);
-            }}>
-            <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1" color="#368EFC"/>{" "}
-            {title}
-          </a>))
-      }
+      <div className="pt-5 p-3">
+        <div className="nearlock-app-sidebar-header mb-3">
+          <input className="nearlock-app-sidebar-search mt-3 w-100" placeholder="Search"/>
+        </div>
+        {
+          content.map(
+            ({
+            title,
+            icon,
+            disabled
+          }, i) => disabled
+            ? (<div key={`nearlock-app-sidebar__item-${i}`} className={"nearlock-app-sidebar__item m-0 disabled"}>
+              <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1" color="#368EFC"/>{" "}
+              {title}
+            </div>)
+            : (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
+                active: activeTab === title
+              }, "nearlock-app-sidebar__item m-0")} onClick={() => {
+                toggleTab(title);
+              }}>
+              <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1" color="#368EFC"/>{" "}
+              {title}
+            </a>))
+        }
+      </div>
     </div>
     <div className="nearlock-app-content">
-      <div className="nearlock-app-content-header">
-        <div className="nearlock-app-content-header__left-items">aa</div>
+      <div className={classnames({
+          open: !isSidebarOpen
+        }, "nearlock-app-content-header")}>
+        <div className="nearlock-app-content-header__left-items">
+          <a onClick={toggleSidebar}>Toggle sidebar</a>
+        </div>
         <div className="nearlock-app-content-header__title">{activeTab}</div>
         <div className="nearlock-app-content-header__right-items">aa</div>
       </div>
