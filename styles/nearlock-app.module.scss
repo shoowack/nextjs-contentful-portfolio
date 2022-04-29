@@ -249,7 +249,7 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 20px;
+            padding: 9px 10px;
             border-bottom: 1px solid hsla(0, 0%, 0%, 0.09);
             transition: all 0.5s;
 
@@ -259,11 +259,13 @@
             }
 
             &__left-items {
-                /* font-family: 'Font Awesome 5 Pro'; */
-                font-family: "San Francisco";
-                font-weight: 900;
-                /* content: "\F304"; */
-                content: 'tray.and.arrow.up';
+                display: flex;
+                padding: 8px;
+                border-radius: 6px;
+                
+                &:hover {
+                    background: hsla(0, 0%, 0%, .1);
+                }
             }
         }
 
