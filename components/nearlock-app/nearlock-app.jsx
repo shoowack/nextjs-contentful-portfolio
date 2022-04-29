@@ -147,7 +147,7 @@ const Content = ({isSidebarOpen, toggleSidebar, activeTab}) => (<div className={
       ? styles["nearlock-app-content-header"]
       : styles["nearlock-app-content-header-open"]}>
     <div className={styles["nearlock-app-content-header__left-items"]}>
-      <a onClick={toggleSidebar}>Toggle sidebar</a>
+      <button onClick={toggleSidebar}>Toggle sidebar</button>
     </div>
     <div className={styles["nearlock-app-content-header__title"]}>
       {activeTab}

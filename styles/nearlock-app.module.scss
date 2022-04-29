@@ -97,21 +97,91 @@
             gap: 10px;
             z-index: 2;
 
+            &:hover {
+                .nearlock-app-sidebar-header-controls__item {
+                    $control-icon-color: hsla(0, 0%, 0%, .4);
+
+                    &:nth-child(1),
+                    &:nth-child(2),
+                    &:nth-child(3) {                        
+                        position: relative;
+                 
+                        &::before,
+                        &::after {
+                            content: "";
+                            position: absolute;
+                        }
+                    }
+
+                    &:nth-child(1) {
+                        &::before,
+                        &::after {
+                            top: 5px;
+                            left: 2px;
+                            width: 8px;
+                            height: 2px;
+                            background: $control-icon-color;
+                            border-radius: 999em;
+                        }
+    
+                        &::before {
+                            transform: rotate(45deg);
+                        }
+    
+                        &::after {
+                            transform: rotate(-45deg);
+                        }
+                    }
+    
+                
+                    &:nth-child(2) {
+                        &::before {
+                            top: 5px;
+                            left: 2px;
+                            width: 8px;
+                            height: 2px;
+                            background: $control-icon-color;
+                            border-radius: 999em;
+                        }
+                    }
+                
+                    &:nth-child(3) {
+                        &::before {
+                            top: 3px;
+                            left: 3px;
+                            border-top: 2.5px solid $control-icon-color;
+                            border-left: 2.5px solid $control-icon-color;
+                            border-bottom: 2.5px solid transparent;
+                            border-right: 2.5px solid transparent;
+                        }
+    
+                        &::after {
+                            top: 4px;
+                            left: 4px;
+                            border-bottom: 2.5px solid $control-icon-color;
+                            border-right: 2.5px solid $control-icon-color;
+                            border-top: 2.5px solid transparent;
+                            border-left: 2.5px solid transparent;
+                        }
+                    }
+                }
+            }
+
             &__item {
-                width: 13px;
-                height: 13px;
+                width: 12px;
+                height: 12px;
                 border-radius: 999em;
 
                 &:nth-child(1) {
                     background: #FF6157;
                     box-shadow: 0 0 0 1px #E24640;
                 }
-            
+                
                 &:nth-child(2) {
                     background: #FFC12F;
                     box-shadow: 0 0 0 1px #DFA023;
                 }
-            
+
                 &:nth-child(3) {
                     background: #2ACB42;
                     box-shadow: 0 0 0 1px #1BAC2C;
@@ -137,7 +207,7 @@
         &__item {
             background: transparent !important;
         }
-        
+
         &__item,
         &__item__disabled,
         &__item__active {
