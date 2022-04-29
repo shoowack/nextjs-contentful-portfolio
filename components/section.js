@@ -105,7 +105,8 @@ export default function Section({
       <Container
         fluid
         style={{
-          backgroundColor: backgroundColor
+          backgroundColor,
+          overflow: "hidden",
         }}
         className={`py-5 px-md-0 ${getContrast(backgroundColor)}`}
       >

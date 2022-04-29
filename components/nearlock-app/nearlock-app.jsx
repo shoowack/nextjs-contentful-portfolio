@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {TabContent, TabPane, Row, Col} from "reactstrap";
 import classnames from "classnames";
+import Image from "next/image";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faCog,
@@ -147,7 +148,7 @@ const Content = ({isSidebarOpen, toggleSidebar, activeTab}) => (<div className={
       ? styles["nearlock-app-content-header"]
       : styles["nearlock-app-content-header-open"]}>
     <div className={styles["nearlock-app-content-header__left-items"]}>
-      <button onClick={toggleSidebar}>Toggle sidebar</button>
+      <img src="/sidebar.svg" onClick={toggleSidebar} height="17px"/>
     </div>
     <div className={styles["nearlock-app-content-header__title"]}>
       {activeTab}
