@@ -154,7 +154,7 @@ const Content = ({isSidebarOpen, toggleSidebar, activeTab}) => (<div className={
       {activeTab}
     </div>
     <div className={styles["nearlock-app-content-header__right-items"]}>
-      aa
+      <img src="/search.svg" height="17px"/>
     </div>
   </div>
   <TabContent activeTab={activeTab} className={styles["tab-content"]}>

@@ -258,7 +258,8 @@
                 transition: all 0.5s;
             }
 
-            &__left-items {
+            &__left-items,
+            &__right-items {
                 display: flex;
                 padding: 8px;
                 border-radius: 6px;
