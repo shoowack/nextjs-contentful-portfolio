@@ -277,7 +277,7 @@
 
             &__search,
             &__search-open {
-                padding: 0 0 0 28px;
+                padding: 0 30px 0 28px;
                 margin: 0;
                 height: 30px;
                 background: #F4F3F7 url("./../public/search.svg") no-repeat 10px center;
@@ -291,18 +291,25 @@
             &__search {
                 display: none;
                 width: 0px;
+
+                &-open {
+                    width: 240px;
+            
+                    &:focus {
+                        outline: none;
+                        box-shadow:
+                        0 0 0 1px #9CC991,
+                        0 0 0 4px #A6D199;
+                    }
+               }
+
+               &-close-icon-open {
+                   position: absolute;
+                   right: 20px;
+               }
             }
 
-            &__search-open {
-                width: 240px;
-        
-                &:focus {
-                    outline: none;
-                    box-shadow:
-                    0 0 0 1px #9CC991,
-                    0 0 0 4px #A6D199;
-                }
-           }
+
 
             &__right-items {
                 display: flex;
