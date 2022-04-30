@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import {TabContent, TabPane, Row, Col} from "reactstrap";
 import classnames from "classnames";
-import Image from "next/image";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faCog,
@@ -26,17 +25,33 @@ function NearLockApp() {
   const [activeTab, setActiveTab] = useState("Setup");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const searchRef = useRef(null);
 
   const toggleTab = tab => {
-    if (activeTab !== tab) 
+    if (activeTab !== tab) {
       setActiveTab(tab);
-    
+      setIsSearchOpen(false);
+    }
+
     if (tab === "Devices") 
       setIsModalOpen(true);
     };
   
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+    setIsSearchOpen(false);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+    setTimeout(() => {
+      searchRef.current.focus();
+
+      if (!isSearchOpen) {
+        searchRef.current.value = "";
+      }
+    }, 1);
   };
 
   const content = [
@@ -83,7 +98,7 @@ function NearLockApp() {
   return (<div className={styles["nearlock-app"]}>
     <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
     <Sidebar isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab}/>
-    <Content isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar}/>
+    <Content isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef}/>
   </div>);
 }
 
@@ -116,10 +131,11 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
   <div className={styles["nearlock-app-sidebar-header-controls"]}>
     {Array.from({length: 3}).map((_, i) => (<div key={`nearlock-app-sidebar-header-controls__item-${i}`} className={styles["nearlock-app-sidebar-header-controls__item"]}/>))}
   </div>
-  <div className={styles["nearlock-app-sidebar-content"]}>
-    <div className={`${styles["nearlock-app-sidebar-header"]} mb-3`}>
+  <div className={`${styles["nearlock-app-sidebar-content"]} mt-3`}>
+    {/* <div className={`${styles["nearlock-app-sidebar-header"]} mb-3`}>
       <input className={`${styles["nearlock-app-sidebar-search"]} mt-3 w-100`} placeholder="Search"/>
-    </div>
+    </div> */
+    }
     {
       content.map(
         ({
@@ -127,13 +143,15 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
         icon,
         disabled
       }, i) => disabled
-        ? (<div key={`nearlock-app-sidebar__item-${i}`} className={`${styles["nearlock-app-sidebar__item__disabled"]} m-0`}>
+        ? (<div key={`nearlock-app-sidebar__item-${i}`} className={`${
+          styles["nearlock-app-sidebar__item__disabled"]} m-0 d-flex align-items-center`}>
           <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1 fa-fw" color="#368EFC"/>{" "}
           {title}
         </div>)
-        : (<a key={`nearlock-app-sidebar__item-${i}`} className={activeTab === title
+        : (<a key={`nearlock-app-sidebar__item-${i}`} className={`d-flex align-items-center ${
+          activeTab === title
             ? styles["nearlock-app-sidebar__item__active"]
-            : styles["nearlock-app-sidebar__item"]} onClick={() => {
+            : styles["nearlock-app-sidebar__item"]}`} onClick={() => {
             toggleTab(title);
           }}>
           <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1 fa-fw" color="#368EFC"/>{" "}
@@ -143,18 +161,32 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
   </div>
 </div>);
 
-const Content = ({isSidebarOpen, toggleSidebar, activeTab}) => (<div className={styles["nearlock-app-content"]}>
+const Content = ({
+  activeTab,
+  isSidebarOpen,
+  toggleSidebar,
+  isSearchOpen,
+  toggleSearch,
+  searchRef
+}) => (<div className={styles["nearlock-app-content"]}>
   <div className={isSidebarOpen
       ? styles["nearlock-app-content-header"]
       : styles["nearlock-app-content-header-open"]}>
-    <div className={styles["nearlock-app-content-header__left-items"]}>
-      <img src="/sidebar.svg" onClick={toggleSidebar} height="17px"/>
+    <div className={styles["nearlock-app-content-header__left-items"]} onClick={toggleSidebar}>
+      <img src="/sidebar.svg" height="17px"/>
     </div>
     <div className={styles["nearlock-app-content-header__title"]}>
       {activeTab}
     </div>
     <div className={styles["nearlock-app-content-header__right-items"]}>
-      <img src="/search.svg" height="17px"/>
+      <input className={isSearchOpen
+          ? styles["nearlock-app-content-header__search-open"]
+          : styles["nearlock-app-content-header__search"]} placeholder="Search" ref={searchRef} type="search"/>
+      <div className={isSearchOpen
+          ? styles["nearlock-app-content-header__right-items_search_icon-open"]
+          : styles["nearlock-app-content-header__right-items_search_icon"]} onClick={toggleSearch}>
+        <img src="/search.svg" height="17px"/>
+      </div>
     </div>
   </div>
   <TabContent activeTab={activeTab} className={styles["tab-content"]}>
@@ -175,7 +207,9 @@ const Content = ({isSidebarOpen, toggleSidebar, activeTab}) => (<div className={
               size: 10,
               offset: 1
             }}>
-            <h5>Please turn on Bluetooth and get the iOS app</h5>
+            <h5 className="m-0">
+              Please turn on Bluetooth and get the iOS app
+            </h5>
             <small>
               To use Near Lock make sure your Mac has Bluetooth turned on and your iOS app is open on your iPhone
             </small>
