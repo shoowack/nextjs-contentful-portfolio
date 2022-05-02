@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="263px" height="395px" viewBox="0 0 263 395" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Imported Layers 2</title>
+    <defs>
+        <linearGradient x1="27.834001%" y1="0%" x2="72.165999%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#33A2C6" offset="0%"></stop>
+            <stop stop-color="#35C591" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Welcome-Screen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1586.000000, -474.000000)" fill="url(#linearGradient-1)" id="Right">
+            <g transform="translate(867.000000, 224.000000)">
+                <g id="Details-View" transform="translate(225.000000, 250.000000)">
+                    <path d="M625.5,0 C681.826902,0 757,42.0696123 757,141.071429 C757,235.271083 631.868128,395 625.5,395 C619.131337,395 494,235.319138 494,141.071429 C494,38.8758155 569.173098,0 625.5,0 Z M625.5,83.736126 C595.044168,83.736126 570.354839,108.456748 570.354839,138.95118 C570.354839,157.581262 579.56989,174.056327 593.685113,184.056023 L593.685484,219.800608 C593.685484,233.873735 605.094007,245.282258 619.167134,245.282258 L619.167134,245.282258 L631.832866,245.282258 C645.905993,245.282258 657.314516,233.873735 657.314516,219.800608 L657.314516,219.800608 L657.314887,184.056023 C671.43011,174.056327 680.645161,157.581262 680.645161,138.95118 C680.645161,108.456748 655.955832,83.736126 625.5,83.736126 Z" id="Imported-Layers-2"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

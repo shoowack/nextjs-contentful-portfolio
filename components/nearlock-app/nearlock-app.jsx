@@ -22,7 +22,7 @@ import btConnect from "./btConnect.json";
 import styles from "./../../styles/nearlock-app.module.scss";
 
 function NearLockApp() {
-  const [activeTab, setActiveTab] = useState("Setup");
+  const [activeTab, setActiveTab] = useState("Welcome");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -98,7 +98,7 @@ function NearLockApp() {
   return (<div className={styles["nearlock-app"]}>
     <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
     <Sidebar isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab}/>
-    <Content isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef}/>
+    <Content isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab}/>
   </div>);
 }
 
@@ -167,7 +167,8 @@ const Content = ({
   toggleSidebar,
   isSearchOpen,
   toggleSearch,
-  searchRef
+  searchRef,
+  setActiveTab
 }) => (<div className={styles["nearlock-app-content"]}>
   <div className={isSidebarOpen
       ? styles["nearlock-app-content-header"]
@@ -195,6 +196,25 @@ const Content = ({
     </div>
   </div>
   <TabContent activeTab={activeTab} className={styles["tab-content"]}>
+    <TabPane tabId="Welcome">
+      <Row>
+        <Col sm="12" className={"text-center mt-5"}>
+          <Col md={{
+              size: 10,
+              offset: 1
+            }}>
+            <img src="/nearlock-logo.svg" height="225px" className="pt-4 m-5"/>
+            <h5 className="m-0">Welcome</h5>
+            <small>
+              Near Lock lets you use your iPhone to lock and unlock your Mac automatically. When you walk away from your Mac, it will be automatically locked. Once you approach your workplace, Near Lock will unlock your Mac.
+            </small>
+            <button className={`${styles["nearlock-app__btn"]} mt-4`} onClick={() => setActiveTab("Setup")}>
+              Setup Near Lock
+            </button>
+          </Col>
+        </Col>
+      </Row>
+    </TabPane>
     <TabPane tabId="Advanced">
       <Row>
         <Col sm="12">
