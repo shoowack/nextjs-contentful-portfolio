@@ -271,8 +271,27 @@
                 }
             }
 
-            &__right-items_search_icon-open {
-                display: none;
+            &__right-items {
+                display: flex;
+                align-items: center;
+
+                &_search_icon,
+                &_search_icon-open {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    opacity: 1;
+                }
+
+                &_search_icon {
+                    transition: transform 0.5s, opacity 0.5s;
+                
+                    &-open {
+                        opacity: 0;
+                        transform: scale(0);
+                        pointer-events: none;
+                    }
+                }
             }
 
             &__search,
@@ -286,11 +305,14 @@
                 border: none;
                 font-size: 12px;
                 outline:hsla(0, 0%, 0%, .06) solid 1px;
+                opacity: 1;
+                transition: width 0.5s, opacity 0.5s;
             }
 
             &__search {
-                display: none;
-                width: 0px;
+                opacity: 0;
+                width: 0;
+                pointer-events: none;
 
                 &-open {
                     width: 240px;
@@ -309,16 +331,7 @@
                }
             }
 
-
-
-            &__right-items {
-                display: flex;
-                align-items: center;
-            }
-
         }
-
-
     }
 
     .tab-content {
