@@ -16,7 +16,7 @@ const customMarkdownOptions = (content) => ({
 
 export default function PostBody({ content }) {
   return (
-    <div className={markdownStyles['markdown']}>
+    <div className={markdownStyles.markdown}>
       {documentToReactComponents(
         content,
         customMarkdownOptions(content)

@@ -1,11 +1,11 @@
 .markdown {
-  /* @apply leading-relaxed; */
+  @apply text-lg leading-relaxed;
   font-family: 'Raleway', sans-serif;
+  font-weight: 400;
 }
 
-/* .section:not(.aboutme) [class^="markdown-styles"] a { */
 .markdown a {
-    background: rgba(0,0,0,.1);
+    background: hsla(0, 0%, 0%, .1);
     padding: 5px 10px;
     border-radius: 3px;
     line-height: 36px;
@@ -16,7 +16,7 @@
 }
 
 .markdown a:hover {
-    background: rgba(0,0,0,.2);
+    background: hsla(0, 0%, 0%, .2);
     transition: background .2s ease-in-out;
 }
 
