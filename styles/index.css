@@ -640,6 +640,12 @@
     color: #000;
     text-decoration: none;
     font-weight: 600;
+    transition: background .2s ease-in-out;
+}
+
+.section:not(.aboutme) [class^="markdown-styles"] a:hover {
+    background: rgba(0,0,0,.2);
+    transition: background .2s ease-in-out;
 }
 
 code {
