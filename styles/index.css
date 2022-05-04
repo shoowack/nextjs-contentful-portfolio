@@ -665,6 +665,12 @@ hr {
     height: 1px;
 }
 
+.section.darker p,
+.section.lighter p,
+.aboutme p {
+    font-family: 'Raleway', sans-serif;
+}
+
 .darker hr {
     background: rgba(0, 0, 0, .1);
 }
