@@ -181,7 +181,7 @@ export default function Section({
                       );
                     })}
                   </Slider>
-                  {i !== gallery.length - 1 && <hr />}
+                  {i !== gallery.length - 1 && <Container className="my-5"><hr className="m-0" /></Container>}
                 </>
               );
             })}
@@ -193,6 +193,8 @@ export default function Section({
             <Col md={12} className={"mt-2"}>
               <Container fluid="lg" className="pb-5 text-center text-white">
                 Interactive preview of the Near Lock desktop app
+                <br />
+                <small style={{ color: 'hsla(0, 0%, 100%, .75)' }}>some of the features are not available yet</small>
               </Container>
             </Col>
 

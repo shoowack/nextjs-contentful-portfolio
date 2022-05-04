@@ -631,6 +631,10 @@
     display: none;
 }
 
+hr {
+    border: 0;
+    height: 1px;
+}
 
 .darker hr {
     background: rgba(0, 0, 0, .1);
