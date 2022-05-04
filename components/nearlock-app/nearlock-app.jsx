@@ -69,7 +69,10 @@ function NearLockApp({isDarkMode}) {
     }
   ];
 
-  return (<div className={styles["nearlock-app"]}>
+  return (<div className={`${isDarkMode
+      ? styles["dark-nearlock-app"]
+      : ""} ${
+    styles["nearlock-app"]}`}>
     <Modal isDarkMode={isDarkMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
     <Sidebar isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab}/>
     <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab}/>
@@ -99,9 +102,12 @@ const Modal = ({isModalOpen, setIsModalOpen}) => (<div className={classnames({
   </div>
 </div>);
 
-const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div className={isSidebarOpen
+const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => (<div className={`${isDarkMode
+    ? styles["dark-nearlock-app-sidebar"]
+    : ""} ${
+  isSidebarOpen
     ? styles["nearlock-app-sidebar-open"]
-    : styles["nearlock-app-sidebar"]}>
+    : styles["nearlock-app-sidebar"]}`}>
   <div className={styles["nearlock-app-sidebar-header-controls"]}>
     {Array.from({length: 3}).map((_, i) => (<div key={`nearlock-app-sidebar-header-controls__item-${i}`} className={styles["nearlock-app-sidebar-header-controls__item"]}/>))}
   </div>
@@ -117,6 +123,9 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
         enabled
       }, i) => enabled
         ? (<a key={`nearlock-app-sidebar__item-${i}`} className={`d-flex align-items-center ${
+          isDarkMode
+            ? styles["dark-nearlock-app-sidebar__item"]
+            : ""} ${
           activeTab === title
             ? styles["nearlock-app-sidebar__item__active"]
             : styles["nearlock-app-sidebar__item"]}`} onClick={() => {
@@ -126,6 +135,9 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
           {title}
         </a>)
         : (<div key={`nearlock-app-sidebar__item-${i}`} className={`${
+          isDarkMode
+            ? styles["dark-nearlock-app-sidebar__item__disabled"]
+            : ""} ${
           styles["nearlock-app-sidebar__item__disabled"]} m-0 d-flex align-items-center`}>
           <img src={`/nearlock-menu_${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
@@ -147,9 +159,13 @@ const Content = ({
     ? styles["dark-nearlock-app-content"]
     : ""} ${
   styles["nearlock-app-content"]}`}>
-  <div className={isSidebarOpen
+  <div className={`${
+    isDarkMode
+      ? styles["dark-nearlock-app-content-header"]
+      : ""} ${
+    isSidebarOpen
       ? styles["nearlock-app-content-header"]
-      : styles["nearlock-app-content-header-open"]}>
+      : styles["nearlock-app-content-header-open"]}`}>
     <div className={styles["nearlock-app-content-header__left-items"]} onClick={toggleSidebar}>
       <img src="/sidebar.svg" height="17px"/>
     </div>
@@ -174,53 +190,47 @@ const Content = ({
   </div>
   <TabContent activeTab={activeTab} className={styles["tab-content"]}>
     <TabPane tabId="Welcome">
-      <Row>
-        <Col sm="12" className={"text-center mt-5"}>
-          <Col md={{
-              size: 10,
-              offset: 1
-            }}>
-            <img src="/nearlock-logo.svg" height="225px" className="pt-4 m-5"/>
-            <h5 className="m-0">Welcome</h5>
-            <small>
-              Near Lock lets you use your iPhone to lock and unlock your Mac automatically. When you walk away from your Mac, it will be automatically locked. Once you approach your workplace, Near Lock will unlock your Mac.
-            </small>
-            <button className={`${styles["nearlock-app__btn"]} mt-4`} onClick={() => setActiveTab("Setup")}>
-              Setup Near Lock
-            </button>
-          </Col>
+      <Col sm="12" className={"text-center mt-5"}>
+        <Col md={{
+            size: 10,
+            offset: 1
+          }}>
+          <img src="/nearlock-logo.svg" height="225px" className="pt-4 m-5"/>
+          <h5 className="m-0">Welcome</h5>
+          <small>
+            Near Lock lets you use your iPhone to lock and unlock your Mac automatically. When you walk away from your Mac, it will be automatically locked. Once you approach your workplace, Near Lock will unlock your Mac.
+          </small>
+          <button className={`${styles["nearlock-app__btn"]} mt-4`} onClick={() => setActiveTab("Setup")}>
+            Setup Near Lock
+          </button>
         </Col>
-      </Row>
+      </Col>
     </TabPane>
     <TabPane tabId="Advanced">
-      <Row>
-        <Col sm="12">
-          <h4>Advanced</h4>
-        </Col>
-      </Row>
+      <Col sm="12">
+        <h4>Advanced</h4>
+      </Col>
     </TabPane>
-    <TabPane tabId="Setup">
-      <Row style={{
-          position: "relative"
-        }}>
-        <div className={styles["setup-bt-wrapper"]}>
-          <Lottie animationData={btConnect} loop={true} autoplay={true}/>
-          <Col className={styles["setup-bt-text"]} md={{
-              size: 10,
-              offset: 1
-            }}>
-            <h5 className="m-0">
-              Please turn on Bluetooth and get the iOS app
-            </h5>
-            <small>
-              To use Near Lock make sure your Mac has Bluetooth turned on and your iOS app is open on your iPhone
-            </small>
-            <button className={`${styles["nearlock-app__btn"]} mt-4`}>
-              Turn Bluetooth On
-            </button>
-          </Col>
-        </div>
-      </Row>
+    <TabPane tabId="Setup" style={{
+        position: "relative"
+      }}>
+      <div className={styles["setup-bt-wrapper"]}>
+        <Lottie animationData={btConnect} loop={true} autoplay={true}/>
+        <Col className={styles["setup-bt-text"]} md={{
+            size: 10,
+            offset: 1
+          }}>
+          <h5 className="m-0">
+            Please turn on Bluetooth and get the iOS app
+          </h5>
+          <small>
+            To use Near Lock make sure your Mac has Bluetooth turned on and your iOS app is open on your iPhone
+          </small>
+          <button className={`${styles["nearlock-app__btn"]} mt-4`}>
+            Turn Bluetooth On
+          </button>
+        </Col>
+      </div>
     </TabPane>
   </TabContent>
 </div>);
