@@ -155,7 +155,7 @@ export default function Section({
             {gallery?.map(({ fields: { title, type, images } }, i) => {
               return (
                 <>
-                  <Container><h3 className="text-center">{title}</h3></Container>
+                  <Container><h3 className="text-center">{type}</h3></Container>
                   <Slider
                     {...sliderOptions}
                     infinite={images.length > 6 ? true : false}
@@ -189,16 +189,16 @@ export default function Section({
         </Row>
         {/* render MacOS Nearlock app */}
         {(title === "Near Lock" && slug === 'designs') && (
-          <Row>
-            <div className="nearlock-app-wrapper p-5 w-100">
-              <Col md={12}>
-                <Container fluid="lg" className="pb-5 text-center text-white">
-                  Interactive preview of the Near Lock app
-                </Container>
-              </Col>
+          <Row className="nearlock-app-wrapper py-5 w-100">
+            <Col md={12} className={"mt-2"}>
+              <Container fluid="lg" className="pb-5 text-center text-white">
+                Interactive preview of the Near Lock desktop app
+              </Container>
+            </Col>
 
+            <Col md={12} className={"mb-5"}>
               <NearLockApp />
-            </div>
+            </Col>
           </Row>
         )}
       </Container >
