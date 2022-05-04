@@ -10,6 +10,8 @@ import PostBody from "./post-body";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import NearLockApp from "./nearlock-app/nearlock-app";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -39,6 +41,8 @@ export default function Section({
   const { slug } = router.query;
   const [toggler, setToggler] = useState(false);
   const [productIndex, setProductIndex] = useState(0);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   const sliderOptions = {
     infinite: true,
     slidesToShow: 6,
@@ -97,6 +101,10 @@ export default function Section({
         }
       }
     ]
+  };
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
@@ -178,6 +186,9 @@ export default function Section({
         {/* render MacOS Nearlock app */}
         {(title === "Near Lock" && slug === 'designs') && (
           <Row className="nearlock-app-wrapper py-5">
+            <button onClick={toggleDarkMode} className="dark-toggler">
+              <FontAwesomeIcon icon={isDarkMode ? faMoon : faSun} size="md" className="" color="#368EFC" />
+            </button>
             <Col md={12} className={"mt-2"}>
               <Container fluid="lg" className="pb-5 text-center section lighter">
                 <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
@@ -186,7 +197,7 @@ export default function Section({
             </Col>
 
             <Col md={12} className={"mb-5"}>
-              <NearLockApp />
+              <NearLockApp isDarkMode={isDarkMode} />
             </Col>
           </Row>
         )}

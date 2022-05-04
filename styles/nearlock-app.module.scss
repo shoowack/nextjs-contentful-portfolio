@@ -243,6 +243,7 @@
         background: #fff;
         flex-grow: 1;
         z-index: 1;
+        transition: background 0.5s;
 
         &-header,
         &-header-open {
@@ -354,6 +355,14 @@
             top: 600px;
             text-align: center;
             width: 100%;
+        }
+    }
+}
+
+.dark{
+    &-nearlock-app {
+        &-content {
+            background: #211C21;
         }
     }
 }

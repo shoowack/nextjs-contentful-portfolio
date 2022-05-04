@@ -804,6 +804,31 @@ hr {
 }
 
 .nearlock-app-wrapper {
+    position: relative;
     background: rgb(131,58,180);
     background: linear-gradient(32deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.nearlock-app-wrapper button.dark-toggler {
+    border: none;
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    border-radius: 999em;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.nearlock-app-wrapper button.dark-toggler svg {
+    transform: scale(1) rotate(360deg) rotateY(0deg) rotateX(0deg);
+    transition: transform 0.5s;
+}
+
+.nearlock-app-wrapper button.dark-toggler:active svg{
+    transform: scale(-1) rotate(0deg) rotateY(180deg) rotateX(180deg);
+    transition: transform 0s;
 }

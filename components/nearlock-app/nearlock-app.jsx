@@ -9,7 +9,7 @@ import btConnect from "./btConnect.json";
 // import wifiConnected from "./wifiConnected.json";
 import styles from "./../../styles/nearlock-app.module.scss";
 
-function NearLockApp() {
+function NearLockApp({isDarkMode}) {
   const [activeTab, setActiveTab] = useState("Welcome");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -70,9 +70,9 @@ function NearLockApp() {
   ];
 
   return (<div className={styles["nearlock-app"]}>
-    <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
-    <Sidebar isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab}/>
-    <Content isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab}/>
+    <Modal isDarkMode={isDarkMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+    <Sidebar isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab}/>
+    <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab}/>
   </div>);
 }
 
@@ -141,8 +141,12 @@ const Content = ({
   isSearchOpen,
   toggleSearch,
   searchRef,
-  setActiveTab
-}) => (<div className={styles["nearlock-app-content"]}>
+  setActiveTab,
+  isDarkMode
+}) => (<div className={`${isDarkMode
+    ? styles["dark-nearlock-app-content"]
+    : ""} ${
+  styles["nearlock-app-content"]}`}>
   <div className={isSidebarOpen
       ? styles["nearlock-app-content-header"]
       : styles["nearlock-app-content-header-open"]}>
