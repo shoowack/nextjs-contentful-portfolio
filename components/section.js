@@ -108,7 +108,7 @@ export default function Section({
           backgroundColor,
           overflow: "hidden",
         }}
-        className={`section px-md-0 ${getContrast(backgroundColor)} ${(title === "Near Lock" && slug === 'designs') ? 'pt-5' : 'py-5 '}`}
+        className={`section px-md-0 ${getContrast(backgroundColor)} ${(title === "Near Lock" && slug === 'designs') ? 'pt-5' : 'py-5'}`}
       >
         <Sticky topOffset={50}>
           {({ style, isSticky }) => (
@@ -147,7 +147,7 @@ export default function Section({
           <Col md={12}>
             <Container fluid="lg" className="pb-4 text-center">
               {description && <PostBody content={description} />}
-              <RichText richText={description} />
+              {/* <RichText richText={description} /> */}
             </Container>
           </Col>
 
