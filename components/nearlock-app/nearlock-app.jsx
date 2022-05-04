@@ -44,32 +44,28 @@ function NearLockApp() {
 
   const content = [
     {
-      title: "Advanced",
-      disabled: true
+      title: "Advanced"
     }, {
-      title: "Clipboard"
+      title: "Clipboard",
+      enabled: true
     }, {
-      title: "Devices"
+      title: "Devices",
+      enabled: true
     }, {
-      title: "Music",
-      disabled: true
+      title: "Music"
     }, {
-      title: "WiFi Unlock",
-      disabled: true
+      title: "WiFi Unlock"
     }, {
-      title: "Help",
-      disabled: true
+      title: "Help"
     }, {
-      title: "Setup"
+      title: "Setup",
+      enabled: true
     }, {
-      title: "Photos and History",
-      disabled: true
+      title: "Photos and History"
     }, {
-      title: "Updates",
-      disabled: true
+      title: "Updates"
     }, {
-      title: "Share",
-      disabled: true
+      title: "Share"
     }
   ];
 
@@ -118,15 +114,9 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
       content.map(
         ({
         title,
-        icon,
-        disabled
-      }, i) => disabled
-        ? (<div key={`nearlock-app-sidebar__item-${i}`} className={`${
-          styles["nearlock-app-sidebar__item__disabled"]} m-0 d-flex align-items-center`}>
-          <img src={`/nearlock-menu_${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
-          {title}
-        </div>)
-        : (<a key={`nearlock-app-sidebar__item-${i}`} className={`d-flex align-items-center ${
+        enabled
+      }, i) => enabled
+        ? (<a key={`nearlock-app-sidebar__item-${i}`} className={`d-flex align-items-center ${
           activeTab === title
             ? styles["nearlock-app-sidebar__item__active"]
             : styles["nearlock-app-sidebar__item"]}`} onClick={() => {
@@ -134,7 +124,12 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
           }}>
           <img src={`/nearlock-menu_${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
-        </a>))
+        </a>)
+        : (<div key={`nearlock-app-sidebar__item-${i}`} className={`${
+          styles["nearlock-app-sidebar__item__disabled"]} m-0 d-flex align-items-center`}>
+          <img src={`/nearlock-menu_${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
+          {title}
+        </div>))
     }
   </div>
 </div>);
