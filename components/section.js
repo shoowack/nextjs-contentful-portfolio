@@ -189,7 +189,7 @@ export default function Section({
         </Row>
         {/* render MacOS Nearlock app */}
         {(title === "Near Lock" && slug === 'designs') && (
-          <Row className="nearlock-app-wrapper py-5 w-100">
+          <Row className="nearlock-app-wrapper py-5">
             <Col md={12} className={"mt-2"}>
               <Container fluid="lg" className="pb-5 text-center text-white">
                 Interactive preview of the Near Lock desktop app
