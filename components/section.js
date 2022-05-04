@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import { Container, Row, Col } from "reactstrap";
 import RichText from "@madebyconnor/rich-text-to-jsx";
 import { getContrast } from "./getContrast";
-// import FsLightbox from "fslightbox-react";
 import hexToRgbA from "./hexToRgba";
 import { StickyContainer, Sticky } from "react-sticky";
 import PostBody from "./post-body";
@@ -137,12 +136,6 @@ export default function Section({
           )}
         </Sticky>
 
-        {/* <FsLightbox
-          toggler={toggler}
-          // sources={productsImages[productIndex]}
-          key={productIndex}
-        /> */}
-
         <Row className="pb-5">
           <Col md={12}>
             <Container fluid="lg" className="pb-4 text-center">
@@ -171,11 +164,6 @@ export default function Section({
                           <img
                             src={url}
                             alt=""
-
-                          // onClick={() => {
-                          //   setToggler(!toggler);
-                          //   setProductIndex(1);
-                          // }}
                           />
                         </Link>
                       );
