@@ -155,7 +155,7 @@ export default function Section({
             {gallery?.map(({ fields: { title, type, images } }, i) => {
               return (
                 <>
-                  <h3>{title}</h3>
+                  <Container><h3 className="text-center">{title}</h3></Container>
                   <Slider
                     {...sliderOptions}
                     infinite={images.length > 6 ? true : false}
