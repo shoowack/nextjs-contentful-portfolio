@@ -1,5 +1,5 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  @apply text-lg;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
 }

@@ -2,19 +2,7 @@ import React, {useState, useRef} from "react";
 import {TabContent, TabPane, Row, Col} from "reactstrap";
 import classnames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-  faCog,
-  faMusic,
-  faQuestionCircle,
-  faWifi,
-  faCheck,
-  faPaperPlane,
-  faSync,
-  faExternalLinkAlt,
-  faClipboard,
-  faImage,
-  faLaptop
-} from "@fortawesome/free-solid-svg-icons";
+import {faPaperPlane} from "@fortawesome/free-solid-svg-icons";
 import Lottie from "lottie-react";
 import btConnect from "./btConnect.json";
 // import btOff from "./btOff.json";
@@ -57,40 +45,30 @@ function NearLockApp() {
   const content = [
     {
       title: "Advanced",
-      icon: faLaptop,
       disabled: true
     }, {
-      title: "Clipboard",
-      icon: faClipboard
+      title: "Clipboard"
     }, {
-      title: "Devices",
-      icon: faCheck
+      title: "Devices"
     }, {
       title: "Music",
-      icon: faMusic,
       disabled: true
     }, {
       title: "WiFi Unlock",
-      icon: faWifi,
       disabled: true
     }, {
       title: "Help",
-      icon: faQuestionCircle,
       disabled: true
     }, {
-      title: "Setup",
-      icon: faCog
+      title: "Setup"
     }, {
       title: "Photos and History",
-      icon: faImage,
       disabled: true
     }, {
       title: "Updates",
-      icon: faSync,
       disabled: true
     }, {
       title: "Share",
-      icon: faExternalLinkAlt,
       disabled: true
     }
   ];
@@ -145,7 +123,7 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
       }, i) => disabled
         ? (<div key={`nearlock-app-sidebar__item-${i}`} className={`${
           styles["nearlock-app-sidebar__item__disabled"]} m-0 d-flex align-items-center`}>
-          <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1 fa-fw" color="#368EFC"/>{" "}
+          <img src={`/nearlock-menu_${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
         </div>)
         : (<a key={`nearlock-app-sidebar__item-${i}`} className={`d-flex align-items-center ${
@@ -154,7 +132,7 @@ const Sidebar = ({isSidebarOpen, content, activeTab, toggleTab}) => (<div classN
             : styles["nearlock-app-sidebar__item"]}`} onClick={() => {
             toggleTab(title);
           }}>
-          <FontAwesomeIcon icon={icon} size="sm" className="mr-2 ml-1 fa-fw" color="#368EFC"/>{" "}
+          <img src={`/nearlock-menu_${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
         </a>))
     }
