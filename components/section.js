@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import NearLockApp from "./nearlock-app/nearlock-app";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import classNames from "classnames";
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -186,8 +187,10 @@ export default function Section({
         {/* render MacOS Nearlock app */}
         {(title === "Near Lock" && slug === 'designs') && (
           <Row className={`${isDarkMode ? "dark-nearlock-app-wrapper" : "nearlock-app-wrapper"} py-5`}>
-            <button onClick={toggleDarkMode} className="nearlock-app-wrapper-theme-toggler">
-              <FontAwesomeIcon icon={isDarkMode ? faMoon : faSun} size="md" className="" color="#368EFC" />
+            <button onClick={toggleDarkMode} className={classNames("nearlock-app-wrapper-theme-toggler", {
+              "dark": isDarkMode
+            })}>
+              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="md" />
             </button>
             <Col md={12} className={"mt-2"}>
               <Container fluid="lg" className="pb-5 text-center section lighter">

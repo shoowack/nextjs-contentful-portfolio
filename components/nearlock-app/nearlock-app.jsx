@@ -68,10 +68,9 @@ function NearLockApp({isDarkMode}) {
     }
   ];
 
-  return (<div className={`${isDarkMode
-      ? styles["dark-nearlock-app"]
-      : ""} ${
-    styles["nearlock-app"]}`}>
+  return (<div className={classnames({
+      [styles["dark-nearlock-app"]]: isDarkMode
+    }, styles["nearlock-app"])}>
     <Modal isDarkMode={isDarkMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
     <Sidebar isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab}/>
     <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab}/>
@@ -107,12 +106,9 @@ const Modal = ({isModalOpen, setIsModalOpen}) => (<div className={classnames({
   </div>
 </div>);
 
-const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => (<div className={`${isDarkMode
-    ? styles["dark-nearlock-app-sidebar"]
-    : ""} ${
-  isSidebarOpen
-    ? styles["nearlock-app-sidebar-open"]
-    : styles["nearlock-app-sidebar"]}`}>
+const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => (<div className={classnames({
+    [styles["nearlock-app-sidebar-open"]]: isSidebarOpen
+  }, styles["nearlock-app-sidebar"])}>
   <div className={styles["nearlock-app-sidebar-header-controls"]}>
     {Array.from({length: 3}).map((_, i) => (<div key={`nearlock-app-sidebar-header-controls__item-${i}`} className={styles["nearlock-app-sidebar-header-controls__item"]}/>))}
   </div>
