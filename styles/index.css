@@ -631,6 +631,28 @@
     display: none;
 }
 
+.section:not(.aboutme) a {
+    background: rgba(0,0,0,.1);
+    padding: 5px 10px;
+    border-radius: 3px;
+    line-height: 36px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+code {
+    color: unset;
+    font-family: unset;
+    font-size: unset;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bolder;
+    background: yellow;
+    white-space: nowrap;
+  }
+  
+
 hr {
     border: 0;
     height: 1px;

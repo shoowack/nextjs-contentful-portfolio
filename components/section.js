@@ -108,7 +108,7 @@ export default function Section({
           backgroundColor,
           overflow: "hidden",
         }}
-        className={`px-md-0 ${getContrast(backgroundColor)} ${(title === "Near Lock" && slug === 'designs') ? 'pt-5' : 'py-5 '}`}
+        className={`section px-md-0 ${getContrast(backgroundColor)} ${(title === "Near Lock" && slug === 'designs') ? 'pt-5' : 'py-5 '}`}
       >
         <Sticky topOffset={50}>
           {({ style, isSticky }) => (
