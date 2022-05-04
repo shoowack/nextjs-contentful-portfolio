@@ -108,7 +108,7 @@ export default function Section({
           backgroundColor,
           overflow: "hidden",
         }}
-        className={`py-5 px-md-0 ${getContrast(backgroundColor)}`}
+        className={`px-md-0 ${getContrast(backgroundColor)} ${(title === "Near Lock" && slug === 'designs') ? 'pt-5' : 'py-5 '}`}
       >
         <Sticky topOffset={50}>
           {({ style, isSticky }) => (
@@ -191,6 +191,12 @@ export default function Section({
         {(title === "Near Lock" && slug === 'designs') && (
           <Row>
             <div className="nearlock-app-wrapper p-5 w-100">
+              <Col md={12}>
+                <Container fluid="lg" className="pb-5 text-center text-white">
+                  Interactive preview of the Near Lock app
+                </Container>
+              </Col>
+
               <NearLockApp />
             </div>
           </Row>

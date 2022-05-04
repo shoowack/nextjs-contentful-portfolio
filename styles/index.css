@@ -760,23 +760,6 @@
 }
 
 .nearlock-app-wrapper {
-    background: url("https://images.unsplash.com/photo-1575761344173-aa186491c120");
-    background-size: cover;
-    /* background: #0849C6;
-    background: -webkit-linear-gradient(top left, #0849C6, #13A759);
-    background: -moz-linear-gradient(top left, #0849C6, #13A759);
-    background: linear-gradient(to bottom right, #0849C6, #13A759); */
+    background: rgb(131,58,180);
+    background: linear-gradient(32deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 }
-
-
-/* .nearlock-app-sidebar:before {
-    content: "";
-    width: 1px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    background: hsla(0, 0%, 0%, 0.5);
-    mix-blend-mode: soft-light;
-} */
