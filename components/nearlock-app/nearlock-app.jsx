@@ -79,6 +79,12 @@ function NearLockApp({isDarkMode}) {
   </div>);
 }
 
+const AppButton = ({children, onClick, isDarkMode}) => (<button className={classnames({
+    [styles["dark-nearlock-app__btn"]]: isDarkMode
+  }, `${styles["nearlock-app__btn"]} mt-4`)} onClick={onClick}>
+  {children}
+</button>);
+
 const Modal = ({isModalOpen, setIsModalOpen}) => (<div className={classnames({
     "d-none": !isModalOpen
   }, styles["nearlock-app-modal__background"])}>
@@ -228,11 +234,9 @@ const Content = ({
           <small>
             Near Lock lets you use your iPhone to lock and unlock your Mac automatically. When you walk away from your Mac, it will be automatically locked. Once you approach your workplace, Near Lock will unlock your Mac.
           </small>
-          <button className={classnames({
-              [styles["dark-nearlock-app__btn"]]: isDarkMode
-            }, `${styles["nearlock-app__btn"]} mt-4`)} onClick={() => setActiveTab("Setup")}>
+          <AppButton onClick={() => setActiveTab("Setup")} isDarkMode={isDarkMode}>
             Setup Near Lock
-          </button>
+          </AppButton>
         </Col>
       </Col>
     </TabPane>
