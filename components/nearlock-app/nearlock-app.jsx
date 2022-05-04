@@ -176,7 +176,7 @@ const Content = ({
       <svg width="22px" height="17px" viewBox="0 0 41 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <g transform="translate(-672.000000, -35.000000)" fill={isDarkMode
             ? "#BAB5BA"
-            : "#666666"} fill-rule="nonzero">
+            : "#666666"} fillRule="nonzero">
           <g transform="translate(96.000000, 0.000000)">
             <g transform="translate(464.000000, 0.000000)">
               <g transform="translate(112.295166, 35.212582)">
@@ -207,7 +207,7 @@ const Content = ({
         <svg width="17px" height="17px" viewBox="0 0 31 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <g transform="translate(-2191.000000, -35.000000)" fill={isDarkMode
               ? "#BAB5BA"
-              : "#666666"} fill-rule="nonzero">
+              : "#666666"} fillRule="nonzero">
             <g transform="translate(96.000000, 0.000000)">
               <g transform="translate(464.000000, 0.000000)">
                 <g transform="translate(139.000000, 2.000000)">
