@@ -712,9 +712,19 @@ hr {
 .aboutme {
     background-image: radial-gradient(#c8c8c8 5%, #fff 5%);
     background-position: 0 0;
-    background-size: 20px 20px;
+    background-size: 21px 19px;
     color: #000;
 }
+
+@media (prefers-color-scheme: dark) {
+    .aboutme {
+        background-image: radial-gradient(#222 5%, #000 5%);
+        background-position: 0 0;
+        background-size: 21px 19px;
+        color: #fff;
+    }
+}
+
 
 .aboutme .back-button {
     opacity: 0.3;
