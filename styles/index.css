@@ -805,11 +805,17 @@ hr {
 
 .nearlock-app-wrapper {
     position: relative;
-    background: rgb(131,58,180);
+    background: #D667A3;
     background: linear-gradient(32deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 }
 
-.nearlock-app-wrapper button.dark-toggler {
+.dark-nearlock-app-wrapper {
+    position: relative;
+    background: hsl(210, 40%, 21%);
+    background: linear-gradient(32deg, #0F022B 0%, #760697 50%, #360EB0 80%);
+}
+
+.nearlock-app-wrapper-theme-toggler {
     border: none;
     position: absolute;
     right: 50px;
@@ -823,12 +829,12 @@ hr {
     z-index: 1;
 }
 
-.nearlock-app-wrapper button.dark-toggler svg {
+.nearlock-app-wrapper-theme-toggler svg {
     transform: scale(1) rotate(360deg) rotateY(0deg) rotateX(0deg);
     transition: transform 0.5s;
 }
 
-.nearlock-app-wrapper button.dark-toggler:active svg{
+.nearlock-app-wrapper-theme-toggler:active svg{
     transform: scale(-1) rotate(0deg) rotateY(180deg) rotateX(180deg);
     transition: transform 0s;
 }

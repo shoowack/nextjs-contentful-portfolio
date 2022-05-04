@@ -185,8 +185,8 @@ export default function Section({
         </Row>
         {/* render MacOS Nearlock app */}
         {(title === "Near Lock" && slug === 'designs') && (
-          <Row className="nearlock-app-wrapper py-5">
-            <button onClick={toggleDarkMode} className="dark-toggler">
+          <Row className={`${isDarkMode ? "dark-nearlock-app-wrapper" : "nearlock-app-wrapper"} py-5`}>
+            <button onClick={toggleDarkMode} className="nearlock-app-wrapper-theme-toggler">
               <FontAwesomeIcon icon={isDarkMode ? faMoon : faSun} size="md" className="" color="#368EFC" />
             </button>
             <Col md={12} className={"mt-2"}>
