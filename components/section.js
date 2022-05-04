@@ -179,9 +179,8 @@ export default function Section({
         {(title === "Near Lock" && slug === 'designs') && (
           <Row className="nearlock-app-wrapper py-5">
             <Col md={12} className={"mt-2"}>
-              <Container fluid="lg" className="pb-5 text-center text-white">
-                Interactive preview of the Near Lock desktop app
-                <br />
+              <Container fluid="lg" className="pb-5 text-center section lighter">
+                <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
                 <small style={{ color: 'hsla(0, 0%, 100%, .75)' }}>some of the features are not available yet</small>
               </Container>
             </Col>

@@ -1,5 +1,35 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  /* @apply leading-relaxed; */
+  font-family: 'Raleway', sans-serif;
+}
+
+/* .section:not(.aboutme) [class^="markdown-styles"] a { */
+.markdown a {
+    background: rgba(0,0,0,.1);
+    padding: 5px 10px;
+    border-radius: 3px;
+    line-height: 36px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background .2s ease-in-out;
+}
+
+.markdown a:hover {
+    background: rgba(0,0,0,.2);
+    transition: background .2s ease-in-out;
+}
+
+.markdown code {
+    color: unset;
+    font-family: unset;
+    font-size: unset;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: 600;
+    line-height: 36px;
+    background: #ff0;
+    white-space: nowrap;
 }
 
 .markdown p,
