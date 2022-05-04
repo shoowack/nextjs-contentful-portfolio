@@ -1,4 +1,5 @@
 .nearlock-app {
+    color: #535353;
     margin: auto;
     width: 1082px;
     height: 626px;
@@ -50,6 +51,7 @@
         border-radius: 7px;
         padding: 6px 14px;
         font-size: 12px;
+        color: #303030;
     }
 
     &__btn-link {
@@ -309,7 +311,7 @@
                 font-size: 12px;
                 outline:hsla(0, 0%, 0%, .06) solid 1px;
                 opacity: 1;
-                transition: width 0.5s, opacity 0.5s;
+                transition: background 0.5s, width 0.5s, opacity 0.5s;
             }
 
             &__search {
@@ -340,6 +342,10 @@
     .tab-content {
         overflow: scroll;
         height: 100%;
+
+        h5 {
+            color: #000000;
+        }
     }
 
     .setup-bt {
@@ -363,6 +369,7 @@
 
 .dark{
     &-nearlock-app {
+        color: #A9A9A9;
         background-color: hsla(210, 14%, 17%, 0.8);
         backdrop-filter: blur(50px);
         box-shadow:
@@ -373,9 +380,34 @@
         &-content {
             background: #211C21;
 
+            .tab-content {
+                h5 {
+                    color: #fff;
+                }
+            }
+        
+
             &-header,
             &-header-open {
                 background: #211C21;
+                border-bottom: 1px solid hsla(0, 0%, 100%, 0.09);
+
+                &__search,
+                &__search-open {
+                    background: #211C21 url("./../public/search.svg") no-repeat 10px center;
+                    outline:hsla(0, 0%, 100%, .06) solid 1px;
+                }
+
+                &__search {
+                    &-open {
+                        &:focus {
+                            outline: none;
+                            box-shadow:
+                            0 0 0 1px hsl(108, 64%, 38%),
+                            0 0 0 4px hsl(106, 68%, 31%);
+                        }
+                   }
+                }
             }    
         }
         &-sidebar {
@@ -399,5 +431,10 @@
             }
 
         }
+
+        &__btn {
+            background: hsla(0, 0%, 100%, .15);
+            color: #fff;
+        }    
     }
 }
