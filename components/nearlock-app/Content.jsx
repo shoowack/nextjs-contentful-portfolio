@@ -7,6 +7,7 @@ import btConnect from "./btConnect.json";
 // import btOff from "./btOff.json";
 // import wifiConnected from "./wifiConnected.json";
 import ListItem from "./ListItem";
+import ListHeader from "./ListHeader";
 
 const Content = ({
   activeTab,
@@ -179,13 +180,14 @@ const Content = ({
       }
     </TabPane>
     <TabPane tabId="Setup">
-      <div className="d-flex h-100 flex-column mx-5">
-        <div className="py-3">
-          <h4 className="m-0">Near Lock</h4>
-          <small>Activating main Near Lock feature</small>
-        </div>
-        <ListItem title={"Near Lock"} desc={"Description"} checked={true}/>
+      <div className="d-flex h-100 flex-column mx-5 pt-3">
+        <ListHeader title={"Near Lock"} desc={"Activating main Near Lock feature"}/>
+        <ListItem title={"Near Lock"} desc={"Enable Near Lock's main function"} checked={true}/>
         <ListItem title={"Sleep"}/>
+        <hr/>
+        <ListHeader title={"Lock Options"} desc={"Lorem"}/>
+        <ListItem title={"Sleep"} desc={"By default, your Mac will go to sleep when locked"}/>
+        <ListItem title={"Screensaver"} desc={"By default, your Mac will go to sleep when locked"}/>
       </div>
     </TabPane>
   </TabContent>

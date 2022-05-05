@@ -20,6 +20,13 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetu
     setIsSetupDone(true);
   };
 
+  const setupLater = () => {
+    setIsModalOpen(false);
+    setStep(1);
+    setActiveTab("Devices");
+    setIsSetupDone(false);
+  };
+
   const renderStep = step => {
     switch (step) {
       case 1:
@@ -43,7 +50,7 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetu
       <div className={classnames({
           [styles["dark-nearlock-app-modal__footer"]]: isDarkMode
         }, `${styles["nearlock-app-modal__footer"]} d-flex justify-content-between`)}>
-        <AppButton onClick={finishSetup} link={true} isDarkMode={isDarkMode}>
+        <AppButton onClick={setupLater} link={true} isDarkMode={isDarkMode}>
           Setup later
         </AppButton>
         {
