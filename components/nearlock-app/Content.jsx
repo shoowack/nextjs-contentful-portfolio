@@ -9,6 +9,34 @@ import btConnect from "./btConnect.json";
 import ListItem from "./ListItem";
 import ListHeader from "./ListHeader";
 
+const setupData = [
+  {
+    title: "Near Lock",
+    desc: "Activating main Near Lock feature",
+    items: [
+      {
+        title: "Near Lock",
+        desc: "Enable Near Lock's main function",
+        checked: true
+      }, {
+        title: "Sleep"
+      }
+    ]
+  }, {
+    title: "Lock Options",
+    desc: "Set your lock options",
+    items: [
+      {
+        title: "Sleep",
+        desc: "By default, your Mac will go to sleep when locked"
+      }, {
+        title: "Screensaver",
+        desc: "By default, your Mac will go to sleep when locked"
+      }
+    ]
+  }
+];
+
 const Content = ({
   activeTab,
   isSidebarOpen,
@@ -181,13 +209,23 @@ const Content = ({
     </TabPane>
     <TabPane tabId="Setup">
       <div className="d-flex h-100 flex-column mx-5 pt-3">
-        <ListHeader title={"Near Lock"} desc={"Activating main Near Lock feature"}/>
-        <ListItem title={"Near Lock"} desc={"Enable Near Lock's main function"} checked={true}/>
-        <ListItem title={"Sleep"}/>
-        <hr/>
-        <ListHeader title={"Lock Options"} desc={"Lorem"}/>
-        <ListItem title={"Sleep"} desc={"By default, your Mac will go to sleep when locked"}/>
-        <ListItem title={"Screensaver"} desc={"By default, your Mac will go to sleep when locked"}/>
+        {
+          setupData.map(({
+            title,
+            desc,
+            items
+          }, i) => (<div>
+            <ListHeader title={title} desc={desc} key={`list-header-${i}`}/>{" "}
+            {
+              items.map(({
+                title,
+                desc,
+                checked
+              }, i) => (<ListItem title={title} desc={desc} checked={checked} key={`list-item-${i}`}/>))
+            }
+            {i < setupData.length - 1 && <hr/>}
+          </div>))
+        }
       </div>
     </TabPane>
   </TabContent>

@@ -8,7 +8,7 @@ const ListItem = ({title, desc, checked}) => {
     ? true
     : false);
 
-  return (<div className={`${styles["list-item"]} d-flex my-2 mx-4`} onClick={() => {
+  return (<div className={`${styles["list-item"]} d-flex py-2 mx-2 px-2`} onClick={() => {
       setIsChecked(prev => !prev);
     }}>
     <div className={classNames({
