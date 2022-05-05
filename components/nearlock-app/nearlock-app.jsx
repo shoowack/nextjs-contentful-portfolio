@@ -278,7 +278,7 @@ const Content = ({
           <small>
             To use Near Lock make sure your Mac has Bluetooth turned on and your iOS app is open on your iPhone
           </small>
-          <AppButton onClick={() => setIsModalOpen(true)} className={"mt-4"}>
+          <AppButton onClick={() => setIsModalOpen(true)} className={"mt-4"} isDarkMode={isDarkMode}>
             Turn Bluetooth On
           </AppButton>
         </Col>
