@@ -9,10 +9,11 @@ import { StickyContainer, Sticky } from "react-sticky";
 import PostBody from "./post-body";
 import Link from "next/link";
 import { useRouter } from 'next/router';
-import NearLockApp from "./nearlock-app/nearlock-app";
+import NearLockApp from "./nearlock-app/NearLockApp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
+
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;

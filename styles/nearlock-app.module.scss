@@ -229,9 +229,11 @@ $dark-mode-transition: 0.5s;
             &__disabled {
                 opacity: 0.5;
 
-                &:hover {
-                    cursor: default !important;
-                }
+/* A CSS selector that is targeting the element with the class of "disabled" and setting the cursor to
+"not-allowed" when the mouse hovers over it. */
+                // &:hover {
+                //     cursor: default !important;
+                // }
             }
 
             &__active {
@@ -241,7 +243,7 @@ $dark-mode-transition: 0.5s;
         }
 
         &__item:not(disabled):hover {
-            cursor: pointer !important;
+            cursor: pointer;
             text-decoration: unset !important;
         }
 
@@ -571,10 +573,6 @@ $dark-mode-transition: 0.5s;
     
                 &__disabled {
                     opacity: 0.5;
-    
-                    &:hover {
-                        cursor: default !important;
-                    }
                 }
     
                 &__active {
