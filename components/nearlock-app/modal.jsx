@@ -22,7 +22,7 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
       case 1:
         return <FirstStep/>;
       case 2:
-        return <SecondStep goBack={goBack}/>;
+        return <SecondStep goBack={goBack} isDarkMode={isDarkMode}/>;
       default:
         return <FirstStep/>;
     }
