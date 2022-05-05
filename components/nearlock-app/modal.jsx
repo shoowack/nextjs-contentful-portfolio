@@ -48,6 +48,27 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
               : "Go back"
           }
         </div>
+        {
+          currentStep !== 1 && (<div className="d-flex flex-row align-items-center">
+            {
+              [...Array(2)].map((_, i) => (<div key={`dot-${i}`} className={"mx-2"} style={{
+                  height: currentStep === i + 2
+                    ? "10px"
+                    : "7px",
+                  width: currentStep === i + 2
+                    ? "10px"
+                    : "7px",
+                  background: currentStep === i + 2
+                    ? "transparent"
+                    : "#4C4C4C",
+                  borderRadius: "999em",
+                  border: currentStep === i + 2
+                    ? "1px solid #4C4C4C"
+                    : "none"
+                }}></div>))
+            }
+          </div>)
+        }
         <div>
           <AppButton isDarkMode={isDarkMode} onClick={() => (
               currentStep === 1
