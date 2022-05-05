@@ -41,16 +41,9 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
       <div className={classnames({
           [styles["dark-nearlock-app-modal__footer"]]: isDarkMode
         }, `${styles["nearlock-app-modal__footer"]} d-flex justify-content-between`)}>
-        <div className={`${styles["nearlock-app__btn-link"]}`} onClick={(
-            ) => currentStep === 1
-            ? setIsModalOpen(false)
-            : goBack()}>
-          {
-            currentStep === 1
-              ? "Setup later"
-              : "Go back"
-          }
-        </div>
+        <AppButton onClick={finishSetup} link={true} isDarkMode={isDarkMode}>
+          Setup later
+        </AppButton>
         {
           currentStep !== 1 && (<div className="d-flex flex-row align-items-center">
             {
@@ -72,7 +65,12 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
             }
           </div>)
         }
-        <div>
+        <div className="d-flex">
+          {
+            currentStep === 3 && (<AppButton onClick={goBack} link={true}>
+              Go back
+            </AppButton>)
+          }
           <AppButton isDarkMode={isDarkMode} onClick={(
               ) => currentStep === 1
               ? setStep(2)

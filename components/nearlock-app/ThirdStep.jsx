@@ -1,8 +1,7 @@
-import styles from "./../../styles/nearlock-app.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTwitterSquare, faFacebookSquare} from "@fortawesome/free-brands-svg-icons";
 
-const ThirdStep = ({isDarkMode}) => {
+const ThirdStep = () => {
   return (<div className="d-flex flex-row px-5 justify-content-center">
     <div className={`d-flex flex-column py-5 text-center align-items-center`}>
       <div className="mt-4 mb-5">
