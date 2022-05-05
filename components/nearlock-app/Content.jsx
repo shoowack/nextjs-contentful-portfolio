@@ -17,7 +17,10 @@ import {
   screensaver,
   openSpace,
   btDisconnect,
-  smallerDistances
+  smallerDistances,
+  loginPhotos,
+  failedLoginPhotos,
+  loginHistory
 } from "./setupIcons";
 import {icon} from "@fortawesome/fontawesome-svg-core";
 
@@ -81,6 +84,25 @@ const setupData = [
         title: "Smaller Distances",
         icon: smallerDistances,
         desc: "Allow unlock distances smaller then 1 meter"
+      }
+    ]
+  }, {
+    title: "Photos and History",
+    desc: "Track your Mac activity",
+    items: [
+      {
+        title: "Login Photos",
+        desc: "Take photo every time your Mac is unlocked",
+        icon: loginPhotos
+      }, {
+        title: "Failed Login Photos",
+        desc: "Take photo every time someone tries to log into your Mac",
+        icon: failedLoginPhotos,
+        newBadge: true
+      }, {
+        title: "Login History",
+        icon: loginHistory,
+        desc: "Track time spent working on your Mac"
       }
     ]
   }
@@ -270,8 +292,9 @@ const Content = ({
                 title,
                 desc,
                 icon,
-                checked
-              }, i) => (<ListItem icon={icon} title={title} desc={desc} checked={checked} key={`list-item-${i}`}/>))
+                checked,
+                newBadge
+              }, i) => (<ListItem icon={icon} title={title} desc={desc} checked={checked} newBadge={newBadge} key={`list-item-${i}`}/>))
             }
             {i < setupData.length - 1 && <hr className="my-4"/>}
           </div>))

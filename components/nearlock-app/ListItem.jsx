@@ -2,7 +2,7 @@ import {useState} from "react";
 import classNames from "classnames";
 import styles from "./../../styles/nearlock-app.module.scss";
 
-const ListItem = ({icon, title, desc, checked}) => {
+const ListItem = ({icon, title, desc, checked, newBadge}) => {
   const [isChecked, setIsChecked] = useState(
     checked
     ? true
@@ -11,6 +11,7 @@ const ListItem = ({icon, title, desc, checked}) => {
   return (<div className={`${styles["list-item"]} d-flex py-2 mx-2 px-2`} onClick={() => {
       setIsChecked(prev => !prev);
     }}>
+    {newBadge && (<div className={`${styles["list-item__icon_new-badge"]}`}>New</div>)}
     <div className={classNames({
         [styles["list-item__icon_checked"]]: isChecked
       }, `${styles["list-item__icon"]} d-flex justify-content-center align-items-center`)}>
