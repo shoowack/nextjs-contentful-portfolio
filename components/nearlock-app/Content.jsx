@@ -14,7 +14,10 @@ import {
   touchId,
   yesNo,
   sleep,
-  screensaver
+  screensaver,
+  openSpace,
+  btDisconnect,
+  smallerDistances
 } from "./setupIcons";
 import {icon} from "@fortawesome/fontawesome-svg-core";
 
@@ -61,6 +64,23 @@ const setupData = [
         title: "Double Knock",
         icon: knock,
         desc: "Confirm unlock on iPhone with double knock (this option is active 15 seconds after notification)"
+      }
+    ]
+  }, {
+    title: "Advanced Settings",
+    desc: "Finer tweaks and enhancements",
+    items: [
+      {
+        title: "Open Space Mode",
+        icon: openSpace,
+        checked: true
+      }, {
+        title: "Lock Mac on Bluetooth Disconnect",
+        icon: btDisconnect
+      }, {
+        title: "Smaller Distances",
+        icon: smallerDistances,
+        desc: "Allow unlock distances smaller then 1 meter"
       }
     ]
   }
@@ -237,7 +257,7 @@ const Content = ({
       }
     </TabPane>
     <TabPane tabId="Setup">
-      <div className="d-flex h-100 flex-column mx-5 py-3">
+      <div className="d-flex h-100 flex-column mx-5 py-4">
         {
           setupData.map(({
             title,
@@ -253,7 +273,7 @@ const Content = ({
                 checked
               }, i) => (<ListItem icon={icon} title={title} desc={desc} checked={checked} key={`list-item-${i}`}/>))
             }
-            {i < setupData.length - 1 && <hr/>}
+            {i < setupData.length - 1 && <hr className="my-4"/>}
           </div>))
         }
       </div>

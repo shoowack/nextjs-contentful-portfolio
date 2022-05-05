@@ -4,6 +4,9 @@ import knock from "./../../public/nearlock-setup-knock.svg";
 import yesNo from "./../../public/nearlock-setup-yes-no.svg";
 import sleep from "./../../public/nearlock-setup-sleep.svg";
 import screensaver from "./../../public/nearlock-setup-screensaver.svg";
+import openSpace from "./../../public/nearlock-setup-open-space.svg";
+import btDisconnect from "./../../public/nearlock-setup-bt-disconnect.svg";
+import smallerDistances from "./../../public/nearlock-setup-smaller-distances.svg";
 
 export {
   nearlock,
@@ -11,5 +14,8 @@ export {
   knock,
   yesNo,
   sleep,
-  screensaver
+  screensaver,
+  openSpace,
+  btDisconnect,
+  smallerDistances
 };

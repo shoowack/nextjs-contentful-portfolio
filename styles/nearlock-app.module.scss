@@ -425,6 +425,10 @@ $dark-mode-transition: 0.5s;
             border-radius: 12px;
             overflow: hidden;
             transition: background $dark-mode-transition;
+            
+            // img {
+            //     width: calc(100% - 6px);
+            // }
 
             &_checked {
                 box-shadow: 0 0 0 3px #368EFC inset;
