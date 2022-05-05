@@ -58,15 +58,15 @@ export default function Section({
           <div
             className="owl-dot-el-1"
             style={{ backgroundColor: backgroundColor }}
-          ></div>
+          />
           <div
             className="owl-dot-el-2"
             style={{ backgroundColor: backgroundColor }}
-          ></div>
+          />
           <div
             className="owl-dot-el-3"
             style={{ backgroundColor: backgroundColor }}
-          ></div>
+          />
         </span>
       );
     },
@@ -190,7 +190,7 @@ export default function Section({
             <button onClick={toggleDarkMode} className={classNames("nearlock-app-wrapper-theme-toggler", {
               "dark": isDarkMode
             })}>
-              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="md" />
+              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="1x" />
             </button>
             <Col md={12} className={"mt-2"}>
               <Container fluid="lg" className="pb-5 text-center section lighter">

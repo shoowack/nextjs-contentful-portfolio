@@ -42,7 +42,8 @@ function NearLockApp({isDarkMode}) {
     {
       title: "Advanced"
     }, {
-      title: "Clipboard"
+      title: "Clipboard",
+      enabled: true
     }, {
       title: "Devices",
       enabled: true
@@ -90,23 +91,18 @@ const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => 
         title,
         enabled
       }, i) => enabled
-        ? (<a key={`nearlock-app-sidebar__item-${i}`} className={`d-flex align-items-center ${
-          isDarkMode
-            ? styles["dark-nearlock-app-sidebar__item"]
-            : ""} ${
-          activeTab === title
-            ? styles["nearlock-app-sidebar__item__active"]
-            : styles["nearlock-app-sidebar__item"]}`} onClick={() => {
+        ? (<a key={`nearlock-app-sidebar__item-${i}`} className={classnames({
+            [styles["dark-nearlock-app-sidebar__item"]]: isDarkMode,
+            [styles["nearlock-app-sidebar__item__active"]]: activeTab === title
+          }, `d-flex align-items-center ${styles["nearlock-app-sidebar__item"]}`)} onClick={() => {
             toggleTab(title);
           }}>
           <img src={`/nearlock-app/menu/${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
         </a>)
-        : (<div key={`nearlock-app-sidebar__item-${i}`} className={`${
-          isDarkMode
-            ? styles["dark-nearlock-app-sidebar__item__disabled"]
-            : ""} ${
-          styles["nearlock-app-sidebar__item__disabled"]} m-0 d-flex align-items-center`}>
+        : (<div key={`nearlock-app-sidebar__item-${i}`} className={classnames({
+            [styles["dark-nearlock-app-sidebar__item__disabled"]]: isDarkMode
+          }, `${styles["nearlock-app-sidebar__item__disabled"]} m-0 d-flex align-items-center`)}>
           <img src={`/nearlock-app/menu/${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
         </div>))

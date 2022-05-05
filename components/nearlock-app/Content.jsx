@@ -22,7 +22,6 @@ import {
   failedLoginPhotos,
   loginHistory
 } from "./setupIcons";
-import {icon} from "@fortawesome/fontawesome-svg-core";
 
 const setupData = [
   {
@@ -199,6 +198,77 @@ const Content = ({
             Setup Near Lock
           </AppButton>
         </Col>
+      </Col>
+    </TabPane>
+    <TabPane tabId="Clipboard">
+      <Col sm="12" className={"mt-0"}>
+        <img src="/nearlock-app/clipboard.png" className="mx-auto d-flex" width={"820px"}/>
+        <div className="d-flex justify-content-between">
+          <div className="d-flex">
+            <svg width="68px" height="150px" viewBox="0 0 125 275" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" style={{
+                marginLeft: "50px",
+                marginTop: "-150px"
+              }}>
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-1006.000000, -872.000000)" fill={isDarkMode
+                    ? "#A4A4A4"
+                    : "#444"} fill-rule="nonzero">
+                  <g transform="translate(870.000000, 274.000000)">
+                    <g transform="translate(0.000000, -233.000000)">
+                      <g transform="translate(221.559103, 972.082293) scale(1, -1) rotate(58.000000) translate(-221.559103, -972.082293) translate(112.765493, 868.774656)">
+                        <path d="M17.6360685,0.250941654 C18.4088691,0.733841106 18.6438805,1.75178718 18.160981,2.52458785 C-6.83332543,42.5238395 0.309250359,100.781063 35.0166194,143.99805 C53.0284072,166.426002 77.2393835,183.2856 105.735264,192.340039 C137.021353,202.281055 172.651728,202.636012 211.27765,192.339147 L202.229857,187.223715 C201.483207,186.80169 201.191606,185.885197 201.533719,185.117442 L201.605335,184.975388 C202.02736,184.228739 202.943854,183.937138 203.711608,184.279251 L203.853662,184.350867 L217.587219,192.113419 L209.982376,205.767823 C209.538975,206.563944 208.534144,206.84988 207.738023,206.406479 C206.988733,205.989161 206.691371,205.07452 207.028646,204.304628 L207.099367,204.162127 L211.869,195.595 L211.417962,195.71589 C172.470431,205.978186 136.444726,205.560417 104.735938,195.48509 C75.6124884,186.231244 50.8571681,168.992586 32.4436421,146.064397 C-3.09560587,101.81157 -10.4235893,42.042099 15.3624223,0.775854238 C15.8453217,0.00305357089 16.8632678,-0.231957798 17.6360685,0.250941654 Z"/>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <small className="text-center ml-3 mt-n3" style={{
+                width: "250px"
+              }}>
+              Use Menu bar shortcut on your Mac to copy Clipboard from your iPhone
+            </small>
+          </div>
+          <div className="d-flex">
+            <small className="text-center mr-3 mt-n3" style={{
+                width: "220px"
+              }}>
+              Use Near Lock widget on your iPhone to send and receive Clipboard from your Mac
+            </small>
+            <svg width="68px" height="150px" viewBox="0 0 125 275" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" style={{
+                marginRight: "25px",
+                marginTop: "-150px",
+                transform: "scaleX(-1)"
+              }}>
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-1006.000000, -872.000000)" fill={isDarkMode
+                    ? "#A4A4A4"
+                    : "#444"} fill-rule="nonzero">
+                  <g transform="translate(870.000000, 274.000000)">
+                    <g transform="translate(0.000000, -233.000000)">
+                      <g transform="translate(221.559103, 972.082293) scale(1, -1) rotate(58.000000) translate(-221.559103, -972.082293) translate(112.765493, 868.774656)">
+                        <path d="M17.6360685,0.250941654 C18.4088691,0.733841106 18.6438805,1.75178718 18.160981,2.52458785 C-6.83332543,42.5238395 0.309250359,100.781063 35.0166194,143.99805 C53.0284072,166.426002 77.2393835,183.2856 105.735264,192.340039 C137.021353,202.281055 172.651728,202.636012 211.27765,192.339147 L202.229857,187.223715 C201.483207,186.80169 201.191606,185.885197 201.533719,185.117442 L201.605335,184.975388 C202.02736,184.228739 202.943854,183.937138 203.711608,184.279251 L203.853662,184.350867 L217.587219,192.113419 L209.982376,205.767823 C209.538975,206.563944 208.534144,206.84988 207.738023,206.406479 C206.988733,205.989161 206.691371,205.07452 207.028646,204.304628 L207.099367,204.162127 L211.869,195.595 L211.417962,195.71589 C172.470431,205.978186 136.444726,205.560417 104.735938,195.48509 C75.6124884,186.231244 50.8571681,168.992586 32.4436421,146.064397 C-3.09560587,101.81157 -10.4235893,42.042099 15.3624223,0.775854238 C15.8453217,0.00305357089 16.8632678,-0.231957798 17.6360685,0.250941654 Z"/>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div className="p-5 d-flex justify-content-center align-items-center" style={{
+            height: "200px"
+          }}>
+          <AppButton isDarkMode={isDarkMode}>Send Clipboard</AppButton>
+          <small className="mx-4">or press</small>
+          <div className={classnames({
+              [styles["dark-nearlock-app-keystrokes"]]: isDarkMode
+            }, styles["nearlock-app-keystrokes"])}>
+            <span className={"mr-2"}>CTRL</span>+
+            <span className={"mx-2"}>CMD</span>+
+            <span className={"ml-2"}>V</span>
+          </div>
+        </div>
       </Col>
     </TabPane>
     <TabPane tabId="Devices" className={classnames({

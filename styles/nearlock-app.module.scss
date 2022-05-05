@@ -474,6 +474,17 @@ $dark-mode-transition: 0.5s;
             }
         }
     }
+
+    &-keystrokes {
+        span {
+            border-radius: 10px;
+            box-shadow: 0 0 0 1.5px hsl(0, 0%, 85%);
+            padding: 5px 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            transition: box-shadow $dark-mode-transition;
+        }
+    }
 }
 
 .dark{
@@ -590,6 +601,12 @@ $dark-mode-transition: 0.5s;
                 }
     
             }
+        }
+
+        &-keystrokes {
+            span {
+                box-shadow: 0 0 0 1.5px hsl(0, 0%, 40%);
+            }    
         }
     }
 }
