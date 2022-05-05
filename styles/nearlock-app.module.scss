@@ -348,6 +348,11 @@ $dark-mode-transition: 0.5s;
             color: #000000;
             transition: color $dark-mode-transition;
         }
+
+        hr {
+            background: hsla(0, 0%, 0%, .05);
+            width: 100%;
+        }    
     }
 
     .setup-bt {
@@ -419,6 +424,7 @@ $dark-mode-transition: 0.5s;
             background: #EAEAEA;
             border-radius: 12px;
             overflow: hidden;
+            transition: background $dark-mode-transition;
 
             &_checked {
                 box-shadow: 0 0 0 3px #368EFC inset;
@@ -443,14 +449,10 @@ $dark-mode-transition: 0.5s;
                     top: 4px;
                     right: 6px;
                     color: #EAEAEA;
+                    transition: color $dark-mode-transition;
                 }
             }
         }
-    }
-
-    hr {
-        background: #eee;
-        width: 100%;
     }
 }
 
@@ -487,8 +489,11 @@ $dark-mode-transition: 0.5s;
                 h5 {
                     color: #fff;
                 }
+
+                hr {
+                    background: hsla(0, 0%, 100%, .05);
+                }
             }
-        
 
             &-header,
             &-header-open {
@@ -542,6 +547,28 @@ $dark-mode-transition: 0.5s;
 
             &-link {
                 background: transparent;
+            }
+        }
+
+        .list-item {
+            transition: background .25s;
+            
+            &:hover {
+                cursor: pointer;
+                background: hsla(0, 0%, 100%, 0.04);
+                border-radius: 16px;
+                transition: background .25s;
+            }
+            
+            &__icon {
+                background: hsla(0, 0%, 100%, .075);
+
+                &_checked {
+                    &::after {
+                        color: #393539;
+                    }
+                }
+    
             }
         }
     }

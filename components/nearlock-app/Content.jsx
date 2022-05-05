@@ -34,6 +34,19 @@ const setupData = [
         desc: "By default, your Mac will go to sleep when locked"
       }
     ]
+  }, {
+    title: "Mac wake unlock options",
+    desc: "Select how do you want to unlock your Mac:",
+    items: [
+      {
+        title: "Yes/No",
+        desc: "By default, your Mac will go to sleep when locked",
+        checked: true
+      }, {
+        title: "Screensaver",
+        desc: "By default, your Mac will go to sleep when locked"
+      }
+    ]
   }
 ];
 
@@ -208,7 +221,7 @@ const Content = ({
       }
     </TabPane>
     <TabPane tabId="Setup">
-      <div className="d-flex h-100 flex-column mx-5 pt-3">
+      <div className="d-flex h-100 flex-column mx-5 py-3">
         {
           setupData.map(({
             title,
