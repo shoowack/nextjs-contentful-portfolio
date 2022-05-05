@@ -221,7 +221,7 @@ const Content = ({
             }}>
             <div className="d-flex flex-column align-items-center">
               <svg width="175px" height="100px" viewBox="0 0 330 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <g stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
+                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g transform="translate(-10.000000, -81.000000)" fill="#4C4C4C">
                     <g transform="translate(10.000000, 81.000000)">
                       <path d="M330,179 L330,182 C330,185.313708 327.313708,188 324,188 L6,188 C2.6862915,188 0,185.313708 0,182 L0,179 L330,179 Z M281.615987,0 C291.055036,0 298.706897,7.65186064 298.706897,17.0909091 L298.706897,173.757576 L31.2931034,173.757576 L31.2931034,17.0909091 C31.2931034,7.65186064 38.9449641,0 48.3840125,0 L281.615987,0 Z M281.615987,9 L48.3840125,9 C43.9155268,9 40.2931034,12.6224234 40.2931034,17.0909091 L40.2931034,164.757576 L289.706897,164.757576 L289.706897,17.0909091 C289.706897,12.6224234 286.084473,9 281.615987,9 Z"/>
