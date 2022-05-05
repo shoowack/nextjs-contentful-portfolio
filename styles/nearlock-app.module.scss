@@ -376,6 +376,31 @@ $dark-mode-transition: 0.5s;
         background-color: #368EFC;
         box-shadow: 0 0 10px -1px #368EFC;
         z-index: -1;
+        position: relative;
+    }
+
+    &-devices-connected-line__popup {
+        position: absolute;
+        margin-top: -90px;
+        background: var(--success);
+        border-radius: 7px;
+        transition: all 0.5s;
+        padding: 6px 20px;
+        color: #fff;
+        font-size: 14px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8px 0px 8px;
+            border-color: var(--success) transparent transparent transparent;
+        }
     }
 }
 

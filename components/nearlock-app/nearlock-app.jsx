@@ -232,7 +232,12 @@ const Content = ({
               <small className="mt-3">Filip’s MacBook Pro</small>
             </div>
             <div className={`${
-              styles["nearlock-app-devices-connected-line"]} d-flex flex-grow-1 flex-column justify-content-center align-items-center mb-5`}></div>
+              styles["nearlock-app-devices-connected-line"]} d-flex flex-grow-1 flex-column justify-content-center align-items-center mb-5`}>
+              <div className={`${
+                styles["nearlock-app-devices-connected-line__popup"]}`}>
+                3 meters
+              </div>
+            </div>
             <div className="d-flex flex-column align-items-center">
               <svg width="102px" height="100px" viewBox="0 0 102 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <g transform="translate(-124.000000, -81.000000)" fillRule="nonzero">
