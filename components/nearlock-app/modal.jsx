@@ -6,7 +6,7 @@ import FirstStep from "./FirstStep";
 import SecondStep from "./SecondStep";
 import ThirdStep from "./ThirdStep";
 
-const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab}) => {
+const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetupDone}) => {
   const [currentStep, setStep] = useState(1);
 
   const goBack = () => {
@@ -17,6 +17,7 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab}) => {
     setIsModalOpen(false);
     setStep(1);
     setActiveTab("Devices");
+    setIsSetupDone(true);
   };
 
   const renderStep = step => {
