@@ -52,12 +52,12 @@ const Sidebar = ({
             [styles["dark-nearlock-app-sidebar__item"]]: isDarkMode
           }, `d-flex align-items-center ${styles["nearlock-app-sidebar__item"]}`)}>
           <img src={`/nearlock-app/menu/iphone.svg`} height="17px" className="mr-2 ml-1"/>{" "}
-          Ivan's iPhone{" "}
+          Ivan&apos;s iPhone{" "}
           <div className={`${
             styles["nearlock-app-sidebar__connected-dot"]} ml-auto`}/>
         </span>)
       }
-      </div>
+    </div>
   </div>
 </div>);
 
