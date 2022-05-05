@@ -244,6 +244,19 @@ $dark-mode-transition: 0.5s;
             cursor: pointer !important;
             text-decoration: unset !important;
         }
+
+        &__connected-dot {
+            margin-top: 2px;
+            margin-right: 4px;
+            background: rgb(21, 255, 0);
+            border-radius: 999em;
+            width: 8px;
+            height: 8px;
+            box-shadow: 
+            0 0 0 .5px hsla(0, 0%, 0%, .2),
+            0 0 0 1.5px hsla(0, 0%, 0%, .1),
+            0 0 10px 0 rgb(46, 255, 49);
+        }
     }
 
     &-content {
@@ -569,7 +582,6 @@ $dark-mode-transition: 0.5s;
                     border-radius: 7px;
                 }
             }
-
         }
 
         &__btn {

@@ -12,6 +12,8 @@ function NearLockApp({isDarkMode}) {
   const [isSetupDone, setIsSetupDone] = useState(false);
   const searchRef = useRef(null);
 
+  console.log(isSetupDone, "isSetupDone");
+
   const toggleTab = tab => {
     if (activeTab !== tab) {
       setActiveTab(tab);
@@ -69,12 +71,19 @@ function NearLockApp({isDarkMode}) {
       [styles["dark-nearlock-app"]]: isDarkMode
     }, styles["nearlock-app"])}>
     <Modal isDarkMode={isDarkMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} setActiveTab={setActiveTab} setIsSetupDone={setIsSetupDone}/>
-    <Sidebar isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab}/>
+    <Sidebar isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab} isSetupDone={isSetupDone}/>
     <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab} setIsModalOpen={setIsModalOpen} isSetupDone={isSetupDone} setIsSetupDone={setIsSetupDone}/>
   </div>);
 }
 
-const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => (<div className={classnames({
+const Sidebar = ({
+  isDarkMode,
+  isSidebarOpen,
+  content,
+  activeTab,
+  toggleTab,
+  isSetupDone
+}) => (<div className={classnames({
     [styles["nearlock-app-sidebar-open"]]: isSidebarOpen
   }, styles["nearlock-app-sidebar"])}>
   <div className={styles["nearlock-app-sidebar-header-controls"]}>
@@ -99,6 +108,10 @@ const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => 
           }}>
           <img src={`/nearlock-app/menu/${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
+          {
+            title === "Devices" && isSetupDone && (<div className={`${
+              styles["nearlock-app-sidebar__connected-dot"]} ml-auto`}/>)
+          }
         </a>)
         : (<div key={`nearlock-app-sidebar__item-${i}`} className={classnames({
             [styles["dark-nearlock-app-sidebar__item__disabled"]]: isDarkMode
