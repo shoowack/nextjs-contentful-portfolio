@@ -1,13 +1,13 @@
 import React, {useState, useRef} from "react";
 import {TabContent, TabPane, Row, Col} from "reactstrap";
 import classnames from "classnames";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPaperPlane} from "@fortawesome/free-solid-svg-icons";
 import Lottie from "lottie-react";
 import btConnect from "./btConnect.json";
 // import btOff from "./btOff.json";
 // import wifiConnected from "./wifiConnected.json";
 import styles from "./../../styles/nearlock-app.module.scss";
+import Modal from "./../nearlock-app/modal";
+import AppButton from "./AppButton";
 
 function NearLockApp({isDarkMode}) {
   const [activeTab, setActiveTab] = useState("Welcome");
@@ -76,35 +76,6 @@ function NearLockApp({isDarkMode}) {
     <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab}/>
   </div>);
 }
-
-const AppButton = ({children, onClick, isDarkMode}) => (<button className={classnames({
-    [styles["dark-nearlock-app__btn"]]: isDarkMode
-  }, `${styles["nearlock-app__btn"]} mt-4`)} onClick={onClick}>
-  {children}
-</button>);
-
-const Modal = ({isModalOpen, setIsModalOpen}) => (<div className={classnames({
-    "d-none": !isModalOpen
-  }, styles["nearlock-app-modal__background"])}>
-  <div className={styles["nearlock-app-modal"]}>
-    <div className={`${
-      styles["nearlock-app-modal__content"]} d-flex flex-column p-5 text-center`}>
-      <FontAwesomeIcon icon={faPaperPlane} size="10x" className="mb-3 mx-5" color="#368EFC"/>
-      Filip’s iPhone X<br/>
-      wants to connect
-    </div>
-    <div className={`${styles["nearlock-app-modal__footer"]} d-flex`}>
-      <div className={`${styles["nearlock-app__btn-link"]} flex-fill`}>
-        Setup later
-      </div>
-      <div>
-        <button className={styles["nearlock-app__btn"]} onClick={() => setIsModalOpen(false)}>
-          Continue
-        </button>
-      </div>
-    </div>
-  </div>
-</div>);
 
 const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => (<div className={classnames({
     [styles["nearlock-app-sidebar-open"]]: isSidebarOpen
@@ -231,7 +202,7 @@ const Content = ({
             }}>
             Near Lock lets you use your iPhone to lock and unlock your Mac automatically. When you walk away from your Mac, it will be automatically locked. Once you approach your workplace, Near Lock will unlock your Mac.
           </small>
-          <AppButton onClick={() => setActiveTab("Setup")} isDarkMode={isDarkMode}>
+          <AppButton onClick={() => setActiveTab("Setup")} isDarkMode={isDarkMode} className={"mt-4"}>
             Setup Near Lock
           </AppButton>
         </Col>
