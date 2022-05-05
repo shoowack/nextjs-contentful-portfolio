@@ -278,11 +278,11 @@ const Content = ({
                 width: "100%"
               }}>
               <svg width="136px" height="180px" viewBox="0 0 266 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <g id="Settings-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g id="Group-4" transform="translate(0.646050, 0.867135)">
-                    <rect id="Rectangle" fill="#E4E4E4" transform="translate(132.321856, 176.431792) rotate(-3.400000) translate(-132.321856, -176.431792) " x="8.32185646" y="32.4317918" width="248" height="288" rx="43"></rect>
-                    <rect id="Rectangle-2" fill="#D8D8D8" transform="translate(124.552722, 45.662374) rotate(-3.400000) translate(-124.552722, -45.662374) " x="61.5527215" y="3.66237431" width="126" height="84" rx="28"></rect>
-                    <path d="M107.464825,193.0872 C114.644526,193.0872 120.464825,198.907499 120.464825,206.0872 L120.464825,340.0872 C120.464825,347.266902 114.644526,353.0872 107.464825,353.0872 C100.285123,353.0872 94.4648246,347.266902 94.4648246,340.0872 L94.4648246,206.0872 C94.4648246,198.907499 100.285123,193.0872 107.464825,193.0872 Z" id="Combined-Shape" fill="#D8D8D8" transform="translate(107.464825, 273.087200) rotate(-3.400000) translate(-107.464825, -273.087200) "></path>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(0.646050, 0.867135)">
+                    <rect fill="#E4E4E4" transform="translate(132.321856, 176.431792) rotate(-3.400000) translate(-132.321856, -176.431792) " x="8.32185646" y="32.4317918" width="248" height="288" rx="43"/>
+                    <rect fill="#D8D8D8" transform="translate(124.552722, 45.662374) rotate(-3.400000) translate(-124.552722, -45.662374) " x="61.5527215" y="3.66237431" width="126" height="84" rx="28" />
+                    <path d="M107.464825,193.0872 C114.644526,193.0872 120.464825,198.907499 120.464825,206.0872 L120.464825,340.0872 C120.464825,347.266902 114.644526,353.0872 107.464825,353.0872 C100.285123,353.0872 94.4648246,347.266902 94.4648246,340.0872 L94.4648246,206.0872 C94.4648246,198.907499 100.285123,193.0872 107.464825,193.0872 Z" id="Combined-Shape" fill="#D8D8D8" transform="translate(107.464825, 273.087200) rotate(-3.400000) translate(-107.464825, -273.087200) "/>
                   </g>
                 </g>
               </svg>
