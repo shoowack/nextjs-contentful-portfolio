@@ -402,6 +402,46 @@ $dark-mode-transition: 0.5s;
             border-color: var(--success) transparent transparent transparent;
         }
     }
+
+    .list-item {
+        &:hover {
+            cursor: pointer;
+        }
+        
+        &__icon {
+            width: 60px;
+            height: 60px;
+            background: #EAEAEA;
+            border-radius: 12px;
+            overflow: hidden;
+
+            &_checked {
+                box-shadow: 0 0 0 3px #368EFC inset;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-style: solid;
+                    border-width: 0px 30px 30px 0px;
+                    border-color: transparent #368EFC transparent transparent;
+                }
+
+                &::after {
+                    content: "\f00c";
+                    font-family: 'Font Awesome 5 Pro';
+                    font-weight: 900;
+                    font-size: 8px;
+                    position: absolute;
+                    top: 4px;
+                    right: 6px;
+                    color: #EAEAEA;
+                }
+            }
+        }
+    }
 }
 
 .dark{
