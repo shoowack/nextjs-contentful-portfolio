@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState} from "react";
 import classnames from "classnames";
 import styles from "./../../styles/nearlock-app.module.scss";
 import AppButton from "./AppButton";
@@ -6,7 +6,7 @@ import FirstStep from "./FirstStep";
 import SecondStep from "./SecondStep";
 import ThirdStep from "./ThirdStep";
 
-const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
+const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab}) => {
   const [currentStep, setStep] = useState(1);
 
   const goBack = () => {
@@ -16,6 +16,7 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
   const finishSetup = () => {
     setIsModalOpen(false);
     setStep(1);
+    setActiveTab("Devices");
   };
 
   const renderStep = step => {

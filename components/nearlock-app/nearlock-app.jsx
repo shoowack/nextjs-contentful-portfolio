@@ -22,10 +22,10 @@ function NearLockApp({isDarkMode}) {
       setIsSearchOpen(false);
     }
 
-    if (tab === "Devices") 
-      setIsModalOpen(true);
-    };
-  
+    // if (tab === "Devices")
+    //   setIsModalOpen(true);
+  };
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
     setIsSearchOpen(false);
@@ -71,9 +71,9 @@ function NearLockApp({isDarkMode}) {
   return (<div className={classnames({
       [styles["dark-nearlock-app"]]: isDarkMode
     }, styles["nearlock-app"])}>
-    <Modal isDarkMode={isDarkMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+    <Modal isDarkMode={isDarkMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} setActiveTab={setActiveTab}/>
     <Sidebar isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} content={content} activeTab={activeTab} toggleTab={toggleTab}/>
-    <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab}/>
+    <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab} setIsModalOpen={setIsModalOpen}/>
   </div>);
 }
 
@@ -126,7 +126,8 @@ const Content = ({
   toggleSearch,
   searchRef,
   setActiveTab,
-  isDarkMode
+  isDarkMode,
+  setIsModalOpen
 }) => (<div className={`${isDarkMode
     ? styles["dark-nearlock-app-content"]
     : ""} ${
@@ -208,10 +209,51 @@ const Content = ({
         </Col>
       </Col>
     </TabPane>
-    <TabPane tabId="Advanced">
-      <Col sm="12">
-        <h4>Advanced</h4>
-      </Col>
+    <TabPane tabId="Devices" className="h-100">
+      <div className="d-flex h-100 flex-column mx-4">
+        <div className="py-3">
+          <h4 className="m-0">Devices</h4>
+          <small>Currently connected devices</small>
+        </div>
+        <div className="flex-grow-1 mb-5 d-flex flex-column justify-content-center">
+          <div className="my-5 mx-auto d-flex" style={{
+              width: "550px"
+            }}>
+            <div className="d-flex flex-column align-items-center">
+              <svg width="175px" height="100px" viewBox="0 0 330 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <g stroke="none" stroke-width="1" fill="none" fillRule="evenodd">
+                  <g transform="translate(-10.000000, -81.000000)" fill="#4C4C4C">
+                    <g transform="translate(10.000000, 81.000000)">
+                      <path d="M330,179 L330,182 C330,185.313708 327.313708,188 324,188 L6,188 C2.6862915,188 0,185.313708 0,182 L0,179 L330,179 Z M281.615987,0 C291.055036,0 298.706897,7.65186064 298.706897,17.0909091 L298.706897,173.757576 L31.2931034,173.757576 L31.2931034,17.0909091 C31.2931034,7.65186064 38.9449641,0 48.3840125,0 L281.615987,0 Z M281.615987,9 L48.3840125,9 C43.9155268,9 40.2931034,12.6224234 40.2931034,17.0909091 L40.2931034,164.757576 L289.706897,164.757576 L289.706897,17.0909091 C289.706897,12.6224234 286.084473,9 281.615987,9 Z"/>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <small className="mt-3">Filip’s MacBook Pro</small>
+            </div>
+            <div className={`${
+              styles["nearlock-app-devices-connected-line"]} d-flex flex-grow-1 flex-column justify-content-center align-items-center mb-5`}></div>
+            <div className="d-flex flex-column align-items-center">
+              <svg width="102px" height="100px" viewBox="0 0 102 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <g transform="translate(-124.000000, -81.000000)" fillRule="nonzero">
+                  <g transform="translate(124.000000, 81.000000)">
+                    <path d="M79.5,0 C91.9264069,0 102,10.0735931 102,22.5 L102,165.5 C102,177.926407 91.9264069,188 79.5,188 L22.5,188 C10.0735931,188 0,177.926407 0,165.5 L0,22.5 C0,10.0735931 10.0735931,0 22.5,0 L79.5,0 Z M28.5,8.25 L22.5,8.25 C14.6299423,8.25 8.25,14.6299423 8.25,22.5 L8.25,165.5 C8.25,173.370058 14.6299423,179.75 22.5,179.75 L79.5,179.75 C87.3700577,179.75 93.75,173.370058 93.75,165.5 L93.75,22.5 C93.75,14.6299423 87.3700577,8.25 79.5,8.25 L73.5,8.25 C72.7203039,8.25 72.0795513,8.84488808 72.0068666,9.60553999 L72,9.75 L72,11 C72,13.209139 70.209139,15 68,15 L34,15 C31.790861,15 30,13.209139 30,11 L30,9.75 C30,8.92157288 29.3284271,8.25 28.5,8.25 Z" fill="#4C4C4C"/>
+                  </g>
+                </g>
+              </svg>
+              <small className="mt-3">Filip’s iPhone X</small>
+            </div>
+          </div>
+          <h5 className="text-center">
+            Filip’s iPhone X and this Mac are connected
+          </h5>
+          <div className="d-flex justify-content-center pb-5">
+            <AppButton onClick={() => setActiveTab("Setup")} isDarkMode={isDarkMode} className={"mt-4"}>
+              Unlink
+            </AppButton>
+          </div>
+        </div>
+      </div>
     </TabPane>
     <TabPane tabId="Setup" style={{
         position: "relative"
@@ -228,12 +270,13 @@ const Content = ({
           <small>
             To use Near Lock make sure your Mac has Bluetooth turned on and your iOS app is open on your iPhone
           </small>
-          <button className={`${styles["nearlock-app__btn"]} mt-4`}>
+          <AppButton onClick={() => setIsModalOpen(true)} className={"mt-4"}>
             Turn Bluetooth On
-          </button>
+          </AppButton>
         </Col>
       </div>
     </TabPane>
   </TabContent>
 </div>);
+
 export default NearLockApp;
