@@ -243,7 +243,7 @@ const Content = ({
             title,
             desc,
             items
-          }, i) => (<div>
+          }, i) => (<div key={`list-${i}`}>
             <ListHeader title={title} desc={desc} key={`list-header-${i}`}/>{" "}
             {
               items.map(({
