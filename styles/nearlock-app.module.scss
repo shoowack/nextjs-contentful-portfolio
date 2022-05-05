@@ -1,6 +1,7 @@
 $dark-mode-transition: 0.5s;
 
 .nearlock-app {
+    position: relative;
     color: #535353;
     margin: auto;
     width: 1082px;
@@ -65,6 +66,7 @@ $dark-mode-transition: 0.5s;
     }
 
     &-sidebar {
+        position: relative;
         width: 0;
         min-width: 0;
         display: flex;
@@ -537,7 +539,7 @@ $dark-mode-transition: 0.5s;
             }    
         }
 
-        &-sidebar {
+        &-sidebar {            
             &__item,
             &__item__disabled,
             &__item__active {
