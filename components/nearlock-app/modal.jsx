@@ -4,6 +4,7 @@ import styles from "./../../styles/nearlock-app.module.scss";
 import AppButton from "./AppButton";
 import FirstStep from "./FirstStep";
 import SecondStep from "./SecondStep";
+import ThirdStep from "./ThirdStep";
 
 const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
   const [currentStep, setStep] = useState(1);
@@ -23,6 +24,8 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
         return <FirstStep/>;
       case 2:
         return <SecondStep goBack={goBack} isDarkMode={isDarkMode}/>;
+      case 3:
+        return <ThirdStep goBack={goBack} isDarkMode={isDarkMode}/>;
       default:
         return <FirstStep/>;
     }
@@ -70,12 +73,14 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode}) => {
           </div>)
         }
         <div>
-          <AppButton isDarkMode={isDarkMode} onClick={() => (
-              currentStep === 1
+          <AppButton isDarkMode={isDarkMode} onClick={(
+              ) => currentStep === 1
               ? setStep(2)
-              : finishSetup())}>
+              : currentStep === 2
+                ? setStep(3)
+                : finishSetup()}>
             {
-              currentStep === 1
+              currentStep === 1 || currentStep === 2
                 ? "Continue"
                 : "Finish"
             }
