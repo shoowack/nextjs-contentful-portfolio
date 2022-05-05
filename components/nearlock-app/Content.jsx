@@ -27,11 +27,11 @@ import {icon} from "@fortawesome/fontawesome-svg-core";
 const setupData = [
   {
     title: "Near Lock",
-    desc: "Activating main Near Lock feature",
+    // desc: "Activating main Near Lock feature",
     items: [
       {
         title: "Near Lock",
-        desc: "Enable Near Lock's main function",
+        desc: "Enable Near Lock's main functionality",
         icon: nearlock,
         checked: true
       }
@@ -123,8 +123,8 @@ const Content = ({
 }) => (<div className={`${isDarkMode
     ? styles["dark-nearlock-app-content"]
     : ""} ${
-  styles["nearlock-app-content"]}`}>
-  <div className={`${
+  styles["nearlock-app-content"]} position-relative`}>
+  <div className={`position-absolute w-100 ${
     isDarkMode
       ? styles["dark-nearlock-app-content-header"]
       : ""} ${
