@@ -12,8 +12,6 @@ function NearLockApp({isDarkMode}) {
   const [isSetupDone, setIsSetupDone] = useState(false);
   const searchRef = useRef(null);
 
-  console.log(isSetupDone, "isSetupDone");
-
   const toggleTab = tab => {
     if (activeTab !== tab) {
       setActiveTab(tab);
