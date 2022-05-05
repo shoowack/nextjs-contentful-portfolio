@@ -155,7 +155,7 @@ const Content = ({
           [styles["nearlock-app-content-header__search-open"]]: isSearchOpen,
           [styles["dark-nearlock-app-content-header__search-open"]]: isDarkMode && isSearchOpen
         }, styles["nearlock-app-content-header__search"])} placeholder="Search" ref={searchRef}/>
-      <img src="/search-close.svg" height="13px" className={isSearchOpen
+      <img src="/nearlock-app/search-close.svg" height="13px" className={isSearchOpen
           ? styles["nearlock-app-content-header__search-close-icon-open"]
           : "d-none"
 } onClick={toggleSearch}/>
@@ -188,7 +188,7 @@ const Content = ({
             size: 10,
             offset: 1
           }}>
-          <img src="/nearlock-logo.svg" height="225px" className="pt-4 m-5"/>
+          <img src="/nearlock-app/nearlock-logo.svg" height="225px" className="pt-4 m-5"/>
           <h5 className="m-0">Welcome</h5>
           <small className="d-block m-auto" style={{
               width: "652px"

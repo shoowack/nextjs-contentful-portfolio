@@ -99,7 +99,7 @@ const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => 
             : styles["nearlock-app-sidebar__item"]}`} onClick={() => {
             toggleTab(title);
           }}>
-          <img src={`/nearlock-menu_${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
+          <img src={`/nearlock-app/menu/${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
         </a>)
         : (<div key={`nearlock-app-sidebar__item-${i}`} className={`${
@@ -107,7 +107,7 @@ const Sidebar = ({isDarkMode, isSidebarOpen, content, activeTab, toggleTab}) => 
             ? styles["dark-nearlock-app-sidebar__item__disabled"]
             : ""} ${
           styles["nearlock-app-sidebar__item__disabled"]} m-0 d-flex align-items-center`}>
-          <img src={`/nearlock-menu_${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
+          <img src={`/nearlock-app/menu/${title.toLowerCase().split(" ").join("-")}.svg`} height="17px" className="mr-2 ml-1"/>{" "}
           {title}
         </div>))
     }

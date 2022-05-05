@@ -309,7 +309,7 @@ $dark-mode-transition: 0.5s;
                 padding: 0 30px 0 28px;
                 margin: 0;
                 height: 30px;
-                background: #F4F3F7 url("./../public/search.svg") no-repeat 10px center;
+                background: #F4F3F7 url("./../public/nearlock-app/search.svg") no-repeat 10px center;
                 background-size: 12px;
                 border-radius: 7px;
                 border: none;
@@ -522,7 +522,7 @@ $dark-mode-transition: 0.5s;
 
                 &__search,
                 &__search-open {
-                    background: #211C21 url("./../public/search.svg") no-repeat 10px center;
+                    background: #211C21 url("./../public/nearlock-app/search.svg") no-repeat 10px center;
                     outline:hsla(0, 0%, 100%, .06) solid 1px;
                 }
 
