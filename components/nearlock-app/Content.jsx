@@ -8,6 +8,15 @@ import btConnect from "./btConnect.json";
 // import wifiConnected from "./wifiConnected.json";
 import ListItem from "./ListItem";
 import ListHeader from "./ListHeader";
+import {
+  knock,
+  nearlock,
+  touchId,
+  yesNo,
+  sleep,
+  screensaver
+} from "./setupIcons";
+import {icon} from "@fortawesome/fontawesome-svg-core";
 
 const setupData = [
   {
@@ -17,9 +26,8 @@ const setupData = [
       {
         title: "Near Lock",
         desc: "Enable Near Lock's main function",
+        icon: nearlock,
         checked: true
-      }, {
-        title: "Sleep"
       }
     ]
   }, {
@@ -28,23 +36,31 @@ const setupData = [
     items: [
       {
         title: "Sleep",
-        desc: "By default, your Mac will go to sleep when locked"
+        desc: "By default, your Mac will go to sleep when locked",
+        icon: sleep
       }, {
         title: "Screensaver",
-        desc: "By default, your Mac will go to sleep when locked"
+        desc: "By default, your Mac will go to sleep when locked",
+        icon: screensaver
       }
     ]
   }, {
     title: "Mac wake unlock options",
-    desc: "Select how do you want to unlock your Mac:",
+    desc: "Select how do you want to unlock your Mac",
     items: [
       {
         title: "Yes/No",
-        desc: "By default, your Mac will go to sleep when locked",
+        desc: "Confirm unlock on iPhone with a simple Yes or No",
+        icon: yesNo,
         checked: true
       }, {
-        title: "Screensaver",
-        desc: "By default, your Mac will go to sleep when locked"
+        title: "Touch ID or Passcode",
+        icon: touchId,
+        desc: "Confirm unlock on your iPhone with Touch ID or Passcode"
+      }, {
+        title: "Double Knock",
+        icon: knock,
+        desc: "Confirm unlock on iPhone with double knock (this option is active 15 seconds after notification)"
       }
     ]
   }
@@ -233,8 +249,9 @@ const Content = ({
               items.map(({
                 title,
                 desc,
+                icon,
                 checked
-              }, i) => (<ListItem title={title} desc={desc} checked={checked} key={`list-item-${i}`}/>))
+              }, i) => (<ListItem icon={icon} title={title} desc={desc} checked={checked} key={`list-item-${i}`}/>))
             }
             {i < setupData.length - 1 && <hr/>}
           </div>))
