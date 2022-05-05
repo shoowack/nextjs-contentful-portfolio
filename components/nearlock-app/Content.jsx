@@ -211,10 +211,10 @@ const Content = ({
                     marginLeft: "50px",
                     marginTop: "-150px"
                   }}>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g transform="translate(-1006.000000, -872.000000)" fill={isDarkMode
                         ? "#A4A4A4"
-                        : "#444"} fill-rule="nonzero">
+                        : "#444"} fillRule="nonzero">
                       <g transform="translate(870.000000, 274.000000)">
                         <g transform="translate(0.000000, -233.000000)">
                           <g transform="translate(221.559103, 972.082293) scale(1, -1) rotate(58.000000) translate(-221.559103, -972.082293) translate(112.765493, 868.774656)">
@@ -242,10 +242,10 @@ const Content = ({
                     marginTop: "-150px",
                     transform: "scaleX(-1)"
                   }}>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <g transform="translate(-1006.000000, -872.000000)" fill={isDarkMode
                         ? "#A4A4A4"
-                        : "#444"} fill-rule="nonzero">
+                        : "#444"} fillRule="nonzero">
                       <g transform="translate(870.000000, 274.000000)">
                         <g transform="translate(0.000000, -233.000000)">
                           <g transform="translate(221.559103, 972.082293) scale(1, -1) rotate(58.000000) translate(-221.559103, -972.082293) translate(112.765493, 868.774656)">
@@ -278,10 +278,10 @@ const Content = ({
                 width: "100%"
               }}>
               <svg width="136px" height="180px" viewBox="0 0 266 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g transform="translate(0.646050, 0.867135)">
                     <rect fill="#E4E4E4" transform="translate(132.321856, 176.431792) rotate(-3.400000) translate(-132.321856, -176.431792) " x="8.32185646" y="32.4317918" width="248" height="288" rx="43"/>
-                    <rect fill="#D8D8D8" transform="translate(124.552722, 45.662374) rotate(-3.400000) translate(-124.552722, -45.662374) " x="61.5527215" y="3.66237431" width="126" height="84" rx="28" />
+                    <rect fill="#D8D8D8" transform="translate(124.552722, 45.662374) rotate(-3.400000) translate(-124.552722, -45.662374) " x="61.5527215" y="3.66237431" width="126" height="84" rx="28"/>
                     <path d="M107.464825,193.0872 C114.644526,193.0872 120.464825,198.907499 120.464825,206.0872 L120.464825,340.0872 C120.464825,347.266902 114.644526,353.0872 107.464825,353.0872 C100.285123,353.0872 94.4648246,347.266902 94.4648246,340.0872 L94.4648246,206.0872 C94.4648246,198.907499 100.285123,193.0872 107.464825,193.0872 Z" id="Combined-Shape" fill="#D8D8D8" transform="translate(107.464825, 273.087200) rotate(-3.400000) translate(-107.464825, -273.087200) "/>
                   </g>
                 </g>
