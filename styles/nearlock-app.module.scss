@@ -229,8 +229,6 @@ $dark-mode-transition: 0.5s;
             &__disabled {
                 opacity: 0.5;
 
-/* A CSS selector that is targeting the element with the class of "disabled" and setting the cursor to
-"not-allowed" when the mouse hovers over it. */
                 // &:hover {
                 //     cursor: default !important;
                 // }
@@ -257,7 +255,7 @@ $dark-mode-transition: 0.5s;
             box-shadow: 
             0 0 0 1px hsla(0, 0%, 0%, .1),
             0 0 0 2px hsla(0, 0%, 0%, .05),
-            0 0 10px 1px rgb(46, 255, 49);
+            0 0 10px 0px hsla(121, 100%, 59%, .75);
         }
     }
 
@@ -330,7 +328,6 @@ $dark-mode-transition: 0.5s;
                 border: none;
                 font-size: 12px;
                 outline:hsla(0, 0%, 0%, .06) solid 1px;
-                opacity: 1;
                 transition: background $dark-mode-transition, width 0.5s, opacity 0.5s;
             }
 
@@ -341,6 +338,7 @@ $dark-mode-transition: 0.5s;
 
                 &-open {
                     width: 240px;
+                    opacity: 1;
             
                     &:focus {
                         outline: none;
@@ -549,6 +547,7 @@ $dark-mode-transition: 0.5s;
                 &__search,
                 &__search-open {
                     background: #211C21 url("./../public/nearlock-app/search.svg") no-repeat 10px center;
+                    background-size: 12px;
                     outline:hsla(0, 0%, 100%, .06) solid 1px;
                 }
 

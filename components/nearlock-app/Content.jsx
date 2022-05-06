@@ -21,7 +21,7 @@ import {
   loginPhotos,
   failedLoginPhotos,
   loginHistory
-} from "./setupIcons";
+} from "./SetupIcons";
 
 const setupData = [
   {
@@ -119,17 +119,13 @@ const Content = ({
   setIsModalOpen,
   isSetupDone,
   setIsSetupDone
-}) => (<div className={`${isDarkMode
-    ? styles["dark-nearlock-app-content"]
-    : ""} ${
-  styles["nearlock-app-content"]} position-relative`}>
-  <div className={`position-absolute w-100 ${
-    isDarkMode
-      ? styles["dark-nearlock-app-content-header"]
-      : ""} ${
-    isSidebarOpen
-      ? styles["nearlock-app-content-header"]
-      : styles["nearlock-app-content-header-open"]}`}>
+}) => (<div className={classnames({
+    [styles["dark-nearlock-app-content"]]: isDarkMode
+  }, `${styles["nearlock-app-content"]} position-relative`)}>
+  <div className={classnames({
+      [styles["dark-nearlock-app-content-header"]]: isDarkMode,
+      [styles["nearlock-app-content-header-open"]]: !isSidebarOpen
+    }, `position-absolute w-100 ${styles["nearlock-app-content-header"]}`)}>
     <div className={styles["nearlock-app-content-header__left-items"]} onClick={toggleSidebar}>
       <svg width="22px" height="17px" viewBox="0 0 41 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <g transform="translate(-672.000000, -35.000000)" fill={isDarkMode
@@ -151,17 +147,16 @@ const Content = ({
     <div className={styles["nearlock-app-content-header__right-items"]}>
       <input className={classnames({
           [styles["dark-nearlock-app-content-header__search"]]: isDarkMode,
-          [styles["nearlock-app-content-header__search-open"]]: isSearchOpen,
-          [styles["dark-nearlock-app-content-header__search-open"]]: isDarkMode && isSearchOpen
+          [styles["nearlock-app-content-header__search-open"]]: isSearchOpen
         }, styles["nearlock-app-content-header__search"])} placeholder="Search" ref={searchRef}/>
       <img src="/nearlock-app/search-close.svg" height="13px" className={isSearchOpen
           ? styles["nearlock-app-content-header__search-close-icon-open"]
           : "d-none"
 } onClick={toggleSearch}/>
 
-      <div className={isSearchOpen
-          ? styles["nearlock-app-content-header__right-items_search_icon-open"]
-          : styles["nearlock-app-content-header__right-items_search_icon"]} onClick={toggleSearch}>
+      <div className={classnames({
+          [styles["nearlock-app-content-header__right-items_search_icon-open"]]: isSearchOpen
+        }, `${styles["nearlock-app-content-header__right-items_search_icon"]}`)} onClick={toggleSearch}>
         <svg width="17px" height="17px" viewBox="0 0 31 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <g transform="translate(-2191.000000, -35.000000)" fill={isDarkMode
               ? "#BAB5BA"

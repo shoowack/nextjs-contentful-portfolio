@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 import classnames from "classnames";
 import styles from "./../../styles/nearlock-app.module.scss";
-import Modal from "./modal";
+import Modal from "./Modal";
 import Content from "./Content";
 import Sidebar from "./Sidebar";
 
@@ -18,9 +18,6 @@ function NearLockApp({isDarkMode}) {
       setActiveTab(tab);
       setIsSearchOpen(false);
     }
-
-    // if (tab === "Devices")
-    //   setIsModalOpen(true);
   };
 
   const toggleSidebar = () => {
