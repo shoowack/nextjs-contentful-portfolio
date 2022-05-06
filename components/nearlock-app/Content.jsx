@@ -21,7 +21,7 @@ import {
   loginPhotos,
   failedLoginPhotos,
   loginHistory
-} from "./SetupIcons";
+} from "./setupIcons";
 
 const setupData = [
   {
