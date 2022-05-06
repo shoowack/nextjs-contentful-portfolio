@@ -48,6 +48,22 @@ $dark-mode-transition: 0.5s;
             padding: 15px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
+
+            &_dot {
+                height: 10px;
+                width: 10px;
+                background: transparent;
+                border-radius: 999em;
+                border: 1px solid #4C4C4C;
+
+                &_active {
+                    margin-top: 1px;
+                    height:  7px;
+                    width: 7px;
+                    background: #4C4C4C;
+                    border: none;
+                }
+            }
         }
     }
 
@@ -582,11 +598,9 @@ $dark-mode-transition: 0.5s;
         }
 
         &__btn {
-            background: hsla(0, 0%, 100%, .15);
-            color: #fff;
-
             &-link {
-                background: transparent;
+                color: #fff;
+                background: linear-gradient(180deg, #5E5D5F 1%, #5F5D5F 100%);
             }
         }
 
