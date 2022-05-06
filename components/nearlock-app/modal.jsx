@@ -75,11 +75,6 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetu
           </div>)
         }
         <div className="d-flex">
-          {
-            currentStep === 3 && (<AppButton onClick={goBack} link={true} isDarkMode={isDarkMode}>
-              Go back
-            </AppButton>)
-          }
           <AppButton isDarkMode={isDarkMode} onClick={(
               ) => currentStep === 1
               ? setStep(2)
