@@ -4,7 +4,7 @@ import styles from "./../../styles/nearlock-app.module.scss";
 const Sidebar = ({
   isDarkMode,
   isSidebarOpen,
-  content,
+  menuItems,
   activeTab,
   toggleTab,
   isSetupDone
@@ -22,7 +22,7 @@ const Sidebar = ({
       </div> */
       }
       {
-        content.map(
+        menuItems.map(
           ({
           title,
           enabled
