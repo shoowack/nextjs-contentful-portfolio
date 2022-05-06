@@ -328,7 +328,7 @@ $dark-mode-transition: 0.5s;
                 border: none;
                 font-size: 12px;
                 outline:hsla(0, 0%, 0%, .06) solid 1px;
-                transition: background $dark-mode-transition, width 0.5s, opacity 0.5s;
+                transition: background $dark-mode-transition, width 0.5s, opacity 0.5s, color $dark-mode-transition;
             }
 
             &__search {
@@ -544,6 +544,7 @@ $dark-mode-transition: 0.5s;
             &-header-open {
                 background: hsla(300, 8%, 12%, .7);
                 border-bottom: 1px solid hsla(0, 0%, 100%, 0.09);
+                transition: all $dark-mode-transition;
 
                 &__search,
                 &__search-open {
@@ -554,15 +555,7 @@ $dark-mode-transition: 0.5s;
 
                 &__search {
                     color: #fff;
-
-                    &-open {
-                        &:focus {
-                            outline: none;
-                            box-shadow:
-                            0 0 0 1px hsl(108, 64%, 38%),
-                            0 0 0 4px hsl(106, 68%, 31%);
-                        }
-                   }
+                    transition: background $dark-mode-transition, width 0.5s, opacity 0.5s, color $dark-mode-transition;
                 }
             }    
         }
