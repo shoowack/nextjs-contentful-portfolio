@@ -189,7 +189,7 @@ const Content = ({
             }}>
             Near Lock lets you use your iPhone to lock and unlock your Mac automatically. When you walk away from your Mac, it will be automatically locked. Once you approach your workplace, Near Lock will unlock your Mac.
           </small>
-          <AppButton onClick={() => setActiveTab("Setup")} isDarkMode={isDarkMode} className={"mt-4"}>
+          <AppButton onClick={() => setIsModalOpen(true)} isDarkMode={isDarkMode} className={"mt-4"}>
             Setup Near Lock
           </AppButton>
         </Col>

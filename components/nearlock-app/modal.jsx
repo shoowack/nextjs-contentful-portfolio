@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Col} from "reactstrap";
 import classnames from "classnames";
 import styles from "./../../styles/nearlock-app.module.scss";
 import AppButton from "./AppButton";
@@ -49,20 +50,26 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetu
       {renderStep(currentStep)}
       <div className={classnames({
           [styles["dark-nearlock-app-modal__footer"]]: isDarkMode
-        }, `${styles["nearlock-app-modal__footer"]} d-flex justify-content-between`)}>
-        <AppButton onClick={setupLater} link={true} isDarkMode={isDarkMode}>
-          Setup later
-        </AppButton>
-        {
-          currentStep !== 1 && (<div className="d-flex flex-row align-items-center">
-            {
-              [...Array(2)].map((_, i) => (<div key={`dot-${i}`} className={classnames({
-                  [styles["nearlock-app-modal__footer_dot_active"]]: currentStep === i + 2
-                }, `${styles["nearlock-app-modal__footer_dot"]} mx-2`)}></div>))
-            }
-          </div>)
-        }
-        <div className="d-flex">
+        }, `${styles["nearlock-app-modal__footer"]} d-flex justify-content-between align-items-center`)}>
+        <Col>
+          <AppButton onClick={setupLater} link={true} isDarkMode={isDarkMode}>
+            Setup later
+          </AppButton>
+        </Col>
+        <Col className="d-flex justify-content-center">
+          {
+            currentStep !== 1 && (<div className="d-flex flex-row align-items-center">
+              {
+                [...Array(2)].map((_, i) => (<div key={`dot-${i}`} className={classnames({
+                    [styles["nearlock-app-modal__footer_dot_active"]]: currentStep === i + 2,
+                    [styles["dark-nearlock-app-modal__footer_dot"]]: isDarkMode,
+                    [styles["dark-nearlock-app-modal__footer_dot_active"]]: isDarkMode && currentStep === i + 2
+                  }, `${styles["nearlock-app-modal__footer_dot"]} mx-2`)}></div>))
+              }
+            </div>)
+          }
+        </Col>
+        <Col className="d-flex justify-content-end">
           <AppButton isDarkMode={isDarkMode} onClick={(
               ) => currentStep === 1
               ? setStep(2)
@@ -75,7 +82,7 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetu
                 : "Finish"
             }
           </AppButton>
-        </div>
+        </Col>
       </div>
     </div>
   </div>);

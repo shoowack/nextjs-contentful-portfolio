@@ -1,5 +1,5 @@
 const FirstStep = () => {
-  return (<div className={`d-flex flex-column p-5 text-center`}>
+  return (<div className={`d-flex flex-column p-5 text-center justify-content-center flex-grow-1`}>
     <svg className="my-5 mx-auto" width="102px" height="100px" viewBox="0 0 102 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <g transform="translate(-124.000000, -81.000000)" fillRule="nonzero">
         <g transform="translate(124.000000, 81.000000)">

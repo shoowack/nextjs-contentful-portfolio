@@ -1,7 +1,7 @@
 import styles from "./../../styles/nearlock-app.module.scss";
 
 const FirstStep = ({isDarkMode}) => {
-  return (<div className="d-flex flex-row px-5">
+  return (<div className="d-flex flex-row px-5 flex-grow-1">
     <div className={`d-flex flex-column py-5 mr-n5 text-center align-items-center justify-content-center`} style={{
         width: "300px"
       }}>
