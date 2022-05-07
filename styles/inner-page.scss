@@ -168,7 +168,7 @@ a {
   padding: 2px 5px;
   border-radius: 3px;
   color: #000;
-  text-decoration: none;
+  text-decoration: none !important;
   font-weight: 600;
 
   &.section {
@@ -187,6 +187,16 @@ section {
 
   &.hidden {
     display: none;
+  }
+
+  a {
+    padding: 5px 10px;
+    // border-radius: 3px;
+    line-height: 36px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background .2s ease-in-out;
   }
 }
 
@@ -303,7 +313,6 @@ h1 {
   transition: .25s all;
 }
 
-
 h2 {
   font-size: 65px;
   transition: .25s all;
@@ -319,11 +328,13 @@ p {
 code {
   color: unset;
   font-family: unset;
-  font-size: unset;
-  padding: 2px 5px;
-  border-radius: 3px;
   font-weight: bolder;
-  // background: yellow;
+  font-size: unset;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+  line-height: 36px;
+  background: #ff0;
   white-space: nowrap;
 }
 
@@ -347,7 +358,7 @@ hr {
   }
 
   p {
-    color: rgb(106, 115, 125)
+    color: hsla(0, 0%, 0%, 1);
   }
 
   a,
@@ -355,7 +366,12 @@ hr {
   a:visited {
     color: #000;
     font-weight: 600;
-    background: rgba(0,0,0,.1);
+    background: hsla(0, 0%, 0%, .1);
+  }
+
+  a:hover {
+    background: hsla(0, 0%, 0%, .2);
+    transition: background .2s ease-in-out;
   }
 
   h3 {
@@ -396,6 +412,12 @@ hr {
   a:visited {
     color: #fff !important;
     font-weight: 600;
+    background: hsla(0, 0%, 100%, .1);
+  }
+
+  a:hover {
+    background: hsla(0, 0%, 100%, .2);
+    transition: background .2s ease-in-out;
   }
 
   h3 {

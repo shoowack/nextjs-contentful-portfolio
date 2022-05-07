@@ -6,7 +6,6 @@ import RichText from "@madebyconnor/rich-text-to-jsx";
 import { getContrast } from "./getContrast";
 import hexToRgbA from "./hexToRgba";
 import { StickyContainer, Sticky } from "react-sticky";
-import PostBody from "./post-body";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import NearLockApp from "./nearlock-app/NearLockApp";
@@ -103,7 +102,6 @@ export default function Section({
   return (
     <StickyContainer>
       <section
-        fluid
         style={{ backgroundColor }}
         className={classnames(`px-md-0 ${getContrast(backgroundColor)}`, {
           ["py-5"]: !(title === "Near Lock" && slug === 'designs'),
@@ -140,8 +138,7 @@ export default function Section({
         <Row className="pb-5">
           <Col md={12}>
             <Container fluid="lg" className="pb-4 text-center">
-              {description && <PostBody content={description} />}
-              {/* <RichText richText={description} /> */}
+              {description && <RichText richText={description} />}
             </Container>
           </Col>
 
