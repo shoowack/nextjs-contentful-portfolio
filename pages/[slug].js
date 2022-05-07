@@ -65,8 +65,8 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const headerItems = (await getHeaderLinks(preview)) ?? []
+export async function getStaticProps({ params }) {
+  const headerItems = (await getHeaderLinks()) ?? []
 
   const res = await fetchEntries(params.slug)
   const entries = await res.map((entry) => {

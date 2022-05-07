@@ -14,7 +14,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 
-
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
 //   return (
@@ -41,8 +40,6 @@ export default function Section({
 }) {
   const router = useRouter();
   const { slug } = router.query;
-  const [toggler, setToggler] = useState(false);
-  const [productIndex, setProductIndex] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const sliderOptions = {
@@ -117,7 +114,9 @@ export default function Section({
           backgroundColor,
           overflow: "hidden",
         }}
-        className={`section px-md-0 ${getContrast(backgroundColor)} ${(title === "Near Lock" && slug === 'designs') ? 'pt-5' : 'py-5'}`}
+        className={classNames(`section px-md-0 py-5 ${getContrast(backgroundColor)}`, {
+          ["pb-0"]: (title === "Near Lock" && slug === 'designs'),
+        })}
       >
         <Sticky topOffset={50}>
           {({ style, isSticky }) => (
@@ -158,7 +157,7 @@ export default function Section({
             {gallery?.map(({ fields: { title, type, images } }, i) => {
               return (
                 <>
-                  <Container><h3 className="text-center">{type}</h3></Container>
+                  <Container key={`slider-container-${i}`}><h3 className="text-center">{type}</h3></Container>
                   <Slider
                     {...sliderOptions}
                     infinite={images.length > 6 ? true : false}
@@ -169,7 +168,7 @@ export default function Section({
                         <Link
                           href={`/designs?property=${fileName}`}
                           scroll={false}
-                          key={i}
+                          key={`slide-item-link-${i}`}
                         >
                           <img
                             src={url}

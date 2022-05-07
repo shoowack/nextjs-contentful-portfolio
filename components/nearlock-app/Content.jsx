@@ -190,8 +190,8 @@ const Content = ({
     <TabPane tabId="Clipboard">
       {
         isSetupDone
-          ? (<Col sm="12" className="mt-0">
-            <img src="/nearlock-app/clipboard.png" className="mx-auto d-flex" width={"820px"}/>
+          ? (<Col sm={12} className="mt-0">
+            <img src="/nearlock-app/clipboard.png" className="mx-auto d-flex" width="820px"/>
             <div className="d-flex justify-content-between">
               <div className="d-flex">
                 <svg width="68px" height="150px" viewBox="0 0 125 275" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" style={{
