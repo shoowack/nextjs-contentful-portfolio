@@ -116,7 +116,7 @@ export default function Section({
         }}
         className={classnames(`section px-md-0 ${getContrast(backgroundColor)}`, {
           ["py-5"]: !(title === "Near Lock" && slug === 'designs'),
-          ["py-5 pb-0"]: (title === "Near Lock" && slug === 'designs'),
+          ["pt-5 pb-0"]: (title === "Near Lock" && slug === 'designs'),
         })}
       >
         <Sticky topOffset={50}>
