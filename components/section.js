@@ -103,10 +103,7 @@ export default function Section({
     <StickyContainer>
       <section
         style={{ backgroundColor }}
-        className={classnames(`px-md-0 ${getContrast(backgroundColor)}`, {
-          ["py-5"]: !(title === "Near Lock" && slug === 'designs'),
-          ["pt-5 pb-0"]: (title === "Near Lock" && slug === 'designs'),
-        })}
+        className={`px-md-0 py-5 ${getContrast(backgroundColor)}`}
       >
         <Sticky topOffset={50}>
           {({ style, isSticky }) => (
@@ -169,28 +166,28 @@ export default function Section({
             ))}
           </Col>
         </Row>
-        {/* render MacOS Nearlock app */}
-        {(title === "Near Lock" && slug === 'designs') && (
-          <Row className={classnames({
-            ["dark"]: isDarkMode,
-          }, "nearlock-app-wrapper py-5")}>
-            <button onClick={toggleDarkMode} className={classnames("nearlock-app-wrapper-theme-toggler", {
-              "dark": isDarkMode
-            })}>
-              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="1x" />
-            </button>
-            <Col md={12} className="mt-2">
-              <Container fluid="lg" className="pb-5 text-center section lighter">
-                <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
-                <small style={{ color: 'hsla(0, 0%, 100%, .75)' }}>some of the features are not available yet</small>
-              </Container>
-            </Col>
-            <Col md={12} className="mb-5">
-              <NearLockApp isDarkMode={isDarkMode} />
-            </Col>
-          </Row>
-        )}
       </section >
+      {/* render MacOS Nearlock app */}
+      {(title === "Near Lock App" && slug === 'designs') && (
+        <Row className={classnames({
+          ["dark"]: isDarkMode,
+        }, "nearlock-app-wrapper py-5 overflow-hidden")}>
+          <button onClick={toggleDarkMode} className={classnames("nearlock-app-wrapper-theme-toggler", {
+            "dark": isDarkMode
+          })}>
+            <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="1x" />
+          </button>
+          <Col md={12} className="mt-2">
+            <Container fluid="lg" className="pb-5 text-center lighter">
+              <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
+              <small style={{ color: 'hsla(0, 0%, 100%, .75)' }}>some of the features are not available yet</small>
+            </Container>
+          </Col>
+          <Col md={12} className="mb-5">
+            <NearLockApp isDarkMode={isDarkMode} />
+          </Col>
+        </Row>
+      )}
     </StickyContainer >
   );
 }
