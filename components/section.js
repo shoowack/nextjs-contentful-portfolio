@@ -38,10 +38,9 @@ export default function Section({
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const sliderOptions = {
-    infinite: true,
     slidesToShow: 6,
     dots: true,
-    centerMode: true,
+    centerMode: false,
     initialSlide: 0,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
@@ -149,7 +148,7 @@ export default function Section({
           <Col md={12}>
             {gallery?.map(({ fields: { type, images } }, i) => (
               <div key={`gallery-container-${i}`}>
-                <Container><h3 className="text-center">{type}</h3></Container>
+                {type !== "Website" && <Container><h3 className="text-center">{type}</h3></Container>}
                 <Slider
                   {...sliderOptions}
                   infinite={images.length > 6}

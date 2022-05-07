@@ -49,6 +49,7 @@ export default function HeaderInfoLink({
 HeaderInfoLink.propTypes = {
   link: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
+  order: PropTypes.number,
   // icon: PropTypes.array.isRequired,
   newTab: PropTypes.bool,
   size: PropTypes.string,

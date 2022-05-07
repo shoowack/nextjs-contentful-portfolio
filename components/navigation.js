@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import HeaderInfoLink from "./header-info-link";
-// import backIcon from "./../img/back_arrow.svg";
 import { Container, Row, Col } from "reactstrap";
 
 export default function Navigation({ headerItems }) {

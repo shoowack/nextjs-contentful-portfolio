@@ -6,7 +6,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 import { useRouter } from 'next/router';
 import Footer from '../components/footer';
 
-export default function Designs({ slug, preview, entries, headerItems }) {
+export default function Designs({ slug, entries, headerItems }) {
   const router = useRouter();
 
   const closeModal = () => {
