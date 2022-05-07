@@ -29,7 +29,7 @@ export default function Designs({ slug, entries, headerItems }) {
 
   return (
     <div className="wrapper" style={{
-      marginBottom: "360px"
+      marginBottom: "400px"
     }}>
       <Navigation headerItems={headerItems} />
       {
