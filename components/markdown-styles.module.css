@@ -21,7 +21,7 @@
 }
 
 .markdown code {
-    color: unset;
+    /* color: unset; */
     font-family: unset;
     font-size: unset;
     padding: 5px 10px;

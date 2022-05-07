@@ -10,9 +10,9 @@ export default function Navigation({ headerItems }) {
         <Row>
           <Col sm={12}>
             <div className="d-flex align-items-center">
-              {/* <Link className="back-button mr-4" href="/"> */}
-              {/* <img src={backIcon} alt="Go back" /> */}
-              {/* </Link> */}
+              <Link href="/">
+                <img src="./back_arrow.svg" alt="Go back" className="back-button mr-4" />
+              </Link>
               <div className="mr-auto">
                 <h1>Ivan Suvak Martinovic</h1>
               </div>
