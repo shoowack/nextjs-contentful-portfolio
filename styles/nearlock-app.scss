@@ -1,5 +1,52 @@
 $dark-mode-transition: 0.5s;
 
+.nearlock-app-wrapper {
+    position: relative;
+    background: #D667A3;
+    background: linear-gradient(32deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+
+    &.dark {
+        position: relative;
+        background: hsl(210, 40%, 21%);
+        background: linear-gradient(32deg, #0F022B 0%, #760697 50%, #360EB0 80%);
+    }
+}
+
+.nearlock-app-wrapper-theme-toggler {
+    background: #fff;
+    border: none;
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    border-radius: 999em;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: background $dark-mode-transition;
+
+    svg {
+        color: #368EFC;
+        transform: scale(1) rotate(360deg) rotateY(0deg) rotateX(0deg);
+        transition: color $dark-mode-transition, transform $dark-mode-transition, color $dark-mode-transition;
+    }    
+
+    &:active svg{
+        transform: scale(-1) rotate(0deg) rotateY(180deg) rotateX(180deg);
+        transition: transform 0s;
+    }
+    
+    &.dark {
+        background: #211C21;
+
+        svg {
+            color: yellow;
+        }
+    }
+}
+
 .nearlock-app {
     position: relative;
     color: #535353;

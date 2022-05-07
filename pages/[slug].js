@@ -1,6 +1,5 @@
 import Navigation from '../components/navigation'
 import Section from '../components/section'
-import { getAllSectionSections } from '../lib/api'
 import { getHeaderLinks } from '../lib/api';
 import { fetchEntries } from '../lib/fetchEntries';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
@@ -33,7 +32,7 @@ export default function Designs({ slug, preview, entries, headerItems }) {
       <Navigation headerItems={headerItems} />
 
       {
-        router.query.property && (<Modal isOpen="isOpen" toggle={closeModal}>
+        router.query.property && (<Modal isOpen toggle={closeModal}>
           <ModalHeader toggle={closeModal}>
             Modal window property {router.query.property}
           </ModalHeader>

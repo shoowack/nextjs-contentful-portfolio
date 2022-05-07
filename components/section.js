@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import NearLockApp from "./nearlock-app/NearLockApp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import classNames from "classnames";
+import classnames from "classnames";
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -48,22 +48,22 @@ export default function Section({
     dots: true,
     centerMode: true,
     initialSlide: 0,
-    prevArrow: <div />,
+    // prevArrow: <div />,
     // nextArrow: <SampleNextArrow />,
-    customPaging: function (i) {
+    customPaging: (i) => {
       return (
-        <span>
+        <span key={`gallery-dot-${i}`}>
           <div
             className="owl-dot-el-1"
-            style={{ backgroundColor: backgroundColor }}
+            style={{ backgroundColor }}
           />
           <div
             className="owl-dot-el-2"
-            style={{ backgroundColor: backgroundColor }}
+            style={{ backgroundColor }}
           />
           <div
             className="owl-dot-el-3"
-            style={{ backgroundColor: backgroundColor }}
+            style={{ backgroundColor }}
           />
         </span>
       );
@@ -114,8 +114,9 @@ export default function Section({
           backgroundColor,
           overflow: "hidden",
         }}
-        className={classNames(`section px-md-0 py-5 ${getContrast(backgroundColor)}`, {
-          ["pb-0"]: (title === "Near Lock" && slug === 'designs'),
+        className={classnames(`section px-md-0 ${getContrast(backgroundColor)}`, {
+          ["py-5"]: !(title === "Near Lock" && slug === 'designs'),
+          ["py-5 pb-0"]: (title === "Near Lock" && slug === 'designs'),
         })}
       >
         <Sticky topOffset={50}>
@@ -135,7 +136,7 @@ export default function Section({
                 <Col md={12}>
                   <Container
                     fluid="lg"
-                    className={`py-2 text-center ${isSticky ? "sticky" : ""}`}
+                    className={classnames({ ["sticky"]: isSticky }, "py-2 text-center")}
                   >
                     <h2>{title}</h2>
                   </Container>
@@ -154,52 +155,49 @@ export default function Section({
           </Col>
 
           <Col md={12}>
-            {gallery?.map(({ fields: { title, type, images } }, i) => {
-              return (
-                <>
-                  <Container key={`slider-container-${i}`}><h3 className="text-center">{type}</h3></Container>
-                  <Slider
-                    {...sliderOptions}
-                    infinite={images.length > 6 ? true : false}
-                    className={type.replace(/ /g, "-").toLowerCase()}
-                  >
-                    {images?.map(({ fields: { file: { url, fileName } } }, i) => {
-                      return (
-                        <Link
-                          href={`/designs?property=${fileName}`}
-                          scroll={false}
-                          key={`slide-item-link-${i}`}
-                        >
-                          <img
-                            src={url}
-                            alt=""
-                          />
-                        </Link>
-                      );
-                    })}
-                  </Slider>
-                  {i !== gallery.length - 1 && <Container className="my-5"><hr className="m-0" /></Container>}
-                </>
-              );
-            })}
+            {gallery?.map(({ fields: { type, images } }, i) => (
+              <div key={`gallery-container-${i}`}>
+                <Container><h3 className="text-center">{type}</h3></Container>
+                <Slider
+                  {...sliderOptions}
+                  infinite={images.length > 6}
+                  className={type.replace(/ /g, "-").toLowerCase()}
+                >
+                  {images?.map(({ fields: { file: { url, fileName } } }, i) => (
+                    <Link
+                      href={`/designs?property=${fileName}`}
+                      scroll={false}
+                      key={`slide-item-link-${i}`}
+                    >
+                      <img
+                        src={url}
+                        alt=""
+                      />
+                    </Link>
+                  ))}
+                </Slider>
+                {i !== gallery.length - 1 && <Container className="my-5" key={`section-divider${i}`}><hr className="m-0" /></Container>}
+              </div>
+            ))}
           </Col>
         </Row>
         {/* render MacOS Nearlock app */}
         {(title === "Near Lock" && slug === 'designs') && (
-          <Row className={`${isDarkMode ? "dark-nearlock-app-wrapper" : "nearlock-app-wrapper"} py-5`}>
-            <button onClick={toggleDarkMode} className={classNames("nearlock-app-wrapper-theme-toggler", {
+          <Row className={classnames({
+            ["dark"]: isDarkMode,
+          }, "nearlock-app-wrapper py-5")}>
+            <button onClick={toggleDarkMode} className={classnames("nearlock-app-wrapper-theme-toggler", {
               "dark": isDarkMode
             })}>
               <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="1x" />
             </button>
-            <Col md={12} className={"mt-2"}>
+            <Col md={12} className="mt-2">
               <Container fluid="lg" className="pb-5 text-center section lighter">
                 <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
                 <small style={{ color: 'hsla(0, 0%, 100%, .75)' }}>some of the features are not available yet</small>
               </Container>
             </Col>
-
-            <Col md={12} className={"mb-5"}>
+            <Col md={12} className="mb-5">
               <NearLockApp isDarkMode={isDarkMode} />
             </Col>
           </Row>
