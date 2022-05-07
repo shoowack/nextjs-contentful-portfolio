@@ -10,23 +10,6 @@ export default function Index({ preview, allPosts }) {
         <Head>
           <title>Ivan Suvak Martinovic Personal Portfolio</title>
         </Head>
-        <style jsx>{`
-        .site-main {
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          height: 100vh;
-          width: 100vw;
-          padding: 0;
-          flex-direction: column;
-        }        
-          @media (min-width: 768px) {
-            .site-main {
-              flex-direction: row;
-            }
-          }
-        }
-      `}</style>
         <div className="site-main">
           {allPosts.map(post => <FrontPage {...post} key={post.sys.id} />)}
         </div>

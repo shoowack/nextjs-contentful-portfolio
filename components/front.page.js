@@ -1,6 +1,5 @@
 import Link from "next/link";
 import ContentfulImage from './contentful-image'
-import styles from './../styles/front-page.module.scss'
 
 export default function FrontPage({
   sys: { id },
@@ -14,7 +13,40 @@ export default function FrontPage({
   }
 }) {
   return (
-    <>
+    <Link
+      href={link}
+      target={openInNewTab ? "_blank" : ""}
+      key={id}
+    >
+      <a className="section">
+        {title && subscript && (
+          <div className="section-title">
+            {title && <h1>{title}</h1>}
+            {subscript && <h3>{subscript}</h3>}
+          </div>
+        )}
+        {superscript && (
+          <div className="section-description">
+            <p>{superscript}</p>
+          </div>
+        )}
+        {url && <ContentfulImage
+          src={url}
+          layout="fill"
+          // height="100%"
+          // width="30%"
+          // layout="responsive"
+          className="section-bg-img"
+        />}
+      </a>
+    </Link>
+  );
+}
+
+
+
+
+{/* <>
       <Link
         href={link}
         key={id}
@@ -44,6 +76,4 @@ export default function FrontPage({
           />}
         </a>
       </Link>
-    </>
-  );
-}
+    </> */}

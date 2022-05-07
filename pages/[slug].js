@@ -28,7 +28,9 @@ export default function Designs({ slug, preview, entries, headerItems }) {
   const img = findAllByKey(entries[0].sections, 'file').find((file) => file.fileName == router.query.property)
 
   return (
-    <>
+    <div className="wrapper" style={{
+      marginBottom: "360px"
+    }}>
       <Navigation headerItems={headerItems} />
 
       {
@@ -50,7 +52,7 @@ export default function Designs({ slug, preview, entries, headerItems }) {
       }
       {entries[0].sections.map(entry => <Section {...entry.fields} key={entry.sys.id} />)}
       <Footer />
-    </>
+    </div>
   )
 }
 

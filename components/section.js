@@ -108,13 +108,10 @@ export default function Section({
 
   return (
     <StickyContainer>
-      <Container
+      <section
         fluid
-        style={{
-          backgroundColor,
-          overflow: "hidden",
-        }}
-        className={classnames(`section px-md-0 ${getContrast(backgroundColor)}`, {
+        style={{ backgroundColor }}
+        className={classnames(`px-md-0 ${getContrast(backgroundColor)}`, {
           ["py-5"]: !(title === "Near Lock" && slug === 'designs'),
           ["pt-5 pb-0"]: (title === "Near Lock" && slug === 'designs'),
         })}
@@ -202,7 +199,7 @@ export default function Section({
             </Col>
           </Row>
         )}
-      </Container >
+      </section >
     </StickyContainer >
   );
 }
