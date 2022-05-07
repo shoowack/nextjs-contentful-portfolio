@@ -1,6 +1,5 @@
 import React, {useState, useRef} from "react";
 import classnames from "classnames";
-import styles from "./../../styles/nearlock-app.module.scss";
 import Modal from "./modal";
 import Content from "./Content";
 import Sidebar from "./Sidebar";
