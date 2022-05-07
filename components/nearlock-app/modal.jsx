@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {Col} from "reactstrap";
 import classnames from "classnames";
-import styles from "./../../styles/nearlock-app.module.scss";
 import AppButton from "./AppButton";
 import FirstStep from "./FirstStep";
 import SecondStep from "./SecondStep";
@@ -35,7 +34,7 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetu
       case 2:
         return <SecondStep goBack={goBack} isDarkMode={isDarkMode}/>;
       case 3:
-        return <ThirdStep goBack={goBack} isDarkMode={isDarkMode}/>;
+        return <ThirdStep goBack={goBack}/>;
       default:
         return <FirstStep/>;
     }
@@ -43,16 +42,12 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetu
 
   return (<div className={classnames({
       "d-none": !isModalOpen
-    }, styles["nearlock-app-modal__background"])}>
-    <div className={classnames({
-        [styles["dark-nearlock-app-modal"]]: isDarkMode
-      }, styles["nearlock-app-modal"])}>
+    }, "modal__background")}>
+    <div className="modal">
       {renderStep(currentStep)}
-      <div className={classnames({
-          [styles["dark-nearlock-app-modal__footer"]]: isDarkMode
-        }, `${styles["nearlock-app-modal__footer"]} d-flex justify-content-between align-items-center`)}>
+      <div className="modal__footer d-flex justify-content-between align-items-center">
         <Col>
-          <AppButton onClick={setupLater} link={true} isDarkMode={isDarkMode}>
+          <AppButton onClick={setupLater} link={true}>
             Setup later
           </AppButton>
         </Col>
@@ -61,16 +56,14 @@ const Modal = ({isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetu
             currentStep !== 1 && (<div className="d-flex flex-row align-items-center">
               {
                 [...Array(2)].map((_, i) => (<div key={`dot-${i}`} className={classnames({
-                    [styles["nearlock-app-modal__footer_dot_active"]]: currentStep === i + 2,
-                    [styles["dark-nearlock-app-modal__footer_dot"]]: isDarkMode,
-                    [styles["dark-nearlock-app-modal__footer_dot_active"]]: isDarkMode && currentStep === i + 2
-                  }, `${styles["nearlock-app-modal__footer_dot"]} mx-2`)}></div>))
+                    ["active"]: currentStep === i + 2
+                  }, "modal__footer_dot mx-2")}></div>))
               }
             </div>)
           }
         </Col>
         <Col className="d-flex justify-content-end">
-          <AppButton isDarkMode={isDarkMode} onClick={(
+          <AppButton onClick={(
               ) => currentStep === 1
               ? setStep(2)
               : currentStep === 2

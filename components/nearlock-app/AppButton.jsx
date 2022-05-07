@@ -1,15 +1,12 @@
 import classnames from "classnames";
-import styles from "./../../styles/nearlock-app.module.scss";
 import PropTypes from "prop-types";
 
-const AppButton = ({children, onClick, isDarkMode, className, link}) => (<button className={classnames(
+const AppButton = ({children, onClick, className, link}) => (<button className={classnames(
     {
-    [styles["dark-nearlock-app__btn"]]: isDarkMode,
-    [styles["nearlock-app__btn-link"]]: link,
-    [styles["dark-nearlock-app__btn-link"]]: link && isDarkMode
+    ["button-link"]: link
   }, `${className
     ? className
-    : ""} ${styles["nearlock-app__btn"]}`)} onClick={onClick}>
+    : ""} button`)} onClick={onClick}>
   {children}
 </button>);
 

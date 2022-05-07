@@ -1,5 +1,4 @@
 import {TabContent, TabPane, Row, Col} from "reactstrap";
-import styles from "./../../styles/nearlock-app.module.scss";
 import AppButton from "./AppButton";
 import classnames from "classnames";
 import Lottie from "lottie-react";
@@ -119,14 +118,11 @@ const Content = ({
   setIsModalOpen,
   isSetupDone,
   setIsSetupDone
-}) => (<div className={classnames({
-    [styles["dark-nearlock-app-content"]]: isDarkMode
-  }, `${styles["nearlock-app-content"]} position-relative`)}>
+}) => (<div className="content position-relative">
   <div className={classnames({
-      [styles["dark-nearlock-app-content-header"]]: isDarkMode,
-      [styles["nearlock-app-content-header-open"]]: !isSidebarOpen
-    }, `position-absolute w-100 ${styles["nearlock-app-content-header"]}`)}>
-    <div className={styles["nearlock-app-content-header__left-items"]} onClick={toggleSidebar}>
+      ["open"]: !isSidebarOpen
+    }, "position-absolute w-100 content-header")}>
+    <div className="content-header__left-items" onClick={toggleSidebar}>
       <svg width="22px" height="17px" viewBox="0 0 41 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <g transform="translate(-672.000000, -35.000000)" fill={isDarkMode
             ? "#BAB5BA"
@@ -141,22 +137,18 @@ const Content = ({
         </g>
       </svg>
     </div>
-    <div className={styles["nearlock-app-content-header__title"]}>
-      {activeTab}
-    </div>
-    <div className={styles["nearlock-app-content-header__right-items"]}>
+    <div className="content-header__title">{activeTab}</div>
+    <div className="content-header__right-items">
       <input className={classnames({
-          [styles["dark-nearlock-app-content-header__search"]]: isDarkMode,
-          [styles["nearlock-app-content-header__search-open"]]: isSearchOpen
-        }, styles["nearlock-app-content-header__search"])} placeholder="Search" ref={searchRef}/>
+          ["open"]: isSearchOpen
+        }, "content-header__search")} placeholder="Search" ref={searchRef}/>
       <img src="/nearlock-app/search-close.svg" height="13px" className={isSearchOpen
-          ? styles["nearlock-app-content-header__search-close-icon-open"]
-          : "d-none"
-} onClick={toggleSearch}/>
+          ? "open"
+          : "d-none"} onClick={toggleSearch}/>
 
       <div className={classnames({
-          [styles["nearlock-app-content-header__right-items_search_icon-open"]]: isSearchOpen
-        }, `${styles["nearlock-app-content-header__right-items_search_icon"]}`)} onClick={toggleSearch}>
+          ["open"]: isSearchOpen
+        }, "content-header__right-items_search_icon")} onClick={toggleSearch}>
         <svg width="17px" height="17px" viewBox="0 0 31 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <g transform="translate(-2191.000000, -35.000000)" fill={isDarkMode
               ? "#BAB5BA"
@@ -175,9 +167,9 @@ const Content = ({
       </div>
     </div>
   </div>
-  <TabContent activeTab={activeTab} className={styles["tab-content"]}>
+  <TabContent activeTab={activeTab} className="tab-content">
     <TabPane tabId="Welcome">
-      <Col sm="12" className={"text-center mt-5"}>
+      <Col sm="12" className="text-center mt-5">
         <Col md={{
             size: 10,
             offset: 1
@@ -189,7 +181,7 @@ const Content = ({
             }}>
             Near Lock lets you use your iPhone to lock and unlock your Mac automatically. When you walk away from your Mac, it will be automatically locked. Once you approach your workplace, Near Lock will unlock your Mac.
           </small>
-          <AppButton onClick={() => setIsModalOpen(true)} isDarkMode={isDarkMode} className={"mt-4"}>
+          <AppButton onClick={() => setIsModalOpen(true)} className="mt-4">
             Setup Near Lock
           </AppButton>
         </Col>
@@ -198,7 +190,7 @@ const Content = ({
     <TabPane tabId="Clipboard">
       {
         isSetupDone
-          ? (<Col sm="12" className={"mt-0"}>
+          ? (<Col sm="12" className="mt-0">
             <img src="/nearlock-app/clipboard.png" className="mx-auto d-flex" width={"820px"}/>
             <div className="d-flex justify-content-between">
               <div className="d-flex">
@@ -256,14 +248,12 @@ const Content = ({
             <div className="p-5 d-flex justify-content-center align-items-center" style={{
                 height: "200px"
               }}>
-              <AppButton isDarkMode={isDarkMode}>Send Clipboard</AppButton>
+              <AppButton>Send Clipboard</AppButton>
               <small className="mx-4">or press</small>
-              <div className={classnames({
-                  [styles["dark-nearlock-app-keystrokes"]]: isDarkMode
-                }, styles["nearlock-app-keystrokes"])}>
-                <span className={"mr-2"}>CTRL</span>+
-                <span className={"mx-2"}>CMD</span>+
-                <span className={"ml-2"}>V</span>
+              <div className="keystrokes">
+                <span className="mr-2">CTRL</span>+
+                <span className="mx-2">CMD</span>+
+                <span className="ml-2">V</span>
               </div>
             </div>
           </Col>)
@@ -290,7 +280,7 @@ const Content = ({
               <small className="d-flex w-75 m-auto">
                 Please connect to your iPhone in order to try this feature which sends the copied text from your Mac to your iPhone and vice versa.
               </small>
-              <AppButton onClick={() => setActiveTab("Devices")} className={"mt-4"} isDarkMode={isDarkMode}>
+              <AppButton onClick={() => setActiveTab("Devices")} className="mt-4">
                 Devices
               </AppButton>
             </Col>
@@ -325,12 +315,8 @@ const Content = ({
                   </svg>
                   <small className="mt-3">Filip’s MacBook Pro</small>
                 </div>
-                <div className={`${
-                  styles["nearlock-app-devices-connected-line"]} d-flex flex-grow-1 flex-column justify-content-center align-items-center mb-5`}>
-                  <div className={`${
-                    styles["nearlock-app-devices-connected-line__popup"]}`}>
-                    3 meters
-                  </div>
+                <div className="devices-connected-line d-flex flex-grow-1 flex-column justify-content-center align-items-center mb-5">
+                  <div className="devices-connected-line__popup">3 meters</div>
                 </div>
                 <div className="d-flex flex-column align-items-center">
                   <svg width="102px" height="100px" viewBox="0 0 102 188" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -349,15 +335,15 @@ const Content = ({
                 Filip’s iPhone X and this Mac are connected
               </h5>
               <div className="d-flex justify-content-center pb-5">
-                <AppButton onClick={() => setIsSetupDone(false)} isDarkMode={isDarkMode} className={"mt-4"}>
+                <AppButton onClick={() => setIsSetupDone(false)} className="mt-4">
                   Unlink
                 </AppButton>
               </div>
             </div>
           </div>)
-          : (<div className={styles["setup-bt-wrapper"]}>
+          : (<div className="setup-bt-wrapper">
             <Lottie animationData={btConnect} loop={true} autoplay={true}/>
-            <Col className={styles["setup-bt-text"]} md={{
+            <Col className="setup-bt-text" md={{
                 size: 10,
                 offset: 1
               }}>
@@ -367,7 +353,7 @@ const Content = ({
               <small>
                 To use Near Lock make sure your Mac has Bluetooth turned on and your iOS app is open on your iPhone
               </small>
-              <AppButton onClick={() => setIsModalOpen(true)} className={"mt-4"} isDarkMode={isDarkMode}>
+              <AppButton onClick={() => setIsModalOpen(true)} className="mt-4">
                 Turn Bluetooth On
               </AppButton>
             </Col>

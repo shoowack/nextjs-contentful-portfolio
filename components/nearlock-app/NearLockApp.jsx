@@ -64,10 +64,10 @@ function NearLockApp({isDarkMode}) {
   ];
 
   return (<div className={classnames({
-      [styles["dark-nearlock-app"]]: isDarkMode
-    }, styles["nearlock-app"])}>
+      ["dark"]: isDarkMode
+    }, "nearlock-app")}>
     <Modal isDarkMode={isDarkMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} setActiveTab={setActiveTab} setIsSetupDone={setIsSetupDone}/>
-    <Sidebar isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} menuItems={menuItems} activeTab={activeTab} toggleTab={toggleTab} isSetupDone={isSetupDone}/>
+    <Sidebar isSidebarOpen={isSidebarOpen} menuItems={menuItems} activeTab={activeTab} toggleTab={toggleTab} isSetupDone={isSetupDone}/>
     <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab} setIsModalOpen={setIsModalOpen} isSetupDone={isSetupDone} setIsSetupDone={setIsSetupDone}/>
   </div>);
 }

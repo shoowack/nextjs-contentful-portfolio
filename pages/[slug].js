@@ -49,7 +49,6 @@ export default function Designs({ slug, preview, entries, headerItems }) {
           </ModalFooter>
         </Modal>)
       }
-
       {entries[0].sections.map(entry => <Section {...entry.fields} key={entry.sys.id} />)}
       <Footer />
     </>
