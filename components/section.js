@@ -11,27 +11,22 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import NearLockApp from "./nearlock-app/NearLockApp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import classnames from "classnames";
 
-// function SampleNextArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{
-//         ...style,
-//         display: "block",
-//         background: "red",
-//         bottom: "10px",
-//         top: "unset"
-//         postMessage
-//       }}
-//       onClick={onClick}
-//     />
-//   );
-// }
+const PrevArrow = ({ className, style, onClick }) => (
+  <div
+    className="slick-prev"
+    onClick={onClick}
+  ><FontAwesomeIcon icon={faAngleLeft} size="1x" /></div>
+);
 
+const NextArrow = ({ className, style, onClick }) => (
+  <div
+    className="slick-next"
+    onClick={onClick}
+  ><FontAwesomeIcon icon={faAngleRight} size="1x" /></div>
+);
 export default function Section({
   backgroundColor = "#ffffff",
   title,
@@ -48,8 +43,8 @@ export default function Section({
     dots: true,
     centerMode: true,
     initialSlide: 0,
-    // prevArrow: <div />,
-    // nextArrow: <SampleNextArrow />,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
     customPaging: (i) => {
       return (
         <span key={`gallery-dot-${i}`}>

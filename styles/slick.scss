@@ -13,6 +13,7 @@
 }
 
 .slick-slider {
+  position: relative;
   box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -38,6 +39,7 @@
   overflow: hidden;
   margin: 0;
   padding: 0;
+  margin-bottom: 100px;
 
   &:focus {
     outline: 0;

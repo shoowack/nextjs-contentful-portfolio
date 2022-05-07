@@ -32,7 +32,6 @@ export default function Designs({ slug, preview, entries, headerItems }) {
       marginBottom: "360px"
     }}>
       <Navigation headerItems={headerItems} />
-
       {
         router.query.property && (<Modal isOpen toggle={closeModal}>
           <ModalHeader toggle={closeModal}>

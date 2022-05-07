@@ -3,6 +3,18 @@
   position: absolute;
   display: block;
   padding: 0;
+  bottom: 90px;
+  left: 50%;
+}
+
+.slick-next {
+  transition: (-50%);
+  margin-left: 10px;
+}
+
+.slick-prev {
+  transition: (-50%);
+  margin-left: -20px;
 }
 
 .slick-dots li span:before,
@@ -14,83 +26,115 @@
 }
 
 .slick-loading .slick-list {
-  // background: url(./../img/ajax-loader.gif) center center no-repeat #fff;
+  // background: url(./ajax-loader.gif) center center no-repeat #fff;
 }
 
 .slick-next,
 .slick-prev {
-  font-size: 0;
-  line-height: 0;
-  top: 50%;
-  width: 20px;
-  height: 20px;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+  position: absolute;
+  color: #fff;
+  font-size: 14px;
+  // margin: 5px;
+  padding: 4px 7px;
+  background: #d6d6d6;
+  display: inline-block;
   cursor: pointer;
-  color: transparent;
-  border: none;
-  outline: 0;
-  background: 0 0;
-
-  &:focus,
-  &:hover {
-    color: transparent;
-    outline: 0;
-    background: 0 0;
-
-    &:before {
-      opacity: 1;
-    }
-  }
-
+  border-radius: 3px;
+  
   &.slick-disabled:before {
     opacity: 0.25;
   }
-
-  &:before {
-    font-size: 20px;
-    line-height: 1;
-    opacity: 0.75;
-    color: #fff;
-  }
 }
 
-.slick-prev {
-  left: -25px;
-
-  &:before {
-    content: "←";
-  }  
-}
-
-.slick-next {
-  right: -25px;
-
-  &:before {
-    content: "→";
-  }
-}
-
-[dir="rtl"] {
+.lighter {
+  .slick-next,
   .slick-prev {
-    right: -25px;
-    left: auto;
-
-    &:before {
-      content: "→";
-    }
-  }
-
-  .slick-next {
-    right: auto;
-    left: -25px;
-  
-    &:before {
-      content: "←";
-    }
+    color: #000;
+    background: #fff;
   }
 }
+
+.darker {
+  .slick-next,
+  .slick-prev {
+    background: #333;
+  }
+}
+
+// .slick-next,
+// .slick-prev {
+//   font-size: 0;
+//   line-height: 0;
+//   top: 50%;
+//   width: 20px;
+//   height: 20px;
+//   -webkit-transform: translate(0, -50%);
+//   -ms-transform: translate(0, -50%);
+//   transform: translate(0, -50%);
+//   cursor: pointer;
+//   color: transparent;
+//   border: none;
+//   outline: 0;
+//   background: 0 0;
+
+//   &:focus,
+//   &:hover {
+//     color: transparent;
+//     outline: 0;
+//     background: 0 0;
+
+//     &:before {
+//       opacity: 1;
+//     }
+//   }
+
+//   &.slick-disabled:before {
+//     opacity: 0.25;
+//   }
+
+//   &:before {
+//     font-size: 20px;
+//     line-height: 1;
+//     opacity: 0.75;
+//     color: #fff;
+//   }
+// }
+
+// .slick-prev {
+//   left: -25px;
+
+//   &:before {
+//     content: "←";
+//   }  
+// }
+
+// .slick-next {
+//   right: -25px;
+
+//   &:before {
+//     content: "→";
+//   }
+// }
+
+// [dir="rtl"] {
+//   .slick-prev {
+//     right: -25px;
+//     left: auto;
+
+//     &:before {
+//       content: "→";
+//     }
+//   }
+
+//   .slick-next {
+//     right: auto;
+//     left: -25px;
+  
+//     &:before {
+//       content: "←";
+//     }
+//   }
+// }
 
 .slick-dotted.slick-slider {
   margin-bottom: 30px;
