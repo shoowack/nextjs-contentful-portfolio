@@ -142,10 +142,9 @@ const Content = ({
       <input className={classnames({
           ["open"]: isSearchOpen
         }, "content-header__search")} placeholder="Search" ref={searchRef}/>
-      <img src="/nearlock-app/search-close.svg" height="13px" className={isSearchOpen
-          ? "open"
-          : "d-none"} onClick={toggleSearch}/>
-
+      <img src="/nearlock-app/search-close.svg" height="13px" className={classnames({
+          ["d-none"]: !isSearchOpen
+        }, "content-header__search-close-icon")} onClick={toggleSearch}/>
       <div className={classnames({
           ["open"]: isSearchOpen
         }, "content-header__right-items_search_icon")} onClick={toggleSearch}>
