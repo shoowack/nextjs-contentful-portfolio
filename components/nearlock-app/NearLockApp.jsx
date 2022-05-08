@@ -62,12 +62,28 @@ function NearLockApp({isDarkMode}) {
     }
   ];
 
+  const props = {
+    isDarkMode,
+    isSidebarOpen,
+    setIsSidebarOpen,
+    isSearchOpen,
+    setIsSearchOpen,
+    isSetupDone,
+    setIsSetupDone,
+    toggleSidebar,
+    toggleSearch,
+    activeTab,
+    setActiveTab,
+    isModalOpen,
+    setIsModalOpen
+  };
+
   return (<div className={classnames({
       ["dark"]: isDarkMode
     }, "nearlock-app")}>
-    <Modal isDarkMode={isDarkMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} setActiveTab={setActiveTab} setIsSetupDone={setIsSetupDone}/>
-    <Sidebar isSidebarOpen={isSidebarOpen} menuItems={menuItems} activeTab={activeTab} toggleTab={toggleTab} isSetupDone={isSetupDone}/>
-    <Content isDarkMode={isDarkMode} isSidebarOpen={isSidebarOpen} activeTab={activeTab} toggleSidebar={toggleSidebar} toggleSearch={toggleSearch} isSearchOpen={isSearchOpen} searchRef={searchRef} setActiveTab={setActiveTab} setIsModalOpen={setIsModalOpen} isSetupDone={isSetupDone} setIsSetupDone={setIsSetupDone}/>
+    <Modal {...props}/>
+    <Sidebar {...props} toggleTab={toggleTab} menuItems={menuItems}/>
+    <Content {...props} searchRef={searchRef}/>
   </div>);
 }
 
