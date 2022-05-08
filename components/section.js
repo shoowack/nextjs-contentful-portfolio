@@ -5,7 +5,7 @@ import { Container, Row, Col } from "reactstrap";
 import RichText from "@madebyconnor/rich-text-to-jsx";
 import { getContrast } from "./getContrast";
 import hexToRgbA from "./hexToRgba";
-import { StickyContainer, Sticky } from "react-sticky";
+import { StickyContainer, Sticky } from '@dior/react-sticky'
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import NearLockApp from "./nearlock-app/NearLockApp";
@@ -37,9 +37,7 @@ export default function Section({
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const sliderOptions = {
-    slidesToShow: 6,
     dots: true,
-    centerMode: false,
     initialSlide: 0,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
@@ -140,54 +138,72 @@ export default function Section({
           </Col>
 
           <Col md={12}>
-            {gallery?.map(({ fields: { type, images } }, i) => (
-              <div key={`gallery-container-${i}`}>
-                {type !== "Website" && <Container><h3 className="text-center">{type}</h3></Container>}
-                <Slider
-                  {...sliderOptions}
-                  infinite={images.length > 6}
-                  className={type.replace(/ /g, "-").toLowerCase()}
-                >
-                  {images?.map(({ fields: { file: { url, fileName } } }, i) => (
-                    <Link
-                      href={`/designs?property=${fileName}`}
-                      scroll={false}
-                      key={`slide-item-link-${i}`}
-                    >
-                      <img
-                        src={url}
-                        alt=""
-                      />
-                    </Link>
-                  ))}
-                </Slider>
-                {i !== gallery.length - 1 && <Container className="my-5" key={`section-divider${i}`}><hr className="m-0" /></Container>}
-              </div>
-            ))}
+            {gallery?.map(({ fields: { type, images } }, i) => {
+              const website = type === "Website";
+              const desktopApp = type === "Desktop App";
+
+              return (
+                <div key={`gallery-container-${i}`}>
+                  {website && <Container><h3 className="text-center">{type}</h3></Container>}
+                  <Slider
+                    {...sliderOptions}
+                    // infinite={images.length > 6}
+                    infinite={false}
+                    centerMode={((website || desktopApp) && images.length !== 1) ? true : false}
+                    centerPadding={website || desktopApp ? "20%" : "0px"}
+                    slidesToShow={website || desktopApp ? 1 : type === "iPhone" ? 5 : 3}
+                    className={type.replace(/ /g, "-").toLowerCase()}
+                  >
+                    {images?.map(({ fields: { file: { url, fileName } } }, i) => {
+                      // console.log('url, i', url, i);
+                      return (
+                        <Link
+                          href={`/designs?property=${fileName}`}
+                          scroll={false}
+                          key={`slide-item-link-${i}`}
+                        >
+                          <img
+                            src={url}
+                            alt=""
+                            className={classnames({
+                              ["w-auto"]: images.length === 1,
+                              ["mx-auto"]: images.length === 1,
+                            })}
+                          />
+                        </Link>
+                      )
+                    })}
+                  </Slider>
+                  {i !== gallery.length - 1 && <Container className="my-5"><hr className="m-0" /></Container>}
+                </div>
+              )
+            })}
           </Col>
         </Row>
       </section >
       {/* render MacOS Nearlock app */}
-      {(title === "Near Lock App" && slug === 'designs') && (
-        <Row className={classnames({
-          ["dark"]: isDarkMode,
-        }, "nearlock-app-wrapper py-5 overflow-hidden")}>
-          <button onClick={toggleDarkMode} className={classnames("nearlock-app-wrapper-theme-toggler", {
-            "dark": isDarkMode
-          })}>
-            <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="1x" />
-          </button>
-          <Col md={12} className="mt-2">
-            <Container fluid="lg" className="pb-5 text-center lighter">
-              <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
-              <small style={{ color: 'hsla(0, 0%, 100%, .75)' }}>some of the features are not available yet</small>
-            </Container>
-          </Col>
-          <Col md={12} className="mb-5">
-            <NearLockApp isDarkMode={isDarkMode} />
-          </Col>
-        </Row>
-      )}
+      {
+        (title === "Near Lock App" && slug === 'designs') && (
+          <Row className={classnames({
+            ["dark"]: isDarkMode,
+          }, "nearlock-app-wrapper py-5 overflow-hidden")}>
+            <button onClick={toggleDarkMode} className={classnames("nearlock-app-wrapper-theme-toggler", {
+              "dark": isDarkMode
+            })}>
+              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="1x" />
+            </button>
+            <Col md={12} className="mt-2">
+              <Container fluid="lg" className="pb-5 text-center lighter">
+                <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
+                <small style={{ color: 'hsla(0, 0%, 100%, .75)' }}>some of the features are not available yet</small>
+              </Container>
+            </Col>
+            <Col md={12} className="mb-5">
+              <NearLockApp isDarkMode={isDarkMode} />
+            </Col>
+          </Row>
+        )
+      }
     </StickyContainer >
   );
 }
