@@ -50,7 +50,7 @@ HeaderInfoLink.propTypes = {
   link: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
   order: PropTypes.number,
-  // icon: PropTypes.array.isRequired,
+  icon: PropTypes.string.isRequired,
   newTab: PropTypes.bool,
   size: PropTypes.string,
   tooltipPlacement: PropTypes.string,

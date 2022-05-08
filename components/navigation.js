@@ -23,7 +23,7 @@ export default function Navigation({ headerItems }) {
           <Col sm={12}>
             <p className="mt-4">
               Front-End Web Designer, iOS and Android Mobile App Designer,
-              UX/UI, WordPress, Photographer Currently in Montréal, Canada,
+              UX/UI, WordPress, Photographer Currently in Ottawa, Canada,
               looking for a new and challenging position as a Front-end
               developer or UI/UX designer where I can create digital magic and
               elevate user experience to the next level.

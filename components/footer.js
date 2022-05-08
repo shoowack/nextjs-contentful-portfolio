@@ -85,7 +85,6 @@ export default function Footer() {
             <Form
               onSubmit={handleSubmit}
               className="pt-4 pb-4"
-            // data-netlify-recaptcha="true"
             >
               <Row className="mt-2">
                 <Col sm={6} className=" text-right">

@@ -12,6 +12,7 @@ import NearLockApp from "./nearlock-app/NearLockApp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import classnames from "classnames";
+import ContentfulImage from './contentful-image'
 
 const PrevArrow = ({ className, style, onClick }) => (
   <div
@@ -144,7 +145,7 @@ export default function Section({
 
               return (
                 <div key={`gallery-container-${i}`}>
-                  {website && <Container><h3 className="text-center">{type}</h3></Container>}
+                  {!website && <Container><h3 className="text-center">{type}</h3></Container>}
                   <Slider
                     {...sliderOptions}
                     // infinite={images.length > 6}
@@ -154,17 +155,22 @@ export default function Section({
                     slidesToShow={website || desktopApp ? 1 : type === "iPhone" ? 5 : 3}
                     className={type.replace(/ /g, "-").toLowerCase()}
                   >
-                    {images?.map(({ fields: { file: { url, fileName } } }, i) => {
-                      // console.log('url, i', url, i);
+                    {images?.map(({ fields: { file: { url, fileName, details: {
+                      image: { width, height }
+                    } } } }, i) => {
                       return (
                         <Link
                           href={`/designs?property=${fileName}`}
                           scroll={false}
                           key={`slide-item-link-${i}`}
                         >
-                          <img
+                          <ContentfulImage
+                            quality={100}
                             src={url}
                             alt=""
+                            height={height}
+                            width={width}
+                            layout="responsive"
                             className={classnames({
                               ["w-auto"]: images.length === 1,
                               ["mx-auto"]: images.length === 1,
