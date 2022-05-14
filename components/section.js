@@ -84,8 +84,6 @@ export default function Section({
                   <Swiper
                     spaceBetween={50}
                     slidesPerView={website || desktopApp ? 1 : type === "iPhone" ? 4 : 3}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
                     centeredSlides={true}
                     pagination={{
                       dynamicBullets: true,
@@ -105,7 +103,9 @@ export default function Section({
                     } } } }, i) => {
                       return (
 
-                        <SwiperSlide>
+                        <SwiperSlide
+                          key={`gallery-slide-${i}`}
+                        >
                           {/* <LightGallery mode="lg-fade"> */}
                           {/* <a
                           data-lg-size={`${width}-${height}`}
