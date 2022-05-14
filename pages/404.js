@@ -1,40 +1,19 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export default function Custom404({fullUrl}) {
+export default function Custom404() {
     const router = useRouter();
 
-    console.log(fullUrl);
-
     return (
-        <>
-            <p className="mb-2">Something went wrong, we have nothing on:</p>
-            {/* <mark className="font-weight-bold d-inline">{window.location.href}</mark> */}
-            <p className="mt-5">
+        <div className="d-flex flex-column w-100 vh-100 justify-content-center align-items-center">
+            <p>Something went wrong, we have nothing on:</p>
+            <p><code className="font-weight-bold d-inline">{router.asPath}</code></p>
+            <p>
                 You may find what you were looking for on our{' '}
                 <Link href="/">
                     Homepage
                 </Link>
             </p>
-        </>
+        </div>
     )
 }
-
-// function getFullUrl(req, fallback) {
-//     //server side request object(req)
-//     if(req) {
-//       return req.protocol + '://' + req.get('host') + req.originalUrl
-      
-//     } //making sure we are on the client side
-//     else if(!(typeof window === 'undefined')) {
-//       return window.location.href
-      
-//     } else {
-//       return fallback
-//     }
-//   }
-
-//   Custom404.getInitialProps = async ({ req }) => {
-//      let fullUrl = getFullUrl(req, "")//gets the full url or fallback to ""
-//       return { fullUrl: fullUrl }
-//   }

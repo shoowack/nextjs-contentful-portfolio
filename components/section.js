@@ -98,15 +98,14 @@ export default function Section({
                     style={{ padding: website || desktopApp ? '0 20%' : '0 40px' }}
                   >
 
+                    {/* <LightGallery mode="lg-fade"> */}
                     {images?.map(({ fields: { file: { url, fileName, details: {
                       image: { width, height }
                     } } } }, i) => {
                       return (
-
                         <SwiperSlide
                           key={`gallery-slide-${i}`}
                         >
-                          {/* <LightGallery mode="lg-fade"> */}
                           {/* <a
                           data-lg-size={`${width}-${height}`}
                           className="gallery-item"
@@ -126,10 +125,10 @@ export default function Section({
                             })}
                           />
                           {/* </a> */}
-                          {/* </LightGallery> */}
                         </SwiperSlide>
                       )
                     })}
+                    {/* </LightGallery> */}
                   </Swiper>
 
                   {i !== gallery.length - 1 && <Container className="my-5"><hr className="m-0" /></Container>}

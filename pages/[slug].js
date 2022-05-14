@@ -6,26 +6,8 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 import { useRouter } from 'next/router';
 import Footer from '../components/footer';
 
-export default function Designs({ slug, entries, headerItems }) {
+export default function Designs({ entries, headerItems }) {
   const router = useRouter();
-
-  const closeModal = () => {
-    router.push({
-      pathname: `/${slug}`,
-    }, undefined, { scroll: false });
-  };
-
-  function findAllByKey(obj, keyToFind) {
-    return Object.entries(obj)
-      .reduce((acc, [key, value]) => (key === keyToFind)
-        ? acc.concat(value)
-        : (typeof value === 'object')
-          ? acc.concat(findAllByKey(value, keyToFind))
-          : acc
-        , []);
-  }
-
-  const img = findAllByKey(entries[0].sections, 'file').find((file) => file.fileName == router.query.property)
 
   return (
     <div className="wrapper" style={{
@@ -59,7 +41,7 @@ export async function getStaticPaths() {
   return {
     paths: [
       { params: { slug: 'designs' } },
-      { params: { slug: 'websites' } }
+      { params: { slug: 'apps-and-websites' } }
     ],
     fallback: false
   }
