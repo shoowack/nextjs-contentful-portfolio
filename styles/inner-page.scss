@@ -1,6 +1,12 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
 @import "~bootstrap/scss/mixins/_gradients.scss";
-
+// @import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery.css');
+// @import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-zoom.css');
+// @import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-video.css');
+@import 'lightgallery/scss/lightgallery.scss';
+@import 'lightgallery/scss/lg-zoom.scss';
+@import 'swiper/css';
+@import "swiper/css/pagination";
 
 .site-main {
   display: flex;

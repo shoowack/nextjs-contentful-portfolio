@@ -1,32 +1,23 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Slider from "react-slick";
 import { Container, Row, Col } from "reactstrap";
 import RichText from "@madebyconnor/rich-text-to-jsx";
 import { getContrast } from "./getContrast";
 import hexToRgbA from "./hexToRgba";
 import { StickyContainer, Sticky } from '@dior/react-sticky'
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from 'next/router';
 import NearLockApp from "./nearlock-app/NearLockApp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import classnames from "classnames";
 import ContentfulImage from './contentful-image'
+// import LightGallery from 'lightgallery/react';
+// import { LightGallerySettings } from 'lightgallery/lg-settings';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from "swiper";
 
-const PrevArrow = ({ className, style, onClick }) => (
-  <div
-    className="slick-prev"
-    onClick={onClick}
-  ><FontAwesomeIcon icon={faAngleLeft} size="1x" /></div>
-);
 
-const NextArrow = ({ className, style, onClick }) => (
-  <div
-    className="slick-next"
-    onClick={onClick}
-  ><FontAwesomeIcon icon={faAngleRight} size="1x" /></div>
-);
 export default function Section({
   backgroundColor = "#ffffff",
   title,
@@ -36,63 +27,6 @@ export default function Section({
   const router = useRouter();
   const { slug } = router.query;
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const sliderOptions = {
-    dots: true,
-    initialSlide: 0,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    customPaging: (i) => {
-      return (
-        <span key={`gallery-dot-${i}`}>
-          <div
-            className="owl-dot-el-1"
-            style={{ backgroundColor }}
-          />
-          <div
-            className="owl-dot-el-2"
-            style={{ backgroundColor }}
-          />
-          <div
-            className="owl-dot-el-3"
-            style={{ backgroundColor }}
-          />
-        </span>
-      );
-    },
-    responsive: [
-      {
-        breakpoint: 1600,
-        settings: {
-          slidesToShow: 5
-        }
-      },
-      {
-        breakpoint: 1440,
-        settings: {
-          slidesToShow: 4
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 1
-        }
-      }
-    ]
-  };
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -145,27 +79,42 @@ export default function Section({
 
               return (
                 <div key={`gallery-container-${i}`}>
-                  {!website && <Container><h3 className="text-center">{type}</h3></Container>}
-                  <Slider
-                    {...sliderOptions}
-                    // infinite={images.length > 6}
-                    infinite={false}
-                    centerMode={((website || desktopApp) && images.length !== 1) ? true : false}
-                    centerPadding={website || desktopApp ? "20%" : "0px"}
-                    slidesToShow={website || desktopApp ? 1 : type === "iPhone" ? 5 : 3}
+
+                  {!website && <Container><h3 className="text-center mb-4">{type}</h3></Container>}
+                  <Swiper
+                    spaceBetween={50}
+                    slidesPerView={website || desktopApp ? 1 : type === "iPhone" ? 4 : 3}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    centeredSlides={true}
+                    pagination={{
+                      dynamicBullets: true,
+                      clickable: true,
+                      renderBullet: function (index, className) {
+                        return `<span class="${className}"><div class="owl-dot-el-1" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-2" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-3" style="background-color:${backgroundColor}"></div></span>`;
+                      }
+                    }}
                     className={type.replace(/ /g, "-").toLowerCase()}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    style={{ padding: website || desktopApp ? '0 20%' : '0 40px' }}
                   >
+
                     {images?.map(({ fields: { file: { url, fileName, details: {
                       image: { width, height }
                     } } } }, i) => {
                       return (
-                        <Link
-                          href={`/designs?property=${fileName}`}
-                          scroll={false}
-                          key={`slide-item-link-${i}`}
-                        >
+
+                        <SwiperSlide>
+                          {/* <LightGallery mode="lg-fade"> */}
+                          {/* <a
+                          data-lg-size={`${width}-${height}`}
+                          className="gallery-item"
+                          data-src={url}
+                          data-sub-html="<h4>Photo by - <a href='https://ii.photography'>Ivan Suvak </a></h4><p>Location - Croatia</p>"
+                        > */}
                           <ContentfulImage
-                            quality={100}
+                            // quality={75}
                             src={url}
                             alt=""
                             height={height}
@@ -176,10 +125,13 @@ export default function Section({
                               ["mx-auto"]: images.length === 1,
                             })}
                           />
-                        </Link>
+                          {/* </a> */}
+                          {/* </LightGallery> */}
+                        </SwiperSlide>
                       )
                     })}
-                  </Slider>
+                  </Swiper>
+
                   {i !== gallery.length - 1 && <Container className="my-5"><hr className="m-0" /></Container>}
                 </div>
               )
