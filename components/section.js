@@ -16,13 +16,14 @@ import ContentfulImage from './contentful-image'
 // import { LightGallerySettings } from 'lightgallery/lg-settings';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from "swiper";
-
+import { Firebase, FirebaseAlt, Contentful, Bootstrap, GraphQL, jQuery, NextJS, React, Sketch, Symfony, WordPress, PHP, Photoshop, MySQL, Illustrator } from "./../lib/stackLogos";
 
 export default function Section({
   backgroundColor = "#ffffff",
   title,
   description,
-  gallery
+  gallery,
+  stack
 }) {
   const router = useRouter();
   const { slug } = router.query;
@@ -69,6 +70,45 @@ export default function Section({
           <Col md={12}>
             <Container fluid="lg" className="pb-4 text-center">
               {description && <RichText richText={description} />}
+            </Container>
+            <Container fluid="lg" className="pb-4 text-center d-flex direction-column align-items-center justify-content-center" style={{ gap: '15px' }}>
+              {stack && <h5 className="font-weight-normal m-0">Stack:</h5>}
+              {stack?.map((item) => {
+                const iconsHeight = 30
+
+                switch (item) {
+                  case "Bootstrap":
+                    return <img src={Bootstrap.src} height={iconsHeight} />;
+                  case "Contentful":
+                    return <img src={Contentful.src} height={iconsHeight} />;
+                  case "Firebase":
+                    return <img src={FirebaseAlt.src} height={iconsHeight} />;
+                  case "GraphQL":
+                    return <img src={GraphQL.src} height={iconsHeight} />;
+                  case "Illustrator":
+                    return <img src={Illustrator.src} height={iconsHeight} />;
+                  case "jQuery":
+                    return <img src={jQuery.src} height={iconsHeight - 4} />;
+                  case "MySQL":
+                    return <img src={MySQL.src} height={iconsHeight - 10} />;
+                  case "NextJS":
+                    return <img src={NextJS.src} height={iconsHeight} />;
+                  case "Photoshop":
+                    return <img src={Photoshop.src} height={iconsHeight} />;
+                  case "PHP":
+                    return <img src={PHP.src} height={iconsHeight} />;
+                  case "React":
+                    return <img src={React.src} height={iconsHeight} />;
+                  case "Sketch":
+                    return <img src={Sketch.src} height={iconsHeight} />;
+                  case "Symfony":
+                    return <img src={Symfony.src} height={iconsHeight} />;
+                  case "WordPress":
+                    return <img src={WordPress.src} height={iconsHeight} />;
+                  default:
+                  // code block
+                }
+              })}
             </Container>
           </Col>
 
