@@ -1,7 +1,7 @@
-import Layout from '../components/layout'
+import Layout from 'components/layout'
 import { getAllSections } from '../lib/api'
 import Head from 'next/head'
-import FrontPage from '../components/front.page'
+import FrontPage from 'components/front.page'
 
 export default function Index({ preview, allPosts }) {
   return (
