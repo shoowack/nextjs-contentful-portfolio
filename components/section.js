@@ -74,6 +74,8 @@ export default function Section({
 
           <Col md={12}>
             {gallery?.map(({ fields: { type, images } }, i) => {
+              // console.log(type, 'type')
+              const iphone = type === 'iPhone'
               const website = type === "Website";
               const desktopApp = type === "Desktop App";
 
@@ -83,7 +85,7 @@ export default function Section({
                   {!website && <Container><h3 className="text-center mb-4">{type}</h3></Container>}
                   <Swiper
                     spaceBetween={50}
-                    slidesPerView={website || desktopApp ? 1 : type === "iPhone" ? 4 : 3}
+                    slidesPerView={website || desktopApp ? 1 : iphone ? 4 : 3}
                     centeredSlides={true}
                     pagination={{
                       dynamicBullets: true,
@@ -113,16 +115,12 @@ export default function Section({
                           data-sub-html="<h4>Photo by - <a href='https://ii.photography'>Ivan Suvak </a></h4><p>Location - Croatia</p>"
                         > */}
                           <ContentfulImage
-                            // quality={75}
+                            // quality={100}
                             src={url}
                             alt=""
                             height={height}
                             width={width}
                             layout="responsive"
-                            className={classnames({
-                              ["w-auto"]: images.length === 1,
-                              ["mx-auto"]: images.length === 1,
-                            })}
                           />
                           {/* </a> */}
                         </SwiperSlide>

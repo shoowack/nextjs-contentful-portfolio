@@ -9,6 +9,10 @@
     .swiper-button-prev {
         background: #333;
     }
+
+    .isLoading {
+        background: #333;
+    }
 }
 
 .lighter .swiper {
@@ -23,9 +27,11 @@
         color: #000;
         background: #fff;
     }
+
+    .isLoading {
+        background: #fff;
+    }
 }
-
-
 
 @-webkit-keyframes animation {
     0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -95,6 +101,16 @@
         overflow: hidden;
         opacity: .75;
         transition: opacity .2s ease-in-out;
+
+        img {
+            transition: filter .25s, transform .25s;
+        
+            &.isLoading {
+                transform: scale(1.02);
+                filter: blur(10px);
+                transition: filter .25s, transform .25s;
+            }
+        }
     
         &-active {
             opacity: 1;
@@ -186,14 +202,6 @@
             .owl-dot-el-3 {
                 position: absolute;
                 z-index:20;
-            }
-        }
-    }
-
-    &.iphone {
-        .swiper-pagination {
-            .swiper-pagination-bullet {
-                // background-color: red;
             }
         }
     }
