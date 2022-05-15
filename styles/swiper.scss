@@ -302,7 +302,8 @@
         }
     }
 
-    &.website {
+    &.website,
+    &.web-app {
         .swiper-pagination .swiper-pagination-bullet {
             width: 30px;
             height: 20px;

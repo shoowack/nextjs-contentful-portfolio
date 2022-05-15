@@ -16,7 +16,7 @@ import ContentfulImage from './contentful-image'
 // import { LightGallerySettings } from 'lightgallery/lg-settings';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from "swiper";
-import { Firebase, FirebaseAlt, Contentful, Bootstrap, GraphQL, jQuery, NextJS, React, Sketch, Symfony, WordPress, PHP, Photoshop, MySQL, Illustrator } from "./../lib/stackLogos";
+import { Firebase, Contentful, ContentfulAlt, Bootstrap, GraphQL, jQuery, NextJS, NextJSAlt, React, Sketch, Symfony, WordPress, PHP, Photoshop, MySQL, Illustrator } from "./../lib/stackLogos";
 
 export default function Section({
   backgroundColor = "#ffffff",
@@ -71,42 +71,44 @@ export default function Section({
             <Container fluid="lg" className="pb-4 text-center">
               {description && <RichText richText={description} />}
             </Container>
-            <Container fluid="lg" className="pb-4 text-center d-flex direction-column align-items-center justify-content-center" style={{ gap: '15px' }}>
-              {stack && <h5 className="font-weight-normal m-0">Stack:</h5>}
+            <Container>
+              <h3 className="text-center mb-4">Stack</h3>
+            </Container>
+            <Container fluid="lg" className="pb-5 text-center d-flex direction-column align-items-center justify-content-center" style={{ gap: '15px' }}>
               {stack?.map((item) => {
-                const iconsHeight = 30
+                const iconHeight = 30;
+                const lighter = getContrast(backgroundColor) === "lighter";
+                const heightPercentage = (percentage) => (iconHeight * percentage) / 100
 
                 switch (item) {
                   case "Bootstrap":
-                    return <img src={Bootstrap.src} height={iconsHeight} />;
+                    return <img src={Bootstrap.src} height={heightPercentage(100)} />;
                   case "Contentful":
-                    return <img src={Contentful.src} height={iconsHeight} />;
+                    return <img src={lighter ? Contentful.src : ContentfulAlt.src} height={heightPercentage(100)} />;
                   case "Firebase":
-                    return <img src={FirebaseAlt.src} height={iconsHeight} />;
+                    return <img src={Firebase.src} height={heightPercentage(100)} />;
                   case "GraphQL":
-                    return <img src={GraphQL.src} height={iconsHeight} />;
+                    return <img src={GraphQL.src} height={heightPercentage(100)} />;
                   case "Illustrator":
-                    return <img src={Illustrator.src} height={iconsHeight} />;
+                    return <img src={Illustrator.src} height={heightPercentage(100)} />;
                   case "jQuery":
-                    return <img src={jQuery.src} height={iconsHeight - 4} />;
+                    return <img src={jQuery.src} height={heightPercentage(70)} />;
                   case "MySQL":
-                    return <img src={MySQL.src} height={iconsHeight - 10} />;
+                    return <img src={MySQL.src} height={heightPercentage(50)} />;
                   case "NextJS":
-                    return <img src={NextJS.src} height={iconsHeight} />;
+                    return <img src={lighter ? NextJS.src : NextJSAlt.src} height={heightPercentage(100)} />;
                   case "Photoshop":
-                    return <img src={Photoshop.src} height={iconsHeight} />;
+                    return <img src={Photoshop.src} height={heightPercentage(100)} />;
                   case "PHP":
-                    return <img src={PHP.src} height={iconsHeight} />;
+                    return <img src={PHP.src} height={heightPercentage(90)} />;
                   case "React":
-                    return <img src={React.src} height={iconsHeight} />;
+                    return <img src={React.src} height={heightPercentage(90)} />;
                   case "Sketch":
-                    return <img src={Sketch.src} height={iconsHeight} />;
+                    return <img src={Sketch.src} height={heightPercentage(100)} />;
                   case "Symfony":
-                    return <img src={Symfony.src} height={iconsHeight} />;
+                    return <img src={Symfony.src} height={heightPercentage(100)} />;
                   case "WordPress":
-                    return <img src={WordPress.src} height={iconsHeight} />;
-                  default:
-                  // code block
+                    return <img src={WordPress.src} height={heightPercentage(100)} />;
                 }
               })}
             </Container>
@@ -118,14 +120,15 @@ export default function Section({
               const iphone = type === 'iPhone'
               const website = type === "Website";
               const desktopApp = type === "Desktop App";
+              const webApp = type === "Web App";
 
               return (
                 <div key={`gallery-container-${i}`}>
 
-                  {!website && <Container><h3 className="text-center mb-4">{type}</h3></Container>}
+                  {!website || !webApp && <Container><h3 className="text-center mb-4">{type}</h3></Container>}
                   <Swiper
                     spaceBetween={50}
-                    slidesPerView={website || desktopApp ? 1 : iphone ? 4 : 3}
+                    slidesPerView={website || desktopApp || webApp ? 1 : iphone ? 4 : 3}
                     centeredSlides={true}
                     pagination={{
                       dynamicBullets: true,
@@ -137,7 +140,7 @@ export default function Section({
                     className={type.replace(/ /g, "-").toLowerCase()}
                     navigation={true}
                     modules={[Pagination, Navigation]}
-                    style={{ padding: website || desktopApp ? '0 20%' : '0 40px' }}
+                    style={{ padding: website || desktopApp || webApp ? '0 20%' : '0 40px' }}
                   >
 
                     {/* <LightGallery mode="lg-fade"> */}
