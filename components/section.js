@@ -16,7 +16,25 @@ import ContentfulImage from './contentful-image'
 // import { LightGallerySettings } from 'lightgallery/lg-settings';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from "swiper";
-import { Firebase, Contentful, ContentfulAlt, Bootstrap, GraphQL, jQuery, NextJS, NextJSAlt, React, Sketch, Symfony, WordPress, PHP, Photoshop, MySQL, Illustrator } from "./../lib/stackLogos";
+import {
+  Firebase,
+  Contentful,
+  ContentfulAlt,
+  Bootstrap,
+  GraphQL,
+  jQuery,
+  NextJS,
+  NextJSAlt,
+  React,
+  Sketch,
+  Symfony,
+  WordPress,
+  WordPressAlt,
+  PHP,
+  Photoshop,
+  MySQL,
+  Illustrator
+} from "./../lib/stackLogos";
 
 export default function Section({
   backgroundColor = "#ffffff",
@@ -108,7 +126,7 @@ export default function Section({
                   case "Symfony":
                     return <img src={Symfony.src} height={heightPercentage(100)} />;
                   case "WordPress":
-                    return <img src={WordPress.src} height={heightPercentage(100)} />;
+                    return <img src={lighter ? WordPress.src : WordPressAlt.src} height={heightPercentage(100)} />;
                 }
               })}
             </Container>
