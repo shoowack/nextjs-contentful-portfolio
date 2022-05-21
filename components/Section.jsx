@@ -36,7 +36,7 @@ const Section = ({
   return (<StickyContainer>
     <section style={{
         backgroundColor
-      }} className={`px-md-0 py-5 ${getContrast(backgroundColor)}`}>
+      }} className={`px-md-0 py-md-5 ${getContrast(backgroundColor)}`}>
       <Sticky topOffset={50}>
         {
           ({style, isSticky}) => (<header style={{
@@ -66,14 +66,18 @@ const Section = ({
           <Container fluid="lg" className="pb-4 text-center">
             {description && <RichText richText={description}/>}
           </Container>
-          <Container>
-            <h3 className="text-center mb-4">Stack</h3>
-          </Container>
-          <Container fluid="lg" className="pb-5 text-center d-flex direction-column align-items-center justify-content-center" style={{
-              gap: "15px"
-            }}>
-            {stack && (<StackIcons stack={stack} contrast={getContrast(backgroundColor) === "lighter"} section={title}/>)}
-          </Container>
+          {
+            stack && (<div>
+              <Container>
+                <h3 className="text-center mb-4">Stack</h3>
+              </Container>
+              <Container fluid="lg" className="pb-5 d-flex flex-column flex-md-row align-items-center justify-content-center" style={{
+                  gap: "15px"
+                }}>
+                {stack && (<StackIcons stack={stack} contrast={getContrast(backgroundColor) === "lighter"} section={title}/>)}
+              </Container>
+            </div>)
+          }
         </Col>
 
         <Col md={12}>

@@ -312,7 +312,11 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 70px;
+  font-size: 30px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 70px;
+  }
 }
 
 .sticky h2 {
@@ -321,8 +325,12 @@ h1 {
 }
 
 h2 {
-  font-size: 65px;
+  font-size: 30px;
   transition: .25s all;
+
+  @include media-breakpoint-up(md) {
+    font-size: 65px;
+  }  
 }
 
 p {

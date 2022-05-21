@@ -12,11 +12,11 @@ export default function Navigation({ headerItems }) {
               <Link href="/">
                 <img src="./back_arrow.svg" alt="Go back" className="back-button mr-4" />
               </Link>
-              <div className="mr-auto">
+              <div className="d-flex align-items-center w-100 flex-column flex-md-row">
                 <h1>Ivan Suvak Martinovic</h1>
-              </div>
-              <div className="header-info-links">
-                {headerItems?.map((headerLink) => <HeaderInfoLink {...headerLink} key={headerLink.sys.id} />)}
+                <div className="header-info-links ml-md-auto">
+                  {headerItems?.map((headerLink) => <HeaderInfoLink {...headerLink} key={headerLink.sys.id} />)}
+                </div>
               </div>
             </div>
           </Col>

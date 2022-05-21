@@ -81,10 +81,11 @@ const StackIcons = ({stack, contrast, section}) => stack.map(item => {
         : WordPressAlt.src;
   }
 
-  return (<div id={`tooltip-${project}-${stackName}`}>
+  return (<div id={`tooltip-${project}-${stackName}`} className={"d-flex align-items-center"}>
     <img src={src} height={height
         ? height
         : heightPercentage(100)}/>
+    <p className="d-flex d-md-none ml-2 mb-0">- {item}</p>
     <UncontrolledTooltip target={`tooltip-${project}-${stackName}`}>
       {item}
     </UncontrolledTooltip>
