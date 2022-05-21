@@ -1,5 +1,5 @@
 import Navigation from 'components/navigation'
-import Section from 'components/section'
+import Section from 'components/Section'
 import { getHeaderLinks } from 'lib/api';
 import { fetchEntries } from 'lib/fetchEntries';
 import Footer from 'components/footer';
