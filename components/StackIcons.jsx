@@ -1,3 +1,5 @@
+import {UncontrolledTooltip} from "reactstrap";
+import {useState} from "react";
 import {
   Firebase,
   Contentful,
@@ -18,48 +20,76 @@ import {
   Illustrator
 } from "./../lib/stackLogos";
 
-const StackIcons = ({stack, contrast}) => {
-  return stack.map(item => {
-    const iconHeight = 30;
-    const heightPercentage = percentage => (iconHeight * percentage) / 100;
+const StackIcons = ({stack, contrast, section}) => stack.map(item => {
+  let src;
+  let height;
+  const iconHeight = 30;
+  const heightPercentage = percentage => (iconHeight * percentage) / 100;
+  const project = section.replace(/\./g, "-").replace(/ /g, "-").toLowerCase();
+  const stackName = item.replace(/ /g, "-").toLowerCase();
 
-    switch (item) {
-      case "Bootstrap":
-        return <img src={Bootstrap.src} height={heightPercentage(100)}/>;
-      case "Contentful":
-        return (<img src={contrast
-            ? Contentful.src
-            : ContentfulAlt.src} height={heightPercentage(100)}/>);
-      case "Firebase":
-        return <img src={Firebase.src} height={heightPercentage(100)}/>;
-      case "GraphQL":
-        return <img src={GraphQL.src} height={heightPercentage(100)}/>;
-      case "Illustrator":
-        return <img src={Illustrator.src} height={heightPercentage(100)}/>;
-      case "jQuery":
-        return <img src={jQuery.src} height={heightPercentage(70)}/>;
-      case "MySQL":
-        return <img src={MySQL.src} height={heightPercentage(50)}/>;
-      case "NextJS":
-        return (<img src={contrast
-            ? NextJS.src
-            : NextJSAlt.src} height={heightPercentage(100)}/>);
-      case "Photoshop":
-        return <img src={Photoshop.src} height={heightPercentage(100)}/>;
-      case "PHP":
-        return <img src={PHP.src} height={heightPercentage(90)}/>;
-      case "React":
-        return <img src={React.src} height={heightPercentage(90)}/>;
-      case "Sketch":
-        return <img src={Sketch.src} height={heightPercentage(100)}/>;
-      case "Symfony":
-        return <img src={Symfony.src} height={heightPercentage(100)}/>;
-      case "WordPress":
-        return (<img src={contrast
-            ? WordPress.src
-            : WordPressAlt.src} height={heightPercentage(100)}/>);
-    }
-  });
-};
+  switch (item) {
+    case "Bootstrap":
+      src = Bootstrap.src;
+      break;
+    case "Contentful":
+      src = contrast
+        ? Contentful.src
+        : ContentfulAlt.src;
+      break;
+    case "Firebase":
+      src = Firebase.src;
+      break;
+    case "GraphQL":
+      src = GraphQL.src;
+      break;
+    case "Illustrator":
+      src = Illustrator.src;
+      break;
+    case "jQuery":
+      src = jQuery.src;
+      height = heightPercentage(70);
+      break;
+    case "MySQL":
+      src = MySQL.src;
+      height = heightPercentage(50);
+      break;
+    case "NextJS":
+      src = contrast
+        ? NextJS.src
+        : NextJSAlt.src;
+      break;
+    case "Photoshop":
+      src = Photoshop.src;
+      break;
+    case "PHP":
+      src = PHP.src;
+      height = heightPercentage(90);
+      break;
+    case "React":
+      src = React.src;
+      height = heightPercentage(90);
+      break;
+    case "Sketch":
+      src = Sketch.src;
+      break;
+    case "Symfony":
+      src = Symfony.src;
+      break;
+    case "WordPress":
+      src = contrast
+        ? WordPress.src
+        : WordPressAlt.src;
+  }
+
+  return (<div id={`tooltip-${project}-${stackName}`}>
+    <img src={src} height={height
+        ? height
+        : heightPercentage(100)}/>
+    <UncontrolledTooltip target={`tooltip-${project}-${stackName}`}>
+      {item}
+    </UncontrolledTooltip>
+  </div>);
+});
 
 export default StackIcons;

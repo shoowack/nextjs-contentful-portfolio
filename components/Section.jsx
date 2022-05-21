@@ -72,7 +72,7 @@ const Section = ({
           <Container fluid="lg" className="pb-5 text-center d-flex direction-column align-items-center justify-content-center" style={{
               gap: "15px"
             }}>
-            {stack && (<StackIcons stack={stack} contrast={getContrast(backgroundColor) === "lighter"}/>)}
+            {stack && (<StackIcons stack={stack} contrast={getContrast(backgroundColor) === "lighter"} section={title}/>)}
           </Container>
         </Col>
 
