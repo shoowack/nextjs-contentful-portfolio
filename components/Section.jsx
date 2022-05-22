@@ -94,6 +94,7 @@ const Section = ({
                 const website = type === "Website";
                 const desktopApp = type === "Desktop App";
                 const webApp = type === "Web App";
+                const ipad = type === "iPad" || type === "iPad Landscape";
 
                 return (<div key={`gallery-container-${i}`}>
                   {
@@ -116,7 +117,15 @@ const Section = ({
                               : 3
                             : 2
                           : 1
-                        : 3
+                        : ipad
+                          ? width > 900
+                            ? width > 1400
+                              ? width > 2600
+                                ? 4
+                                : 3
+                              : 2
+                            : 1
+                          : 3
 } centeredSlides={true} pagination={{
                       dynamicBullets: true,
                       clickable: true,
