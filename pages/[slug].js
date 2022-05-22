@@ -3,16 +3,26 @@ import Section from 'components/Section'
 import { getHeaderLinks } from 'lib/api';
 import { fetchEntries } from 'lib/fetchEntries';
 import Footer from 'components/footer';
+import Head from 'next/head'
+import { useRouter } from 'next/router';
 
 export default function Designs({ entries, headerItems }) {
+  const router = useRouter();
+
   return (
-    <div className="wrapper" style={{
-      marginBottom: "400px"
-    }}>
-      <Navigation headerItems={headerItems} />
-      {entries[0].sections.map(entry => <Section {...entry.fields} key={entry.sys.id} />)}
-      <Footer />
-    </div>
+    <>
+      <Head>
+        <title>Ivan Suvak Martinovic Personal Portfolio - {router.asPath === '/apps-and-websites' ? "Apps & Websites" : "Designs"}</title>
+      </Head>
+
+      <div className="wrapper" style={{
+        marginBottom: "400px"
+      }}>
+        <Navigation headerItems={headerItems} />
+        {entries[0].sections.map(entry => <Section {...entry.fields} key={entry.sys.id} />)}
+        <Footer />
+      </div>
+    </>
   )
 }
 

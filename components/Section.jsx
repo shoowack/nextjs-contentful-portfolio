@@ -89,7 +89,6 @@ const Section = ({
                   images
                 }
               }, i) => {
-                // console.log(type, 'type')
                 const iphone = type === "iPhone";
                 const website = type === "Website";
                 const desktopApp = type === "Desktop App";

@@ -81,7 +81,7 @@ const StackIcons = ({stack, contrast, section}) => stack.map(item => {
         : WordPressAlt.src;
   }
 
-  return (<div id={`tooltip-${project}-${stackName}`} className={"d-flex align-items-center"}>
+  return (<div id={`tooltip-${project}-${stackName}`} key={`${project}-${stackName}`} className={"d-flex align-items-center"}>
     <img src={src} height={height
         ? height
         : heightPercentage(100)}/>
