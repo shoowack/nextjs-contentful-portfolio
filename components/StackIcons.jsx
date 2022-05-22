@@ -73,7 +73,9 @@ const StackIcons = ({stack, contrast, section}) => stack.map(item => {
       src = Sketch.src;
       break;
     case "Symfony":
-      src = Symfony.src;
+      src = contrast
+        ? Symfony.src
+        : SymfonyAlt.src;
       break;
     case "WordPress":
       src = contrast
