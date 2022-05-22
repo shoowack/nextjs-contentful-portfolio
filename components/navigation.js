@@ -4,19 +4,21 @@ import { Container, Row, Col } from "reactstrap";
 
 export default function Navigation({ headerItems }) {
   return (
-    <Container fluid className="aboutme py-5">
+    <Container fluid className="aboutme py-4 py-md-5">
       <Container fluid="lg">
         <Row>
           <Col sm={12}>
-            <div className="d-flex align-items-center">
-              <Link href="/">
-                <img src="./back_arrow.svg" alt="Go back" className="back-button mr-4" />
-              </Link>
-              <div className="d-flex align-items-center w-100 flex-column flex-md-row">
-                <h1>Ivan Suvak Martinovic</h1>
-                <div className="header-info-links ml-md-auto">
-                  {headerItems?.map((headerLink) => <HeaderInfoLink {...headerLink} key={headerLink.sys.id} />)}
+            <div className="d-flex flex-column flex-md-row">
+              <div className="d-flex align-items-center">
+                <Link href="/">
+                  <img src="./back_arrow.svg" alt="Go back" className="back-button mr-4" />
+                </Link>
+                <div className="d-flex align-items-center">
+                  <h1>Ivan Suvak Martinovic</h1>
                 </div>
+              </div>
+              <div className="header-info-links ml-auto align-items-center">
+                {headerItems?.map((headerLink) => <HeaderInfoLink {...headerLink} key={headerLink.sys.id} />)}
               </div>
             </div>
           </Col>
