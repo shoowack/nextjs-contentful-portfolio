@@ -5,9 +5,11 @@ import { fetchEntries } from 'lib/fetchEntries';
 import Footer from 'components/footer';
 import Head from 'next/head'
 import { useRouter } from 'next/router';
+import useWindowDimensions from "./../lib/windowSize";
 
-export default function Designs({ entries, headerItems }) {
+export default function InnerPage({ entries, headerItems }) {
   const router = useRouter();
+  const { width } = useWindowDimensions();
 
   return (
     <>
@@ -19,7 +21,7 @@ export default function Designs({ entries, headerItems }) {
         marginBottom: "400px"
       }}>
         <Navigation headerItems={headerItems} />
-        {entries[0].sections.map(entry => <Section {...entry.fields} key={entry.sys.id} />)}
+        {entries[0].sections.map(entry => <Section width={width} {...entry.fields} key={entry.sys.id} />)}
         <Footer />
       </div>
     </>

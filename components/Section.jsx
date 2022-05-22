@@ -23,7 +23,8 @@ const Section = ({
   title,
   description,
   gallery,
-  stack
+  stack,
+  width
 }) => {
   const router = useRouter();
   const {slug} = router.query;
@@ -61,7 +62,7 @@ const Section = ({
         }
       </Sticky>
 
-      <Row className="pb-5">
+      <Row className="pb-md-5">
         <Col md={12}>
           <Container fluid="lg" className="pb-4 text-center">
             {description && <RichText richText={description}/>}
@@ -113,7 +114,9 @@ const Section = ({
                       }
                     }} className={type.replace(/ /g, "-").toLowerCase()} navigation={true} modules={[Pagination, Navigation]} style={{
                       padding: website || desktopApp || webApp
-                        ? "0 20%"
+                        ? width > 768
+                          ? "0 20%"
+                          : "0 15px"
                         : "0 40px"
                     }}>
                     {/* <LightGallery mode="lg-fade"> */}

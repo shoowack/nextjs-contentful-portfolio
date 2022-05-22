@@ -87,7 +87,7 @@ export default function Footer() {
               className="pt-4 pb-4"
             >
               <Row className="mt-2">
-                <Col sm={6} className=" text-right">
+                <Col sm={6} className="text-md-right">
                   <Label className="ml-2">Your Email:</Label>
                 </Col>
                 <Col sm={4}>
@@ -103,7 +103,7 @@ export default function Footer() {
                 </Col>
               </Row>
               <Row className="mt-2">
-                <Col sm={6} className=" text-right">
+                <Col sm={6} className="text-md-right">
                   <Label className="ml-2">Your Message:</Label>
                 </Col>
 
