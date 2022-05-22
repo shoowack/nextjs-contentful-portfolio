@@ -101,17 +101,26 @@ const Section = ({
                       <h3 className="text-center mb-4">{type}</h3>
                     </Container>))
                   }
+
                   <Swiper spaceBetween={50} slidesPerView={website || desktopApp || webApp
                       ? 1
                       : iphone
-                        ? 4
+                        ? width > 550
+                          ? width > 991
+                            ? width > 1200
+                              ? width > 2200
+                                ? width > 2600
+                                  ? 6
+                                  : 5
+                                : 4
+                              : 3
+                            : 2
+                          : 1
                         : 3
 } centeredSlides={true} pagination={{
                       dynamicBullets: true,
                       clickable: true,
-                      renderBullet: function (index, className) {
-                        return `<span class="${className}"><div class="owl-dot-el-1" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-2" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-3" style="background-color:${backgroundColor}"></div></span>`;
-                      }
+                      renderBullet: (index, className) => `<span class="${className}"><div class="owl-dot-el-1" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-2" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-3" style="background-color:${backgroundColor}"></div></span>`
                     }} className={type.replace(/ /g, "-").toLowerCase()} navigation={true} modules={[Pagination, Navigation]} style={{
                       padding: website || desktopApp || webApp
                         ? width > 768
@@ -126,7 +135,6 @@ const Section = ({
                           fields: {
                             file: {
                               url,
-                              fileName,
                               details: {
                                 image: {
                                   width,
@@ -170,26 +178,34 @@ const Section = ({
       title === "Near Lock App" && slug === "designs" && (<Row className={classnames({
           ["dark"]: isDarkMode
         }, "nearlock-app-wrapper py-5 overflow-hidden")}>
-        <button onClick={toggleDarkMode} className={classnames("nearlock-app-wrapper-theme-toggler", {dark: isDarkMode})}>
-          <FontAwesomeIcon icon={isDarkMode
-              ? faSun
-              : faMoon} size="1x"/>
-        </button>
-        <Col md={12} className="mt-2">
-          <Container fluid="lg" className="pb-5 text-center lighter">
+        {
+          width >= 1120 && (<button onClick={toggleDarkMode} className={classnames("nearlock-app-wrapper-theme-toggler", {dark: isDarkMode})}>
+            <FontAwesomeIcon icon={isDarkMode
+                ? faSun
+                : faMoon} size="1x"/>
+          </button>)
+        }
+        <Col md={12} className="my-2">
+          <Container fluid="lg" className={`${width >= 1120 && "pb-5"} text-center lighter`}>
             <p className="mb-0">
               Interactive preview of the Near Lock desktop app
             </p>
             <small style={{
                 color: "hsla(0, 0%, 100%, .75)"
               }}>
-              some of the features are not available yet
+              {
+                width >= 1120
+                  ? "some of the features are not available yet"
+                  : "for interactive NearLock preview, please visit desktop version of the website"
+              }
             </small>
           </Container>
         </Col>
-        <Col md={12} className="mb-5">
-          <NearLockApp isDarkMode={isDarkMode}/>
-        </Col>
+        {
+          width >= 1120 && (<Col md={12} className="mb-5">
+            <NearLockApp isDarkMode={isDarkMode}/>
+          </Col>)
+        }
       </Row>)
     }
   </StickyContainer>);
