@@ -1,8 +1,8 @@
-import Navigation from 'components/navigation'
+import Navigation from 'components/Navigation'
 import Section from 'components/Section'
 import { getHeaderLinks } from 'lib/api';
 import { fetchEntries } from 'lib/fetchEntries';
-import Footer from 'components/footer';
+import Footer from 'components/Footer';
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import useWindowDimensions from "./../lib/windowSize";

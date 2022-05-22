@@ -205,7 +205,7 @@ const Section = ({
               {
                 width >= 1120
                   ? "some of the features are not available yet"
-                  : "for interactive NearLock preview, please visit desktop version of the website"
+                  : "for an interactive preview, please visit desktop version of the website"
               }
             </small>
           </Container>
