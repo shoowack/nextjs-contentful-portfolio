@@ -1,6 +1,7 @@
 import {UncontrolledTooltip} from "reactstrap";
 import {
   Firebase,
+  Formik,
   Contentful,
   ContentfulAlt,
   Bootstrap,
@@ -9,14 +10,18 @@ import {
   NextJS,
   NextJSAlt,
   React,
+  Redux,
   Sketch,
   Symfony,
+  SymfonyAlt,
   WordPress,
   WordPressAlt,
   PHP,
   Photoshop,
   MySQL,
-  Illustrator
+  Illustrator,
+  SASS,
+  SASSAlt
 } from "./../lib/stackLogos";
 
 const StackIcons = ({stack, contrast, section}) => stack.map(item => {
@@ -81,6 +86,18 @@ const StackIcons = ({stack, contrast, section}) => stack.map(item => {
       src = contrast
         ? WordPress.src
         : WordPressAlt.src;
+      break;
+    case "SASS":
+      src = contrast
+        ? SASS.src
+        : SASSAlt.src;
+      break;
+    case "Formik":
+      src = Formik.src;
+      break;
+    case "Redux":
+      src = Redux.src;
+      break;
   }
 
   return (<div id={`tooltip-${project}-${stackName}`} key={`${project}-${stackName}`} className={"d-flex align-items-center"}>
