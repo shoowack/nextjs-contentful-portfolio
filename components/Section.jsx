@@ -17,6 +17,7 @@ import ContentfulImage from "./contentful-image";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Pagination, Navigation} from "swiper";
 import StackIcons from "components/StackIcons";
+import Link from "next/link";
 
 const Section = ({
   backgroundColor = "#ffffff",
@@ -43,7 +44,7 @@ const Section = ({
           ({style, isSticky}) => (<header style={{
               ...style,
               backgroundColor: hexToRgbA(backgroundColor),
-              zIndex: 10,
+              zIndex: 1080, // above tooltips
               boxShadow: isSticky
                 ? "0px 0px 20px -10px rgba(0,0,0,.3)"
                 : "none",
@@ -53,8 +54,39 @@ const Section = ({
               <Col md={12}>
                 <Container fluid="lg" className={classnames({
                     ["sticky"]: isSticky
-                  }, "py-2 text-center")}>
-                  <h2>{title}</h2>
+                  }, "py-2")}>
+                  <Row>
+                    {
+                      isSticky && width > 550 && (slug === "apps-and-websites" || slug === "designs") && (<Col>
+                        <Link href="/">
+                          <a>
+                            <FontAwesomeIcon icon={faAngleLeft} className="mr-1"/>
+                            Home
+                          </a>
+                        </Link>
+                      </Col>)
+                    }
+                    <Col>
+                      <h2 className="align-self-center">{title}</h2>
+                    </Col>
+                    {
+                      isSticky && width > 550 && (slug === "apps-and-websites" || slug === "designs") && (<Col className="text-right">
+                        <Link href={slug === "designs"
+                            ? "/apps-and-websites"
+                            : "/designs"
+}>
+                          <a>
+                            {
+                              slug === "designs"
+                                ? "Apps And Websites"
+                                : "Designs"
+                            }
+                            <FontAwesomeIcon icon={faAngleRight} className="ml-1"/>
+                          </a>
+                        </Link>
+                      </Col>)
+                    }
+                  </Row>
                 </Container>
               </Col>
             </Row>
