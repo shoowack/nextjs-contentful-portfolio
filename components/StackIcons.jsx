@@ -1,5 +1,6 @@
 import {UncontrolledTooltip} from "reactstrap";
 import {
+  ACF,
   Firebase,
   Formik,
   Contentful,
@@ -27,12 +28,17 @@ import {
 const StackIcons = ({stack, contrast, section}) => stack.map(item => {
   let src;
   let height;
+  let tooltip;
   const iconHeight = 30;
   const heightPercentage = percentage => (iconHeight * percentage) / 100;
   const project = section.replace(/\./g, "-").replace(/ /g, "-").toLowerCase();
   const stackName = item.replace(/ /g, "-").toLowerCase();
 
   switch (item) {
+    case "ACF":
+      src = ACF.src;
+      tooltip = "Advanced Custom Fields";
+      break;
     case "Bootstrap":
       src = Bootstrap.src;
       break;
@@ -106,7 +112,11 @@ const StackIcons = ({stack, contrast, section}) => stack.map(item => {
         : heightPercentage(100)}/>
     <p className="d-flex d-md-none ml-2 mb-0">- {item}</p>
     <UncontrolledTooltip target={`tooltip-${project}-${stackName}`}>
-      {item}
+      {
+        tooltip
+          ? tooltip
+          : item
+      }
     </UncontrolledTooltip>
   </div>);
 });
