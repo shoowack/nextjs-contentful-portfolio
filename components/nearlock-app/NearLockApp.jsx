@@ -10,6 +10,7 @@ function NearLockApp({isDarkMode}) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSetupDone, setIsSetupDone] = useState(false);
+  const [notificationShow, setNotificationShow] = useState(false);
   const searchRef = useRef(null);
 
   const toggleTab = tab => {
@@ -75,7 +76,9 @@ function NearLockApp({isDarkMode}) {
     activeTab,
     setActiveTab,
     isModalOpen,
-    setIsModalOpen
+    setIsModalOpen,
+    notificationShow,
+    setNotificationShow
   };
 
   return (<div className={classnames({

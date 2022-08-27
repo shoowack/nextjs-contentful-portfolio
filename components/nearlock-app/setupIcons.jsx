@@ -10,6 +10,7 @@ import smallerDistances from "./../../public/nearlock-app/setup/smaller-distance
 import loginPhotos from "./../../public/nearlock-app/setup/login-photos.svg";
 import failedLoginPhotos from "./../../public/nearlock-app/setup/failed-login-photos.svg";
 import loginHistory from "./../../public/nearlock-app/setup/login-history.svg";
+import notifications from "./../../public/nearlock-app/setup/notifications.svg";
 
 export {
   nearlock,
@@ -23,5 +24,6 @@ export {
   smallerDistances,
   loginPhotos,
   failedLoginPhotos,
-  loginHistory
+  loginHistory,
+  notifications
 };

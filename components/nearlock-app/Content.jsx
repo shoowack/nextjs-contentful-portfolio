@@ -19,7 +19,8 @@ import {
   smallerDistances,
   loginPhotos,
   failedLoginPhotos,
-  loginHistory
+  loginHistory,
+  notifications
 } from "./setupIcons";
 
 const setupData = [
@@ -46,6 +47,18 @@ const setupData = [
         title: "Screensaver",
         desc: "By default, your Mac will go to sleep when locked",
         icon: screensaver
+      }
+    ]
+  }, {
+    title: "Notifications",
+    desc: "Select preferred options for Notification Settings",
+    items: [
+      {
+        title: "Notification",
+        desc: "Show OSX Notification when Near Lock Unlocks your Mac",
+        icon: notifications,
+        checked: true,
+        extraInfo: "Notifications"
       }
     ]
   }, {
@@ -108,16 +121,18 @@ const setupData = [
 
 const Content = ({
   activeTab,
+  setActiveTab,
   isSidebarOpen,
   toggleSidebar,
   isSearchOpen,
   toggleSearch,
   searchRef,
-  setActiveTab,
   isDarkMode,
   setIsModalOpen,
   isSetupDone,
-  setIsSetupDone
+  setIsSetupDone,
+  notificationShow,
+  setNotificationShow
 }) => (<div className="content position-relative">
   <div className={classnames({
       ["open"]: !isSidebarOpen
@@ -369,18 +384,51 @@ const Content = ({
           }, i) => (<div key={`list-${i}`}>
             <ListHeader title={title} desc={desc} key={`list-header-${i}`}/>{" "}
             {
-              items.map(({
-                title,
-                desc,
-                icon,
-                checked,
-                newBadge
-              }, i) => (<ListItem icon={icon} title={title} desc={desc} checked={checked} newBadge={newBadge} key={`list-item-${i}`}/>))
+              items.map((props, i) => (<ListItem {...props} setActiveTab={setActiveTab} key={`list-item-${i}`}/>))
             }
             {i < setupData.length - 1 && <hr className="my-4"/>}
           </div>))
         }
       </div>
+    </TabPane>
+    <TabPane tabId="Notifications">
+      <Col sm="12" className="text-center mt-5">
+        <Col md={{
+            size: 10,
+            offset: 1
+          }}>
+          <h5 className="m-0">MacOS Notifications</h5>
+          <small className="d-block m-auto" style={{
+              width: "652px"
+            }}>
+            Receive notifications about Near Lock events
+          </small>
+          <AppButton onClick={() => {
+            setNotificationShow(true)
+            setTimeout(() => {
+              setNotificationShow(false)
+            }, 5000)
+          }} className="mt-4">
+            Show Notification Example
+          </AppButton>
+          <br/>
+          <small><small><em>Notifications will appear even if your Mac is locked</em></small></small>
+        </Col>
+      </Col>
+      <div className="notifications-container">
+        <div className={classnames("d-flex align-items-center notifications-notification", {
+          "show": notificationShow
+        })}>
+          <div className="d-flex align-items-center justify-content-center notifications-notification-icon">
+            <img src="/nearlock-app/setup/nearlock.svg" />
+          </div>
+          <div className="d-flex flex-column">
+            <strong>Near Lock</strong>
+            <small>Description</small>
+          </div>
+        </div>
+      </div>
+      <img src="/nearlock-app/notifications-screen.png" className="position-absolute notifications-bg" />
     </TabPane>
   </TabContent>
 </div>);

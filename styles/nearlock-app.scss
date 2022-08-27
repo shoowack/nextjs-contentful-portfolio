@@ -31,13 +31,13 @@ $dark-mode-transition: 0.5s;
         color: #368EFC;
         transform: scale(1) rotate(360deg) rotateY(0deg) rotateX(0deg);
         transition: color $dark-mode-transition, transform $dark-mode-transition, color $dark-mode-transition;
-    }    
+    }
 
     &:active svg{
         transform: scale(-1) rotate(0deg) rotateY(180deg) rotateX(180deg);
         transition: transform 0s;
     }
-    
+
     &.dark {
         background: #211C21;
 
@@ -166,7 +166,7 @@ $dark-mode-transition: 0.5s;
                 display: flex;
                 padding: 8px;
                 border-radius: 6px;
-                
+
                 &:hover {
                     background: hsla(0, 0%, 0%, .1);
                 }
@@ -182,7 +182,7 @@ $dark-mode-transition: 0.5s;
                     right: 10px;
                     opacity: 1;
                     transition: transform 0.5s, opacity 0.5s;
-                
+
                     &.open {
                         opacity: 0;
                         transform: scale(0);
@@ -210,7 +210,7 @@ $dark-mode-transition: 0.5s;
                     width: 240px;
                     opacity: 1;
                     pointer-events: all;
-            
+
                     &:focus {
                         outline: none;
                         box-shadow:
@@ -267,9 +267,9 @@ $dark-mode-transition: 0.5s;
 
                     &:nth-child(1),
                     &:nth-child(2),
-                    &:nth-child(3) {                        
+                    &:nth-child(3) {
                         position: relative;
-                 
+
                         &::before,
                         &::after {
                             content: "";
@@ -287,16 +287,16 @@ $dark-mode-transition: 0.5s;
                             background: $control-icon-color;
                             border-radius: 999em;
                         }
-    
+
                         &::before {
                             transform: rotate(45deg);
                         }
-    
+
                         &::after {
                             transform: rotate(-45deg);
                         }
                     }
-                
+
                     &:nth-child(2) {
                         &::before {
                             top: 5px;
@@ -307,7 +307,7 @@ $dark-mode-transition: 0.5s;
                             border-radius: 999em;
                         }
                     }
-                
+
                     &:nth-child(3) {
                         &::before {
                             top: 3px;
@@ -317,7 +317,7 @@ $dark-mode-transition: 0.5s;
                             border-bottom: 2.5px solid transparent;
                             border-right: 2.5px solid transparent;
                         }
-    
+
                         &::after {
                             top: 4px;
                             left: 4px;
@@ -339,7 +339,7 @@ $dark-mode-transition: 0.5s;
                     background: #FF6157;
                     box-shadow: 0 0 0 1px #E24640;
                 }
-                
+
                 &:nth-child(2) {
                     background: #FFC12F;
                     box-shadow: 0 0 0 1px #DFA023;
@@ -401,7 +401,7 @@ $dark-mode-transition: 0.5s;
             border-radius: 999em;
             width: 8px;
             height: 8px;
-            box-shadow: 
+            box-shadow:
             0 0 0 1px hsla(0, 0%, 0%, .1),
             0 0 0 2px hsla(0, 0%, 0%, .05),
             0 0 10px 0px hsla(121, 100%, 59%, .75);
@@ -482,13 +482,13 @@ $dark-mode-transition: 0.5s;
             transition: background .25s;
             position: relative;
             border-radius: 16px;
-            
+
             &:hover {
                 cursor: pointer;
                 background: hsla(0, 0%, 0%, .04);
                 transition: background .25s;
             }
-            
+
             &__icon {
                 width: 60px;
                 height: 60px;
@@ -496,7 +496,7 @@ $dark-mode-transition: 0.5s;
                 border-radius: 12px;
                 overflow: hidden;
                 transition: background $dark-mode-transition;
-    
+
                 &_new-badge {
                     display: block;
                     position: absolute;
@@ -510,11 +510,11 @@ $dark-mode-transition: 0.5s;
                     padding: 2px 7px;
                     z-index: 1;
                 }
-    
+
                 &.checked {
                     box-shadow: 0 0 0 3px #368EFC inset;
                     position: relative;
-    
+
                     &::before {
                         content: '';
                         position: absolute;
@@ -538,7 +538,7 @@ $dark-mode-transition: 0.5s;
                     }
                 }
             }
-        }        
+        }
 
         .keystrokes span {
             border-radius: 10px;
@@ -548,7 +548,55 @@ $dark-mode-transition: 0.5s;
             text-transform: uppercase;
             transition: box-shadow $dark-mode-transition;
         }
-    }    
+
+        .notifications {
+            &-bg {
+                width: 750px;
+                bottom: 0;
+            }
+
+            &-container {
+                position: absolute;
+                bottom: 130px;
+                left: 282.5px;
+                overflow: hidden;
+                // background: red;
+                z-index: 10;
+            }
+
+            &-notification {
+                margin: 20px;
+                background: rgba(245,245,245,0.8);
+                backdrop-filter: blur(100px);
+                box-shadow:
+                    0 1px 0 rgba(255,255,255,.75) inset,
+                    0 0 20px 0 rgba(0,0,0,0.30);
+                border-radius: 6px;
+                width: 350px;
+                padding: 15px 10px;
+                gap: 10px;
+                transform: translateX(400px);
+                transition: all .5s ease-in-out;
+
+                &.show {
+                    transform: translateX(0px);
+                    transition: all .5s ease-in-out;
+                }
+
+                &-icon {
+                    width: 30px;
+                    height: 30px;
+                    margin: 5px;
+                    background-color: rgba(255,255,255,1);
+                    border-radius: 7px;
+
+                    img {
+                        width: 14px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .dark {
