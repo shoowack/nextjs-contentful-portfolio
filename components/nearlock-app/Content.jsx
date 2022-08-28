@@ -421,7 +421,7 @@ const Content = ({
             }}>
             Receive notifications about Near Lock events
           </small>
-          <AppButton onClick={() => {
+          <AppButton disabled={notificationShow} onClick={() => {
             setNotificationShow(true)
           }} className="mt-4">
             Show Notification Example

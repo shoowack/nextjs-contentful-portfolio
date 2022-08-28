@@ -1,9 +1,9 @@
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const AppButton = ({children, onClick, className, link}) => (<button className={classnames({
+const AppButton = ({children, onClick, className, link, disabled}) => (<button className={classnames({
     ["button-link"]: link
-  }, className, "button")} onClick={onClick}>
+  }, className, "button")} onClick={onClick} disabled={disabled}>
   {children}
 </button>);
 

@@ -73,13 +73,19 @@ $dark-mode-transition: 0.5s;
         border-radius: 6px;
         padding: 2px 20px;
         box-shadow:
-        0 0 0 2px hsla(0, 0%, 0%, .05),
-        0 1px 1px 0 hsla(0, 0%, 0%, .15);
+            0 0 0 1px hsla(0, 0%, 0%, .05),
+            0 1px 1px 0 hsla(0, 0%, 0%, .15);
         transition: background $dark-mode-transition, color $dark-mode-transition;
 
         &-link {
             color: #000;
             background: linear-gradient(180deg, #FFFEFB 1%, #FBF6F6 100%);
+        }
+
+        &:disabled {
+            background: #F5F4F7;
+            color: #BBBBBD;
+            transition: background $dark-mode-transition, color $dark-mode-transition;
         }
     }
 
@@ -628,9 +634,17 @@ $dark-mode-transition: 0.5s;
             0 60px 300px rgba(0, 0, 0, .4),
             0 0 2px 0 hsla(190, 20%, 100%, .15) inset;
 
-        .button-link {
-            color: #fff;
-            background: linear-gradient(180deg, #5E5D5F 1%, #5F5D5F 100%);
+        .button {
+            &-link {
+                color: #fff;
+                background: linear-gradient(180deg, #5E5D5F 1%, #5F5D5F 100%);
+            }
+
+            &:disabled {
+                background: #3C3840;
+                color: #6C6A70;
+                transition: background $dark-mode-transition, color $dark-mode-transition;
+            }
         }
 
         .modal {
