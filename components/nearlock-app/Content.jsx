@@ -132,11 +132,10 @@ const Content = ({
   isDarkMode,
   setIsModalOpen,
   isSetupDone,
-  setIsSetupDone,
-  notificationShow,
-  setNotificationShow
+  setIsSetupDone
 }) => {
   const [dateState, setDateState] = useState(dayjs().format('ddd MMM D h:mm A'));
+  const [notificationShow, setNotificationShow] = useState(false);
 
   useEffect(() => {
     const clockInterval = setInterval(() => {
@@ -439,8 +438,8 @@ const Content = ({
             <img src="/nearlock-app/setup/nearlock.svg" />
           </div>
           <div className="d-flex flex-column">
-            <strong>Near Lock</strong>
-            <small>Description</small>
+            <strong className="notifications-notification-title">Near Lock</strong>
+            <small className="notifications-notification-description">Description</small>
           </div>
         </div>
       </div>

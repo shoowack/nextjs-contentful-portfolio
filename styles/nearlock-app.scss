@@ -57,9 +57,9 @@ $dark-mode-transition: 0.5s;
     backdrop-filter: blur(50px);
     border-radius: 12px;
     box-shadow:
-    0 0 0 1px rgba(0, 0, 0, .05),
-    0 60px 300px rgba(0, 0, 0, .4),
-    0 0 0 1px hsla(0, 0%, 100%, .15) inset;
+        0 0 0 1px rgba(0, 0, 0, .05),
+        0 60px 300px rgba(0, 0, 0, .4),
+        0 0 0 1px hsla(0, 0%, 100%, .15) inset;
     display: flex;
     flex-direction: row;
     overflow: hidden;
@@ -95,9 +95,9 @@ $dark-mode-transition: 0.5s;
         z-index: 1;
         background: hsla(0, 0%, 100%, 1);
         border-radius: 10px;
-        box-shadow: 
-        0 0 0 1px hsla(0, 0%, 0%, .15),
-        0 25px 60px -15px hsla(0, 0%, 0%, 0.35);
+        box-shadow:
+            0 0 0 1px hsla(0, 0%, 0%, .15),
+            0 25px 60px -15px hsla(0, 0%, 0%, 0.35);
 
         &__background {
             position: absolute;
@@ -106,7 +106,7 @@ $dark-mode-transition: 0.5s;
             right: 0;
             bottom: 0;
             z-index: 2;
-            background: hsla(0, 0%, 0%, .25);    
+            background: hsla(0, 0%, 0%, .25);
         }
 
         &__footer {
@@ -578,13 +578,12 @@ $dark-mode-transition: 0.5s;
             &-notification {
                 margin: 20px;
                 background: rgba(245,245,245,0.8);
+                border: 1px solid #E4E3EA;
+                box-shadow: 0 0 0 .5px rgba(0,0,0,.15), 0 0 8px -2px rgba(0,0,0,.5);
+                border-radius: 16px;
                 backdrop-filter: blur(100px);
-                box-shadow:
-                    0 1px 0 rgba(255,255,255,.75) inset,
-                    0 0 20px 0 rgba(0,0,0,0.30);
-                border-radius: 6px;
                 width: 350px;
-                padding: 15px 10px;
+                padding: 10px 10px;
                 gap: 10px;
                 transform: translateX(400px);
                 transition: all .5s ease-in-out;
@@ -595,15 +594,24 @@ $dark-mode-transition: 0.5s;
                 }
 
                 &-icon {
-                    width: 30px;
-                    height: 30px;
-                    margin: 5px;
+                    width: 37px;
+                    height: 37px;
+                    margin: 3px;
                     background-color: rgba(255,255,255,1);
-                    border-radius: 7px;
+                    box-shadow: 0 1px 2px -1px rgba(0,0,0,0.50);
+                    border-radius: 8px;
 
                     img {
-                        width: 14px;
+                        width: 16px;
                     }
+                }
+
+                &-title {
+                    line-height: 17px;
+                }
+
+                &-description {
+                    line-height: 15apx;
                 }
             }
         }
@@ -679,6 +687,18 @@ $dark-mode-transition: 0.5s;
 
                 .keystrokes span {
                     box-shadow: 0 0 0 1.5px hsl(0, 0%, 40%);
+                }
+
+                .notifications {
+                    &-notification {
+                        background: #35343C;
+                        border: 1px solid #575259;
+                        box-shadow: 0 0 0 .5px rgba(0,0,0,.5), 0 0 8px -2px rgba(0,0,0,.75);
+
+                        &-title, &-description {
+                            color: #fff;
+                        }
+                    }
                 }
             }
 
