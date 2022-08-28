@@ -560,8 +560,19 @@ $dark-mode-transition: 0.5s;
                 bottom: 130px;
                 left: 282.5px;
                 overflow: hidden;
-                // background: red;
-                z-index: 10;
+                z-index: 1;
+            }
+
+            &-clock {
+                position: absolute;
+                bottom: 247px;
+                left: 510px;
+                z-index: 1;
+                font-size: 14px;
+                font-weight: 400;
+                color: #FFFFFF;
+                font-family: SFPro-Medium;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.30);
             }
 
             &-notification {

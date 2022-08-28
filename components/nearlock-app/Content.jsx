@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {TabContent, TabPane, Row, Col} from "reactstrap";
 import AppButton from "./AppButton";
 import classnames from "classnames";
@@ -22,6 +23,7 @@ import {
   loginHistory,
   notifications
 } from "./setupIcons";
+import * as dayjs from 'dayjs'
 
 const setupData = [
   {
@@ -133,7 +135,24 @@ const Content = ({
   setIsSetupDone,
   notificationShow,
   setNotificationShow
-}) => (<div className="content position-relative">
+}) => {
+  const [dateState, setDateState] = useState(dayjs().format('ddd MMM D h:mm A'));
+
+  useEffect(() => {
+    const clockInterval = setInterval(() => {
+      setDateState(dayjs().format('ddd MMM D h:mm A')) // TODO animate seconds (convert h to hh)
+    }, 10000);
+    return () => clearInterval(clockInterval);
+  }, []);
+
+  useEffect(() => {
+    const notificationInterval = setInterval(() => {
+      setNotificationShow(false)
+    }, 5000);
+    return () => clearInterval(notificationInterval);
+  }, [setNotificationShow])
+
+  return (<div className="content position-relative">
   <div className={classnames({
       ["open"]: !isSidebarOpen
     }, "position-absolute w-100 content-header")}>
@@ -405,9 +424,6 @@ const Content = ({
           </small>
           <AppButton onClick={() => {
             setNotificationShow(true)
-            setTimeout(() => {
-              setNotificationShow(false)
-            }, 5000)
           }} className="mt-4">
             Show Notification Example
           </AppButton>
@@ -428,9 +444,10 @@ const Content = ({
           </div>
         </div>
       </div>
+      <div className="notifications-clock">{dateState}</div>
       <img src="/nearlock-app/notifications-screen.png" className="position-absolute notifications-bg" />
     </TabPane>
   </TabContent>
-</div>);
+</div>)};
 
 export default Content;
