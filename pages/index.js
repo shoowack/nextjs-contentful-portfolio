@@ -2,6 +2,7 @@ import Layout from 'components/layout'
 import { getAllSections } from '../lib/api'
 import Head from 'next/head'
 import FrontPage from 'components/front.page'
+import { config } from "@fortawesome/fontawesome-svg-core";
 
 export default function Index({ preview, allPosts }) {
   return (
@@ -17,6 +18,8 @@ export default function Index({ preview, allPosts }) {
     </>
   )
 }
+
+config.autoAddCss = false;
 
 export async function getStaticProps({ preview = false }) {
   const allPosts = (await getAllSections(preview)) ?? []
