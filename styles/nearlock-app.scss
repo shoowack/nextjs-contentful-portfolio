@@ -111,7 +111,7 @@ $dark-mode-transition: 0.5s;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: 2;
+            z-index: 3;
             background: hsla(0, 0%, 0%, .25);
         }
 
@@ -381,7 +381,7 @@ $dark-mode-transition: 0.5s;
                 opacity: 0.5;
             }
 
-            &.active, 
+            &.active,
             &.active:hover {
                 background: hsla(0, 0%, 0%, .09);
                 border-radius: 7px;
@@ -650,14 +650,14 @@ $dark-mode-transition: 0.5s;
         .modal {
             color: #fff;
             background: hsl(320, 8%, 12%);
-            box-shadow: 
-            0 0 0 1px hsla(0, 0%, 0%, .15),
-            0 25px 60px -15px hsla(0, 0%, 0%, 0.35);
-    
+            box-shadow:
+                0 0 0 1px hsla(0, 0%, 0%, .15),
+                0 25px 60px -15px hsla(0, 0%, 0%, 0.35);
+
             &__background {
-                background: hsla(0, 0%, 0%, .25);    
+                background: hsla(0, 0%, 0%, .25);
             }
-    
+
             &__footer {
                 background: hsl(320, 5%, 22%);
 
@@ -731,7 +731,7 @@ $dark-mode-transition: 0.5s;
                         outline:hsla(0, 0%, 100%, .06) solid 1px;
                     }
                 }
-            }    
+            }
         }
 
         .sidebar__item {
