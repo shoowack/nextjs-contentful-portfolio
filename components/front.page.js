@@ -15,10 +15,12 @@ export default function FrontPage({
   return (
     <Link
       href={link}
-      target={openInNewTab ? "_blank" : ""}
       key={id}
     >
-      <a className="section">
+      <a
+        className="section"
+        target={openInNewTab && "_blank"}
+      >
         {title && subscript && (
           <div className="section-title">
             {title && <h1>{title}</h1>}
