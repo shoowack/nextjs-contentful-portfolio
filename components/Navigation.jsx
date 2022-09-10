@@ -9,7 +9,7 @@ export default function Navigation({headerItems}) {
         <Col sm={12}>
           <div className="d-flex flex-column flex-sm-row">
             <div className="d-flex align-items-center">
-              <Link href="/">
+              <Link href="/" passHref>
                 <img src="./back_arrow.svg" alt="Go back" className="back-button mr-4"/>
               </Link>
               <div className="d-flex align-items-center">

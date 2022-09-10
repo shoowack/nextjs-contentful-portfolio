@@ -2,9 +2,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../styles/nearlock-app.scss'
 import './../styles/inner-page.scss'
 import './../styles/swiper.scss'
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const App = ({ Component, pageProps }) => {
+  return (
+    <>
+      <GoogleAnalytics trackPageViews />
+      <Component {...pageProps} />
+    </>
+  );
+};
 
-export default MyApp
+export default App;
