@@ -21,7 +21,10 @@ export default function InnerPage({ entries, headerItems }) {
         marginBottom: "400px"
       }}>
         <Navigation headerItems={headerItems} />
-        {entries[0].sections.map(entry => <Section width={width} {...entry.fields} key={entry.sys.id} />)}
+        {/* filter content by environment tags (production, development) */}
+        {entries[0].sections
+          .map(entry => entry.metadata.tags
+          .find(tags => tags.sys.id === process.env.NODE_ENV) && <Section width={width} {...entry.fields} key={entry.sys.id} />)}
         <Footer />
       </div>
     </>
