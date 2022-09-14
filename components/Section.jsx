@@ -1,6 +1,6 @@
 import {useState} from "react";
 import PropTypes from "prop-types";
-import {Container, Row, Col} from "reactstrap";
+import {Container, Row, Col, Table} from "reactstrap";
 import RichText from "@madebyconnor/rich-text-to-jsx";
 import {getContrast} from "./getContrast";
 import hexToRgbA from "./hexToRgba";
@@ -18,6 +18,9 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Pagination, Navigation} from "swiper";
 import StackIcons from "components/StackIcons";
 import Link from "next/link";
+
+const ConditionalWrapper = ({ condition, wrapper, children }) =>
+  condition ? wrapper(children) : children;
 
 const Section = ({
   backgroundColor = "#ffffff",
@@ -107,7 +110,17 @@ const Section = ({
               <Container fluid="lg" className="pb-5 d-flex flex-column flex-md-row align-items-center justify-content-center" style={{
                   gap: "15px"
                 }}>
-                {stack && (<StackIcons stack={stack} contrast={getContrast(backgroundColor) === "lighter"} section={title}/>)}
+
+                <ConditionalWrapper
+                  condition={width < 768}
+                  wrapper={(children) => (
+                    <Table borderless>
+                      {children}
+                    </Table>
+                  )}
+                >
+                  {stack && (<StackIcons stack={stack} isMobile={width < 768} contrast={getContrast(backgroundColor) === "lighter"} section={title}/>)}
+                </ConditionalWrapper>
               </Container>
             </div>)
           }

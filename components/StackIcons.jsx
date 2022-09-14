@@ -25,7 +25,7 @@ import {
   SASSAlt
 } from "./../lib/stackLogos";
 
-const StackIcons = ({stack, contrast, section}) => stack.map(item => {
+const StackIcons = ({stack, contrast, section, isMobile}) => stack.map(item => {
   let src;
   let height;
   let tooltip;
@@ -106,19 +106,34 @@ const StackIcons = ({stack, contrast, section}) => stack.map(item => {
       break;
   }
 
-  return (<div id={`tooltip-${project}-${stackName}`} key={`${project}-${stackName}`} className={"d-flex align-items-center"}>
-    <img src={src} height={height
+  return isMobile ? (
+    <tr className="text-right">
+      <td>
+        <img
+          src={src}
+          height={height
+            ? height
+            : heightPercentage(100)
+          } />
+        </td>
+      <td>
+        <p className="text-left m-0">{item}</p>
+      </td>
+    </tr>
+   ) : (
+    <div id={`tooltip-${project}-${stackName}`} key={`${project}-${stackName}`} className={"d-flex align-items-center"}>
+      <img src={src} height={height
         ? height
-        : heightPercentage(100)}/>
-    <p className="d-flex d-md-none ml-2 mb-0">- {item}</p>
-    <UncontrolledTooltip target={`tooltip-${project}-${stackName}`}>
-      {
-        tooltip
-          ? tooltip
-          : item
-      }
-    </UncontrolledTooltip>
-  </div>);
+        : heightPercentage(100)} />
+      <UncontrolledTooltip target={`tooltip-${project}-${stackName}`}>
+        {
+          tooltip
+            ? tooltip
+            : item
+        }
+      </UncontrolledTooltip>
+  </div>
+   )
 });
 
 export default StackIcons;
