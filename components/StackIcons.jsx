@@ -108,7 +108,7 @@ const StackIcons = ({stack, contrast, section, isMobile}) => stack.map(item => {
 
   return isMobile ? (
     <tr className="text-right">
-      <td>
+      <td width="50%">
         <img
           src={src}
           height={height
@@ -116,7 +116,7 @@ const StackIcons = ({stack, contrast, section, isMobile}) => stack.map(item => {
             : heightPercentage(100)
           } />
         </td>
-      <td>
+      <td width="50%">
         <p className="text-left m-0">{item}</p>
       </td>
     </tr>

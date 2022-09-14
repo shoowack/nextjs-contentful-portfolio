@@ -107,14 +107,14 @@ const Section = ({
               <Container>
                 <h3 className="text-center mb-4">Stack</h3>
               </Container>
-              <Container fluid="lg" className="pb-5 d-flex flex-column flex-md-row align-items-center justify-content-center" style={{
+              <Container fluid="lg" className="pb-4 d-flex flex-column flex-md-row align-items-center justify-content-center" style={{
                   gap: "15px"
                 }}>
 
                 <ConditionalWrapper
                   condition={width < 768}
                   wrapper={(children) => (
-                    <Table borderless>
+                    <Table borderless className="m-0">
                       {children}
                     </Table>
                   )}
