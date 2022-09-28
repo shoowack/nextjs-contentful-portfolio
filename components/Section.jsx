@@ -81,7 +81,7 @@ const Section = ({
                         <Button
                           color="link"
                           className="ml-2 clipboard-btn"
-                          onClick={() => copyToClipboard(`${window.location.hostname}/${slug}#${sectionSlug}`)}
+                          onClick={() => copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)}
                         >
                           <FontAwesomeIcon icon={copyIcon} color={getContrast(backgroundColor) === "darker" ? "#000" : "#fff"} />
                         </Button>
