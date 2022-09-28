@@ -75,9 +75,9 @@ const Section = ({
                       </Col>)
                     }
                     <Col>
-                    <div className="d-flex justify-content-center align-items-center clipboard-title">
+                    <div className="d-flex justify-content-center align-items-center clipboard-title mr-md-n5">
                       <h2 className="align-self-center">{title}</h2>
-                      {typeof window !== "undefined" && (
+                      {typeof window !== "undefined" &&  width > 768 && (
                         <Button
                           color="link"
                           className="ml-2 clipboard-btn"
@@ -245,7 +245,8 @@ const Section = ({
     </section>
     {/* render MacOS Nearlock app */}
     {
-      title === "Near Lock App" && slug === "designs" && (<Row id="near-lock-interactive-app" className={classnames({
+      title === "Near Lock App" && slug === "designs" && (
+      <Row id="near-lock-interactive-app" className={classnames({
           ["dark"]: isDarkMode
         }, "nearlock-app-wrapper py-5 overflow-hidden")}>
         {
@@ -255,11 +256,24 @@ const Section = ({
                 : faMoon} size="1x"/>
           </button>)
         }
-        <Col md={12} className="my-2">
+        <Col md={12} className={classnames("my-2", {
+          "mx-4" : width < 768
+        })}>
           <Container fluid="lg" className={`${width >= 1120 && "pb-5"} text-center lighter`}>
+          <div className="d-flex justify-content-center align-items-center clipboard-title mr-md-n5">
             <p className="mb-0">
               Interactive preview of the Near Lock desktop app
             </p>
+            {typeof window !== "undefined" && width > 768 && (
+              <Button
+                color="link"
+                className="ml-2 clipboard-btn"
+                onClick={() => copyToClipboard(`${window.location.origin}/${slug}#near-lock-interactive-app`)}
+              >
+                <FontAwesomeIcon icon={copyIcon} color="#fff" />
+              </Button>
+            )}
+            </div>
             <small style={{
                 color: "hsla(0, 0%, 100%, .75)"
               }}>
