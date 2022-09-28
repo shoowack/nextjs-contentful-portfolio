@@ -1,6 +1,6 @@
-import {useState} from "react";
+import {useState, useCallback} from "react";
 import PropTypes from "prop-types";
-import {Container, Row, Col, Table} from "reactstrap";
+import {Container, Row, Col, Table, Button} from "reactstrap";
 import RichText from "@madebyconnor/rich-text-to-jsx";
 import {getContrast} from "./getContrast";
 import hexToRgbA from "./hexToRgba";
@@ -18,6 +18,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Pagination, Navigation} from "swiper";
 import StackIcons from "components/StackIcons";
 import Link from "next/link";
+import useCopyToClipboard from "./../lib/useCopyToClipboard"
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -33,15 +34,19 @@ const Section = ({
   const router = useRouter();
   const {slug} = router.query;
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [copyToClipboard, { copyIcon }] = useCopyToClipboard()
+  const sectionSlug = title.toLowerCase().split(" ").join("-")
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
   return (<StickyContainer>
-    <section style={{
-        backgroundColor
-      }} className={`px-md-0 py-md-5 ${getContrast(backgroundColor)}`}>
+    <section
+      style={{ backgroundColor }}
+      className={`px-md-0 py-md-5 ${getContrast(backgroundColor)}`}
+      id={sectionSlug}
+    >
       <Sticky topOffset={50}>
         {
           ({style, isSticky}) => (<header style={{
@@ -70,14 +75,25 @@ const Section = ({
                       </Col>)
                     }
                     <Col>
+                    <div className="d-flex justify-content-center align-items-center clipboard-title">
                       <h2 className="align-self-center">{title}</h2>
+                      {typeof window !== "undefined" && (
+                        <Button
+                          color="link"
+                          className="ml-2 clipboard-btn"
+                          onClick={() => copyToClipboard(`${window.location.hostname}/${slug}#${sectionSlug}`)}
+                        >
+                          <FontAwesomeIcon icon={copyIcon} color={getContrast(backgroundColor) === "darker" ? "#000" : "#fff"} />
+                        </Button>
+                      )}
+                      </div>
                     </Col>
                     {
                       isSticky && width > 550 && (slug === "apps-and-websites" || slug === "designs") && (<Col className="text-right">
                         <Link href={slug === "designs"
                             ? "/apps-and-websites"
                             : "/designs"
-}>
+                        }>
                           <a>
                             {
                               slug === "designs"
@@ -229,7 +245,7 @@ const Section = ({
     </section>
     {/* render MacOS Nearlock app */}
     {
-      title === "Near Lock App" && slug === "designs" && (<Row className={classnames({
+      title === "Near Lock App" && slug === "designs" && (<Row id="near-lock-interactive-app" className={classnames({
           ["dark"]: isDarkMode
         }, "nearlock-app-wrapper py-5 overflow-hidden")}>
         {

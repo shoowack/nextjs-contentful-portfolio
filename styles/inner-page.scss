@@ -368,6 +368,34 @@ hr {
   }
 }
 
+@keyframes o {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.clipboard {
+  &-title:hover {
+    .clipboard-btn {
+      transition: .25s opacity;
+      opacity: 1;
+    }
+  }
+
+  &-btn {
+    transition: .25s opacity;
+    transition-delay: 1.5s;
+    opacity: 0;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
 .darker {
   hr {
     background: rgba(0, 0, 0, .1);
@@ -407,11 +435,11 @@ hr {
   hr {
     background: rgba(255, 255, 255, .1);
   }
-  
+
   code {
     color: #000;
-  }  
-  
+  }
+
   h2 {
     color: #fff;
   }
