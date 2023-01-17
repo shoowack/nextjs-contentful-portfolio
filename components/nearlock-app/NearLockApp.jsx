@@ -1,18 +1,18 @@
-import React, {useState, useRef} from "react";
-import classnames from "classnames";
-import Modal from "./modal";
-import Content from "./Content";
-import Sidebar from "./Sidebar";
+import React, { useState, useRef } from 'react';
+import classnames from 'classnames';
+import Modal from './modal';
+import Content from './Content';
+import Sidebar from './Sidebar';
 
-function NearLockApp({isDarkMode}) {
-  const [activeTab, setActiveTab] = useState("Welcome");
+function NearLockApp({ isDarkMode }) {
+  const [activeTab, setActiveTab] = useState('Welcome');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSetupDone, setIsSetupDone] = useState(false);
   const searchRef = useRef(null);
 
-  const toggleTab = tab => {
+  const toggleTab = (tab) => {
     if (activeTab !== tab) {
       setActiveTab(tab);
       setIsSearchOpen(false);
@@ -30,36 +30,45 @@ function NearLockApp({isDarkMode}) {
       searchRef.current.focus();
 
       if (!isSearchOpen) {
-        searchRef.current.value = "";
+        searchRef.current.value = '';
       }
     }, 1);
   };
 
   const menuItems = [
     {
-      title: "Advanced"
-    }, {
-      title: "Clipboard",
-      enabled: true
-    }, {
-      title: "Devices",
-      enabled: true
-    }, {
-      title: "Music"
-    }, {
-      title: "WiFi Unlock"
-    }, {
-      title: "Help"
-    }, {
-      title: "Setup",
-      enabled: true
-    }, {
-      title: "Photos and History"
-    }, {
-      title: "Updates"
-    }, {
-      title: "Share"
-    }
+      title: 'Advanced',
+    },
+    {
+      title: 'Clipboard',
+      enabled: true,
+    },
+    {
+      title: 'Devices',
+      enabled: true,
+    },
+    {
+      title: 'Music',
+    },
+    {
+      title: 'WiFi Unlock',
+    },
+    {
+      title: 'Help',
+    },
+    {
+      title: 'Setup',
+      enabled: true,
+    },
+    {
+      title: 'Photos and History',
+    },
+    {
+      title: 'Updates',
+    },
+    {
+      title: 'Share',
+    },
   ];
 
   const props = {
@@ -75,16 +84,23 @@ function NearLockApp({isDarkMode}) {
     activeTab,
     setActiveTab,
     isModalOpen,
-    setIsModalOpen
+    setIsModalOpen,
   };
 
-  return (<div className={classnames({
-      ["dark"]: isDarkMode
-    }, "nearlock-app")}>
-    <Modal {...props}/>
-    <Sidebar {...props} toggleTab={toggleTab} menuItems={menuItems}/>
-    <Content {...props} searchRef={searchRef}/>
-  </div>);
+  return (
+    <div
+      className={classnames(
+        {
+          dark: isDarkMode,
+        },
+        'nearlock-app',
+      )}
+    >
+      <Modal {...props} />
+      <Sidebar {...props} toggleTab={toggleTab} menuItems={menuItems} />
+      <Content {...props} searchRef={searchRef} />
+    </div>
+  );
 }
 
 export default NearLockApp;

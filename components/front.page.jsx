@@ -1,5 +1,5 @@
-import Link from "next/link";
-import ContentfulImage from './contentful-image'
+import Link from 'next/link';
+import ContentfulImage from './contentful-image';
 
 export default function FrontPage({
   sys: { id },
@@ -8,19 +8,11 @@ export default function FrontPage({
   title,
   subscript,
   superscript,
-  backgroundImage: {
-    url
-  }
+  backgroundImage: { url },
 }) {
   return (
-    <Link
-      href={link}
-      key={id}
-    >
-      <a
-        className="section"
-        target={openInNewTab && "_blank"}
-      >
+    <Link href={link} key={id}>
+      <a className="section" target={openInNewTab && '_blank'}>
         {title && subscript && (
           <div className="section-title">
             {title && <h1>{title}</h1>}
@@ -32,14 +24,16 @@ export default function FrontPage({
             <p>{superscript}</p>
           </div>
         )}
-        {url && <ContentfulImage
-          src={url}
-          layout="fill"
-          // height="100%"
-          // width="30%"
-          // layout="responsive"
-          className="section-bg-img"
-        />}
+        {url && (
+          <ContentfulImage
+            src={url}
+            layout="fill"
+            // height="100%"
+            // width="30%"
+            // layout="responsive"
+            className="section-bg-img"
+          />
+        )}
       </a>
     </Link>
   );

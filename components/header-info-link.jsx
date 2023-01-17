@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { Tooltip } from "reactstrap";
-import PropTypes from "prop-types";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "reactstrap";
+import { useState } from 'react';
+import { Tooltip } from 'reactstrap';
+import PropTypes from 'prop-types';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 export default function HeaderInfoLink({
   sys: { id },
@@ -13,9 +12,9 @@ export default function HeaderInfoLink({
   tooltipText,
   icon,
   openInNewTab = false,
-  size = "lg",
-  tooltipPlacement = "top",
-  iconColor
+  size = 'lg',
+  tooltipPlacement = 'top',
+  iconColor,
 }) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
@@ -27,11 +26,11 @@ export default function HeaderInfoLink({
       <a
         key={id}
         href={link}
-        target={openInNewTab ? "_blank" : ""}
+        target={openInNewTab ? '_blank' : ''}
         rel="noreferrer"
         id={`tooltip-${id}`}
       >
-        <FontAwesomeIcon icon={icon.split(",")} size={size} color={iconColor} />
+        <FontAwesomeIcon icon={icon.split(',')} size={size} color={iconColor} />
       </a>
       {tooltipText && (
         <Tooltip
@@ -54,5 +53,5 @@ HeaderInfoLink.propTypes = {
   newTab: PropTypes.bool,
   size: PropTypes.string,
   tooltipPlacement: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
 };

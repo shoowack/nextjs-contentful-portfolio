@@ -1,4 +1,4 @@
-import Meta from '../components/meta'
+import Meta from './meta';
 
 export default function Layout({ preview, children }) {
   return (
@@ -6,5 +6,5 @@ export default function Layout({ preview, children }) {
       <Meta />
       {children}
     </>
-  )
+  );
 }
