@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
 import StackIcons from 'components/StackIcons';
 import Link from 'next/link';
-import FsLightbox from 'fslightbox-react';
+// import FsLightbox from 'fslightbox-react';
 import Balancer from 'react-wrap-balancer';
 import useCopyToClipboard from '../lib/useCopyToClipboard';
 import ContentfulImage from './contentful-image';
@@ -26,7 +26,14 @@ import { getContrast } from '../lib/getContrast';
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({ backgroundColor = '#ffffff', title, description, gallery, stack, width }) => {
+const Section = ({
+  backgroundColor = '#ffffff',
+  title,
+  description,
+  gallery,
+  stack,
+  windowWidth,
+}) => {
   const router = useRouter();
   const { slug } = router.query;
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -68,7 +75,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                   >
                     <Row>
                       {isSticky &&
-                        width > 550 &&
+                        windowWidth > 550 &&
                         (slug === 'apps-and-websites' || slug === 'designs') && (
                           <Col>
                             <Link href="/">
@@ -82,7 +89,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                       <Col>
                         <div className="d-flex justify-content-center align-items-center mr-md-n5">
                           <h2 className="align-self-center text-nowrap">{title}</h2>
-                          {typeof window !== 'undefined' && width > 768 && (
+                          {typeof window !== 'undefined' && windowWidth > 768 && (
                             <Button
                               color="link"
                               className="clipboard-btn ml-2"
@@ -99,7 +106,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                         </div>
                       </Col>
                       {isSticky &&
-                        width > 550 &&
+                        windowWidth > 550 &&
                         (slug === 'apps-and-websites' || slug === 'designs') && (
                           <Col className="text-right">
                             <Link href={slug === 'designs' ? '/apps-and-websites' : '/designs'}>
@@ -136,7 +143,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                   }}
                 >
                   <ConditionalWrapper
-                    condition={width < 768}
+                    condition={windowWidth < 768}
                     wrapper={(children) => (
                       <Table borderless className="m-0">
                         {children}
@@ -146,7 +153,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                     {stack && (
                       <StackIcons
                         stack={stack}
-                        isMobile={width < 768}
+                        isMobile={windowWidth < 768}
                         contrast={getContrast(backgroundColor) === 'lighter'}
                         section={title}
                       />
@@ -164,10 +171,10 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
               const desktopApp = type === 'Desktop App';
               const webApp = type === 'Web App';
               const ipad = type === 'iPad' || type === 'iPad Landscape';
-              const [lightboxController, setLightboxController] = useState({
-                toggler: false,
-                slide: 1,
-              });
+              // const [lightboxController, setLightboxController] = useState({
+              //   toggler: false,
+              //   slide: 1,
+              // });
 
               return (
                 <div key={`gallery-container-${i}`}>
@@ -178,7 +185,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                       </Container>
                     ))}
 
-                  <FsLightbox
+                  {/* <FsLightbox
                     toggler={lightboxController.toggler}
                     sources={images?.map(
                       ({
@@ -188,7 +195,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                       }) => url,
                     )}
                     slide={lightboxController.slide}
-                  />
+                  /> */}
 
                   <Swiper
                     allowTouchMove={false}
@@ -197,11 +204,11 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                       website || desktopApp || webApp
                         ? 1
                         : iphone
-                        ? width > 550
-                          ? width > 991
-                            ? width > 1200
-                              ? width > 2200
-                                ? width > 2600
+                        ? windowWidth > 550
+                          ? windowWidth > 991
+                            ? windowWidth > 1200
+                              ? windowWidth > 2200
+                                ? windowWidth > 2600
                                   ? 6
                                   : 5
                                 : 4
@@ -209,9 +216,9 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                             : 2
                           : 1
                         : ipad
-                        ? width > 900
-                          ? width > 1400
-                            ? width > 2600
+                        ? windowWidth > 900
+                          ? windowWidth > 1400
+                            ? windowWidth > 2600
                               ? 4
                               : 3
                             : 2
@@ -231,7 +238,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                     style={{
                       padding:
                         website || desktopApp || webApp
-                          ? width > 768
+                          ? windowWidth > 768
                             ? '0 20%'
                             : '0 15px'
                           : '0 40px',
@@ -260,7 +267,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                           data-src={url}
                           data-sub-html="<h4>Photo by - <a href='https://ii.photography'>Ivan Suvak </a></h4><p>Location - Croatia</p>"
                         > */}
-                            <a
+                            {/* <a
                               style={{ padding: 'unset' }}
                               onClick={() => {
                                 setLightboxController({
@@ -268,16 +275,16 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                                   slide: i + 1,
                                 });
                               }}
-                            >
-                              <ContentfulImage
-                                // quality={100}
-                                src={url}
-                                alt=""
-                                height={height}
-                                width={width}
-                                layout="responsive"
-                              />{' '}
-                            </a>
+                            > */}
+                            <ContentfulImage
+                              // quality={100}
+                              src={url}
+                              alt=""
+                              height={height}
+                              width={width}
+                              layout="responsive"
+                            />{' '}
+                            {/* </a> */}
                           </SwiperSlide>
                         );
                       },
@@ -307,7 +314,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
             'nearlock-app-wrapper overflow-hidden py-5',
           )}
         >
-          {width >= 1120 && (
+          {windowWidth >= 1120 && (
             <button
               onClick={toggleDarkMode}
               className={classnames('nearlock-app-wrapper-theme-toggler', { dark: isDarkMode })}
@@ -318,13 +325,16 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
           <Col
             md={12}
             className={classnames('my-2', {
-              'mx-4': width < 768,
+              'mx-4': windowWidth < 768,
             })}
           >
-            <Container fluid="lg" className={`${width >= 1120 && 'pb-5'} lighter text-center`}>
+            <Container
+              fluid="lg"
+              className={`${windowWidth >= 1120 && 'pb-5'} lighter text-center`}
+            >
               <div className="d-flex justify-content-center align-items-center clipboard-title mr-md-n5">
                 <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
-                {typeof window !== 'undefined' && width > 768 && (
+                {typeof window !== 'undefined' && windowWidth > 768 && (
                   <Button
                     color="link"
                     className="clipboard-btn ml-2"
@@ -341,13 +351,13 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
                   color: 'hsla(0, 0%, 100%, .75)',
                 }}
               >
-                {width >= 1120
+                {windowWidth >= 1120
                   ? 'some of the features are not available yet'
                   : 'for an interactive preview, please visit desktop version of the website'}
               </small>
             </Container>
           </Col>
-          {width >= 1120 && (
+          {windowWidth >= 1120 && (
             <Col md={12} className="mb-5">
               <NearLockApp isDarkMode={isDarkMode} />
             </Col>
@@ -359,7 +369,7 @@ const Section = ({ backgroundColor = '#ffffff', title, description, gallery, sta
 };
 
 Section.propTypes = {
-  bgColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
   layout: PropTypes.string,
   title: PropTypes.string.isRequired,
   description: PropTypes.object,

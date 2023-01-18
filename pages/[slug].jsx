@@ -5,11 +5,12 @@ import { fetchEntries } from 'lib/fetchEntries';
 import Footer from 'components/Footer';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { Provider } from 'react-wrap-balancer';
 import useWindowDimensions from '../lib/windowSize';
 
 export default function InnerPage({ entries, headerItems }) {
   const router = useRouter();
-  const { width } = useWindowDimensions();
+  const { windowWidth } = useWindowDimensions();
 
   return (
     <>
@@ -31,7 +32,9 @@ export default function InnerPage({ entries, headerItems }) {
         {entries[0].sections.map(
           (entry) =>
             entry.metadata.tags.find((tags) => tags.sys.id === process.env.NODE_ENV) && (
-              <Section width={width} {...entry.fields} key={entry.sys.id} />
+              <Provider>
+                <Section windowWidth={windowWidth} {...entry.fields} key={entry.sys.id} />
+              </Provider>
             ),
         )}
         <Footer />
