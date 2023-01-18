@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { Container, Row, Col, Table, Button } from 'reactstrap';
 import RichText from '@madebyconnor/rich-text-to-jsx';
 import { StickyContainer, Sticky } from '@dior/react-sticky';
@@ -21,7 +20,7 @@ import useCopyToClipboard from '../lib/useCopyToClipboard';
 import ContentfulImage from './contentful-image';
 import NearLockApp from './nearlock-app/NearLockApp';
 import hexToRgbA from '../lib/hexToRgba';
-import { getContrast } from '../lib/getContrast';
+import getContrast from '../lib/getContrast';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -165,7 +164,7 @@ const Section = ({
           </Col>
 
           <Col md={12}>
-            {gallery?.map(({ fields: { type, images } }, i) => {
+            {gallery?.map(({ fields: { type, images }, sys: { id } }, i) => {
               const iphone = type === 'iPhone';
               const website = type === 'Website';
               const desktopApp = type === 'Desktop App';
@@ -177,7 +176,7 @@ const Section = ({
               // });
 
               return (
-                <div key={`gallery-container-${i}`}>
+                <div key={`gallery-container-${id}`}>
                   {!website ||
                     (!webApp && (
                       <Container>
@@ -229,7 +228,7 @@ const Section = ({
                     pagination={{
                       dynamicBullets: true,
                       clickable: true,
-                      renderBullet: (index, className) =>
+                      renderBullet: (className) =>
                         `<span class="${className}"><div class="owl-dot-el-1" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-2" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-3" style="background-color:${backgroundColor}"></div></span>`,
                     }}
                     className={type.replace(/ /g, '-').toLowerCase()}
@@ -246,21 +245,19 @@ const Section = ({
                   >
                     {/* <LightGallery mode="lg-fade"> */}
                     {images?.map(
-                      (
-                        {
-                          fields: {
-                            file: {
-                              url,
-                              details: {
-                                image: { width, height },
-                              },
+                      ({
+                        fields: {
+                          file: {
+                            url,
+                            details: {
+                              image: { width, height },
                             },
                           },
                         },
-                        i,
-                      ) => {
+                        sys: { id: imageId },
+                      }) => {
                         return (
-                          <SwiperSlide key={`gallery-slide-${i}`}>
+                          <SwiperSlide key={`gallery-slide-${imageId}`}>
                             {/* <a
                           data-lg-size={`${width}-${height}`}
                           className="gallery-item"
@@ -316,6 +313,7 @@ const Section = ({
         >
           {windowWidth >= 1120 && (
             <button
+              type="button"
               onClick={toggleDarkMode}
               className={classnames('nearlock-app-wrapper-theme-toggler', { dark: isDarkMode })}
             >
@@ -366,14 +364,6 @@ const Section = ({
       )}
     </StickyContainer>
   );
-};
-
-Section.propTypes = {
-  backgroundColor: PropTypes.string,
-  layout: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.object,
-  gallery: PropTypes.array,
 };
 
 export default Section;

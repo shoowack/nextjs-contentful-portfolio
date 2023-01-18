@@ -114,27 +114,30 @@ export default function Footer() {
                   }}
                 >
                   <Button color={!errors && sentState ? 'success' : 'primary'} disabled={isLoading}>
-                    {isLoading ? (
-                      <div>
-                        Sending
-                        <FontAwesomeIcon
-                          icon={faCircleNotch}
-                          size="sm"
-                          spin="spin"
-                          className="ml-2"
-                        />
-                      </div>
-                    ) : !errors && sentState ? (
-                      <div>
-                        Sent
-                        <FontAwesomeIcon icon={faCheck} size="sm" className="ml-2" />
-                      </div>
-                    ) : (
-                      <div>
-                        Send
-                        <FontAwesomeIcon icon={faPaperPlane} size="sm" className="ml-2" />
-                      </div>
-                    )}
+                    {
+                      // eslint-disable-next-line no-nested-ternary
+                      isLoading ? (
+                        <div>
+                          Sending
+                          <FontAwesomeIcon
+                            icon={faCircleNotch}
+                            size="sm"
+                            spin="spin"
+                            className="ml-2"
+                          />
+                        </div>
+                      ) : !errors && sentState ? (
+                        <div>
+                          Sent
+                          <FontAwesomeIcon icon={faCheck} size="sm" className="ml-2" />
+                        </div>
+                      ) : (
+                        <div>
+                          Send
+                          <FontAwesomeIcon icon={faPaperPlane} size="sm" className="ml-2" />
+                        </div>
+                      )
+                    }
                   </Button>
                 </Col>
               </Row>
@@ -148,9 +151,9 @@ export default function Footer() {
                   {errors && (
                     <div>
                       <p className="text-danger mb-0">Errors:</p>
-                      {errors.map((error, i) =>
+                      {errors.map((error) =>
                         error.field ? (
-                          <p key={i}>
+                          <p>
                             <span className="text-capitalize">{error.field}</span>: {error.message}
                           </p>
                         ) : (

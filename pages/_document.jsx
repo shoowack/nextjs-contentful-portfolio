@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=latin-ext"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=latin-ext&display=optional"
             rel="stylesheet"
           />
           <style type="text/css">{dom.css()}</style>
