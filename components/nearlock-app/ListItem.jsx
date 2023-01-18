@@ -10,6 +10,9 @@ const ListItem = ({ icon, title, desc, checked, newBadge, extraInfo, setActiveTa
       onClick={() => {
         setIsChecked((prev) => !prev);
       }}
+      onKeyDown={() => {
+        setIsChecked((prev) => !prev);
+      }}
     >
       {newBadge && <div className="list-item__icon_new-badge">New</div>}
       <div
@@ -34,6 +37,7 @@ const ListItem = ({ icon, title, desc, checked, newBadge, extraInfo, setActiveTa
         <div className="d-flex align-items-end">
           <small
             onClick={() => setActiveTab(extraInfo)}
+            onKeyDown={() => setActiveTab(extraInfo)}
             style={{ background: 'unset', padding: '5px', margin: '0 5px', color: '#007bff' }}
           >
             Read More

@@ -63,7 +63,7 @@ const Sidebar = ({ isSidebarOpen, menuItems, activeTab, toggleTab, isSetupDone }
             }}
             className="d-flex align-items-center sidebar__item"
           >
-            <img src="/nearlock-app/menu/iphone.svg" height="17px" className="mr-2 ml-1" />{' '}
+            <img src="/nearlock-app/menu/iphone.svg" height="17px" className="mr-2 ml-1" alt="" />{' '}
             Ivan&apos;s iPhone <div className="sidebar__connected-dot ml-auto" />
           </span>
         )}
