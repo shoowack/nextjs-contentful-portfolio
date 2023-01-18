@@ -10,7 +10,7 @@ import useWindowDimensions from '../lib/windowSize';
 
 export default function InnerPage({ entries, headerItems }) {
   const router = useRouter();
-  const { windowWidth } = useWindowDimensions();
+  const { width: windowWidth } = useWindowDimensions();
 
   return (
     <>
