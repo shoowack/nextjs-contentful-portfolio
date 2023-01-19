@@ -1,12 +1,12 @@
-import Navigation from 'components/Navigation';
-import Section from 'components/Section';
-import { getHeaderLinks } from 'lib/api';
-import { fetchEntries } from 'lib/fetchEntries';
-import Footer from 'components/Footer';
+import Navigation from '@components/Navigation';
+import Section from '@components/Section';
+import { getHeaderLinks } from '@lib/api';
+import { fetchEntries } from '@lib/fetchEntries';
+import Footer from '@components/Footer';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Provider } from 'react-wrap-balancer';
-import useWindowDimensions from '../lib/windowSize';
+import useWindowDimensions from '@lib/windowSize';
 
 export default function InnerPage({ entries, headerItems }) {
   const router = useRouter();

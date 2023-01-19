@@ -23,7 +23,7 @@ import {
   Illustrator,
   SASS,
   SASSAlt,
-} from '../lib/stackLogos';
+} from '@lib/stackLogos';
 
 export default function StackIcons({ stack, contrast, section, isMobile }) {
   return stack.map((item) => {

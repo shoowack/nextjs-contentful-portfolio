@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Container, Row, Col, Table, Button } from 'reactstrap';
 import RichText from '@madebyconnor/rich-text-to-jsx';
 import { StickyContainer, Sticky } from '@dior/react-sticky';
-// import Link from "next/link";
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -11,15 +10,15 @@ import classnames from 'classnames';
 // import { LightGallerySettings } from 'lightgallery/lg-settings';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
-import StackIcons from 'components/StackIcons';
+import StackIcons from '@components/StackIcons';
 import Link from 'next/link';
 // import FsLightbox from 'fslightbox-react';
 import Balancer from 'react-wrap-balancer';
 import hexAlpha from 'hex-alpha';
 import contrast from 'contrast';
-import useCopyToClipboard from '../lib/useCopyToClipboard';
-import ContentfulImage from './contentful-image';
-import NearLockApp from './nearlock-app/NearLockApp';
+import useCopyToClipboard from '@lib/useCopyToClipboard';
+import ContentfulImage from '@components/contentful-image';
+import NearLockApp from '@components/nearlock-app/NearLockApp';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -274,13 +273,22 @@ const Section = ({
                               }}
                             > */}
                             <ContentfulImage
-                              // quality={100}
+                              quality={100}
                               src={url}
                               alt=""
                               height={height}
                               width={width}
                               layout="responsive"
-                            />{' '}
+                              sizes={
+                                website || desktopApp || webApp
+                                  ? '(max-width: 768px) 100vw, 60vw'
+                                  : iphone
+                                  ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
+                                  : ipad
+                                  ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
+                                  : '1vw'
+                              }
+                            />
                             {/* </a> */}
                           </SwiperSlide>
                         );

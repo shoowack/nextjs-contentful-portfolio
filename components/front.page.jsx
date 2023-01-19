@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ContentfulImage from './contentful-image';
+import ContentfulImage from '@components/contentful-image';
 
 export default function FrontPage({
   sys: { id },

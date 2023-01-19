@@ -1,4 +1,4 @@
-import { getPreviewPostBySlug } from '../../lib/api';
+import { getPreviewPostBySlug } from '@lib/api';
 
 // eslint-disable-next-line consistent-return
 export default async function preview(req, res) {

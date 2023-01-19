@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Container, Row, Col } from 'reactstrap';
-import HeaderInfoLink from './header-info-link';
+import HeaderInfoLink from '@components/header-info-link';
 
 export default function Navigation({ headerItems }) {
   return (
