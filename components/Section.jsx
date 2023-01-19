@@ -15,11 +15,11 @@ import StackIcons from 'components/StackIcons';
 import Link from 'next/link';
 // import FsLightbox from 'fslightbox-react';
 import Balancer from 'react-wrap-balancer';
-import hexToRgba from 'hex-to-rgba';
+import hexAlpha from 'hex-alpha';
+import contrast from 'contrast';
 import useCopyToClipboard from '../lib/useCopyToClipboard';
 import ContentfulImage from './contentful-image';
 import NearLockApp from './nearlock-app/NearLockApp';
-import getContrast from '../lib/getContrast';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -46,7 +46,9 @@ const Section = ({
     <StickyContainer>
       <section
         style={{ backgroundColor }}
-        className={`px-md-0 py-md-5 ${getContrast(backgroundColor)}`}
+        className={`px-md-0 py-md-5 ${
+          contrast(backgroundColor) === 'light' ? 'darker' : 'lighter'
+        }`}
         id={sectionSlug}
       >
         <Sticky topOffset={50}>
@@ -54,7 +56,7 @@ const Section = ({
             <header
               style={{
                 ...style,
-                backgroundColor: hexToRgba(backgroundColor, 0.8),
+                backgroundColor: hexAlpha(backgroundColor, 0.8),
                 zIndex: 1080, // above tooltips
                 boxShadow: isSticky ? '0px 0px 20px -10px rgba(0,0,0,.3)' : 'none',
                 backdropFilter: 'blur(10px)',
@@ -98,7 +100,7 @@ const Section = ({
                             >
                               <FontAwesomeIcon
                                 icon={copyIcon}
-                                color={getContrast(backgroundColor) === 'darker' ? '#000' : '#fff'}
+                                color={contrast(backgroundColor) === 'light' ? '#000' : '#fff'}
                               />
                             </Button>
                           )}
@@ -152,7 +154,7 @@ const Section = ({
                     <StackIcons
                       stack={stack}
                       isMobile={windowWidth < 768}
-                      contrast={getContrast(backgroundColor) === 'lighter'}
+                      contrast={contrast(backgroundColor) === 'dark'}
                       section={title}
                     />
                   </ConditionalWrapper>
