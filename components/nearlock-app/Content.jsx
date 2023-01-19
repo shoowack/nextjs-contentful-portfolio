@@ -27,6 +27,7 @@ import {
 
 const setupData = [
   {
+    id: 1,
     title: 'Near Lock',
     // desc: "Activating main Near Lock feature",
     items: [
@@ -39,6 +40,7 @@ const setupData = [
     ],
   },
   {
+    id: 2,
     title: 'Lock Options',
     desc: 'Set your lock options',
     items: [
@@ -55,6 +57,7 @@ const setupData = [
     ],
   },
   {
+    id: 3,
     title: 'Notifications',
     desc: 'Select preferred options for Notification Settings',
     items: [
@@ -68,6 +71,7 @@ const setupData = [
     ],
   },
   {
+    id: 4,
     title: 'Mac wake unlock options',
     desc: 'Select how do you want to unlock your Mac',
     items: [
@@ -90,6 +94,7 @@ const setupData = [
     ],
   },
   {
+    id: 5,
     title: 'Advanced Settings',
     desc: 'Finer tweaks and enhancements',
     items: [
@@ -110,6 +115,7 @@ const setupData = [
     ],
   },
   {
+    id: 6,
     title: 'Photos and History',
     desc: 'Track your Mac activity',
     items: [
@@ -173,7 +179,12 @@ const Content = ({
           'position-absolute w-100 content-header',
         )}
       >
-        <div className="content-header__left-items" onClick={toggleSidebar}>
+        <div
+          className="content-header__left-items"
+          onClick={toggleSidebar}
+          onKeyDown={toggleSidebar}
+          aria-hidden
+        >
           <svg
             width="22px"
             height="17px"
@@ -219,6 +230,9 @@ const Content = ({
               'content-header__search-close-icon',
             )}
             onClick={toggleSearch}
+            onKeyDown={toggleSearch}
+            aria-hidden
+            alt=""
           />
           <div
             className={classnames(
@@ -228,6 +242,8 @@ const Content = ({
               'content-header__right-items_search_icon',
             )}
             onClick={toggleSearch}
+            onKeyDown={toggleSearch}
+            aria-hidden
           >
             <svg
               width="17px"
@@ -265,7 +281,12 @@ const Content = ({
                 offset: 1,
               }}
             >
-              <img src="/nearlock-app/nearlock-logo.svg" height="225px" className="m-5 pt-4" />
+              <img
+                src="/nearlock-app/nearlock-logo.svg"
+                height="225px"
+                className="m-5 pt-4"
+                alt=""
+              />
               <h5 className="m-0">Welcome</h5>
               <small
                 className="d-block m-auto"
@@ -286,7 +307,12 @@ const Content = ({
         <TabPane tabId="Clipboard">
           {isSetupDone ? (
             <Col sm={12} className="mt-0">
-              <img src="/nearlock-app/clipboard.png" className="d-flex mx-auto" width="820px" />
+              <img
+                src="/nearlock-app/clipboard.png"
+                className="d-flex mx-auto"
+                width="820px"
+                alt=""
+              />
               <div className="d-flex justify-content-between">
                 <div className="d-flex">
                   <svg
@@ -542,11 +568,11 @@ const Content = ({
         </TabPane>
         <TabPane tabId="Setup">
           <div className="d-flex h-100 flex-column mx-5 py-4">
-            {setupData.map(({ title, desc, items }, i) => (
-              <div key={`list-${i}`}>
-                <ListHeader title={title} desc={desc} key={`list-header-${i}`} />{' '}
-                {items.map((props, i) => (
-                  <ListItem {...props} setActiveTab={setActiveTab} key={`list-item-${i}`} />
+            {setupData.map(({ id, title, desc, items }, i) => (
+              <div key={`list-${id}`}>
+                <ListHeader title={title} desc={desc} key={`list-header-${id}`} />{' '}
+                {items.map((props) => (
+                  <ListItem {...props} setActiveTab={setActiveTab} key={`list-item-${id}`} />
                 ))}
                 {i < setupData.length - 1 && <hr className="my-4" />}
               </div>
@@ -594,7 +620,7 @@ const Content = ({
               })}
             >
               <div className="d-flex align-items-center justify-content-center notifications-notification-icon">
-                <img src="/nearlock-app/setup/nearlock.svg" />
+                <img src="/nearlock-app/setup/nearlock.svg" alt="" />
               </div>
               <div className="d-flex flex-column">
                 <strong className="notifications-notification-title">Near Lock</strong>
@@ -606,6 +632,7 @@ const Content = ({
           <img
             src="/nearlock-app/notifications-screen.png"
             className="position-absolute notifications-bg"
+            alt=""
           />
         </TabPane>
       </TabContent>
