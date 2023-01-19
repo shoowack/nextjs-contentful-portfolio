@@ -130,7 +130,7 @@ const Section = ({
               <Balancer>{description && <RichText richText={description} />}</Balancer>
             </Container>
             {stack && (
-              <div>
+              <>
                 <Container>
                   <h3 className="mb-4 text-center">Stack</h3>
                 </Container>
@@ -149,17 +149,15 @@ const Section = ({
                       </Table>
                     )}
                   >
-                    {stack && (
-                      <StackIcons
-                        stack={stack}
-                        isMobile={windowWidth < 768}
-                        contrast={getContrast(backgroundColor) === 'lighter'}
-                        section={title}
-                      />
-                    )}
+                    <StackIcons
+                      stack={stack}
+                      isMobile={windowWidth < 768}
+                      contrast={getContrast(backgroundColor) === 'lighter'}
+                      section={title}
+                    />
                   </ConditionalWrapper>
                 </Container>
-              </div>
+              </>
             )}
           </Col>
 

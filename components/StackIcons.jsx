@@ -26,7 +26,7 @@ import {
 } from '../lib/stackLogos';
 
 export default function StackIcons({ stack, contrast, section, isMobile }) {
-  stack.map((item) => {
+  return stack.map((item) => {
     let src;
     let height;
     let tooltip;
@@ -102,23 +102,26 @@ export default function StackIcons({ stack, contrast, section, isMobile }) {
     return isMobile ? (
       <tr className="text-right">
         <td width="50%">
-          <img src={src} height={height || heightPercentage(100)} />
+          <img src={src} height={height || heightPercentage(100)} alt={tooltip || item} />
         </td>
         <td width="50%">
           <p className="m-0 text-left">{item}</p>
         </td>
       </tr>
     ) : (
-      <div
-        id={`tooltip-${project}-${stackName}`}
-        key={`${project}-${stackName}`}
-        className="d-flex align-items-center"
-      >
-        <img src={src} height={height || heightPercentage(100)} />
+      <>
+        {' '}
+        <div
+          id={`tooltip-${project}-${stackName}`}
+          key={`${project}-${stackName}`}
+          className="d-flex align-items-center"
+        >
+          <img src={src} height={height || heightPercentage(100)} alt={tooltip || item} />
+        </div>
         <UncontrolledTooltip target={`tooltip-${project}-${stackName}`}>
           {tooltip || item}
         </UncontrolledTooltip>
-      </div>
+      </>
     );
   });
 }
