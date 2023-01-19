@@ -114,30 +114,27 @@ export default function Footer() {
                   }}
                 >
                   <Button color={!errors && sentState ? 'success' : 'primary'} disabled={isLoading}>
-                    {
-                      // eslint-disable-next-line no-nested-ternary
-                      isLoading ? (
-                        <div>
-                          Sending
-                          <FontAwesomeIcon
-                            icon={faCircleNotch}
-                            size="sm"
-                            spin="spin"
-                            className="ml-2"
-                          />
-                        </div>
-                      ) : !errors && sentState ? (
-                        <div>
-                          Sent
-                          <FontAwesomeIcon icon={faCheck} size="sm" className="ml-2" />
-                        </div>
-                      ) : (
-                        <div>
-                          Send
-                          <FontAwesomeIcon icon={faPaperPlane} size="sm" className="ml-2" />
-                        </div>
-                      )
-                    }
+                    {isLoading ? (
+                      <div>
+                        Sending
+                        <FontAwesomeIcon
+                          icon={faCircleNotch}
+                          size="sm"
+                          spin="spin"
+                          className="ml-2"
+                        />
+                      </div>
+                    ) : !errors && sentState ? (
+                      <div>
+                        Sent
+                        <FontAwesomeIcon icon={faCheck} size="sm" className="ml-2" />
+                      </div>
+                    ) : (
+                      <div>
+                        Send
+                        <FontAwesomeIcon icon={faPaperPlane} size="sm" className="ml-2" />
+                      </div>
+                    )}
                   </Button>
                 </Col>
               </Row>

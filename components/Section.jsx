@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { useState } from 'react';
 import { Container, Row, Col, Table, Button } from 'reactstrap';
 import RichText from '@madebyconnor/rich-text-to-jsx';

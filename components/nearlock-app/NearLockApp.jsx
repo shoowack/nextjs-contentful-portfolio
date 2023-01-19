@@ -37,36 +37,46 @@ function NearLockApp({ isDarkMode }) {
 
   const menuItems = [
     {
+      id: 1,
       title: 'Advanced',
     },
     {
+      id: 2,
       title: 'Clipboard',
       enabled: true,
     },
     {
+      id: 3,
       title: 'Devices',
       enabled: true,
     },
     {
+      id: 4,
       title: 'Music',
     },
     {
+      id: 5,
       title: 'WiFi Unlock',
     },
     {
+      id: 6,
       title: 'Help',
     },
     {
+      id: 7,
       title: 'Setup',
       enabled: true,
     },
     {
+      id: 8,
       title: 'Photos and History',
     },
     {
+      id: 9,
       title: 'Updates',
     },
     {
+      id: 10,
       title: 'Share',
     },
   ];

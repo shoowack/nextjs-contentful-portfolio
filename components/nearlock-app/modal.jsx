@@ -62,6 +62,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSet
               <div className="d-flex align-items-center flex-row">
                 {[...Array(2)].map((_, i) => (
                   <div
+                    // eslint-disable-next-line react/no-array-index-key
                     key={`dot-${i}`}
                     className={classnames(
                       {

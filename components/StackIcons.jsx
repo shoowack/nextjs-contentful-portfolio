@@ -99,6 +99,7 @@ export default function StackIcons({ stack, contrast, section, isMobile }) {
         return;
     }
 
+    // eslint-disable-next-line consistent-return
     return isMobile ? (
       <tr className="text-right">
         <td width="50%">
@@ -110,7 +111,6 @@ export default function StackIcons({ stack, contrast, section, isMobile }) {
       </tr>
     ) : (
       <>
-        {' '}
         <div
           id={`tooltip-${project}-${stackName}`}
           key={`${project}-${stackName}`}

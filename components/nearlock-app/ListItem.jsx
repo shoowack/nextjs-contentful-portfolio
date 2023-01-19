@@ -13,6 +13,7 @@ const ListItem = ({ icon, title, desc, checked, newBadge, extraInfo, setActiveTa
       onKeyDown={() => {
         setIsChecked((prev) => !prev);
       }}
+      aria-hidden
     >
       {newBadge && <div className="list-item__icon_new-badge">New</div>}
       <div
@@ -38,6 +39,7 @@ const ListItem = ({ icon, title, desc, checked, newBadge, extraInfo, setActiveTa
           <small
             onClick={() => setActiveTab(extraInfo)}
             onKeyDown={() => setActiveTab(extraInfo)}
+            aria-hidden
             style={{ background: 'unset', padding: '5px', margin: '0 5px', color: '#007bff' }}
           >
             Read More
