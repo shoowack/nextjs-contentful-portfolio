@@ -15,10 +15,10 @@ import StackIcons from 'components/StackIcons';
 import Link from 'next/link';
 // import FsLightbox from 'fslightbox-react';
 import Balancer from 'react-wrap-balancer';
+import hexToRgba from 'hex-to-rgba';
 import useCopyToClipboard from '../lib/useCopyToClipboard';
 import ContentfulImage from './contentful-image';
 import NearLockApp from './nearlock-app/NearLockApp';
-import hexToRgbA from '../lib/hexToRgba';
 import getContrast from '../lib/getContrast';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
@@ -54,7 +54,7 @@ const Section = ({
             <header
               style={{
                 ...style,
-                backgroundColor: hexToRgbA(backgroundColor),
+                backgroundColor: hexToRgba(backgroundColor, 0.8),
                 zIndex: 1080, // above tooltips
                 boxShadow: isSticky ? '0px 0px 20px -10px rgba(0,0,0,.3)' : 'none',
                 backdropFilter: 'blur(10px)',
