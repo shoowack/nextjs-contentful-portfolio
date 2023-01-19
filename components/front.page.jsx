@@ -26,11 +26,10 @@ export default function FrontPage({
         )}
         {url && (
           <ContentfulImage
+            quality={100}
             src={url}
+            sizes="(max-width: 768px) 100vw, 50vw"
             layout="fill"
-            // height="100%"
-            // width="30%"
-            // layout="responsive"
             className="section-bg-img"
           />
         )}
