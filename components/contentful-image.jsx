@@ -14,6 +14,7 @@ const ContentfulImage = (props) => {
       loader={contentfulLoader}
       onLoadingComplete={() => setLoading(false)}
       {...props}
+      // eslint-disable-next-line react/destructuring-assignment
       className={cn(props.className, { isLoading })}
     />
   );

@@ -23,4 +23,9 @@ AppButton.propTypes = {
   onClick: PropTypes.func,
 };
 
+AppButton.defaultProps = {
+  link: null,
+  onClick: null,
+};
+
 export default AppButton;

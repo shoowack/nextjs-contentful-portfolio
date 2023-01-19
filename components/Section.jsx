@@ -86,7 +86,8 @@ const Section = ({
                           </Col>
                         )}
                       <Col>
-                        <div className="d-flex justify-content-center align-items-center mr-md-n5">
+                        {/* "clipboard-title" class is needed for share section link */}
+                        <div className="d-flex justify-content-center align-items-center mr-md-n5 clipboard-title">
                           <h2 className="align-self-center text-nowrap">{title}</h2>
                           {typeof window !== 'undefined' && windowWidth > 768 && (
                             <Button
