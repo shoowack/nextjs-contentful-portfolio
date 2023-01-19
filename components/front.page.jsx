@@ -28,7 +28,7 @@ export default function FrontPage({
           <ContentfulImage
             quality={100}
             src={url}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 50vw" // 50vw because the image is wider than 33% on hover
             layout="fill"
             className="section-bg-img"
           />
