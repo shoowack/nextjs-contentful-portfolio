@@ -1,6 +1,6 @@
 const FirstStep = () => {
   return (
-    <div className="d-flex flex-column justify-content-center grow-1 p-5 text-center">
+    <div className="d-flex flex-column justify-content-center flex-grow-1 p-5 text-center">
       <svg
         className="my-5 mx-auto"
         width="102px"

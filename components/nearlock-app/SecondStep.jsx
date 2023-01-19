@@ -1,6 +1,6 @@
-const FirstStep = ({ isDarkMode }) => {
+const SecondStep = ({ isDarkMode }) => {
   return (
-    <div className="d-flex grow-1 flex-row px-5">
+    <div className="d-flex flex-grow-1 flex-row px-5">
       <div
         className="d-flex flex-column mr-n5 align-items-center justify-content-center py-5 text-center"
         style={{
@@ -58,4 +58,4 @@ const FirstStep = ({ isDarkMode }) => {
   );
 };
 
-export default FirstStep;
+export default SecondStep;

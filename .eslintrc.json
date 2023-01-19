@@ -42,7 +42,8 @@
       "camelcase": "off",
       "react/forbid-prop-types": "off",
       "new-cap": "off",
-      "tailwindcss/no-custom-classname": "off"
+      "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/migration-from-tailwind-2": "off"
     },
     "overrides": [
       {

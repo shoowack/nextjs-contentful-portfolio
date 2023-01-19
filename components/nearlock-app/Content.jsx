@@ -485,7 +485,7 @@ const Content = ({
             <h4 className="m-0">Devices</h4>
             <small>Currently connected devices</small>
           </div> */}
-              <div className="grow-1 d-flex flex-column justify-content-center mt-5">
+              <div className="flex-grow-1 d-flex flex-column justify-content-center mt-5">
                 <div
                   className="d-flex my-5 mx-auto"
                   style={{
@@ -512,7 +512,7 @@ const Content = ({
                     </svg>
                     <small className="mt-3">Filip’s MacBook Pro</small>
                   </div>
-                  <div className="devices-connected-line d-flex grow-1 flex-column justify-content-center align-items-center mb-5">
+                  <div className="devices-connected-line d-flex flex-grow-1 flex-column justify-content-center align-items-center mb-5">
                     <div className="devices-connected-line__popup">3 meters</div>
                   </div>
                   <div className="d-flex flex-column align-items-center">

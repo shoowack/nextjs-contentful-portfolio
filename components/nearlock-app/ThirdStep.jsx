@@ -3,7 +3,7 @@ import { faTwitterSquare, faFacebookSquare } from '@fortawesome/free-brands-svg-
 
 const ThirdStep = () => {
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center grow-1 px-5">
+    <div className="d-flex flex-column align-items-center justify-content-center flex-grow-1 px-5">
       <div className="mt-4 mb-5">
         <img src="./third-step.png" alt="" height="130px" style={{}} />
       </div>

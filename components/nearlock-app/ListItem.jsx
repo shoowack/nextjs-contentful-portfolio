@@ -26,7 +26,7 @@ const ListItem = ({ icon, title, desc, checked, newBadge, extraInfo, setActiveTa
       >
         <img src={icon?.src} alt="" />
       </div>
-      <div className="d-flex flex-column justify-content-center grow-1 ml-3">
+      <div className="d-flex flex-column justify-content-center flex-grow-1 ml-3">
         <div className="list-item__title">{title}</div>
         {desc && (
           <div className="list-item__desc">
