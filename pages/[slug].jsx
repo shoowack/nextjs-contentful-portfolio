@@ -10,7 +10,7 @@ import useWindowDimensions from '../lib/windowSize';
 
 export default function InnerPage({ entries, headerItems }) {
   const router = useRouter();
-  const { width: windowWidth } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function InnerPage({ entries, headerItems }) {
           (entry) =>
             entry.metadata.tags.find((tags) => tags.sys.id === process.env.NODE_ENV) && (
               <Provider>
-                <Section windowWidth={windowWidth} {...entry.fields} key={entry.sys.id} />
+                <Section windowWidth={width} {...entry.fields} key={entry.sys.id} />
               </Provider>
             ),
         )}

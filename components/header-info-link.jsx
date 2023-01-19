@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
-export default function HeaderInfoLink({
+const HeaderInfoLink = ({
   sys: { id },
   link,
   tooltipText,
@@ -15,7 +15,7 @@ export default function HeaderInfoLink({
   size = 'lg',
   tooltipPlacement = 'top',
   iconColor,
-}) {
+}) => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
 
@@ -43,15 +43,24 @@ export default function HeaderInfoLink({
       )}
     </>
   );
-}
+};
 
 HeaderInfoLink.propTypes = {
   link: PropTypes.string.isRequired,
   tooltipText: PropTypes.string,
-  order: PropTypes.number,
   icon: PropTypes.string.isRequired,
-  newTab: PropTypes.bool,
+  openInNewTab: PropTypes.bool,
   size: PropTypes.string,
   tooltipPlacement: PropTypes.string,
-  color: PropTypes.string,
+  iconColor: PropTypes.string,
 };
+
+HeaderInfoLink.defaultProps = {
+  tooltipText: '',
+  openInNewTab: false,
+  size: 'lg',
+  tooltipPlacement: 'top',
+  iconColor: '#000',
+};
+
+export default HeaderInfoLink;
