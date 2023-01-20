@@ -1,0 +1,15 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+/* 
+body {
+    font-family: 'Alice', serif;
+    background: url('./../public/img/bg.png') top left no-repeat;
+}
+
+h1, h2 {
+    font-family: 'Crushed';
+} */

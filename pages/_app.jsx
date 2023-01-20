@@ -1,8 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/nearlock-app.scss';
 import '../styles/inner-page.scss';
 import '../styles/swiper.scss';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
+import '../styles/index.css';
 
 const App = ({ Component, pageProps }) => {
   return (
