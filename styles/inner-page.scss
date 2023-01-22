@@ -289,30 +289,6 @@ hr {
 
 label {
   font-family: "Inter", sans-serif;
-  margin-top: 6px;
-}
-
-.form-control {
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  color: #fff;
-  border: none !important;
-  background: #424348;
-  transition: .25s all;
-
-  &:focus {
-    background: #a2cfff0f;
-    color: #fff;
-    box-shadow: 0 0 0 2px #007bff;
-  }
-
-  &::placeholder {
-    color: rgba(105, 105, 105, 1);
-  }
-}
-
-.btn-primary:focus, .btn-primary.focus {
-  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5);
 }
 
 video {
@@ -328,15 +304,4 @@ video {
   overflow: hidden;
   z-index:2;
   box-shadow: 0 10px 60px rgba(0,0,0,.5);
-}
-
-.footer {
-  background: #2c2d30;
-  color: #fff;
-  position: fixed;
-  display: block;
-  bottom: 0;
-  z-index: -1;
-  padding: 4em 0 0 0;
-  width:100%;
 }

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Row, Col, Table, Button } from 'reactstrap';
 import Container from '@components/Container';
 import RichText from '@madebyconnor/rich-text-to-jsx';
 import { StickyContainer, Sticky } from '@dior/react-sticky';
@@ -71,7 +70,7 @@ const Section = ({
                   'py-2',
                 )}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-center md:justify-between">
                   {isSticky &&
                     windowWidth > 550 &&
                     (slug === 'apps-and-websites' || slug === 'designs') && (
@@ -84,9 +83,12 @@ const Section = ({
                     )}
                   {/* "clipboard-title" class is needed for share section link (md:-mr-12) */}
                   <div className="clipboard-title flex items-center justify-center md:m-auto">
-                    <h2 className="align-self-center text-nowrap text-6xl font-black">{title}</h2>
+                    <h2 className="align-self-center text-nowrap text-3xl font-black md:text-6xl">
+                      {title}
+                    </h2>
                     {typeof window !== 'undefined' && windowWidth > 768 && (
-                      <Button
+                      <button
+                        type="button"
                         color="link"
                         className="clipboard-btn ml-2"
                         onClick={() =>
@@ -97,7 +99,7 @@ const Section = ({
                           icon={copyIcon}
                           color={contrastColor === 'light' ? '#000' : '#fff'}
                         />
-                      </Button>
+                      </button>
                     )}
                   </div>
                   {isSticky &&
@@ -129,7 +131,7 @@ const Section = ({
                 <h3 className="mb-4 text-center">Stack</h3>
               </Container>
               <Container
-                className="d-flex flex-column flex-md-row align-items-center justify-content-center pb-4"
+                className="flex flex-col items-center justify-center pb-4 md:flex-row"
                 style={{
                   gap: '15px',
                 }}
@@ -299,7 +301,7 @@ const Section = ({
       </section>
       {/* render MacOS Nearlock app */}
       {title === 'Near Lock App' && slug === 'designs' && (
-        <Row
+        <div
           id="near-lock-interactive-app"
           className={classnames(
             {
@@ -317,8 +319,7 @@ const Section = ({
               <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="1x" />
             </button>
           )}
-          <Col
-            md={12}
+          <div
             className={classnames('my-2', {
               'mx-4': windowWidth < 768,
             })}
@@ -330,7 +331,8 @@ const Section = ({
               <div className="d-flex justify-content-center align-items-center clipboard-title mr-md-n5">
                 <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
                 {typeof window !== 'undefined' && windowWidth > 768 && (
-                  <Button
+                  <button
+                    type="button"
                     color="link"
                     className="clipboard-btn ml-2"
                     onClick={() =>
@@ -338,7 +340,7 @@ const Section = ({
                     }
                   >
                     <FontAwesomeIcon icon={copyIcon} color="#fff" />
-                  </Button>
+                  </button>
                 )}
               </div>
               <small
@@ -351,13 +353,13 @@ const Section = ({
                   : 'for an interactive preview, please visit desktop version of the website'}
               </small>
             </Container>
-          </Col>
+          </div>
           {windowWidth >= 1120 && (
-            <Col md={12} className="mb-5">
+            <div className="mb-5">
               <NearLockApp isDarkMode={isDarkMode} />
-            </Col>
+            </div>
           )}
-        </Row>
+        </div>
       )}
     </StickyContainer>
   );

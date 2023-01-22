@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPaperPlane, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { Container, Row, Col, Label, Form, Input, Button } from 'reactstrap';
+// import { Container, Row, Col, Label, Form, Input, Button } from 'reactstrap';
+import Container from '@components/Container';
+
 import axios from 'axios';
 
 export default function Footer() {
@@ -66,106 +68,91 @@ export default function Footer() {
   const { email, message } = form;
 
   return (
-    <Container fluid="fluid" className="footer">
+    <div className="fixed bottom-0 -z-10 w-full bg-[#2c2d30] text-white">
       <Container>
-        <Row>
-          <Col sm={12}>
-            <h2>Contact</h2>
-          </Col>
-          <Col sm={12}>
-            <Form onSubmit={handleSubmit} className="py-4">
-              <Row className="mt-2">
-                <Col sm={6} className="text-sm-right">
-                  <Label className="ml-2">Your Email:</Label>
-                </Col>
-                <Col xs={12} sm={6} md={6} lg={4}>
-                  <Input
-                    type="email"
-                    name="email"
-                    required="required"
-                    placeholder="email@domain.com"
-                    value={email}
-                    onChange={(e) => handleChange(e)}
-                    disabled={isLoading}
-                  />
-                </Col>
-              </Row>
-              <Row className="mt-2">
-                <Col sm={6} className="text-sm-right">
-                  <Label className="ml-2">Your Message:</Label>
-                </Col>
-                <Col xs={12} sm={6} md={6} lg={4}>
-                  <textarea
-                    rows={3}
-                    required="required"
-                    name="message"
-                    className="form-control"
-                    value={message}
-                    onChange={(e) => handleChange(e)}
-                    disabled={isLoading}
-                  />
-                </Col>
-              </Row>
-              <Row className="mt-2">
-                <Col
-                  sm={{
-                    offset: 6,
-                    size: 4,
-                  }}
-                >
-                  <Button color={!errors && sentState ? 'success' : 'primary'} disabled={isLoading}>
-                    {isLoading ? (
-                      <div>
-                        Sending
-                        <FontAwesomeIcon
-                          icon={faCircleNotch}
-                          size="sm"
-                          spin="spin"
-                          className="ml-2"
-                        />
-                      </div>
-                    ) : !errors && sentState ? (
-                      <div>
-                        Sent
-                        <FontAwesomeIcon icon={faCheck} size="sm" className="ml-2" />
-                      </div>
-                    ) : (
-                      <div>
-                        Send
-                        <FontAwesomeIcon icon={faPaperPlane} size="sm" className="ml-2" />
-                      </div>
-                    )}
-                  </Button>
-                </Col>
-              </Row>
-              <Row className="mt-2">
-                <Col
-                  sm={{
-                    offset: 6,
-                    size: 4,
-                  }}
-                >
-                  {errors && (
-                    <div>
-                      <p className="text-danger mb-0">Errors:</p>
-                      {errors.map((error) =>
-                        error.field ? (
-                          <p>
-                            <span className="text-capitalize">{error.field}</span>: {error.message}
-                          </p>
-                        ) : (
-                          <p>{error.message}</p>
-                        ),
-                      )}
-                    </div>
-                  )}
-                  {!errors && sentState ? 'Your message has been sent!' : <br />}
-                </Col>
-              </Row>
-            </Form>
-          </Col>
-        </Row>
+        <h2 className="align-self-center text-nowrap text-3xl font-black md:text-6xl">Contact</h2>
+        <div>
+          <form onSubmit={handleSubmit} className="grid gap-y-2 gap-x-5 py-4 sm:grid-cols-2">
+            <label
+              htmlFor="email"
+              className="self-center font-['Inter'] text-sm font-medium text-white sm:justify-self-end"
+            >
+              Your Email:
+            </label>
+            <div>
+              <input
+                type="email"
+                name="email"
+                required="required"
+                placeholder="email@domain.com"
+                value={email}
+                onChange={(e) => handleChange(e)}
+                disabled={isLoading}
+                className="block w-full rounded-md border border-[#424348] bg-[#424348] py-2 px-3 font-['Inter'] text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#2c2d30] transition duration-200 ease-in focus:border-[#424348] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-3/4 sm:text-sm lg:w-1/2"
+              />
+            </div>
+            <label
+              htmlFor="message"
+              className="mt-1 font-['Inter'] text-sm font-medium text-white sm:justify-self-end"
+            >
+              Your Message:
+            </label>
+            <div>
+              <textarea
+                rows={3}
+                required="required"
+                name="message"
+                className="block w-full rounded-md border border-[#424348] bg-[#424348] py-2 px-3 font-['Inter'] text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#2c2d30] transition duration-200 ease-in focus:border-[#424348] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-3/4 sm:text-sm lg:w-1/2"
+                value={message}
+                onChange={(e) => handleChange(e)}
+                disabled={isLoading}
+              />
+            </div>
+            <div />
+            <div>
+              <button
+                type="submit"
+                className="hover:bg-blue rounded-md border border-transparent bg-blue-600 py-2 px-3 text-sm font-medium text-white shadow-sm ring-offset-[#2c2d30] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                color={!errors && sentState ? 'success' : 'primary'}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div>
+                    Sending
+                    <FontAwesomeIcon icon={faCircleNotch} size="sm" spin="spin" className="ml-2" />
+                  </div>
+                ) : !errors && sentState ? (
+                  <div>
+                    Sent
+                    <FontAwesomeIcon icon={faCheck} size="sm" className="ml-2" />
+                  </div>
+                ) : (
+                  <div>
+                    Send
+                    <FontAwesomeIcon icon={faPaperPlane} size="sm" className="ml-2" />
+                  </div>
+                )}
+              </button>
+            </div>
+            <div />
+            {errors && (
+              <div>
+                <p className="text-danger mb-0">Errors:</p>
+                {errors.map((error) =>
+                  error.field ? (
+                    <p>
+                      <span className="text-capitalize">{error.field}</span>: {error.message}
+                    </p>
+                  ) : (
+                    <p>{error.message}</p>
+                  ),
+                )}
+              </div>
+            )}
+            {!errors && sentState ? 'Your message has been sent!' : ''}
+          </form>
+        </div>
       </Container>
-    </Container>
+    </div>
   );
 }

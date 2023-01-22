@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -10,7 +12,7 @@ module.exports = {
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
         success: '#0070f3',
-        cyan: '#79FFE1',
+        blue: colors.blue,
       },
       spacing: {
         28: '7rem',
@@ -23,6 +25,7 @@ module.exports = {
       },
       fontFamily: {
         'sans': ['Open Sans', 'sans-serif'],
+        'Inter': ['Inter', 'sans-serif'],
       },
       fontSize: {
         '5xl': '2.5rem',
