@@ -12,7 +12,7 @@ export default function Navigation({ headerItems }) {
               <img
                 src="./back_arrow.svg"
                 alt="Go back"
-                className="back-button mr-4 h-4 w-5 opacity-30 transition-all duration-200 ease-in-out hover:cursor-pointer  hover:opacity-60"
+                className="back-button mr-4 h-10 w-10 rounded p-2 opacity-30 transition-all duration-200 ease-in-out hover:cursor-pointer hover:bg-white/10 hover:opacity-70"
               />
             </Link>
             <div className="flex items-center">

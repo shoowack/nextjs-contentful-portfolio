@@ -16,7 +16,7 @@ export default function InnerPage({ entries, headerItems }) {
     <>
       <Head>
         <title>
-          Ivan Suvak Martinovic Personal Portfolio -{' '}
+          Ivan Suvak Martinovic Portfolio -{' '}
           {router.asPath === '/apps-and-websites' ? 'Apps & Websites' : 'Designs'}
         </title>
       </Head>

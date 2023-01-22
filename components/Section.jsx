@@ -11,7 +11,7 @@ import classnames from 'classnames';
 // import { LightGallerySettings } from 'lightgallery/lg-settings';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
-import StackIcons from '@components/StackIcons';
+import StackIcon from '@components/StackIcon';
 import Link from 'next/link';
 // import FsLightbox from 'fslightbox-react';
 import Balancer from 'react-wrap-balancer';
@@ -37,6 +37,7 @@ const Section = ({
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [copyToClipboard, { copyIcon }] = useCopyToClipboard();
   const sectionSlug = title.toLowerCase().split(' ').join('-');
+  const contrastColor = contrast(backgroundColor);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -47,7 +48,7 @@ const Section = ({
       <section
         style={{ backgroundColor }}
         className={`w-full overflow-hidden md:py-20 md:px-0 ${
-          contrast(backgroundColor) === 'light' ? 'darker' : 'lighter'
+          contrastColor === 'light' ? 'darker' : 'lighter'
         }`}
         id={sectionSlug}
       >
@@ -94,7 +95,7 @@ const Section = ({
                       >
                         <FontAwesomeIcon
                           icon={copyIcon}
-                          color={contrast(backgroundColor) === 'light' ? '#000' : '#fff'}
+                          color={contrastColor === 'light' ? '#000' : '#fff'}
                         />
                       </Button>
                     )}
@@ -136,17 +137,17 @@ const Section = ({
                 <ConditionalWrapper
                   condition={windowWidth < 768}
                   wrapper={(children) => (
-                    <Table borderless className="m-0">
-                      {children}
-                    </Table>
+                    <table className="border-separate border-spacing-4">{children}</table>
                   )}
                 >
-                  <StackIcons
-                    stack={stack}
-                    isMobile={windowWidth < 768}
-                    contrast={contrast(backgroundColor) === 'dark'}
-                    section={title}
-                  />
+                  {stack.map((item) => (
+                    <StackIcon
+                      stackIcon={item}
+                      isMobile={windowWidth < 768}
+                      contrast={contrastColor === 'dark'}
+                      section={title}
+                    />
+                  ))}
                 </ConditionalWrapper>
               </Container>
             </>
