@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Container, Row, Col, Table, Button } from 'reactstrap';
+import { Row, Col, Table, Button } from 'reactstrap';
+import Container from '@components/Container';
 import RichText from '@madebyconnor/rich-text-to-jsx';
 import { StickyContainer, Sticky } from '@dior/react-sticky';
 import { useRouter } from 'next/router';
@@ -45,7 +46,7 @@ const Section = ({
     <StickyContainer>
       <section
         style={{ backgroundColor }}
-        className={`px-md-0 py-md-5 ${
+        className={`w-full overflow-hidden md:py-20 md:px-0 ${
           contrast(backgroundColor) === 'light' ? 'darker' : 'lighter'
         }`}
         id={sectionSlug}
@@ -61,129 +62,117 @@ const Section = ({
                 backdropFilter: 'blur(10px)',
               }}
             >
-              <Row>
-                <Col md={12}>
-                  <Container
-                    fluid="lg"
-                    className={classnames(
-                      {
-                        sticky: isSticky,
-                      },
-                      'py-2',
+              <Container
+                className={classnames(
+                  {
+                    sticky: isSticky,
+                  },
+                  'py-2',
+                )}
+              >
+                <div className="flex items-center justify-between">
+                  {isSticky &&
+                    windowWidth > 550 &&
+                    (slug === 'apps-and-websites' || slug === 'designs') && (
+                      <Link href="/" className="flex items-center">
+                        <a>
+                          <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
+                          Home
+                        </a>
+                      </Link>
                     )}
-                  >
-                    <Row>
-                      {isSticky &&
-                        windowWidth > 550 &&
-                        (slug === 'apps-and-websites' || slug === 'designs') && (
-                          <Col>
-                            <Link href="/">
-                              <a>
-                                <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
-                                Home
-                              </a>
-                            </Link>
-                          </Col>
-                        )}
-                      <Col>
-                        {/* "clipboard-title" class is needed for share section link */}
-                        <div className="d-flex justify-content-center align-items-center mr-md-n5 clipboard-title">
-                          <h2 className="align-self-center text-nowrap">{title}</h2>
-                          {typeof window !== 'undefined' && windowWidth > 768 && (
-                            <Button
-                              color="link"
-                              className="clipboard-btn ml-2"
-                              onClick={() =>
-                                copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
-                              }
-                            >
-                              <FontAwesomeIcon
-                                icon={copyIcon}
-                                color={contrast(backgroundColor) === 'light' ? '#000' : '#fff'}
-                              />
-                            </Button>
-                          )}
-                        </div>
-                      </Col>
-                      {isSticky &&
-                        windowWidth > 550 &&
-                        (slug === 'apps-and-websites' || slug === 'designs') && (
-                          <Col className="text-right">
-                            <Link href={slug === 'designs' ? '/apps-and-websites' : '/designs'}>
-                              <a>
-                                {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
-                                <FontAwesomeIcon icon={faAngleRight} className="ml-1" />
-                              </a>
-                            </Link>
-                          </Col>
-                        )}
-                    </Row>
-                  </Container>
-                </Col>
-              </Row>
+                  {/* "clipboard-title" class is needed for share section link (md:-mr-12) */}
+                  <div className="clipboard-title flex items-center justify-center md:m-auto">
+                    <h2 className="align-self-center text-nowrap text-6xl font-black">{title}</h2>
+                    {typeof window !== 'undefined' && windowWidth > 768 && (
+                      <Button
+                        color="link"
+                        className="clipboard-btn ml-2"
+                        onClick={() =>
+                          copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
+                        }
+                      >
+                        <FontAwesomeIcon
+                          icon={copyIcon}
+                          color={contrast(backgroundColor) === 'light' ? '#000' : '#fff'}
+                        />
+                      </Button>
+                    )}
+                  </div>
+                  {isSticky &&
+                    windowWidth > 550 &&
+                    (slug === 'apps-and-websites' || slug === 'designs') && (
+                      <Link
+                        className="text-right"
+                        href={slug === 'designs' ? '/apps-and-websites' : '/designs'}
+                      >
+                        <a>
+                          {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
+                          <FontAwesomeIcon icon={faAngleRight} className="ml-1" />
+                        </a>
+                      </Link>
+                    )}
+                </div>
+              </Container>
             </header>
           )}
         </Sticky>
 
-        <Row className="pb-md-5">
-          <Col md={12}>
-            <Container fluid="lg" className="pb-4 text-center">
-              <Balancer>{description && <RichText richText={description} />}</Balancer>
-            </Container>
-            {stack && (
-              <>
-                <Container>
-                  <h3 className="mb-4 text-center">Stack</h3>
-                </Container>
-                <Container
-                  fluid="lg"
-                  className="d-flex flex-column flex-md-row align-items-center justify-content-center pb-4"
-                  style={{
-                    gap: '15px',
-                  }}
+        <div className="flex flex-col md:pb-5">
+          <Container className="pb-4 text-center">
+            <Balancer>{description && <RichText richText={description} />}</Balancer>
+          </Container>
+          {stack && (
+            <>
+              <Container>
+                <h3 className="mb-4 text-center">Stack</h3>
+              </Container>
+              <Container
+                className="d-flex flex-column flex-md-row align-items-center justify-content-center pb-4"
+                style={{
+                  gap: '15px',
+                }}
+              >
+                <ConditionalWrapper
+                  condition={windowWidth < 768}
+                  wrapper={(children) => (
+                    <Table borderless className="m-0">
+                      {children}
+                    </Table>
+                  )}
                 >
-                  <ConditionalWrapper
-                    condition={windowWidth < 768}
-                    wrapper={(children) => (
-                      <Table borderless className="m-0">
-                        {children}
-                      </Table>
-                    )}
-                  >
-                    <StackIcons
-                      stack={stack}
-                      isMobile={windowWidth < 768}
-                      contrast={contrast(backgroundColor) === 'dark'}
-                      section={title}
-                    />
-                  </ConditionalWrapper>
-                </Container>
-              </>
-            )}
-          </Col>
+                  <StackIcons
+                    stack={stack}
+                    isMobile={windowWidth < 768}
+                    contrast={contrast(backgroundColor) === 'dark'}
+                    section={title}
+                  />
+                </ConditionalWrapper>
+              </Container>
+            </>
+          )}
 
-          <Col md={12}>
-            {gallery?.map(({ fields: { type, images }, sys: { id } }, i) => {
-              const iphone = type === 'iPhone';
-              const website = type === 'Website';
-              const desktopApp = type === 'Desktop App';
-              const webApp = type === 'Web App';
-              const ipad = type === 'iPad' || type === 'iPad Landscape';
-              // const [lightboxController, setLightboxController] = useState({
-              //   toggler: false,
-              //   slide: 1,
-              // });
+          {gallery?.map(({ fields: { type, images }, sys: { id } }, i) => {
+            const iphone = type === 'iPhone';
+            const website = type === 'Website';
+            const desktopApp = type === 'Desktop App';
+            const webApp = type === 'Web App';
+            const ipad = type === 'iPad' || type === 'iPad Landscape';
+            // const [lightboxController, setLightboxController] = useState({
+            //   toggler: false,
+            //   slide: 1,
+            // });
 
-              return (
-                <div key={`gallery-container-${id}`}>
-                  {!website ||
-                    (!webApp && (
-                      <Container>
-                        <h3 className="mb-4 text-center">{type}</h3>
-                      </Container>
-                    ))}
+            return (
+              <div key={`gallery-container-${id}`}>
+                {!website ||
+                  (!webApp && (
+                    <Container>
+                      <h3 className="mb-4 text-center">{type}</h3>
+                    </Container>
+                  ))}
 
-                  {/* <FsLightbox
+                {/* <FsLightbox
                     toggler={lightboxController.toggler}
                     sources={images?.map(
                       ({
@@ -195,75 +184,75 @@ const Section = ({
                     slide={lightboxController.slide}
                   /> */}
 
-                  <Swiper
-                    allowTouchMove={false}
-                    spaceBetween={50}
-                    slidesPerView={
+                <Swiper
+                  allowTouchMove={false}
+                  spaceBetween={50}
+                  slidesPerView={
+                    website || desktopApp || webApp
+                      ? 1
+                      : iphone
+                      ? windowWidth > 550
+                        ? windowWidth > 991
+                          ? windowWidth > 1200
+                            ? windowWidth > 2200
+                              ? windowWidth > 2600
+                                ? 6
+                                : 5
+                              : 4
+                            : 3
+                          : 2
+                        : 1
+                      : ipad
+                      ? windowWidth > 900
+                        ? windowWidth > 1400
+                          ? windowWidth > 2600
+                            ? 4
+                            : 3
+                          : 2
+                        : 1
+                      : 3
+                  }
+                  centeredSlides
+                  pagination={{
+                    dynamicBullets: true,
+                    clickable: true,
+                    renderBullet: (className) =>
+                      `<span class="${className}"><div class="owl-dot-el-1" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-2" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-3" style="background-color:${backgroundColor}"></div></span>`,
+                  }}
+                  className={type.replace(/ /g, '-').toLowerCase()}
+                  navigation
+                  modules={[Pagination, Navigation]}
+                  style={{
+                    padding:
                       website || desktopApp || webApp
-                        ? 1
-                        : iphone
-                        ? windowWidth > 550
-                          ? windowWidth > 991
-                            ? windowWidth > 1200
-                              ? windowWidth > 2200
-                                ? windowWidth > 2600
-                                  ? 6
-                                  : 5
-                                : 4
-                              : 3
-                            : 2
-                          : 1
-                        : ipad
-                        ? windowWidth > 900
-                          ? windowWidth > 1400
-                            ? windowWidth > 2600
-                              ? 4
-                              : 3
-                            : 2
-                          : 1
-                        : 3
-                    }
-                    centeredSlides
-                    pagination={{
-                      dynamicBullets: true,
-                      clickable: true,
-                      renderBullet: (className) =>
-                        `<span class="${className}"><div class="owl-dot-el-1" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-2" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-3" style="background-color:${backgroundColor}"></div></span>`,
-                    }}
-                    className={type.replace(/ /g, '-').toLowerCase()}
-                    navigation
-                    modules={[Pagination, Navigation]}
-                    style={{
-                      padding:
-                        website || desktopApp || webApp
-                          ? windowWidth > 768
-                            ? '0 20%'
-                            : '0 15px'
-                          : '0 40px',
-                    }}
-                  >
-                    {/* <LightGallery mode="lg-fade"> */}
-                    {images?.map(
-                      ({
-                        fields: {
-                          file: {
-                            url,
-                            details: {
-                              image: { width, height },
-                            },
+                        ? windowWidth > 768
+                          ? '0 20%'
+                          : '0 15px'
+                        : '0 40px',
+                  }}
+                >
+                  {/* <LightGallery mode="lg-fade"> */}
+                  {images?.map(
+                    ({
+                      fields: {
+                        file: {
+                          url,
+                          details: {
+                            image: { width, height },
                           },
                         },
-                        sys: { id: imageId },
-                      }) => {
-                        return (
-                          <SwiperSlide key={`gallery-slide-${imageId}`}>
-                            {/* <a
+                      },
+                      sys: { id: imageId },
+                    }) => {
+                      return (
+                        <SwiperSlide key={`gallery-slide-${imageId}`}>
+                          {/* <a
                           data-lg-size={`${width}-${height}`}
                           className="gallery-item"
                           data-src={url}
                           data-sub-html="<h4>Photo by - <a href='https://ii.photography'>Ivan Suvak </a></h4><p>Location - Croatia</p>"
                         > */}
-                            {/* <a
+                          {/* <a
                               style={{ padding: 'unset' }}
                               onClick={() => {
                                 setLightboxController({
@@ -272,41 +261,40 @@ const Section = ({
                                 });
                               }}
                             > */}
-                            <ContentfulImage
-                              quality={100}
-                              src={url}
-                              alt=""
-                              height={height}
-                              width={width}
-                              layout="responsive"
-                              sizes={
-                                website || desktopApp || webApp
-                                  ? '(max-width: 768px) 100vw, 60vw'
-                                  : iphone
-                                  ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
-                                  : ipad
-                                  ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
-                                  : '1vw'
-                              }
-                            />
-                            {/* </a> */}
-                          </SwiperSlide>
-                        );
-                      },
-                    )}
-                    {/* </LightGallery> */}
-                  </Swiper>
-
-                  {i !== gallery.length - 1 && (
-                    <Container className="my-5">
-                      <hr className="m-0" />
-                    </Container>
+                          <ContentfulImage
+                            quality={100}
+                            src={url}
+                            alt=""
+                            height={height}
+                            width={width}
+                            layout="responsive"
+                            sizes={
+                              website || desktopApp || webApp
+                                ? '(max-width: 768px) 100vw, 60vw'
+                                : iphone
+                                ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
+                                : ipad
+                                ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
+                                : '1vw'
+                            }
+                          />
+                          {/* </a> */}
+                        </SwiperSlide>
+                      );
+                    },
                   )}
-                </div>
-              );
-            })}
-          </Col>
-        </Row>
+                  {/* </LightGallery> */}
+                </Swiper>
+
+                {i !== gallery.length - 1 && (
+                  <Container className="my-5">
+                    <hr className="m-0" />
+                  </Container>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </section>
       {/* render MacOS Nearlock app */}
       {title === 'Near Lock App' && slug === 'designs' && (

@@ -4,12 +4,24 @@
 /* purgecss end ignore */
 @tailwind utilities;
 
-/* 
+/*
 body {
     font-family: 'Alice', serif;
     background: url('./../public/img/bg.png') top left no-repeat;
 }
+*/
 
-h1, h2 {
-    font-family: 'Crushed';
-} */
+
+@layer base {
+    body {
+        background: #2c2d30;
+    }
+
+    a {
+        @apply text-base text-black px-[10px] py-[0] leading-7 transition-all ease-in-out duration-200;
+    }
+
+    p {
+        @apply mb-5;
+    }
+}
