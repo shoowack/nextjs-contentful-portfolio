@@ -33,9 +33,6 @@ export default function Navigation({ headerItems }) {
                 </svg>
               </a>
             </Link>
-            <div className="flex items-center">
-              {/* <h1 className="text-[2rem] font-black md:text-7xl">Ivan Suvak Martinovic</h1> */}
-            </div>
           </div>
           <div className="header-info-links mt-2 flex items-center justify-end">
             {headerItems?.map((headerLink) => (
