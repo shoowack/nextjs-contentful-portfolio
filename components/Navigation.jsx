@@ -9,7 +9,7 @@ export default function Navigation({ headerItems }) {
         <div className="flex flex-row justify-between">
           <div className="flex items-center justify-between">
             <Link href="/" passHref legacyBehavior>
-              <a className="group logo flex origin-[left_50%] scale-50 flex-row items-center  p-0  hover:w-[200px] sm:scale-75 md:scale-100">
+              <a className="group logo flex origin-[left_50%] scale-50 flex-row items-center p-0 hover:w-[200px] sm:scale-75 md:scale-100">
                 <svg
                   width="20px"
                   height="17px"
@@ -46,8 +46,12 @@ export default function Navigation({ headerItems }) {
             </Link>
           </div>
           <div className="header-info-links mt-2 flex items-center justify-end">
-            {headerItems?.map((headerLink) => (
-              <HeaderInfoLink {...headerLink} key={headerLink.sys.id} />
+            {headerItems?.map((headerLink, i) => (
+              <HeaderInfoLink
+                {...headerLink}
+                animationDelay={`[animation-delay:${(i + 1) * 100}ms]`}
+                key={headerLink.sys.id}
+              />
             ))}
           </div>
         </div>

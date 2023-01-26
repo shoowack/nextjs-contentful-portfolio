@@ -14,6 +14,7 @@ const HeaderInfoLink = ({
   openInNewTab = false,
   size = 'lg',
   iconColor,
+  animationDelay,
 }) => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
@@ -26,11 +27,16 @@ const HeaderInfoLink = ({
         target={openInNewTab ? '_blank' : ''}
         rel="noreferrer"
         id={`tooltip-${id}`}
-        className="group inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+        className="group  inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
         onMouseEnter={() => setTooltipOpen(true)}
         onMouseLeave={() => setTooltipOpen(false)}
       >
-        <FontAwesomeIcon icon={icon.split(',')} size={size} color={iconColor} />
+        <FontAwesomeIcon
+          className={`absolute top-0 animate-preload opacity-0 ${animationDelay}`}
+          icon={icon.split(',')}
+          size={size}
+          color={iconColor}
+        />
       </a>
 
       <Transition
@@ -48,7 +54,7 @@ const HeaderInfoLink = ({
           style={{ transform: 'translateY(calc(-100% - 10px)) translateX(-50%)' }}
         >
           <div
-            className="rounded-lg px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5 "
+            className="rounded-lg  px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5 "
             dangerouslySetInnerHTML={{ __html: tooltipText }}
           />
         </Popover.Panel>

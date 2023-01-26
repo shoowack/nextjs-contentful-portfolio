@@ -42,10 +42,21 @@ module.exports = {
         'shine': {
           '0%': { backgroundPosition: '-100%' },
           '100%': { backgroundPosition: '100%' },
+        },
+        'preload': {
+          '30%': {
+            opacity: 0,
+            top: '20px'
+          },
+          '100%': {
+            opacity: 1,
+            top: '8px'
+          }
         }
       },
       animation: {
         shine: 'shine 2s ease-in-out',
+        preload: 'preload 1s ease-in-out forwards'
       }
     },
   },
