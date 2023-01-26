@@ -70,7 +70,9 @@ export default function Footer() {
   return (
     <div className="fixed bottom-0 -z-10 w-full bg-[#2c2d30] text-white">
       <Container>
-        <h2 className="align-self-center text-nowrap text-3xl font-black md:text-6xl">Contact</h2>
+        <h2 className="text-nowrap flex justify-center text-3xl font-black leading-[78px] md:text-[60px]">
+          Contact
+        </h2>
         <div>
           <form onSubmit={handleSubmit} className="grid gap-y-2 gap-x-5 py-4 sm:grid-cols-2">
             <label

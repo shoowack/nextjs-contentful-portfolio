@@ -22,7 +22,7 @@ export default function InnerPage({ entries, headerItems }) {
       </Head>
 
       <div
-        className="wrapper"
+        className="z-[2] min-h-full overflow-hidden shadow-[0_10px_60px_rgba(0,0,0,.5)]"
         style={{
           marginBottom: '400px',
         }}

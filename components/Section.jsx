@@ -90,21 +90,15 @@ const Section = ({
                       </Link>
                     )}
                   {/* "clipboard-title" class is needed for share section link */}
-                  <div
-                    className={classnames(
-                      {
-                        'sm:-mr-28': isSticky,
-                        'sm:-mr-5': !isSticky,
-                      },
-                      'clipboard-title flex items-center justify-center md:-mr-8',
-                    )}
-                  >
+                  <div className="clipboard-title flex items-center justify-center md:-mr-8">
                     <h2
                       className={classnames(
-                        'align-self-center text-nowrap font-black transition-all duration-200',
+                        'align-self-center text-nowrap font-black [transition:font-size_0.2s]', // don't animate all properties!
                         {
-                          'md:ml-20 md:text-2xl': isSticky,
-                          'text-3xl leading-[78px] md:text-[60px] ': !isSticky,
+                          'sm:text-2xl': isSticky,
+                          'sm:-mr-28 md:-mr-20': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
+                          'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky, // has to take into consideration width of the "designs" button
+                          'text-3xl leading-[78px] sm:-mr-5 md:mr-4 md:text-[60px]': !isSticky,
                         },
                       )}
                     >
@@ -149,7 +143,7 @@ const Section = ({
           {stack && (
             <>
               <Container>
-                <h3 className="mb-4 text-center">Stack</h3>
+                <h3 className="mb-4 text-center text-2xl font-extralight">Stack</h3>
               </Container>
               <Container
                 className="flex flex-col items-center justify-center pb-4 md:flex-row"
@@ -192,7 +186,7 @@ const Section = ({
                 {!website ||
                   (!webApp && (
                     <Container>
-                      <h3 className="mb-4 text-center">{type}</h3>
+                      <h3 className="mb-4 text-center text-2xl font-extralight">{type}</h3>
                     </Container>
                   ))}
 
