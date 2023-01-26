@@ -91,7 +91,7 @@ const Section = ({
                       </Link>
                     )}
                   {/* "clipboard-title" class is needed for share section link */}
-                  <div className="clipboard-title flex items-center justify-center md:-mr-8">
+                  <div className="group clipboard-title flex items-center justify-center md:-mr-8">
                     <h2
                       className={classnames(
                         'align-self-center text-nowrap font-black [transition:font-size_0.2s]', // don't animate all properties!
@@ -100,7 +100,7 @@ const Section = ({
                           'sm:text-2xl': isSticky,
                           'sm:ml-28 md:ml-24': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
                           'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky, // has to take into consideration width of the "designs" button
-                          'text-3xl leading-[78px] sm:-mr-5 md:mr-4 md:text-[60px]': !isSticky,
+                          'text-3xl leading-[78px] sm:ml-6 md:mr-4 md:text-[60px]': !isSticky,
                         },
                       )}
                     >
@@ -110,7 +110,7 @@ const Section = ({
                       <button
                         type="button"
                         color="link"
-                        className="clipboard-btn ml-2"
+                        className="clipboard-btn ml-2 opacity-0 [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]"
                         onClick={() =>
                           copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
                         }
@@ -360,13 +360,12 @@ const Section = ({
               fluid="lg"
               className={`${windowWidth >= 1120 && 'pb-5'} lighter text-center`}
             >
-              <div className="d-flex justify-content-center align-items-center clipboard-title mr-md-n5">
+              <div className="group clipboard-title d-flex justify-content-center align-items-center mr-md-n5">
                 <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
                 {typeof window !== 'undefined' && windowWidth > 768 && (
                   <button
                     type="button"
-                    color="link"
-                    className="clipboard-btn ml-2"
+                    className="clipboard-btn ml-2 opacity-0 [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]"
                     onClick={() =>
                       copyToClipboard(`${window.location.origin}/${slug}#near-lock-interactive-app`)
                     }

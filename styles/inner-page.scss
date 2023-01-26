@@ -24,22 +24,3 @@
     }
   }
 }
-
-.clipboard {
-  &-title:hover {
-    .clipboard-btn {
-      transition: .25s opacity;
-      opacity: 1;
-    }
-  }
-
-  &-btn {
-    transition: .25s opacity;
-    transition-delay: 1.5s;
-    opacity: 0;
-
-    &:focus {
-      box-shadow: none;
-    }
-  }
-}
