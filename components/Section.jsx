@@ -84,7 +84,7 @@ const Section = ({
                     windowWidth > 639 &&
                     (slug === 'apps-and-websites' || slug === 'designs') && (
                       <Link href="/">
-                        <a className="px-2 py-0">
+                        <a className="px-2 py-0.5 !text-base">
                           <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
                           Home
                         </a>
@@ -126,7 +126,7 @@ const Section = ({
                     windowWidth > 639 &&
                     (slug === 'apps-and-websites' || slug === 'designs') && (
                       <Link href={slug === 'designs' ? '/apps-and-websites' : '/designs'}>
-                        <a className="px-2 py-0">
+                        <a className="px-2 py-0.5 !text-base">
                           {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
                           <FontAwesomeIcon icon={faAngleRight} className="ml-1" />
                         </a>
