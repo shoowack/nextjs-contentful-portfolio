@@ -47,9 +47,10 @@ const Section = ({
     <StickyContainer>
       <section
         style={{ backgroundColor }}
-        className={`w-full overflow-hidden md:py-10 md:px-0 ${
-          contrastColor === 'light' ? 'darker' : 'lighter'
-        }`}
+        className={classnames(
+          `w-full overflow-hidden md:py-10 md:px-0`,
+          contrastColor === 'light' ? 'darker text-black/75' : 'lighter text-white/75',
+        )}
         id={sectionSlug}
       >
         <Sticky topOffset={windowWidth > 767 ? 45 : 20}>
@@ -94,6 +95,7 @@ const Section = ({
                     <h2
                       className={classnames(
                         'align-self-center text-nowrap font-black [transition:font-size_0.2s]', // don't animate all properties!
+                        contrastColor === 'light' ? 'text-black' : 'text-white',
                         {
                           'sm:text-2xl': isSticky,
                           'sm:-mr-28 md:-mr-20': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
@@ -143,7 +145,14 @@ const Section = ({
           {stack && (
             <>
               <Container>
-                <h3 className="mb-4 text-center text-2xl font-extralight">Stack</h3>
+                <h3
+                  className={classnames(
+                    'mb-4 text-center text-2xl font-extralight',
+                    contrastColor === 'light' ? 'text-black/50' : 'text-white/50',
+                  )}
+                >
+                  Stack
+                </h3>
               </Container>
               <Container
                 className="flex flex-col items-center justify-center pb-4 md:flex-row"
@@ -186,7 +195,15 @@ const Section = ({
                 {!website ||
                   (!webApp && (
                     <Container>
-                      <h3 className="mb-4 text-center text-2xl font-extralight">{type}</h3>
+                      {' '}
+                      <h3
+                        className={classnames(
+                          'mb-4 text-center text-2xl font-extralight',
+                          contrastColor === 'light' ? 'text-black/50' : 'text-white/50',
+                        )}
+                      >
+                        {type}
+                      </h3>
                     </Container>
                   ))}
 

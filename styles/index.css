@@ -22,7 +22,27 @@ body {
     }
 
     a {
-        @apply text-base text-black leading-7 transition-all ease-in-out duration-200;
+        @apply text-base leading-7 transition-all ease-in-out duration-200;
+    }
+
+    .darker a, .lighter a {
+        @apply leading-8 text-lg font-semibold
+    }
+
+    .darker a {
+        @apply bg-black/10 text-black
+    }
+
+    .darker a:hover {
+        @apply bg-black/20
+    }
+
+    .lighter a {
+        @apply bg-white/10 text-white
+    }
+
+    .lighter a:hover {
+        @apply bg-white/20
     }
 
     strong {
@@ -38,7 +58,7 @@ body {
     }
 
     code {
-        @apply font-semibold whitespace-nowrap bg-highlight text-black
+        @apply font-semibold whitespace-nowrap bg-highlight text-black leading-8
     }
 
     hr {

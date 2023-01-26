@@ -1,5 +1,4 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
-@import "~bootstrap/scss/mixins/_gradients.scss";
 // @import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery.css');
 // @import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-zoom.css');
 // @import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-video.css');
@@ -42,64 +41,6 @@
     &:focus {
       box-shadow: none;
     }
-  }
-}
-
-.darker {
-  p, h5 {
-    color: hsla(0, 0%, 0%, 1);
-  }
-
-  a,
-  a:hover,
-  a:visited {
-    color: #000;
-    font-weight: 600;
-    background: hsla(0, 0%, 0%, .1);
-  }
-
-  a:hover {
-    background: hsla(0, 0%, 0%, .2);
-    transition: background .2s ease-in-out;
-  }
-
-  h3 {
-    color: rgba(0,0,0,.5);
-  }
-
-  .slick-dots li span {
-    background: #333;
-  }
-}
-
-.lighter {
-  h2 {
-    color: #fff;
-  }
-
-  p, h5 {
-    color: rgba(255,255,255,.75);
-  }
-
-  a,
-  a:hover,
-  a:visited {
-    color: #fff !important;
-    font-weight: 600;
-    background: hsla(0, 0%, 100%, .1);
-  }
-
-  a:hover {
-    background: hsla(0, 0%, 100%, .2);
-    transition: background .2s ease-in-out;
-  }
-
-  h3 {
-    color: rgba(255,255,255,.5);
-  }
-
-  .slick-dots li span {
-    background: #fff;
   }
 }
 
