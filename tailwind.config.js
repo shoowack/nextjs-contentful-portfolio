@@ -14,6 +14,7 @@ module.exports = {
         success: '#0070f3',
         blue: colors.blue,
         slate: colors.slate,
+        'highlight': '#ff0'
       },
       spacing: {
         28: '7rem',
@@ -27,6 +28,7 @@ module.exports = {
       fontFamily: {
         'sans': ['Open Sans', 'sans-serif'],
         'Inter': ['Inter', 'sans-serif'],
+        'Raleway': ['Raleway', 'sans-serif'],
       },
       fontSize: {
         '5xl': '2.5rem',

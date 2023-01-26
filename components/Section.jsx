@@ -31,8 +31,9 @@ const Section = ({
   stack,
   windowWidth,
 }) => {
-  const router = useRouter();
-  const { slug } = router.query;
+  const {
+    query: { slug },
+  } = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [copyToClipboard, { copyIcon }] = useCopyToClipboard();
   const sectionSlug = title.toLowerCase().split(' ').join('-');
@@ -46,12 +47,12 @@ const Section = ({
     <StickyContainer>
       <section
         style={{ backgroundColor }}
-        className={`w-full overflow-hidden md:py-20 md:px-0 ${
+        className={`w-full overflow-hidden md:py-10 md:px-0 ${
           contrastColor === 'light' ? 'darker' : 'lighter'
         }`}
         id={sectionSlug}
       >
-        <Sticky topOffset={50}>
+        <Sticky topOffset={windowWidth > 767 ? 45 : 20}>
           {({ style, isSticky }) => (
             <header
               style={{
@@ -70,23 +71,46 @@ const Section = ({
                   'py-2',
                 )}
               >
-                <div className="flex items-center justify-center md:justify-between">
+                <div
+                  className={classnames(
+                    {
+                      'sm:justify-between': isSticky,
+                    },
+                    'flex items-center justify-center',
+                  )}
+                >
                   {isSticky &&
-                    windowWidth > 550 &&
+                    windowWidth > 639 &&
                     (slug === 'apps-and-websites' || slug === 'designs') && (
-                      <Link href="/" className="flex items-center">
-                        <a>
+                      <Link href="/">
+                        <a className="px-2 py-0">
                           <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
                           Home
                         </a>
                       </Link>
                     )}
-                  {/* "clipboard-title" class is needed for share section link (md:-mr-12) */}
-                  <div className="clipboard-title flex items-center justify-center md:m-auto">
-                    <h2 className="align-self-center text-nowrap text-3xl font-black md:text-6xl">
+                  {/* "clipboard-title" class is needed for share section link */}
+                  <div
+                    className={classnames(
+                      {
+                        'sm:-mr-28': isSticky,
+                        'sm:-mr-5': !isSticky,
+                      },
+                      'clipboard-title flex items-center justify-center md:-mr-8',
+                    )}
+                  >
+                    <h2
+                      className={classnames(
+                        'align-self-center text-nowrap font-black transition-all duration-200',
+                        {
+                          'md:ml-20 md:text-2xl': isSticky,
+                          'text-3xl leading-[78px] md:text-[60px] ': !isSticky,
+                        },
+                      )}
+                    >
                       {title}
                     </h2>
-                    {typeof window !== 'undefined' && windowWidth > 768 && (
+                    {typeof window !== 'undefined' && windowWidth > 639 && (
                       <button
                         type="button"
                         color="link"
@@ -103,13 +127,10 @@ const Section = ({
                     )}
                   </div>
                   {isSticky &&
-                    windowWidth > 550 &&
+                    windowWidth > 639 &&
                     (slug === 'apps-and-websites' || slug === 'designs') && (
-                      <Link
-                        className="text-right"
-                        href={slug === 'designs' ? '/apps-and-websites' : '/designs'}
-                      >
-                        <a>
+                      <Link href={slug === 'designs' ? '/apps-and-websites' : '/designs'}>
+                        <a className="px-2 py-0">
                           {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
                           <FontAwesomeIcon icon={faAngleRight} className="ml-1" />
                         </a>

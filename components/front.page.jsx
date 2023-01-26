@@ -21,7 +21,7 @@ export default function FrontPage({
             {title && (
               <h1
                 data-parent={title}
-                className="bg:bg-shine whitespace-nowrap font-sans text-[8vw] uppercase leading-10 !text-white/80 drop-shadow-[0px_2px_5px_rgba(0,0,0,0.5)] before:absolute before:left-0 before:top-0 before:w-full before:bg-[length:200%] before:bg-clip-text before:bg-right before:text-transparent before:content-[attr(data-parent)] md:text-[2.5vw] md:transition-[font-size] md:duration-300 md:group-hover-[.section]:text-[3vw] md:group-hover-[.section]:before:animate-shine"
+                className="bg:bg-shine whitespace-nowrap font-sans text-[8vw] font-semibold uppercase leading-10 !text-white/80 drop-shadow-[0px_2px_5px_rgba(0,0,0,0.5)] before:absolute before:left-0 before:top-0 before:w-full before:bg-[length:200%] before:bg-clip-text before:bg-right before:text-transparent before:content-[attr(data-parent)] md:text-[2.5vw] md:transition-[font-size] md:duration-300 md:group-hover-[.section]:text-[3vw] md:group-hover-[.section]:before:animate-shine"
               >
                 {title}
               </h1>
