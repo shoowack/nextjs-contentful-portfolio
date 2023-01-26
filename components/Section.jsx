@@ -98,7 +98,7 @@ const Section = ({
                         contrastColor === 'light' ? 'text-black' : 'text-white',
                         {
                           'sm:text-2xl': isSticky,
-                          'sm:-mr-28 md:-mr-20': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
+                          'sm:ml-28 md:ml-24': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
                           'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky, // has to take into consideration width of the "designs" button
                           'text-3xl leading-[78px] sm:-mr-5 md:mr-4 md:text-[60px]': !isSticky,
                         },
