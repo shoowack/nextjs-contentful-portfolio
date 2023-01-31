@@ -39,6 +39,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g
                     transform="translate(-1006.000000, -872.000000)"
+                    className="[transition:fill_0.5s]"
                     fill={isDarkMode ? '#A4A4A4' : '#444'}
                     fillRule="nonzero"
                   >
@@ -75,6 +76,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g
                     transform="translate(-1006.000000, -872.000000)"
+                    className="[transition:fill_0.5s]"
                     fill={isDarkMode ? '#A4A4A4' : '#444'}
                     fillRule="nonzero"
                   >
@@ -127,7 +129,8 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
               <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g transform="translate(0.646050, 0.867135)">
                   <rect
-                    fill="#E4E4E4"
+                    fill={isDarkMode ? '#2b282c' : '#E4E4E4'}
+                    className="[transition:fill_0.5s]"
                     transform="translate(132.321856, 176.431792) rotate(-3.400000) translate(-132.321856, -176.431792) "
                     x="8.32185646"
                     y="32.4317918"
@@ -136,7 +139,8 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
                     rx="43"
                   />
                   <rect
-                    fill="#D8D8D8"
+                    fill={isDarkMode ? '#413e42' : '#D8D8D8'}
+                    className="[transition:fill_0.5s]"
                     transform="translate(124.552722, 45.662374) rotate(-3.400000) translate(-124.552722, -45.662374) "
                     x="61.5527215"
                     y="3.66237431"
@@ -146,8 +150,8 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
                   />
                   <path
                     d="M107.464825,193.0872 C114.644526,193.0872 120.464825,198.907499 120.464825,206.0872 L120.464825,340.0872 C120.464825,347.266902 114.644526,353.0872 107.464825,353.0872 C100.285123,353.0872 94.4648246,347.266902 94.4648246,340.0872 L94.4648246,206.0872 C94.4648246,198.907499 100.285123,193.0872 107.464825,193.0872 Z"
-                    id="Combined-Shape"
-                    fill="#D8D8D8"
+                    fill={isDarkMode ? '#413e42' : '#D8D8D8'}
+                    className="[transition:fill_0.5s]"
                     transform="translate(107.464825, 273.087200) rotate(-3.400000) translate(-107.464825, -273.087200) "
                   />
                 </g>
