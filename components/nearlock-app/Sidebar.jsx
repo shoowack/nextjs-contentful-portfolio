@@ -11,7 +11,12 @@ const Sidebar = ({ isSidebarOpen, menuItems, activeTab, toggleTab, isSetupDone, 
   >
     <SidebarHeaderControls isDarkMode={isDarkMode} />
     <div className="sidebar-content absolute left-[10px] flex h-full w-[210px] flex-col justify-between overflow-hidden pt-12 pb-2">
-      <Tab.List className="flex flex-col">
+      <input
+        // flex or hidden
+        className="sidebar-search left-[10px] z-[3] mt-1 mb-2 hidden w-full flex-col justify-between overflow-hidden rounded-lg border-0 bg-black/[0.06] py-1.5 px-3 text-[13px] shadow-[0_0_0_1.5px_hsla(0,0%,0%,0.09)] outline-none placeholder:text-white/[0.25]"
+        placeholder="Search..."
+      />
+      <Tab.List className="flex grow flex-col">
         {menuItems.map(({ id, title, disabled, showInMenu }) => (
           <Tab
             disabled={disabled}
