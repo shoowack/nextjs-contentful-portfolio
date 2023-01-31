@@ -2,7 +2,7 @@ import { Tab } from '@headlessui/react';
 import classnames from 'classnames';
 import AppButton from '@components/nearlock-app/AppButton';
 
-export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab }) {
+export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSidebarOpen }) {
   return (
     <Tab.Panel>
       {isSetupDone ? (
@@ -17,7 +17,10 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab }) {
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
-                className="ml-[50px] mt-[-150px]"
+                className={classnames(
+                  'mt-[-150px] [transition:margin_0.5s]',
+                  isSidebarOpen ? 'ml-[50px]' : 'ml-[150px]',
+                )}
               >
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g
@@ -50,7 +53,10 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab }) {
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
-                className="mr-[25px] mt-[-150px] -scale-x-100"
+                className={classnames(
+                  'mt-[-150px] -scale-x-100 [transition:margin_0.5s]',
+                  isSidebarOpen ? 'mr-[25px]' : 'mr-[125px]',
+                )}
               >
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g

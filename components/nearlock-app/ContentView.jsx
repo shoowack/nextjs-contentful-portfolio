@@ -53,7 +53,12 @@ const Content = ({
         {/* Advanced - ID: 1 */}
         <Tab.Panel />
         {/* Clipboard - ID: 2 */}
-        <Clipboard isSetupDone={isSetupDone} isDarkMode={isDarkMode} setActiveTab={setActiveTab} />
+        <Clipboard
+          isSidebarOpen={isSidebarOpen}
+          isSetupDone={isSetupDone}
+          isDarkMode={isDarkMode}
+          setActiveTab={setActiveTab}
+        />
         {/* Devices - ID: 3 */}
         <Devices
           isSetupDone={isSetupDone}
