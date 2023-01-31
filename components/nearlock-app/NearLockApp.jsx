@@ -36,6 +36,8 @@ function NearLockApp({ isDarkMode }) {
     }, 1);
   };
 
+  const owner = 'Ivan';
+
   const menuItems = [
     {
       id: 0,
@@ -122,6 +124,7 @@ function NearLockApp({ isDarkMode }) {
     isModalOpen,
     setIsModalOpen,
     menuItems,
+    owner,
   };
 
   return (

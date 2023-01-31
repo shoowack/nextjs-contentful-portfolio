@@ -153,6 +153,7 @@ const Content = ({
   isSetupDone,
   setIsSetupDone,
   menuItems,
+  owner,
 }) => {
   const [dateState, setDateState] = useState(dayjs().format('ddd MMM D h:mm A'));
   const [notificationShow, setNotificationShow] = useState(false);
@@ -523,7 +524,7 @@ const Content = ({
                         </g>
                       </g>
                     </svg>
-                    <small className="mt-3">Filip’s MacBook Pro</small>
+                    <small className="mt-3">{owner}’s MacBook Pro</small>
                   </div>
                   <div className="devices-connected-line mb-5 flex grow flex-col items-center justify-center">
                     <div className="devices-connected-line__popup">3 meters</div>
@@ -546,7 +547,7 @@ const Content = ({
                         </g>
                       </g>
                     </svg>
-                    <small className="mt-3">Filip’s iPhone X</small>
+                    <small className="mt-3">{owner}’s iPhone X</small>
                   </div>
                 </div>
                 <h5
@@ -555,7 +556,7 @@ const Content = ({
                     'text-black': isDarkMode,
                   })}
                 >
-                  Filip’s iPhone X and this Mac are connected
+                  {owner}’s iPhone X and this Mac are connected
                 </h5>
                 <div className="flex justify-center pb-5">
                   <AppButton

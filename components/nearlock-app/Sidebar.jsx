@@ -2,7 +2,15 @@ import classnames from 'classnames';
 import { Tab } from '@headlessui/react';
 import SidebarHeaderControls from '@components/nearlock-app/SidebarHeaderControls';
 
-const Sidebar = ({ isSidebarOpen, menuItems, activeTab, toggleTab, isSetupDone, isDarkMode }) => (
+const Sidebar = ({
+  isSidebarOpen,
+  menuItems,
+  activeTab,
+  toggleTab,
+  isSetupDone,
+  isDarkMode,
+  owner,
+}) => (
   <div
     className={classnames('sidebar h-full w-0 min-w-0 transition-all duration-500', {
       'w-[230px] min-w-[230px] border-r-[1.25px] border-black/[0.15]': isSidebarOpen,
@@ -56,7 +64,8 @@ const Sidebar = ({ isSidebarOpen, menuItems, activeTab, toggleTab, isSetupDone, 
           )}
         >
           <img src="/nearlock-app/menu/iphone.svg" className="mr-2 ml-1 h-[17px]" alt="" />
-          Ivan&apos;s iPhone <div className="sidebar__connected-dot ml-auto mr-1 h-2 w-2 rounded" />
+          {owner}&apos;s iPhone{' '}
+          <div className="sidebar__connected-dot ml-auto mr-1 h-2 w-2 rounded" />
         </div>
       )}
     </div>

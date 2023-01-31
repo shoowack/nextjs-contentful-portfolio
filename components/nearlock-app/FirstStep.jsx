@@ -1,4 +1,4 @@
-const FirstStep = () => {
+const FirstStep = ({ owner }) => {
   return (
     <div className="flex grow flex-col justify-center p-5 text-center">
       <svg
@@ -20,7 +20,7 @@ const FirstStep = () => {
         </g>
       </svg>
       <h5>
-        Filip’s iPhone X<br />
+        {owner}’s iPhone X<br />
         wants to connect
       </h5>
     </div>

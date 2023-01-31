@@ -6,7 +6,14 @@ import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
 import ThirdStep from './ThirdStep';
 
-const Modal = ({ isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSetupDone }) => {
+const Modal = ({
+  isModalOpen,
+  setIsModalOpen,
+  isDarkMode,
+  setActiveTab,
+  setIsSetupDone,
+  owner,
+}) => {
   const [currentStep, setStep] = useState(1);
 
   const goBack = () => {
@@ -30,7 +37,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSet
   const renderStep = (step) => {
     switch (step) {
       case 1:
-        return <FirstStep />;
+        return <FirstStep owner={owner} />;
       case 2:
         return <SecondStep goBack={goBack} isDarkMode={isDarkMode} />;
       case 3:
