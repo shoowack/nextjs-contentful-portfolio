@@ -52,26 +52,34 @@ export default function Notifications({ isDarkMode }) {
           </div>
         </div>
       </div>
-      <div className="notifications-container">
+      <div className="absolute bottom-[130px] left-[282.5px] overflow-hidden z-[1]">
         <div
-          className={classnames('notifications-notification flex items-center', {
-            show: notificationShow,
-          })}
+          className={classnames(
+            'border border-solid backdrop-blur-[100px] gap-2.5 w-[350px] p-[10px] rounded-2xl flex items-center m-5 transition-all duration-500 ease-in-out',
+            notificationShow ? 'translate-x-0' : 'translate-x-[400px]',
+            isDarkMode
+              ? 'bg-[#35343C] border-[#575259] shadow-[0_0_0_0.5px_rgba(0,0,0,0.5),0_0_8px_-2px_rgba(0,0,0,0.75)]'
+              : 'bg-[#f5f5f5]/[0.8] border-[#E4E3EA] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15),0_0_8px_-2px_rgba(0,0,0,0.5)]',
+          )}
         >
-          <div className="notifications-notification-icon flex items-center justify-center">
-            <img src="/nearlock-app/setup/nearlock.svg" alt="" />
+          <div className="flex shadow-[0_1px_2px_-1px_rgba(0,0,0,0.50)] m-[3px] rounded-lg items-center justify-center bg-white w-[37px] h-[37px]">
+            <img src="/nearlock-app/setup/nearlock.svg" alt="" className="w-4" />
           </div>
           <div className="flex flex-col">
-            <strong className="notifications-notification-title">Near Lock</strong>
-            <small className="notifications-notification-description">Description</small>
+            <strong className={classnames('leading-tight', { 'text-white': isDarkMode })}>
+              Near Lock
+            </strong>
+            <small className={classnames('leading-tight', { 'text-white': isDarkMode })}>
+              Description
+            </small>
           </div>
         </div>
       </div>
       <div className="notifications-clock">{dateState}</div>
       <img
         src="/nearlock-app/notifications-screen.png"
-        className="notifications-bg absolute"
-        alt=""
+        className="absolute bottom-0 w-[750px] left-0"
+        alt="NearLock notification screen"
       />
     </Tab.Panel>
   );
