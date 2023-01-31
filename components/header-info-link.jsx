@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Popover, Transition } from '@headlessui/react';
+import classnames from 'classnames';
 
 const HeaderInfoLink = ({
   sys: { id },
@@ -15,6 +16,7 @@ const HeaderInfoLink = ({
   size = 'lg',
   iconColor,
   animationDelay,
+  isPreferredThemeDark,
 }) => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
@@ -50,8 +52,10 @@ const HeaderInfoLink = ({
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel
-          className="absolute left-1/2 top-0 transform whitespace-nowrap text-center"
-          style={{ transform: 'translateY(calc(-100% - 10px)) translateX(-50%)' }}
+          className={classnames(
+            'absolute left-1/2 top-0 translate-y-[calc(100%+10px)] -translate-x-1/2 transform whitespace-nowrap text-center',
+            isPreferredThemeDark ? 'bg-black' : 'bg-white',
+          )}
         >
           <div
             className="rounded-lg  px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5 "

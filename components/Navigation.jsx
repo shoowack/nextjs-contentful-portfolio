@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import Container from '@components/Container';
 import HeaderInfoLink from '@components/header-info-link';
+import useMedia from '@lib/useMedia';
 
 export default function Navigation({ headerItems }) {
+  const isPreferredThemeDark = useMedia(['(prefers-color-scheme: dark)'], [true], false);
+
   return (
     <div className="aboutme py-md-5 text:black bg-[radial-gradient(#c8c8c8_0%_5%,#fff_10%_100%)] bg-[length:20px_20px] py-4 dark:bg-[radial-gradient(#222_0%_5%,#000_10%_100%)] dark:text-white">
       <Container>
@@ -50,6 +53,7 @@ export default function Navigation({ headerItems }) {
                 {...headerLink}
                 animationDelay={`[animation-delay:${(i + 1) * 100}ms]`}
                 key={headerLink.sys.id}
+                isPreferredThemeDark={isPreferredThemeDark}
               />
             ))}
           </div>
