@@ -2,6 +2,20 @@ import { Tab } from '@headlessui/react';
 import classnames from 'classnames';
 import AppButton from '@components/nearlock-app/AppButton';
 
+const Keystroke = ({ children, className, isDarkMode }) => {
+  return (
+    <div
+      className={classnames(
+        'inline rounded-[10px] py-[5px] px-[8px] text-[11px] uppercase ring-[1.5px] [transition:box-shadow_0.5s]',
+        className,
+        isDarkMode ? 'ring-[#666666]' : 'ring-[#d9d9d9]',
+      )}
+    >
+      {children}
+    </div>
+  );
+};
+
 export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSidebarOpen }) {
   return (
     <Tab.Panel>
@@ -84,9 +98,18 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
           >
             <AppButton className="nearlock btn-blue">Send Clipboard</AppButton>
             <small className="mx-4">or press</small>
-            <div className="keystrokes">
-              <span className="mr-2">CTRL</span>+<span className="mx-2">CMD</span>+
-              <span className="ml-2">V</span>
+            <div>
+              <Keystroke className="mr-2" isDarkMode={isDarkMode}>
+                CTRL
+              </Keystroke>
+              +
+              <Keystroke className="mx-2" isDarkMode={isDarkMode}>
+                CMD
+              </Keystroke>
+              +
+              <Keystroke className="ml-2" isDarkMode={isDarkMode}>
+                V
+              </Keystroke>
             </div>
           </div>
         </>

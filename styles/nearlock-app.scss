@@ -1,14 +1,5 @@
 .nearlock-app {
     .tab-content {
-        .keystrokes span {
-            border-radius: 10px;
-            box-shadow: 0 0 0 1.5px hsl(0, 0%, 85%);
-            padding: 5px 8px;
-            font-size: 11px;
-            text-transform: uppercase;
-            transition: box-shadow 0.5s;
-        }
-
         .notifications {
             &-bg {
                 width: 750px;
@@ -82,10 +73,6 @@
     &.nearlock-app {
         .content {
             .tab-content {
-                .keystrokes span {
-                    box-shadow: 0 0 0 1.5px hsl(0, 0%, 40%);
-                }
-
                 .notifications {
                     &-notification {
                         background: #35343C;
