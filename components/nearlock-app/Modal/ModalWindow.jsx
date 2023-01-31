@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import AppButton from './AppButton';
-import FirstStep from './FirstStep';
-import SecondStep from './SecondStep';
-import ThirdStep from './ThirdStep';
+import AppButton from '@components/nearlock-app/AppButton';
+import FirstStep from '@components/nearlock-app/Modal/FirstStep';
+import SecondStep from '@components/nearlock-app/Modal/SecondStep';
+import ThirdStep from '@components/nearlock-app/Modal/ThirdStep';
 
 const Modal = ({
   isModalOpen,

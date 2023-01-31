@@ -1,12 +1,27 @@
 import { useState } from 'react';
-import classNames from 'classnames';
+import classnames from 'classnames';
 
-const ListItem = ({ icon, title, desc, checked, newBadge, extraInfo, setActiveTab }) => {
+const ListItem = ({
+  icon,
+  title,
+  desc,
+  checked,
+  newBadge,
+  extraInfo,
+  setActiveTab,
+  isDarkMode,
+}) => {
   const [isChecked, setIsChecked] = useState(!!checked);
 
   return (
     <div
-      className="setup_list-item mx-2 flex p-2"
+      className={classnames(
+        'relative mx-2 flex rounded-2xl p-2 [transition:all_0.25s] hover:cursor-pointer hover:[transition:all_0.25s]',
+        {
+          'hover:bg-black/[0.04]': !isDarkMode,
+          'hover:bg-white/[0.04]': isDarkMode,
+        },
+      )}
       onClick={() => {
         setIsChecked((prev) => !prev);
       }}
@@ -15,13 +30,19 @@ const ListItem = ({ icon, title, desc, checked, newBadge, extraInfo, setActiveTa
       }}
       aria-hidden
     >
-      {newBadge && <div className="setup_list-item__icon_new-badge">New</div>}
+      {newBadge && (
+        <div className="absolute top-px left-0 z-[1] rounded-full bg-red-500 px-[7px] py-[2px] text-[9px] uppercase text-white">
+          New
+        </div>
+      )}
       <div
-        className={classNames(
+        className={classnames(
+          'setup_list-item__icon flex h-[60px] w-[60px] items-center justify-center overflow-hidden rounded-xl [transition:background_0.5s]',
           {
             checked: isChecked,
+            'bg-[#EAEAEA]': !isDarkMode,
+            'bg-white/[0.075]': isDarkMode,
           },
-          'setup_list-item__icon flex justify-center items-center',
         )}
       >
         <img src={icon?.src} alt="" />

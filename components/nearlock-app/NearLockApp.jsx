@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import classnames from 'classnames';
 import { Tab } from '@headlessui/react';
-import Modal from './modal';
-import Content from './Content';
+import Modal from './Modal/ModalWindow';
+import ContentView from './ContentView';
 import Sidebar from './Sidebar';
 
 function NearLockApp({ isDarkMode }) {
@@ -141,7 +141,7 @@ function NearLockApp({ isDarkMode }) {
       <Modal {...props} />
       <Tab.Group selectedIndex={activeTab} onChange={setActiveTab} vertical>
         <Sidebar {...props} toggleTab={toggleTab} />
-        <Content {...props} searchRef={searchRef} />
+        <ContentView {...props} searchRef={searchRef} />
       </Tab.Group>
     </div>
   );

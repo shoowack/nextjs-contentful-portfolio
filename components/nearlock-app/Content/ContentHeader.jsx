@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-export default function ContentHeader({
+export function ContentHeader({
   isSidebarOpen,
   toggleSidebar,
   isSearchOpen,
@@ -123,3 +123,5 @@ export default function ContentHeader({
     </div>
   );
 }
+
+export default ContentHeader;
