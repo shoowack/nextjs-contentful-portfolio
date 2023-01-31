@@ -12,10 +12,12 @@ const Sidebar = ({
   owner,
 }) => (
   <div
-    className={classnames('sidebar h-full w-0 min-w-0 transition-all duration-500', {
-      'w-[230px] min-w-[230px] border-r-[1.25px] border-black/[0.15]': isSidebarOpen,
-      'border-r-0': !isSidebarOpen,
-    })}
+    className={classnames(
+      'sidebar h-full w-0 min-w-0 transition-all duration-500',
+      isSidebarOpen
+        ? 'w-[230px] min-w-[230px] border-r-[1.25px] border-black/[0.15]'
+        : 'border-r-0 border-transparent',
+    )}
   >
     <SidebarHeaderControls isDarkMode={isDarkMode} />
     <div className="sidebar-content absolute left-[10px] flex h-full w-[210px] flex-col justify-between overflow-hidden pt-12 pb-2">

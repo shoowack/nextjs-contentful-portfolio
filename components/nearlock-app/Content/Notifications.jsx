@@ -75,7 +75,9 @@ export default function Notifications({ isDarkMode }) {
           </div>
         </div>
       </div>
-      <div className="notifications-clock">{dateState}</div>
+      <div className="notifications-clock drop-shadow-[0_1px_3px_rgba(0,0,0,0.30)] z-[1] absolute bottom-[247px] text-white left-[510px] font-normal text-sm">
+        {dateState}
+      </div>
       <img
         src="/nearlock-app/notifications-screen.png"
         className="absolute bottom-0 w-[750px] left-0"
