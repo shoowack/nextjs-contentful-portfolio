@@ -1,36 +1,5 @@
 .nearlock-app {
     .tab-content {
-        .setup_list-item {
-            &__icon {
-                &.checked {
-                    box-shadow: 0 0 0 3px #368EFC inset;
-                    position: relative;
-
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        border-style: solid;
-                        border-width: 0px 30px 30px 0px;
-                        border-color: transparent #368EFC transparent transparent;
-                    }
-
-                    &::after {
-                        content: "\f00c";
-                        font-family: 'Font Awesome 5 Pro';
-                        font-weight: 900;
-                        font-size: 8px;
-                        position: absolute;
-                        top: 4px;
-                        right: 6px;
-                        color: #EAEAEA;
-                        transition: color 0.5s;
-                    }
-                }
-            }
-        }
-
         .keystrokes span {
             border-radius: 10px;
             box-shadow: 0 0 0 1.5px hsl(0, 0%, 85%);
@@ -113,16 +82,6 @@
     &.nearlock-app {
         .content {
             .tab-content {
-                .setup_list-item {
-                    &__icon {
-                        &.checked {
-                            &::after {
-                                color: #393539;
-                            }
-                        }
-                    }
-                }
-
                 .keystrokes span {
                     box-shadow: 0 0 0 1.5px hsl(0, 0%, 40%);
                 }

@@ -121,7 +121,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
     </tr>
   ) : (
     <Popover className="relative">
-      <div id={`tooltip-${project}-${stackName}`} key={`${project}-${stackName}`}>
+      <div key={`${project}-${stackName}`}>
         <img
           src={src}
           style={{ height: `${height || heightPercentage(100)}px` }}
@@ -142,10 +142,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel
-          className="absolute left-1/2 top-0 transform whitespace-nowrap text-center"
-          style={{ transform: 'translateY(calc(-100% - 10px)) translateX(-50%)' }}
-        >
+        <Popover.Panel className="absolute left-1/2 top-0 translate-y-[calc(-100%-10px)] -translate-x-1/2 transform whitespace-nowrap text-center">
           <div
             className={classnames(
               `rounded-lg px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5`,

@@ -154,12 +154,7 @@ const Section = ({
                   Stack
                 </h3>
               </Container>
-              <Container
-                className="flex flex-col items-center justify-center pb-4 md:flex-row"
-                style={{
-                  gap: '15px',
-                }}
-              >
+              <Container className="flex flex-col items-center justify-center pb-4 md:flex-row">
                 <ConditionalWrapper
                   condition={windowWidth < 768}
                   wrapper={(children) => (
@@ -390,11 +385,7 @@ const Section = ({
                   </button>
                 )}
               </div>
-              <small
-                style={{
-                  color: 'hsla(0, 0%, 100%, .75)',
-                }}
-              >
+              <small className="text-white/[0.75]">
                 {windowWidth >= 1120
                   ? 'some of the features are not available yet'
                   : 'for an interactive preview, please visit desktop version of the website'}

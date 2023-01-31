@@ -5,7 +5,7 @@ const ThirdStep = () => {
   return (
     <div className="flex grow flex-col items-center justify-center px-5">
       <div className="mt-6 mb-12">
-        <img src="./third-step.png" alt="" className="h-[130px]" style={{}} />
+        <img src="./third-step.png" alt="" className="h-[130px]" />
       </div>
       <h5>You got it! Cool, isn’t it?</h5>
       <small>Good time to share?</small>
