@@ -180,10 +180,12 @@ const Content = ({
     >
       <div
         className={classnames(
+          'content-header absolute z-[1] flex w-full flex-row items-center justify-between border-b px-[10px] py-[9px] backdrop-blur-[10px] [transition:all_0.5s]',
           {
             'pl-[100px]': !isSidebarOpen,
+            'border-black/[.09] bg-[#f4f3f7]/[0.7]': !isDarkMode,
+            'border-white/[0.09] bg-[#211c21]/[0.7]': isDarkMode,
           },
-          'content-header absolute z-[1] flex w-full flex-row items-center justify-between border-b border-black/[.09] px-[10px] py-[9px] backdrop-blur-[10px]',
         )}
       >
         <div
@@ -227,13 +229,19 @@ const Content = ({
         <div className="content-header__right-items flex items-center">
           <input
             className={classnames(
-              'content-header__search pointer-events-none m-0 h-[30px] w-0 rounded-[7px] border-0 py-0 pr-[30px] pl-[28px] text-xs opacity-0 outline outline-1 outline-black/[.06] [transition:background_0.5s,width_0.5s,opacity_0.5s,color_0.5s]',
+              'content-header__search pointer-events-none m-0 h-[30px] w-0 rounded-[7px] border-0 bg-[length:12px_12px] bg-[left_0.5rem_center] bg-no-repeat py-0 pr-[30px] pl-[28px] text-xs opacity-0 outline outline-1 [transition:background_0.5s,width_0.5s,opacity_0.5s,color_0.5s]',
               {
-                'open pointer-events-auto w-[240px] opacity-100': isSearchOpen,
+                'pointer-events-auto w-[240px] opacity-100 ring-[#368ffc] focus:outline-none focus:ring':
+                  isSearchOpen,
+                'bg-[#F4F3F7] text-black': !isDarkMode,
+                'bg-[#211C21] text-white': isDarkMode,
+                'outline-white/[0.06]': isSearchOpen && isDarkMode,
+                'outline-black/[0.06]': isSearchOpen && !isDarkMode,
               },
             )}
             placeholder="Search"
             ref={searchRef}
+            style={{ backgroundImage: 'url(./../../nearlock-app/search.svg)' }}
           />
           <img
             src="/nearlock-app/search-close.svg"
