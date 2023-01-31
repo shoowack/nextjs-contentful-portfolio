@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Col } from 'reactstrap';
 import classnames from 'classnames';
 import AppButton from './AppButton';
 import FirstStep from './FirstStep';

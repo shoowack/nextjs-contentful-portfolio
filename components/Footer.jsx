@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faPaperPlane, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-// import { Container, Row, Col, Label, Form, Input, Button } from 'reactstrap';
 import Container from '@components/Container';
 
 import axios from 'axios';

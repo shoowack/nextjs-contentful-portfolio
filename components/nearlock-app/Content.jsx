@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { TabContent, TabPane, Col } from 'reactstrap';
 import classnames from 'classnames';
 import Lottie from 'lottie-react';
 import * as dayjs from 'dayjs';
