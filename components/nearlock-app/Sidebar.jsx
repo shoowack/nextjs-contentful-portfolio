@@ -1,69 +1,15 @@
 import classnames from 'classnames';
 import { Tab } from '@headlessui/react';
+import SidebarHeaderControls from '@components/nearlock-app/SidebarHeaderControls';
 
-const Sidebar = ({ isSidebarOpen, menuItems, activeTab, toggleTab, isSetupDone }) => (
+const Sidebar = ({ isSidebarOpen, menuItems, activeTab, toggleTab, isSetupDone, isDarkMode }) => (
   <div
     className={classnames('sidebar h-full w-0 min-w-0 transition-all duration-500', {
       'w-[230px] min-w-[230px] border-r-[1.25px] border-black/[0.15]': isSidebarOpen,
       'border-r-0': !isSidebarOpen,
     })}
   >
-    <div className="sidebar-header-controls hover:group-[.is-published]:bg-yellow-500 absolute top-5 left-5 z-[2] flex flex-row gap-2.5">
-      {Array.from({ length: 3 }, (_, i) => ({ id: i })).map((arr) => (
-        <div
-          key={`sidebar-header-controls__item-${arr.id}`}
-          className="group is-published sidebar-header-controls__item
-
-          relative
-
-          h-3 w-3
-          rounded-full
-
-          before:absolute
-          before:opacity-0
-          before:content-['']
-
-          after:absolute
-          after:opacity-0
-          after:content-['']
-
-          [&:nth-child(1)]:bg-[#FF6157]
-          [&:nth-child(1)]:ring-1
-          [&:nth-child(1)]:ring-[#E24640]
-          [&:nth-child(1)]:before:top-[5px]
-          [&:nth-child(1)]:before:left-[2px]
-          [&:nth-child(1)]:before:h-0.5
-          [&:nth-child(1)]:before:w-2
-          [&:nth-child(1)]:before:rotate-45
-          [&:nth-child(1)]:before:rounded-full
-          [&:nth-child(1)]:before:bg-black/[0.4]
-          [&:nth-child(1)]:after:top-[5px]
-          [&:nth-child(1)]:after:left-[2px]
-          [&:nth-child(1)]:after:h-0.5
-          [&:nth-child(1)]:after:w-2
-          [&:nth-child(1)]:after:-rotate-45
-          [&:nth-child(1)]:after:rounded-full
-          [&:nth-child(1)]:after:bg-black/[0.4]
-
-          [&:nth-child(2)]:bg-[#FFC12F]
-          [&:nth-child(2)]:ring-1
-          [&:nth-child(2)]:ring-[#DFA023]
-          [&:nth-child(2)]:before:top-[5px]
-          [&:nth-child(2)]:before:left-[2px]
-          [&:nth-child(2)]:before:h-0.5
-          [&:nth-child(2)]:before:w-2
-          [&:nth-child(2)]:before:rounded-full
-          [&:nth-child(2)]:before:bg-black/[0.4]
-
-          [&:nth-child(3)]:bg-[#2ACB42]
-          [&:nth-child(3)]:ring-1
-          [&:nth-child(3)]:ring-[#1BAC2C]
-
-
-          "
-        />
-      ))}
-    </div>
+    <SidebarHeaderControls isDarkMode={isDarkMode} />
     <div className="sidebar-content absolute left-[10px] flex h-full w-[210px] flex-col justify-between overflow-hidden pt-12 pb-2">
       <Tab.List className="flex flex-col">
         {menuItems.map(({ id, title, disabled, showInMenu }) => (
