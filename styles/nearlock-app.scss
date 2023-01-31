@@ -1,44 +1,4 @@
-$dark-mode-transition: 0.5s;
-
-.nearlock-app-wrapper {
-    background: #D667A3;
-    background: linear-gradient(32deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
-
-    &.dark {
-        background: hsl(210, 40%, 21%);
-        background: linear-gradient(32deg, #0F022B 0%, #760697 50%, #360EB0 80%);
-    }
-}
-
 .nearlock-app {
-    box-shadow:
-        0 0 0 1px rgba(0, 0, 0, .05),
-        0 60px 300px rgba(0, 0, 0, .4),
-        0 0 0 1px hsla(0, 0%, 100%, .15) inset;
-
-    .button {
-        border: unset;
-        box-shadow:
-            0 0 0 1px hsla(0, 0%, 0%, .05),
-            0 1px 1px 0 hsla(0, 0%, 0%, .15);
-    }
-
-    .modal {
-        box-shadow:
-            0 0 0 1px hsla(0, 0%, 0%, .15),
-            0 25px 60px -15px hsla(0, 0%, 0%, 0.35);
-    }
-
-    .sidebar {
-        &__connected-dot {
-            background: linear-gradient(180deg, hsl(115, 100%, 55%) 0%, hsl(115, 100%, 45%) 100%);
-            box-shadow:
-            0 0 0 1px hsla(0, 0%, 0%, .1),
-            0 0 0 2px hsla(0, 0%, 0%, .05),
-            0 0 10px 0px hsla(121, 100%, 59%, .75);
-        }
-    }
-
     .tab-content {
         .devices-connected-line {
             &:before {
@@ -94,7 +54,7 @@ $dark-mode-transition: 0.5s;
                 background: #EAEAEA;
                 border-radius: 12px;
                 overflow: hidden;
-                transition: background $dark-mode-transition;
+                transition: background 0.5s;
 
                 &_new-badge {
                     display: block;
@@ -133,7 +93,7 @@ $dark-mode-transition: 0.5s;
                         top: 4px;
                         right: 6px;
                         color: #EAEAEA;
-                        transition: color $dark-mode-transition;
+                        transition: color 0.5s;
                     }
                 }
             }
@@ -145,7 +105,7 @@ $dark-mode-transition: 0.5s;
             padding: 5px 8px;
             font-size: 11px;
             text-transform: uppercase;
-            transition: box-shadow $dark-mode-transition;
+            transition: box-shadow 0.5s;
         }
 
         .notifications {
@@ -219,11 +179,6 @@ $dark-mode-transition: 0.5s;
 
 .dark {
     &.nearlock-app {
-        box-shadow:
-            0 0 0 1px rgba(255, 255, 255, .025),
-            0 60px 300px rgba(0, 0, 0, .4),
-            0 0 2px 0 hsla(190, 20%, 100%, .15) inset;
-
         .content {
             .tab-content {
                 .setup_list-item {

@@ -64,8 +64,8 @@ const Sidebar = ({
           )}
         >
           <img src="/nearlock-app/menu/iphone.svg" className="mr-2 ml-1 h-[17px]" alt="" />
-          {owner}&apos;s iPhone{' '}
-          <div className="sidebar__connected-dot ml-auto mr-1 h-2 w-2 rounded" />
+          {owner}&apos;s iPhone
+          <div className="ml-auto mr-1 h-2 w-2 rounded bg-gradient-to-b from-[#2dff1a] to-[#13e600] shadow-[0_0_0_1px_hsla(0,0%,0%,0.1),0_0_0_2px_hsla(0,0%,0%,0.05),0_0_10px_0px_hsla(121,100%,59%,0.75)]" />
         </div>
       )}
     </div>

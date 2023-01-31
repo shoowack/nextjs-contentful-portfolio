@@ -341,6 +341,11 @@ const Section = ({
             },
             'nearlock-app-wrapper relative overflow-hidden py-12',
           )}
+          style={{
+            background: isDarkMode
+              ? '#20364b linear-gradient(32deg, #0F022B 0%, #760697 50%, #360EB0 80%)'
+              : '#D667A3 linear-gradient(32deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)',
+          }}
         >
           {windowWidth >= 1120 && (
             <button

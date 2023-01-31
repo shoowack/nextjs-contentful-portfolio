@@ -54,7 +54,7 @@ const Modal = ({
     >
       <div
         className={classnames(
-          'modal absolute top-1/2 left-1/2 z-[1] flex h-[480px] w-[715px] -translate-x-1/2 -translate-y-1/2 flex-col rounded-[10px]',
+          'absolute top-1/2 left-1/2 z-[1] flex h-[480px] w-[715px] -translate-x-1/2 -translate-y-1/2 flex-col rounded-[10px] shadow-[0_0_0_1px_hsla(0,0%,0%,0.15),0_25px_60px_-15px_hsla(0,0%,0%,0.35)]',
           {
             'bg-[#211c1f] text-white': isDarkMode,
             'bg-white': !isDarkMode,
@@ -63,9 +63,9 @@ const Modal = ({
       >
         {renderStep(currentStep)}
         <div
-          className={classnames('modal__footer flex items-center rounded-b-[9px] p-4', {
+          className={classnames('flex items-center rounded-b-[9px] p-4', {
             'bg-[#3b3539]': isDarkMode,
-            ' bg-gradient-to-b from-[#D3CECE] to-[#CBC3C5]': !isDarkMode,
+            'bg-gradient-to-b from-[#D3CECE] to-[#CBC3C5]': !isDarkMode,
           })}
         >
           <div className="flex-1">
