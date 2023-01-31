@@ -19,13 +19,13 @@ export default function Devices({
       })}
     >
       {isSetupDone ? (
-        <div className="mx-4 flex h-full flex-col">
+        <div className="flex h-full flex-col">
           {/* <div className="py-3">
             <h4 className="m-0">Devices</h4>
             <small>Currently connected devices</small>
           </div> */}
-          <div className="mt-5 flex grow flex-col justify-center">
-            <div className="my-5 mx-auto flex w-[550px]">
+          <div className="flex grow flex-col justify-center">
+            <div className="mx-auto mt-14 mb-20 flex w-[550px]">
               <div className="flex flex-col items-center">
                 <svg
                   width="175px"
@@ -80,7 +80,7 @@ export default function Devices({
             >
               {owner}’s iPhone X and this Mac are connected
             </h5>
-            <div className="flex justify-center pb-5">
+            <div className="flex justify-center">
               <AppButton onClick={() => setIsSetupDone(false)} className="nearlock btn-blue mt-4">
                 Unlink
               </AppButton>

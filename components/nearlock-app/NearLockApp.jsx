@@ -130,7 +130,7 @@ function NearLockApp({ isDarkMode }) {
   return (
     <div
       className={classnames(
-        'nearlock-app relative mx-auto flex h-[626px] w-[1082px] flex-row overflow-hidden rounded-xl shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_60px_300px_rgba(0,0,0,0.4),0_0_0_1px_hsla(0,0%,100%,0.15)_inset] backdrop-blur-[50px] [transition:background_0.5s,color_0.5s]',
+        'nearlock-app relative mx-auto flex h-[626px] w-[1082px] flex-row overflow-hidden rounded-xl shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_60px_300px_rgba(0,0,0,0.4),0_0_2px_0_hsla(0,0%,100%,0.15)_inset] backdrop-blur-[50px] [transition:background_0.5s,color_0.5s]',
         {
           dark: isDarkMode,
           'bg-[#252b31]/[0.8] text-[#A9A9A9]': isDarkMode,

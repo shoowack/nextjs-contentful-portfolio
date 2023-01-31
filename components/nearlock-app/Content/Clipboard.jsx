@@ -6,7 +6,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab }) {
   return (
     <Tab.Panel>
       {isSetupDone ? (
-        <div className="mt-0">
+        <>
           <img src="/nearlock-app/clipboard.png" className="mx-auto flex" width="820px" alt="" />
           <div className="flex justify-between">
             <div className="flex">
@@ -17,10 +17,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab }) {
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
-                style={{
-                  marginLeft: '50px',
-                  marginTop: '-150px',
-                }}
+                className="ml-[50px] mt-[-150px]"
               >
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g
@@ -38,22 +35,12 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab }) {
                   </g>
                 </g>
               </svg>
-              <small
-                className="mt-n3 ml-3 text-center"
-                style={{
-                  width: '250px',
-                }}
-              >
+              <small className="-mt-3 ml-3 w-[250px] text-center">
                 Use Menu bar shortcut on your Mac to copy Clipboard from your iPhone
               </small>
             </div>
             <div className="flex">
-              <small
-                className="mt-n3 mr-3 text-center"
-                style={{
-                  width: '220px',
-                }}
-              >
+              <small className="-mt-3 mr-3 w-[220px] text-center">
                 Use Near Lock widget on your iPhone to send and receive Clipboard from your Mac
               </small>
               <svg
@@ -63,11 +50,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab }) {
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
-                style={{
-                  marginRight: '25px',
-                  marginTop: '-150px',
-                  transform: 'scaleX(-1)',
-                }}
+                className="mr-[25px] mt-[-150px] -scale-x-100"
               >
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g
@@ -100,7 +83,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab }) {
               <span className="ml-2">V</span>
             </div>
           </div>
-        </div>
+        </>
       ) : (
         <div className="flex flex-col items-center">
           <div className="flex h-[378px] w-full items-center justify-center">
