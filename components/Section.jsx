@@ -339,16 +339,27 @@ const Section = ({
             {
               dark: isDarkMode,
             },
-            'nearlock-app-wrapper overflow-hidden py-5',
+            'nearlock-app-wrapper relative overflow-hidden py-12',
           )}
         >
           {windowWidth >= 1120 && (
             <button
               type="button"
               onClick={toggleDarkMode}
-              className={classnames('nearlock-app-wrapper-theme-toggler', { dark: isDarkMode })}
+              className={classnames(
+                'group nearlock-app-wrapper-theme-toggler absolute right-12 top-10 z-[1] flex h-12 w-12 items-center justify-center rounded-full [transition:background_0.5s]',
+                isDarkMode ? 'bg-[#211C21]' : 'bg-white',
+                {
+                  dark: isDarkMode,
+                },
+              )}
             >
-              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="1x" />
+              <FontAwesomeIcon
+                icon={isDarkMode ? faSun : faMoon}
+                size="1x"
+                color={isDarkMode ? 'yellow' : '#368EFC'}
+                className="rotate-0 scale-100 transition-transform duration-1000 group-active-[.nearlock-app-wrapper-theme-toggler]:rotate-180 group-active-[.nearlock-app-wrapper-theme-toggler]:scale-50 group-active-[.nearlock-app-wrapper-theme-toggler]:duration-[100ms]"
+              />
             </button>
           )}
           <div
@@ -358,10 +369,10 @@ const Section = ({
           >
             <Container
               fluid="lg"
-              className={`${windowWidth >= 1120 && 'pb-5'} lighter text-center`}
+              className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}
             >
-              <div className="group clipboard-title d-flex justify-content-center align-items-center mr-md-n5">
-                <p className="mb-0">Interactive preview of the Near Lock desktop app</p>
+              <div className="group clipboard-title mr-md-n5 flex items-center justify-center">
+                <p className="mb-0 text-white">Interactive preview of the Near Lock desktop app</p>
                 {typeof window !== 'undefined' && windowWidth > 768 && (
                   <button
                     type="button"
@@ -386,7 +397,7 @@ const Section = ({
             </Container>
           </div>
           {windowWidth >= 1120 && (
-            <div className="mb-5">
+            <div className="mb-12">
               <NearLockApp isDarkMode={isDarkMode} />
             </div>
           )}

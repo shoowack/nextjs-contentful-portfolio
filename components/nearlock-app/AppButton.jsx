@@ -1,15 +1,12 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const AppButton = ({ children, onClick, className, link, disabled }) => (
+const AppButton = ({ children, onClick, className, disabled }) => (
   <button
     type="button"
     className={classnames(
-      {
-        'button-link': link,
-      },
+      'button rounded-md py-0.5 px-5 text-[13px] [transition:background_0.5s,color_0.5s]',
       className,
-      'button',
     )}
     onClick={onClick}
     disabled={disabled}
@@ -19,12 +16,10 @@ const AppButton = ({ children, onClick, className, link, disabled }) => (
 );
 
 AppButton.propTypes = {
-  link: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
 AppButton.defaultProps = {
-  link: null,
   onClick: null,
 };
 

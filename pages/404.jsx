@@ -5,7 +5,7 @@ export default function Custom404() {
   const router = useRouter();
 
   return (
-    <div className="d-flex flex-column w-100 vh-100 justify-content-center align-items-center">
+    <div className="flex h-screen w-full flex-col items-center justify-center">
       <p>Something went wrong, we have nothing on:</p>
       <p>
         <code className="font-weight-bold d-inline">{router.asPath}</code>

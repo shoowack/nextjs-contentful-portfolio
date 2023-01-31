@@ -1,14 +1,9 @@
 const SecondStep = ({ isDarkMode }) => {
   return (
-    <div className="d-flex flex-grow-1 flex-row px-5">
-      <div
-        className="d-flex flex-column mr-n5 align-items-center justify-content-center py-5 text-center"
-        style={{
-          width: '300px',
-        }}
-      >
+    <div className="flex grow flex-row px-5">
+      <div className="ml-10 -mr-10 flex w-[300px] flex-col items-center justify-center py-5 text-center">
         <h5>Now use your iPhone to finish setting up Near Lock</h5>
-        <small className="w-75">Your data is encrypted and stored only on your devices</small>
+        <small className="w-3/4">Your data is encrypted and stored only on your devices</small>
 
         <svg
           width="63px"
@@ -17,10 +12,7 @@ const SecondStep = ({ isDarkMode }) => {
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          style={{
-            marginLeft: '50px',
-            marginTop: '40px',
-          }}
+          className="ml-12 mt-10"
         >
           <g
             transform="translate(-1169.000000, -893.000000)"
@@ -37,22 +29,8 @@ const SecondStep = ({ isDarkMode }) => {
           </g>
         </svg>
       </div>
-      <div
-        style={{
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'end',
-        }}
-        className="mt-4"
-      >
-        <img
-          src="./second-step.png"
-          alt=""
-          height="400px"
-          style={{
-            objectFit: 'contain',
-          }}
-        />
+      <div className="relative flex items-end">
+        <img src="./second-step.png" alt="" className="h-[400px] object-contain" />
       </div>
     </div>
   );

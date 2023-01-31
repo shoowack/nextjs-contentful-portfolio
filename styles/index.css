@@ -64,4 +64,30 @@
     .lighter hr {
         @apply bg-white/10
     }
+
+    .tab-content h5 {
+        @apply font-medium
+    }
+}
+
+@layer components {
+  .nearlock.btn-blue {
+    @apply bg-gradient-to-b from-[#4376E5] to-[#0D5AF7] text-white;
+  }
+
+  .dark.nearlock.btn-disabled {
+    @apply bg-[#3C3840] text-[#6C6A70] [transition:background_0.5s,color_0.5s];
+  }
+
+  .nearlock.btn-disabled {
+    @apply bg-[#F5F4F7] text-[#BBBBBD] [transition:background_0.5s,color_0.5s] pointer-events-none;
+  }
+
+  .nearlock.btn-gray {
+    @apply bg-gradient-to-b from-[#FFFEFB] to-[#FBF6F6] text-black;
+  }
+
+  .dark.nearlock.btn-gray {
+    @apply bg-gradient-to-b from-[#5E5D5F] to-[#5F5D5F] text-white;
+  }
 }

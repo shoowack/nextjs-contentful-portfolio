@@ -3,6 +3,7 @@ import { TabContent, TabPane, Col } from 'reactstrap';
 import classnames from 'classnames';
 import Lottie from 'lottie-react';
 import * as dayjs from 'dayjs';
+import { Tab } from '@headlessui/react';
 import AppButton from './AppButton';
 import btConnect from './btConnect.json';
 // import btOff from "./btOff.json";
@@ -151,6 +152,7 @@ const Content = ({
   setIsModalOpen,
   isSetupDone,
   setIsSetupDone,
+  menuItems,
 }) => {
   const [dateState, setDateState] = useState(dayjs().format('ddd MMM D h:mm A'));
   const [notificationShow, setNotificationShow] = useState(false);
@@ -170,17 +172,22 @@ const Content = ({
   }, [setNotificationShow]);
 
   return (
-    <div className="content position-relative">
+    <div
+      className={classnames('content relative z-[1] h-full grow [transition:background_0.5s]', {
+        'bg-[#211C21]': isDarkMode,
+        'bg-white': !isDarkMode,
+      })}
+    >
       <div
         className={classnames(
           {
-            open: !isSidebarOpen,
+            'pl-[100px]': !isSidebarOpen,
           },
-          'position-absolute w-100 content-header',
+          'content-header absolute z-[1] flex w-full flex-row items-center justify-between border-b border-black/[.09] px-[10px] py-[9px] backdrop-blur-[10px]',
         )}
       >
         <div
-          className="content-header__left-items"
+          className="content-header__left-items flex rounded-md p-[8px] hover:bg-black/10"
           onClick={toggleSidebar}
           onKeyDown={toggleSidebar}
           aria-hidden
@@ -208,26 +215,33 @@ const Content = ({
             </g>
           </svg>
         </div>
-        <div className="content-header__title">{activeTab}</div>
-        <div className="content-header__right-items">
+        <div
+          className={classnames('content-header__title [transition:margin_0.5s]', {
+            // negative paddings to center the title if sidebar or search are active
+            '-ml-[80px]': !isSidebarOpen,
+            '-mr-[180px]': isSearchOpen,
+          })}
+        >
+          {menuItems[activeTab].title}
+        </div>
+        <div className="content-header__right-items flex items-center">
           <input
             className={classnames(
+              'content-header__search pointer-events-none m-0 h-[30px] w-0 rounded-[7px] border-0 py-0 pr-[30px] pl-[28px] text-xs opacity-0 outline outline-1 outline-black/[.06] [transition:background_0.5s,width_0.5s,opacity_0.5s,color_0.5s]',
               {
-                open: isSearchOpen,
+                'open pointer-events-auto w-[240px] opacity-100': isSearchOpen,
               },
-              'content-header__search',
             )}
             placeholder="Search"
             ref={searchRef}
           />
           <img
             src="/nearlock-app/search-close.svg"
-            height="13px"
             className={classnames(
               {
-                'd-none': !isSearchOpen,
+                hidden: !isSearchOpen,
               },
-              'content-header__search-close-icon',
+              'content-header__search-close-icon absolute right-5 h-3.5 w-3.5',
             )}
             onClick={toggleSearch}
             onKeyDown={toggleSearch}
@@ -236,10 +250,10 @@ const Content = ({
           />
           <div
             className={classnames(
+              'content-header__right-items_search_icon absolute top-2.5 right-2.5 flex rounded-md p-[8px] opacity-100 [transition:transform_0.5s,opacity_0.5s] hover:bg-black/10',
               {
-                open: isSearchOpen,
+                'pointer-events-none scale-0 opacity-0': isSearchOpen,
               },
-              'content-header__right-items_search_icon',
             )}
             onClick={toggleSearch}
             onKeyDown={toggleSearch}
@@ -272,49 +286,53 @@ const Content = ({
           </div>
         </div>
       </div>
-      <TabContent activeTab={activeTab} className="tab-content">
-        <TabPane tabId="Welcome">
-          <Col sm="12" className="mt-5 text-center">
-            <Col
-              md={{
-                size: 10,
-                offset: 1,
-              }}
-            >
-              <img
-                src="/nearlock-app/nearlock-logo.svg"
-                height="225px"
-                className="m-5 pt-4"
-                alt=""
-              />
-              <h5 className="m-0">Welcome</h5>
-              <small
-                className="d-block m-auto"
-                style={{
-                  width: '652px',
-                }}
+
+      <Tab.Panels
+        className="tab-content h-full overflow-scroll pt-[52px]"
+        selectedIndex={activeTab}
+      >
+        {/* Welcome - ID: 0 */}
+        <Tab.Panel>
+          <div className="flex flex-col items-center">
+            <img
+              src="/nearlock-app/nearlock-logo.svg"
+              className="mt-28 mb-12 h-[200px]"
+              alt="NearLock Logo"
+            />
+            <div className="flex w-3/5 flex-col items-center">
+              <h5
+                className={classnames('text-xl font-medium [transition:color_0.5s]', {
+                  'text-white': isDarkMode,
+                  'text-black': !isDarkMode,
+                })}
               >
+                Welcome
+              </h5>
+              <small className="text-center">
                 Near Lock lets you use your iPhone to lock and unlock your Mac automatically. When
                 you walk away from your Mac, it will be automatically locked. Once you approach your
                 workplace, Near Lock will unlock your Mac.
               </small>
-              <AppButton onClick={() => setIsModalOpen(true)} className="mt-4">
+              <AppButton onClick={() => setIsModalOpen(true)} className="nearlock btn-blue mt-4">
                 Setup Near Lock
               </AppButton>
-            </Col>
-          </Col>
-        </TabPane>
-        <TabPane tabId="Clipboard">
+            </div>
+          </div>
+        </Tab.Panel>
+        {/* Advanced - ID: 1 */}
+        <Tab.Panel />
+        {/* Clipboard - ID: 2 */}
+        <Tab.Panel>
           {isSetupDone ? (
-            <Col sm={12} className="mt-0">
+            <div className="mt-0">
               <img
                 src="/nearlock-app/clipboard.png"
-                className="d-flex mx-auto"
+                className="mx-auto flex"
                 width="820px"
                 alt=""
               />
-              <div className="d-flex justify-content-between">
-                <div className="d-flex">
+              <div className="flex justify-between">
+                <div className="flex">
                   <svg
                     width="68px"
                     height="150px"
@@ -352,7 +370,7 @@ const Content = ({
                     Use Menu bar shortcut on your Mac to copy Clipboard from your iPhone
                   </small>
                 </div>
-                <div className="d-flex">
+                <div className="flex">
                   <small
                     className="mt-n3 mr-3 text-center"
                     style={{
@@ -393,28 +411,22 @@ const Content = ({
                 </div>
               </div>
               <div
-                className="d-flex justify-content-center align-items-center p-5"
+                className="flex items-center justify-center p-5"
                 style={{
                   height: '200px',
                 }}
               >
-                <AppButton>Send Clipboard</AppButton>
+                <AppButton className="nearlock btn-blue">Send Clipboard</AppButton>
                 <small className="mx-4">or press</small>
                 <div className="keystrokes">
                   <span className="mr-2">CTRL</span>+<span className="mx-2">CMD</span>+
                   <span className="ml-2">V</span>
                 </div>
               </div>
-            </Col>
+            </div>
           ) : (
-            <div>
-              <div
-                className="d-flex align-items-center justify-content-center"
-                style={{
-                  height: '378px',
-                  width: '100%',
-                }}
-              >
+            <div className="flex flex-col items-center">
+              <div className="flex h-[378px] w-full items-center justify-center">
                 <svg
                   width="136px"
                   height="180px"
@@ -453,46 +465,47 @@ const Content = ({
                   </g>
                 </svg>
               </div>
-              <Col
-                className="text-center"
-                md={{
-                  size: 10,
-                  offset: 1,
-                }}
-              >
-                <h5>Clipboard</h5>
-                <small className="d-flex w-75 m-auto">
+              <div className="flex w-3/5 flex-col items-center">
+                <h5
+                  className={classnames('text-xl font-medium [transition:color_0.5s]', {
+                    'text-white': isDarkMode,
+                    'text-black': !isDarkMode,
+                  })}
+                >
+                  Clipboard
+                </h5>
+                <small className="text-center">
                   Please connect to your iPhone in order to try this feature which sends the copied
                   text from your Mac to your iPhone and vice versa.
                 </small>
-                <AppButton onClick={() => setActiveTab('Devices')} className="mt-4">
+                <AppButton className="nearlock btn-blue mt-4" onClick={() => setActiveTab(3)}>
                   Devices
                 </AppButton>
-              </Col>
+              </div>
             </div>
           )}
-        </TabPane>
-        <TabPane
-          tabId="Devices"
+        </Tab.Panel>
+        {/* Devices - ID: 3 */}
+        <Tab.Panel
           className={classnames({
-            'h-100': isSetupDone,
-            'position-relative': !isSetupDone,
+            'h-full': isSetupDone,
+            relative: !isSetupDone,
           })}
         >
           {isSetupDone ? (
-            <div className="d-flex h-100 flex-column mx-4">
+            <div className="mx-4 flex h-full flex-col">
               {/* <div className="py-3">
             <h4 className="m-0">Devices</h4>
             <small>Currently connected devices</small>
           </div> */}
-              <div className="flex-grow-1 d-flex flex-column justify-content-center mt-5">
+              <div className="mt-5 flex grow flex-col justify-center">
                 <div
-                  className="d-flex my-5 mx-auto"
+                  className="my-5 mx-auto flex"
                   style={{
                     width: '550px',
                   }}
                 >
-                  <div className="d-flex flex-column align-items-center">
+                  <div className="flex flex-col items-center">
                     <svg
                       width="175px"
                       height="100px"
@@ -512,10 +525,10 @@ const Content = ({
                     </svg>
                     <small className="mt-3">Filip’s MacBook Pro</small>
                   </div>
-                  <div className="devices-connected-line d-flex flex-grow-1 flex-column justify-content-center align-items-center mb-5">
+                  <div className="devices-connected-line mb-5 flex grow flex-col items-center justify-center">
                     <div className="devices-connected-line__popup">3 meters</div>
                   </div>
-                  <div className="d-flex flex-column align-items-center">
+                  <div className="flex flex-col items-center">
                     <svg
                       width="102px"
                       height="100px"
@@ -536,93 +549,127 @@ const Content = ({
                     <small className="mt-3">Filip’s iPhone X</small>
                   </div>
                 </div>
-                <h5 className="text-center">Filip’s iPhone X and this Mac are connected</h5>
-                <div className="d-flex justify-content-center pb-5">
-                  <AppButton onClick={() => setIsSetupDone(false)} className="mt-4">
+                <h5
+                  className={classnames('text-center text-xl font-medium [transition:color_0.5s]', {
+                    'text-white': isDarkMode,
+                    'text-black': isDarkMode,
+                  })}
+                >
+                  Filip’s iPhone X and this Mac are connected
+                </h5>
+                <div className="flex justify-center pb-5">
+                  <AppButton
+                    onClick={() => setIsSetupDone(false)}
+                    className="nearlock btn-blue mt-4"
+                  >
                     Unlink
                   </AppButton>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="setup-bt-wrapper">
-              <Lottie animationData={btConnect} loop autoplay />
-              <Col
-                className="setup-bt-text"
-                md={{
-                  size: 10,
-                  offset: 1,
-                }}
-              >
-                <h5 className="m-0">Please turn on Bluetooth and get the iOS app</h5>
-                <small>
+            <div className="flex justify-center">
+              <Lottie
+                animationData={btConnect}
+                loop
+                autoplay
+                className="absolute top-[-200px] left-1/2 h-[800px] w-[800px] -translate-x-1/2"
+              />
+              <div className="absolute top-[400px] flex w-3/5 flex-col items-center">
+                <h5
+                  className={classnames(
+                    'm-0 text-xl font-medium text-black [transition:color_0.5s]',
+                    {
+                      'text-white': isDarkMode,
+                    },
+                  )}
+                >
+                  Please turn on Bluetooth and get the iOS app
+                </h5>
+                <small className="text-center">
                   To use Near Lock make sure your Mac has Bluetooth turned on and your iOS app is
                   open on your iPhone
                 </small>
-                <AppButton onClick={() => setIsModalOpen(true)} className="mt-4">
+                <AppButton onClick={() => setIsModalOpen(true)} className="nearlock btn-blue mt-4">
                   Turn Bluetooth On
                 </AppButton>
-              </Col>
+              </div>
             </div>
           )}
-        </TabPane>
-        <TabPane tabId="Setup">
-          <div className="d-flex h-100 flex-column mx-5 py-4">
+        </Tab.Panel>
+        {/* Music - ID: 4 */}
+        <Tab.Panel />
+        {/* WiFi Unlock - ID: 5 */}
+        <Tab.Panel />
+        {/* Help - ID: 6 */}
+        <Tab.Panel />
+        {/* Setup - ID: 7 */}
+        <Tab.Panel>
+          <div className="mx-5 flex h-full flex-col py-4">
             {setupData.map(({ id, title, desc, items }, i) => (
-              <div key={`list-${id}`}>
-                <ListHeader title={title} desc={desc} key={`list-header-${id}`} />{' '}
+              <div key={`setup_list-${id}`}>
+                <ListHeader title={title} desc={desc} key={`setup_list-header-${id}`} />{' '}
                 {items.map((props) => (
-                  <ListItem {...props} setActiveTab={setActiveTab} key={`list-item-${id}`} />
+                  <ListItem {...props} setActiveTab={setActiveTab} />
                 ))}
-                {i < setupData.length - 1 && <hr className="my-4" />}
+                {i < setupData.length - 1 && (
+                  <hr
+                    className={classnames('my-4 w-full', {
+                      'bg-white/[.05]': isDarkMode,
+                      'bg-black/[.05]': !isDarkMode,
+                    })}
+                  />
+                )}
               </div>
             ))}
           </div>
-        </TabPane>
-        <TabPane tabId="Notifications">
-          <Col sm="12" className="mt-5 text-center">
-            <Col
-              md={{
-                size: 10,
-                offset: 1,
-              }}
-            >
-              <h5 className="m-0">MacOS Notifications</h5>
-              <small
-                className="d-block m-auto"
-                style={{
-                  width: '652px',
-                }}
+        </Tab.Panel>
+        {/* Photos and History - ID: 8 */}
+        <Tab.Panel />
+        {/* Updates - ID: 9 */}
+        <Tab.Panel />
+        {/* Share - ID: 10 */}
+        <Tab.Panel />
+        {/* Notifications - ID: 11 */}
+        <Tab.Panel>
+          <div className="mt-12 flex flex-col items-center text-center">
+            <div className="w-3/5">
+              <h5
+                className={classnames('text-xl font-medium [transition:color_0.5s]', {
+                  'text-white': isDarkMode,
+                  'text-black': !isDarkMode,
+                })}
               >
-                Receive notifications about Near Lock events
-              </small>
+                MacOS Notifications
+              </h5>
+              <div className="text-sm">Receive notifications about Near Lock events</div>
               <AppButton
-                disabled={notificationShow}
+                className={classnames('mt-6', {
+                  'nearlock dark': isDarkMode,
+                  'nearlock btn-disabled': notificationShow,
+                  'nearlock btn-blue': !notificationShow,
+                })}
                 onClick={() => {
                   setNotificationShow(true);
                 }}
-                className="mt-4"
               >
                 Show Notification Example
               </AppButton>
-              <br />
-              <small>
-                <small>
-                  <em>Notifications will appear even if your Mac is locked</em>
-                </small>
-              </small>
-            </Col>
-          </Col>
+              <div className="mt-2 text-[11px] italic">
+                Notifications will appear even if your Mac is locked
+              </div>
+            </div>
+          </div>
           <div className="notifications-container">
             <div
-              className={classnames('d-flex align-items-center notifications-notification', {
+              className={classnames('notifications-notification flex items-center', {
                 show: notificationShow,
               })}
             >
-              <div className="d-flex align-items-center justify-content-center notifications-notification-icon">
+              <div className="notifications-notification-icon flex items-center justify-center">
                 <img src="/nearlock-app/setup/nearlock.svg" alt="" />
               </div>
-              <div className="d-flex flex-column">
+              <div className="flex flex-col">
                 <strong className="notifications-notification-title">Near Lock</strong>
                 <small className="notifications-notification-description">Description</small>
               </div>
@@ -631,11 +678,11 @@ const Content = ({
           <div className="notifications-clock">{dateState}</div>
           <img
             src="/nearlock-app/notifications-screen.png"
-            className="position-absolute notifications-bg"
+            className="notifications-bg absolute"
             alt=""
           />
-        </TabPane>
-      </TabContent>
+        </Tab.Panel>
+      </Tab.Panels>
     </div>
   );
 };

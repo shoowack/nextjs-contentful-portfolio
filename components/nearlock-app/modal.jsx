@@ -16,14 +16,14 @@ const Modal = ({ isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSet
   const finishSetup = () => {
     setIsModalOpen(false);
     setStep(1);
-    setActiveTab('Devices');
+    setActiveTab(3);
     setIsSetupDone(true);
   };
 
   const setupLater = () => {
     setIsModalOpen(false);
     setStep(1);
-    setActiveTab('Devices');
+    setActiveTab(3);
     setIsSetupDone(false);
   };
 
@@ -42,48 +42,49 @@ const Modal = ({ isModalOpen, setIsModalOpen, isDarkMode, setActiveTab, setIsSet
 
   return (
     <div
-      className={classnames(
-        {
-          'd-none': !isModalOpen,
-        },
-        'modal__background',
-      )}
+      className={classnames('absolute inset-0 z-[3] bg-black/25', {
+        hidden: !isModalOpen,
+      })}
     >
-      <div className="modal">
+      <div className="modal absolute top-1/2 left-1/2 z-[1] flex h-[480px] w-[715px] -translate-x-1/2 -translate-y-1/2 flex-col rounded-[10px]">
         {renderStep(currentStep)}
-        <div className="modal__footer d-flex justify-content-between align-items-center">
-          <Col>
-            <AppButton onClick={setupLater} link>
+        <div className="modal__footer flex items-center bg-gradient-to-b from-[#D3CECE] to-[#CBC3C5] p-4">
+          <div className="flex-1">
+            <AppButton
+              onClick={setupLater}
+              className={isDarkMode ? `dark nearlock btn-gray` : `nearlock btn-gray`}
+            >
               Setup later
             </AppButton>
-          </Col>
-          <Col className="d-flex justify-content-center">
+          </div>
+          <div className="flex flex-1 justify-center">
             {currentStep !== 1 && (
-              <div className="d-flex align-items-center flex-row">
+              <div className="flex flex-row items-center">
                 {[...Array(2)].map((_, i) => (
                   <div
                     // eslint-disable-next-line react/no-array-index-key
                     key={`dot-${i}`}
                     className={classnames(
+                      'modal__footer_dot mx-2 h-2.5 w-2.5 rounded-full border border-[#4C4C4C] bg-transparent',
                       {
-                        active: currentStep === i + 2,
+                        'mt-px h-[7px] w-[7px] border-0 bg-[#4C4C4C]': currentStep === i + 2,
                       },
-                      'modal__footer_dot mx-2',
                     )}
                   />
                 ))}
               </div>
             )}
-          </Col>
-          <Col className="d-flex justify-content-end">
+          </div>
+          <div className="flex flex-1 justify-end">
             <AppButton
+              className="nearlock btn-blue"
               onClick={() =>
                 currentStep === 1 ? setStep(2) : currentStep === 2 ? setStep(3) : finishSetup()
               }
             >
               {currentStep === 1 || currentStep === 2 ? 'Continue' : 'Finish'}
             </AppButton>
-          </Col>
+          </div>
         </div>
       </div>
     </div>
