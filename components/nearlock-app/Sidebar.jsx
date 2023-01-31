@@ -22,12 +22,13 @@ const Sidebar = ({ isSidebarOpen, menuItems, activeTab, toggleTab, isSetupDone, 
             disabled={disabled}
             key={`sidebar__item-${id}`}
             className={classnames(
+              'sidebar__item flex items-center rounded-lg px-[8px] py-[7px] text-sm font-normal text-black [transition:color_0.5s] hover:bg-black/[0.09] focus:outline-0',
               {
                 hidden: !showInMenu,
-                active: activeTab === id,
-                disabled,
+                'bg-black/[0.09]': activeTab === id,
+                'opacity-50 hover:bg-transparent': disabled,
+                'hover:cursor-pointer': !disabled,
               },
-              'sidebar__item flex items-center focus:outline-0',
             )}
             onClick={() => {
               toggleTab(id);
@@ -35,27 +36,19 @@ const Sidebar = ({ isSidebarOpen, menuItems, activeTab, toggleTab, isSetupDone, 
           >
             <img
               src={`/nearlock-app/menu/${title.toLowerCase().split(' ').join('-')}.svg`}
-              height="17px"
-              className="mr-2 ml-1"
+              className="mr-2 ml-1 h-[17px]"
               alt=""
             />
             {title}
           </Tab>
         ))}
       </Tab.List>
-      <div>
-        {isSetupDone && (
-          <span
-            style={{
-              cursor: 'default !important', // ?
-            }}
-            className="sidebar__item flex items-center"
-          >
-            <img src="/nearlock-app/menu/iphone.svg" height="17px" className="mr-2 ml-1" alt="" />
-            Ivan&apos;s iPhone <div className="sidebar__connected-dot ml-auto" />
-          </span>
-        )}
-      </div>
+      {isSetupDone && (
+        <div className="flex items-center px-[4px] py-[7px] text-sm font-normal text-black">
+          <img src="/nearlock-app/menu/iphone.svg" className="mr-2 ml-1 h-[17px]" alt="" />
+          Ivan&apos;s iPhone <div className="sidebar__connected-dot ml-auto mr-1 h-2 w-2 rounded" />
+        </div>
+      )}
     </div>
   </div>
 );
