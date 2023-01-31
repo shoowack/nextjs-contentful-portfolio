@@ -32,8 +32,8 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 className={classnames(
-                  'mt-[-150px] [transition:margin_0.5s]',
-                  isSidebarOpen ? 'ml-[50px]' : 'ml-[150px]',
+                  'mt-[-125px] [transition:margin_0.5s]',
+                  isSidebarOpen ? 'ml-[60px]' : 'ml-[150px]',
                 )}
               >
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -52,12 +52,12 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
                   </g>
                 </g>
               </svg>
-              <small className="-mt-3 ml-3 w-[250px] text-center">
+              <small className="mt-1 ml-3 w-[250px] text-center">
                 Use Menu bar shortcut on your Mac to copy Clipboard from your iPhone
               </small>
             </div>
             <div className="flex">
-              <small className="-mt-3 mr-3 w-[220px] text-center">
+              <small className="-mt-2 mr-3 w-[220px] text-center">
                 Use Near Lock widget on your iPhone to send and receive Clipboard from your Mac
               </small>
               <svg
@@ -68,8 +68,8 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 className={classnames(
-                  'mt-[-150px] -scale-x-100 [transition:margin_0.5s]',
-                  isSidebarOpen ? 'mr-[25px]' : 'mr-[125px]',
+                  'mt-[-125px] -scale-x-100 [transition:margin_0.5s]',
+                  isSidebarOpen ? 'mr-[35px]' : 'mr-[125px]',
                 )}
               >
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

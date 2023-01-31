@@ -56,7 +56,7 @@ const Sidebar = ({
       {isSetupDone && (
         <div
           className={classnames(
-            'flex items-center px-[4px] py-[7px] text-sm font-normal [transition:color_0.5s]',
+            'flex items-center px-[8px] py-[7px] text-sm font-normal [transition:color_0.5s]',
             {
               'text-white': isDarkMode,
               'text-black': !isDarkMode,
