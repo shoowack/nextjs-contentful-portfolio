@@ -165,7 +165,7 @@ export default function Carousel({
         <div
           className={classnames(
             'swiper-button-prev transition-opacity duration-200 py-1',
-            contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333]',
+            contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
             { 'opacity-25 transition-opacity duration-200': isBeginning },
           )}
           onClick={() => {
@@ -192,7 +192,7 @@ export default function Carousel({
         <div
           className={classnames(
             'swiper-button-next transition-opacity duration-200 py-1',
-            contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333]',
+            contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
             { 'opacity-25 transition-opacity duration-200': isEnd },
           )}
           onClick={() => {
