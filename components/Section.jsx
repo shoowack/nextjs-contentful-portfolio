@@ -230,7 +230,11 @@ const Section = ({
               className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}
             >
               <div className="group clipboard-title mr-md-n5 flex items-center justify-center">
-                <p className="mb-0 text-white">Interactive preview of the Near Lock desktop app</p>
+                <Balancer>
+                  <p className="mb-0 text-white">
+                    Interactive preview of the Near Lock desktop app
+                  </p>
+                </Balancer>
                 {typeof window !== 'undefined' && windowWidth > 768 && (
                   <button
                     type="button"
@@ -243,11 +247,13 @@ const Section = ({
                   </button>
                 )}
               </div>
-              <small className="text-white/[0.75]">
-                {windowWidth >= 1120
-                  ? 'some of the features are not available yet'
-                  : 'for an interactive preview, please visit desktop version of the website'}
-              </small>
+              <Balancer>
+                <small className="text-white/[0.75]">
+                  {windowWidth >= 1120
+                    ? 'some of the features are not available yet'
+                    : 'for an interactive preview, please visit desktop version of the website'}
+                </small>
+              </Balancer>
             </Container>
           </div>
           {windowWidth >= 1120 && (
