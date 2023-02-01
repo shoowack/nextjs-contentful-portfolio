@@ -23,6 +23,7 @@ export default function Carousel({
   const swiperRef = useRef();
   const [isEnd, setIsEnd] = useState(false);
   const [isBeginning, setIsBeginning] = useState(false);
+
   // const [lightboxController, setLightboxController] = useState({
   //   toggler: false,
   //   slide: 1,
@@ -95,7 +96,10 @@ export default function Carousel({
           dynamicBullets: true,
           clickable: true,
           renderBullet: (index, className) =>
-            `<span class="${className}"><div class="owl-dot-el-1" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-2" style="background-color:${backgroundColor}"></div><div class="owl-dot-el-3" style="background-color:${backgroundColor}"></div></span>`,
+            `<span class="${className}">${[...Array(3)].map((_, bulletIndex) => {
+              return `<div class="owl-dot-el-${bulletIndex}" style="background-color:${backgroundColor}"></div>`;
+            })}
+            </span>`,
         }}
         className={type.replace(/ /g, '-').toLowerCase()}
         modules={[Pagination, Navigation]}
@@ -161,62 +165,66 @@ export default function Carousel({
         )}
         {/* </LightGallery> */}
       </Swiper>
-      <div className="flex justify-center mt-16 mb-24">
-        <div
-          className={classnames(
-            'swiper-button-prev transition-opacity duration-200 py-1',
-            contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
-            { 'opacity-25 transition-opacity duration-200': isBeginning },
-          )}
-          onClick={() => {
-            swiperRef.current?.slidePrev();
-            setIsEnd(swiperRef.current.isEnd);
-            setIsBeginning(swiperRef.current.isBeginning);
-          }}
-          aria-hidden="true"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </div>
+      {
+        // this is not the same as galleryLength which is used for managing last divider
+        images.length > 1 && (
+          <div className="flex justify-center mt-16 mb-24">
+            <div
+              className={classnames(
+                'swiper-button-prev transition-opacity duration-200 py-1',
+                contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
+                { 'opacity-25 transition-opacity duration-200': isBeginning },
+              )}
+              onClick={() => {
+                swiperRef.current?.slidePrev();
+                setIsEnd(swiperRef.current.isEnd);
+                setIsBeginning(swiperRef.current.isBeginning);
+              }}
+              aria-hidden="true"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
 
-        <div
-          className={classnames(
-            'swiper-button-next transition-opacity duration-200 py-1',
-            contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
-            { 'opacity-25 transition-opacity duration-200': isEnd },
-          )}
-          onClick={() => {
-            swiperRef.current?.slideNext();
-            setIsEnd(swiperRef.current.isEnd);
-            setIsBeginning(swiperRef.current.isBeginning);
-          }}
-          aria-hidden="true"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </div>
-      </div>
-
+            <div
+              className={classnames(
+                'swiper-button-next transition-opacity duration-200 py-1',
+                contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
+                { 'opacity-25 transition-opacity duration-200': isEnd },
+              )}
+              onClick={() => {
+                swiperRef.current?.slideNext();
+                setIsEnd(swiperRef.current.isEnd);
+                setIsBeginning(swiperRef.current.isBeginning);
+              }}
+              aria-hidden="true"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        )
+      }
       {i !== galleryLength - 1 && (
         <Container className="my-12">
           <hr className="m-0" />
