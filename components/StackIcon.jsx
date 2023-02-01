@@ -133,7 +133,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
           alt={tooltip || stackIcon}
           onMouseEnter={() => setTooltipOpen(true)}
           onMouseLeave={() => setTooltipOpen(false)}
-          className="mx-2 opacity-75 brightness-100 contrast-150 grayscale transition-all duration-200 hover:opacity-100 hover:brightness-100 hover:contrast-100 hover:grayscale-0"
+          className="mx-2"
         />
       </div>
 

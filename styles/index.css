@@ -41,7 +41,7 @@
         @apply font-semibold
     }
 
-    p {
+    p, code {
         @apply mb-5 font-['Raleway'] text-lg;
     }
 

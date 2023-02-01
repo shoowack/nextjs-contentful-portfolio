@@ -154,7 +154,7 @@ const Section = ({
                   Stack
                 </h3>
               </Container>
-              <Container className="flex flex-col items-center justify-center pb-4 md:flex-row">
+              <Container className="flex flex-col items-center justify-center pb-10 md:flex-row">
                 <ConditionalWrapper
                   condition={windowWidth < 768}
                   wrapper={(children) => (
@@ -317,7 +317,7 @@ const Section = ({
                 </Swiper>
 
                 {i !== gallery.length - 1 && (
-                  <Container className="my-5">
+                  <Container className="my-12">
                     <hr className="m-0" />
                   </Container>
                 )}
