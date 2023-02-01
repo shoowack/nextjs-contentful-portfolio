@@ -27,6 +27,7 @@ import {
   Illustrator,
   SASS,
   SASSAlt,
+  Tailwind,
 } from '@lib/stackLogos';
 
 export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
@@ -99,6 +100,10 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       break;
     case 'Redux':
       src = Redux.src;
+      break;
+    case 'Tailwind':
+      src = Tailwind.src;
+      height = heightPercentage(70);
       break;
     default:
       return;
