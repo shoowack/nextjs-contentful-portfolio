@@ -11,7 +11,7 @@ export default function Index({ preview, allCategories }) {
         <Head>
           <title>Ivan Suvak Martinovic Personal Portfolio</title>
         </Head>
-        <div className="site-main hover:md:group-[.section]:brightness-50 flex h-screen w-full flex-col md:flex-row hover:md:group-hover-[.section]:brightness-100">
+        <div className="site-main flex h-screen w-full flex-col md:flex-row">
           {allCategories.map((post) => (
             <FrontPage {...post} key={post.sys.id} />
           ))}

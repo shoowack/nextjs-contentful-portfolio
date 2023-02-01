@@ -90,4 +90,18 @@
   .dark.nearlock.btn-gray {
     @apply bg-gradient-to-b from-[#5E5D5F] to-[#5F5D5F] text-white;
   }
+
+  @media screen(md) {
+    .site-main .group\/section h1::before {
+        background-image: linear-gradient(70deg,hsla(0,0%,100%,0) 45%,#fff 50%,hsla(0,0%,100%,0) 55%,hsla(0,0%,100%,0))
+    }
+
+    .site-main:hover > .group\/section{
+         filter: brightness(22%);
+       }
+
+    .site-main:hover > .group\/section:hover{
+         filter: brightness(100%);
+     }
+  }
 }
