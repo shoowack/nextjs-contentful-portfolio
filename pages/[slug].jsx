@@ -3,24 +3,15 @@ import Section from '@components/Section';
 import { getHeaderLinks } from '@lib/api';
 import { fetchEntries } from '@lib/fetchEntries';
 import Footer from '@components/Footer';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { Provider } from 'react-wrap-balancer';
 import useWindowDimensions from '@lib/windowSize';
+import Layout from '@components/layout';
 
 export default function InnerPage({ entries, headerItems }) {
-  const router = useRouter();
   const { width } = useWindowDimensions();
 
   return (
-    <>
-      <Head>
-        <title>
-          Ivan Suvak Martinovic Portfolio -{' '}
-          {router.asPath === '/apps-and-websites' ? 'Apps & Websites' : 'Designs'}
-        </title>
-      </Head>
-
+    <Layout>
       <div
         className="z-[2] min-h-full overflow-hidden shadow-[0_10px_60px_rgba(0,0,0,.5)]"
         style={{
@@ -39,7 +30,7 @@ export default function InnerPage({ entries, headerItems }) {
         )}
         <Footer />
       </div>
-    </>
+    </Layout>
   );
 }
 
