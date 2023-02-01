@@ -173,6 +173,7 @@ export default function Carousel({
             setIsEnd(swiperRef.current.isEnd);
             setIsBeginning(swiperRef.current.isBeginning);
           }}
+          aria-hidden="true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -199,6 +200,7 @@ export default function Carousel({
             setIsEnd(swiperRef.current.isEnd);
             setIsBeginning(swiperRef.current.isBeginning);
           }}
+          aria-hidden="true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
