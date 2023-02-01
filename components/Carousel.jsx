@@ -225,11 +225,7 @@ export default function Carousel({
           </div>
         )
       }
-      {i !== galleryLength - 1 && (
-        <Container className="my-12">
-          <hr className="m-0" />
-        </Container>
-      )}
+      <Container className="my-12">{i !== galleryLength - 1 && <hr className="m-0" />}</Container>
     </div>
   );
 }
