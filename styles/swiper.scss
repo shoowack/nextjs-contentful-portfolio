@@ -84,7 +84,9 @@
     overflow: unset;
 
     &-slide {
-        box-shadow: 0 35px 55px rgb(0 0 0 / 8%), 0 25px 63px rgb(0 0 0 / 8%);
+        box-shadow:
+            0 35px 55px rgb(0 0 0 / 8%),
+            0 25px 63px rgb(0 0 0 / 8%);
         border-radius: 8px;
         overflow: hidden;
         opacity: .75;
@@ -118,12 +120,16 @@
         &-prev {
             margin: 5px;
             cursor: pointer;
-            border-radius: 3px;
         }
     }
 
     .swiper-pagination {
         bottom: -170px;
+        display: none;
+
+        @media (min-width: 768px) {
+            display: block;
+        }
 
         .swiper-pagination-bullet {
             width: 30px;
@@ -143,8 +149,8 @@
             position: relative;
 
             &:after {
-            position: absolute;
-            height: 2px;
+                position: absolute;
+                height: 2px;
             }
 
             &:hover {
@@ -154,7 +160,7 @@
             &-active {
                 opacity: 1;
                 -webkit-animation: animation 1000ms linear both;
-                animation: animation 1000ms linear both;      
+                animation: animation 1000ms linear both;
             }
 
             .owl-dot-el-0,
@@ -180,7 +186,7 @@
                     right: 1px;
                     width: auto;
                 }
-            
+
                 .owl-dot-el-1 {
                     border-radius: 1px 1px 0 0;
                     bottom: 1px;
@@ -189,7 +195,7 @@
                     width: auto;
                     height: 2px;
                 }
-            
+
                 .owl-dot-el-2 {
                     display: none;
                 }
@@ -210,7 +216,7 @@
                 height: 2px;
                 border-radius: 100%;
               }
-              
+
               .owl-dot-el-1,
               .owl-dot-el-2 {
                 display: none;
@@ -223,7 +229,7 @@
         .swiper-pagination .swiper-pagination-bullet {
             width: 16px;
             height: 20px;
-        
+
             &-active {
                 .owl-dot-el-0 {
                     left: 7px;

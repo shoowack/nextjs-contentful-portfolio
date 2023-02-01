@@ -168,10 +168,10 @@ export default function Carousel({
       {
         // this is not the same as galleryLength which is used for managing last divider
         images.length > 1 && (
-          <div className="flex justify-center mt-16 mb-24">
+          <div className="flex justify-center mt-5 md:mt-16 md:mb-24">
             <div
               className={classnames(
-                'swiper-button-prev transition-opacity duration-200 py-1',
+                'swiper-button-prev transition-opacity duration-200 p-3 md:py-1 md:px-0 rounded-md md:rounded',
                 contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
                 { 'opacity-25 transition-opacity duration-200': isBeginning },
               )}
@@ -198,7 +198,7 @@ export default function Carousel({
 
             <div
               className={classnames(
-                'swiper-button-next transition-opacity duration-200 py-1',
+                'swiper-button-next transition-opacity duration-200 p-3 md:py-1 md:px-0 rounded-md md:rounded',
                 contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
                 { 'opacity-25 transition-opacity duration-200': isEnd },
               )}
