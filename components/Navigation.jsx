@@ -7,9 +7,9 @@ export default function Navigation({ headerItems }) {
   const isPreferredThemeDark = useMedia(['(prefers-color-scheme: dark)'], [true], false);
 
   return (
-    <div className="aboutme py-md-5 text:black bg-[radial-gradient(#c8c8c8_0%_5%,#fff_10%_100%)] bg-[length:20px_20px] py-4 dark:bg-[radial-gradient(#222_0%_5%,#000_10%_100%)] dark:text-white">
+    <div className="aboutme text:black md:py-10 xl:py-14 bg-[radial-gradient(#c8c8c8_0%_5%,#fff_10%_100%)] bg-[length:20px_20px] py-2 pb-5 dark:bg-[radial-gradient(#222_0%_5%,#000_10%_100%)] dark:text-white">
       <Container>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between mb-5">
           <div className="flex items-center justify-between">
             <Link href="/" passHref legacyBehavior>
               <a className="group logo flex origin-[left_50%] scale-50 flex-row items-center p-0 hover:w-[200px] sm:scale-75 md:scale-100">
@@ -58,13 +58,13 @@ export default function Navigation({ headerItems }) {
             ))}
           </div>
         </div>
-        <p className="mt-4">
+        <p>
           Ivan Suvak Martinovic, Front-End Web Designer, iOS and Android Mobile App Designer, UX/UI,
           WordPress, Photographer Currently in Ottawa, Canada, looking for a new and challenging
           position as a Front-end developer or UI/UX designer where I can create digital magic and
           elevate user experience to the next level.
         </p>
-        <p className="mt-4">
+        <p className="mb-0">
           <strong>Closed work permit holder</strong> willing to relocate anywhere in Canada.
         </p>
       </Container>
