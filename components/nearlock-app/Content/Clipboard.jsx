@@ -92,12 +92,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
               </svg>
             </div>
           </div>
-          <div
-            className="flex items-center justify-center p-5"
-            style={{
-              height: '200px',
-            }}
-          >
+          <div className="flex items-center justify-center p-5 mt-12">
             <AppButton className="nearlock btn-blue">Send Clipboard</AppButton>
             <small className="mx-4">or press</small>
             <div>
