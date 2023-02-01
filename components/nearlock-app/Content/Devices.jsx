@@ -10,6 +10,7 @@ export default function Devices({
   owner,
   setIsSetupDone,
   setIsModalOpen,
+  device,
 }) {
   return (
     <Tab.Panel
@@ -47,7 +48,7 @@ export default function Devices({
                 </svg>
                 <small className="mt-3">{owner}’s MacBook Pro</small>
               </div>
-              <div className="before:-z[1] mb-5 flex grow flex-col items-center justify-center before:relative before:ml-[7px] before:h-1 before:w-[calc(100%+41px)] before:bg-[#368EFC] before:shadow-[0_0_10px_-1px_#368EFC] before:content-['']">
+              <div className="before:-z[1] mb-5 flex grow flex-col items-center justify-center before:relative before:ml-[15px] before:h-1 before:w-[calc(100%+47px)] before:bg-[#368EFC] before:shadow-[0_0_10px_-1px_#368EFC] before:content-['']">
                 <div className="absolute mt-[-90px] rounded-lg bg-green-600 px-5 py-1.5 text-sm text-white transition-all duration-500 before:absolute before:left-1/2 before:-bottom-2 before:h-0 before:w-0 before:-translate-x-1/2 before:border-x-8 before:border-t-8 before:border-b-0 before:border-solid before:border-x-transparent before:border-b-transparent before:border-t-green-600 before:content-['']">
                   3 meters
                 </div>
@@ -56,22 +57,28 @@ export default function Devices({
                 <svg
                   width="102px"
                   height="100px"
-                  viewBox="0 0 102 188"
+                  viewBox="0 0 102 187"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
                 >
-                  <g transform="translate(-124.000000, -81.000000)" fillRule="nonzero">
-                    <g transform="translate(124.000000, 81.000000)">
+                  <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                    <g
+                      transform="translate(-1757.000000, -739.000000)"
+                      fill="#000000"
+                      fillRule="nonzero"
+                    >
                       <path
-                        d="M79.5,0 C91.9264069,0 102,10.0735931 102,22.5 L102,165.5 C102,177.926407 91.9264069,188 79.5,188 L22.5,188 C10.0735931,188 0,177.926407 0,165.5 L0,22.5 C0,10.0735931 10.0735931,0 22.5,0 L79.5,0 Z M28.5,8.25 L22.5,8.25 C14.6299423,8.25 8.25,14.6299423 8.25,22.5 L8.25,165.5 C8.25,173.370058 14.6299423,179.75 22.5,179.75 L79.5,179.75 C87.3700577,179.75 93.75,173.370058 93.75,165.5 L93.75,22.5 C93.75,14.6299423 87.3700577,8.25 79.5,8.25 L73.5,8.25 C72.7203039,8.25 72.0795513,8.84488808 72.0068666,9.60553999 L72,9.75 L72,11 C72,13.209139 70.209139,15 68,15 L34,15 C31.790861,15 30,13.209139 30,11 L30,9.75 C30,8.92157288 29.3284271,8.25 28.5,8.25 Z"
+                        d="M1839,739 C1850.04569,739 1859,747.954305 1859,759 L1859,906 C1859,917.045695 1850.04569,926 1839,926 L1777,926 C1765.95431,926 1757,917.045695 1757,906 L1757,759 C1757,747.954305 1765.95431,739 1777,739 L1839,739 Z M1839,746 L1777,746 C1769.8203,746 1764,751.820298 1764,759 L1764,906 C1764,913.179702 1769.8203,919 1777,919 L1839,919 C1846.1797,919 1852,913.179702 1852,906 L1852,759 C1852,751.820298 1846.1797,746 1839,746 Z M1827,909 C1828.10457,909 1829,909.895431 1829,911 C1829,912.104569 1828.10457,913 1827,913 L1789,913 C1787.89543,913 1787,912.104569 1787,911 C1787,909.895431 1787.89543,909 1789,909 L1827,909 Z M1818.5,752 C1821.53757,752 1824,754.462434 1824,757.5 C1824,760.537566 1821.53757,763 1818.5,763 L1797.5,763 C1794.46243,763 1792,760.537566 1792,757.5 C1792,754.462434 1794.46243,752 1797.5,752 L1818.5,752 Z"
                         className="[transition:fill_0.5s]"
                         fill={isDarkMode ? '#ffffff' : '#4C4C4C'}
                       />
                     </g>
                   </g>
                 </svg>
-                <small className="mt-3">{owner}’s iPhone X</small>
+                <small className="mt-3">
+                  {owner}’s {device}
+                </small>
               </div>
             </div>
             <h5
@@ -80,7 +87,7 @@ export default function Devices({
                 'text-black': isDarkMode,
               })}
             >
-              {owner}’s iPhone X and this Mac are connected
+              {owner}’s iPhone 14 Pro and this Mac are connected
             </h5>
             <div className="flex justify-center">
               <AppButton onClick={() => setIsSetupDone(false)} className="nearlock btn-blue mt-4">

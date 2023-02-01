@@ -25,6 +25,7 @@ const Content = ({
   setIsSetupDone,
   menuItems,
   owner,
+  device,
 }) => {
   return (
     <div
@@ -66,6 +67,7 @@ const Content = ({
           owner={owner}
           setIsSetupDone={setIsSetupDone}
           setIsModalOpen={setIsModalOpen}
+          device={device}
         />
         {/* Music - ID: 4 */}
         <Tab.Panel />

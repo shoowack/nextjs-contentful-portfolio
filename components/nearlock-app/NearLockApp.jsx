@@ -37,6 +37,7 @@ function NearLockApp({ isDarkMode }) {
   };
 
   const owner = 'Ivan';
+  const device = 'iPhone 14 Pro';
 
   const menuItems = [
     {
@@ -125,6 +126,7 @@ function NearLockApp({ isDarkMode }) {
     setIsModalOpen,
     menuItems,
     owner,
+    device,
   };
 
   return (

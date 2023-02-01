@@ -12,6 +12,7 @@ const Modal = ({
   setActiveTab,
   setIsSetupDone,
   owner,
+  device,
 }) => {
   const [currentStep, setStep] = useState(1);
 
@@ -36,7 +37,7 @@ const Modal = ({
   const renderStep = (step) => {
     switch (step) {
       case 1:
-        return <FirstStep owner={owner} />;
+        return <FirstStep owner={owner} device={device} />;
       case 2:
         return <SecondStep goBack={goBack} isDarkMode={isDarkMode} />;
       case 3:
