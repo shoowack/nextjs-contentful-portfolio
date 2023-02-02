@@ -63,7 +63,6 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       break;
     case 'jQuery':
       src = contrast ? jQuery.src : jQueryAlt.src;
-      height = heightPercentage(70);
       break;
     case 'MySQL':
       src = MySQL.src;
@@ -77,7 +76,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       break;
     case 'PHP':
       src = PHP.src;
-      height = heightPercentage(90);
+      height = heightPercentage(60);
       break;
     case 'React':
       src = React.src;
