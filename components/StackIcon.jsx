@@ -48,6 +48,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       break;
     case 'Bootstrap':
       src = Bootstrap.src;
+      height = heightPercentage(97);
       break;
     case 'Contentful':
       src = contrast ? Contentful.src : ContentfulAlt.src;
@@ -66,7 +67,6 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       break;
     case 'MySQL':
       src = MySQL.src;
-      height = heightPercentage(50);
       break;
     case 'NextJS':
       src = contrast ? NextJS.src : NextJSAlt.src;
@@ -76,7 +76,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       break;
     case 'PHP':
       src = PHP.src;
-      height = heightPercentage(60);
+      height = heightPercentage(63);
       break;
     case 'React':
       src = React.src;
@@ -84,15 +84,18 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       break;
     case 'Sketch':
       src = Sketch.src;
+      height = heightPercentage(93);
       break;
     case 'Symfony':
       src = contrast ? Symfony.src : SymfonyAlt.src;
       break;
     case 'WordPress':
       src = contrast ? WordPress.src : WordPressAlt.src;
+      height = heightPercentage(93);
       break;
     case 'SASS':
       src = contrast ? SASS.src : SASSAlt.src;
+      height = heightPercentage(95);
       break;
     case 'Formik':
       src = Formik.src;
