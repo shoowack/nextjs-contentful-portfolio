@@ -22,7 +22,7 @@
     }
 
     .darker a {
-        @apply bg-black/10 text-[#333333]
+        @apply bg-black/10 text-[#333333] text-[#aaa] dark:bg-white/10
     }
 
     .darker a:hover {
