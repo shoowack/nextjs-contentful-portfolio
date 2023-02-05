@@ -5,7 +5,11 @@ import ThemeSwitch from './ThemeSwitch';
 
 export default function Navigation({ headerItems }) {
   return (
-    <div className="aboutme text:black md:py-10 xl:py-14 bg-[radial-gradient(#c8c8c8_0%_5%,#fff_10%_100%)] bg-[length:20px_20px] py-2 pb-5 dark:bg-[radial-gradient(#222_0%_5%,#000_10%_100%)] dark:text-white">
+    <div
+      className="aboutme text:black md:py-10 xl:py-14 
+    
+    py-2 pb-5 dark:text-white"
+    >
       <Container>
         <div className="flex flex-row justify-between mb-5">
           <div className="flex items-center justify-between">
