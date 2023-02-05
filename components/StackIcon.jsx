@@ -82,6 +82,10 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       src = React.src;
       height = heightPercentage(90);
       break;
+    case 'React Native':
+      src = React.src;
+      height = heightPercentage(90);
+      break;
     case 'Sketch':
       src = Sketch.src;
       height = heightPercentage(93);

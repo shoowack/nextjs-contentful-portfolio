@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Container from '@components/Container';
 import HeaderInfoLink from '@components/header-info-link';
 import useMedia from '@lib/useMedia';
+import ThemeSwitch from './ThemeSwitch';
 
 export default function Navigation({ headerItems }) {
   const isPreferredThemeDark = useMedia(['(prefers-color-scheme: dark)'], [true], false);
@@ -67,6 +68,8 @@ export default function Navigation({ headerItems }) {
         <p className="mb-0">
           <strong>Closed work permit holder</strong> willing to relocate anywhere in Canada.
         </p>
+
+        <ThemeSwitch />
       </Container>
     </div>
   );

@@ -10,7 +10,7 @@
     }
 
     h1, h2 {
-        @apply font-['Raleway'] tracking-tighter
+        @apply font-['Graphik'] tracking-tighter
     }
 
     a {
@@ -22,7 +22,7 @@
     }
 
     .darker a {
-        @apply bg-black/10 text-black
+        @apply bg-black/10 text-[#333333]
     }
 
     .darker a:hover {
@@ -42,7 +42,7 @@
     }
 
     p, code {
-        @apply mb-5 font-['Raleway'] text-lg;
+        @apply mb-5 font-['Graphik'] text-lg leading-8;
     }
 
     a, code {
@@ -50,7 +50,7 @@
     }
 
     code {
-        @apply font-semibold whitespace-nowrap bg-highlight text-black leading-8
+        @apply font-semibold whitespace-nowrap bg-highlight text-[#333333]/75
     }
 
     hr {

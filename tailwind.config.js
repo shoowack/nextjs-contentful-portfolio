@@ -1,6 +1,7 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -29,6 +30,7 @@ module.exports = {
         'sans': ['Open Sans', 'sans-serif'],
         'Inter': ['Inter', 'sans-serif'],
         'Raleway': ['Raleway', 'sans-serif'],
+        'Graphik': ['Graphik', 'sans-serif'],
       },
       fontSize: {
         '5xl': '2.5rem',

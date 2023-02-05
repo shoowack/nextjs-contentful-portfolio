@@ -12,8 +12,6 @@ import StackIcon from '@components/StackIcon';
 import Link from 'next/link';
 // import FsLightbox from 'fslightbox-react';
 import Balancer from 'react-wrap-balancer';
-import hexAlpha from 'hex-alpha';
-import contrast from 'contrast';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
 import NearLockApp from '@components/nearlock-app/NearLockApp';
 import Carousel from '@components/Carousel';
@@ -21,21 +19,14 @@ import Carousel from '@components/Carousel';
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({
-  backgroundColor = '#ffffff',
-  title,
-  description,
-  gallery,
-  stack,
-  windowWidth,
-}) => {
+const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
   const {
     query: { slug },
   } = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [copyToClipboard, { copyIcon }] = useCopyToClipboard();
   const sectionSlug = title.toLowerCase().split(' ').join('-');
-  const contrastColor = contrast(backgroundColor);
+  const isOdd = i % 2;
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -44,19 +35,23 @@ const Section = ({
   return (
     <StickyContainer>
       <section
-        style={{ backgroundColor }}
         className={classnames(
-          `w-full overflow-hidden md:py-10 md:px-0`,
-          contrastColor === 'light' ? 'darker text-black/75' : 'lighter text-white/75',
+          `darker w-full overflow-hidden md:py-10 md:px-0 text-black/75`,
+          // contrastColor === 'light' ? 'darker text-black/75' : 'lighter text-white/75',
+          isOdd ? 'bg-[#EFEFEF] dark:bg-[#111]' : 'bg-white dark:bg-black',
         )}
         id={sectionSlug}
       >
         <Sticky topOffset={windowWidth > 767 ? 45 : 20}>
           {({ style, isSticky }) => (
             <header
+              className={classnames(
+                i % 2
+                  ? 'bg-[#EFEFEF]/[0.8] dark:bg-[#111]/[0.8]'
+                  : 'bg-white/[0.8] dark:bg-black/[0.8]',
+              )}
               style={{
                 ...style,
-                backgroundColor: hexAlpha(backgroundColor, 0.8),
                 zIndex: 1080, // above tooltips
                 boxShadow: isSticky ? '0px 0px 20px -10px rgba(0,0,0,.3)' : 'none',
                 backdropFilter: 'blur(10px)',
@@ -92,8 +87,7 @@ const Section = ({
                   <div className="group clipboard-title flex items-center justify-center md:-mr-8">
                     <h2
                       className={classnames(
-                        'align-self-center text-nowrap font-black [transition:font-size_0.2s]', // don't animate all properties!
-                        contrastColor === 'light' ? 'text-black' : 'text-white',
+                        'align-self-center text-nowrap font-black [transition:font-size_0.2s] text-[#333333] dark:text-[#eeeeee]', // don't animate all properties!
                         {
                           'sm:text-2xl': isSticky,
                           'sm:ml-28 md:ml-24': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
@@ -113,10 +107,7 @@ const Section = ({
                           copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
                         }
                       >
-                        <FontAwesomeIcon
-                          icon={copyIcon}
-                          color={contrastColor === 'light' ? '#000' : '#fff'}
-                        />
+                        <FontAwesomeIcon icon={copyIcon} color="#000" />
                       </button>
                     )}
                   </div>
@@ -136,50 +127,44 @@ const Section = ({
           )}
         </Sticky>
 
-        <div className="flex flex-col md:pb-5">
-          <Container className="pb-4 text-center">
-            <Balancer>{description && <RichText richText={description} />}</Balancer>
+        <div className="flex flex-col md:pb-5 mt-10">
+          <Container className="pb-4">
+            {stack && (
+              <>
+                <Container className="flex flex-col justify-center items-center pb-5 md:flex-row !px-0">
+                  <ConditionalWrapper
+                    condition={windowWidth < 768}
+                    wrapper={(children) => (
+                      <table className="border-separate border-spacing-4">{children}</table>
+                    )}
+                  >
+                    {stack.map((item) => (
+                      <StackIcon
+                        stackIcon={item}
+                        isMobile={windowWidth < 768}
+                        contrast={false}
+                        section={title}
+                      />
+                    ))}
+                  </ConditionalWrapper>
+                </Container>
+              </>
+            )}
+            <Container className="pb-8 text-center text-[#333333] dark:text-[#aaa]">
+              <Balancer>{description && <RichText richText={description} />}</Balancer>
+            </Container>
+            {/* <div className="flex items-center ">
+              <div className="pr-96">{description && <RichText richText={description} />}</div>
+            </div> */}
           </Container>
-          {stack && (
-            <>
-              <Container>
-                <h3
-                  className={classnames(
-                    'mb-4 text-center text-2xl font-extralight',
-                    contrastColor === 'light' ? 'text-black/50' : 'text-white/50',
-                  )}
-                >
-                  Stack
-                </h3>
-              </Container>
-              <Container className="flex flex-col items-center justify-center pb-10 md:flex-row">
-                <ConditionalWrapper
-                  condition={windowWidth < 768}
-                  wrapper={(children) => (
-                    <table className="border-separate border-spacing-4">{children}</table>
-                  )}
-                >
-                  {stack.map((item) => (
-                    <StackIcon
-                      stackIcon={item}
-                      isMobile={windowWidth < 768}
-                      contrast={contrastColor === 'dark'}
-                      section={title}
-                    />
-                  ))}
-                </ConditionalWrapper>
-              </Container>
-            </>
-          )}
 
-          {gallery?.map((props, i) => (
+          {gallery?.map((props, index) => (
             <Carousel
               {...props}
-              contrastColor={contrastColor}
+              isOdd={isOdd}
               windowWidth={windowWidth}
               galleryLength={gallery.length}
-              backgroundColor={backgroundColor}
-              i={i}
+              i={index}
             />
           ))}
         </div>

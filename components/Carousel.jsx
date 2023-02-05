@@ -6,15 +6,14 @@ import classnames from 'classnames';
 import Container from '@components/Container';
 
 export default function Carousel({
-  fields: { type, images },
+  fields: { type, images, deviceBezel },
   sys: { id },
   i,
   contrastColor,
   windowWidth,
   galleryLength,
-  backgroundColor,
+  isOdd,
 }) {
-  console.log();
   const iphone = type === 'iPhone';
   const website = type === 'Website';
   const desktopApp = type === 'Desktop App';
@@ -35,33 +34,33 @@ export default function Carousel({
   }, []);
 
   return (
-    <div key={`gallery-container-${id}`}>
-      {!website ||
-        (!webApp && (
-          <Container>
-            {' '}
-            <h3
-              className={classnames(
-                'mb-4 text-center text-2xl font-extralight',
-                contrastColor === 'light' ? 'text-black/50' : 'text-white/50',
-              )}
-            >
-              {type}
-            </h3>
-          </Container>
-        ))}
+    <div key={`gallery-container-${id} relative`}>
+      {(!website || !webApp) && (
+        <Container>
+          <h3
+            className={classnames(
+              'mb-4 text-center text-2xl font-extralight text-[#333]/50 dark:text-[#aaa]/50',
+              {
+                'mb-10': deviceBezel,
+              },
+            )}
+          >
+            {type}
+          </h3>
+        </Container>
+      )}
 
       {/* <FsLightbox
-                    toggler={lightboxController.toggler}
-                    sources={images?.map(
-                      ({
-                        fields: {
-                          file: { url },
-                        },
-                      }) => url,
-                    )}
-                    slide={lightboxController.slide}
-                  /> */}
+        toggler={lightboxController.toggler}
+        sources={images?.map(
+          ({
+            fields: {
+              file: { url },
+            },
+          }) => url,
+        )}
+        slide={lightboxController.slide}
+      /> */}
 
       <Swiper
         allowTouchMove={false}
@@ -97,11 +96,25 @@ export default function Carousel({
           clickable: true,
           renderBullet: (index, className) =>
             `<span class="${className}">${[...Array(3)].map((_, bulletIndex) => {
-              return `<div class="owl-dot-el-${bulletIndex}" style="background-color:${backgroundColor}"></div>`;
+              return `<div class="owl-dot-el-${bulletIndex}" style="background-color:${
+                isOdd ? '#EFEFEF' : '#fff'
+              }"></div>`;
             })}
             </span>`,
         }}
-        className={type.replace(/ /g, '-').toLowerCase()}
+        className={classnames(
+          type.replace(/ /g, '-').toLowerCase(),
+          isOdd
+            ? ' before:from-[#EFEFEF] dark:before:from-[#111] after:from-[#EFEFEF] dark:after:from-[#111]'
+            : 'before:from-white dark:before:from-black after:from-white dark:after:from-black',
+          {
+            'before:bg-gradient-to-r before:inset-y-0 after:inset-y-0 after:bg-gradient-to-l before:z-[10] after:z-[2] before:content-[""] after:content-[""] before:absolute after:absolute before:h-full after:h-full before:left-0 after:right-0':
+              windowWidth > 550 && iphone,
+            'before:w-[150px] after:w-[150px]': windowWidth > 550 && windowWidth < 990 && iphone,
+            'before:w-[300px] after:w-[300px]': windowWidth > 991 && windowWidth < 1200 && iphone,
+            'before:w-[500px] after:w-[500px]': windowWidth > 1201 && iphone,
+          },
+        )}
         modules={[Pagination, Navigation]}
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
@@ -111,6 +124,15 @@ export default function Carousel({
             website || desktopApp || webApp ? (windowWidth > 768 ? '0 20%' : '0 15px') : '0 40px',
         }}
       >
+        {deviceBezel && windowWidth > 768 && (
+          <img
+            src={deviceBezel?.fields.file.url}
+            className="select-none absolute z-50 left-[50%] -translate-x-1/2"
+            style={{ height: `${100 * 1.045}%`, top: '-2.3%' }}
+            alt=""
+          />
+        )}
+
         {/* <LightGallery mode="lg-fade"> */}
         {images?.map(
           ({
@@ -125,7 +147,14 @@ export default function Carousel({
             sys: { id: imageId },
           }) => {
             return (
-              <SwiperSlide key={`gallery-slide-${imageId}`}>
+              <SwiperSlide
+                key={`gallery-slide-${imageId}`}
+                className={classnames('select-none', {
+                  'before:w-[400px] after:w-[400px]': iphone,
+                  'rounded-[40px]': windowWidth > 550 && iphone,
+                  'rounded-[10px]': desktopApp || ipad,
+                })}
+              >
                 {/* <a
                           data-lg-size={`${width}-${height}`}
                           className="gallery-item"
@@ -141,6 +170,7 @@ export default function Carousel({
                                 });
                               }}
                             > */}
+
                 <ContentfulImage
                   quality={100}
                   src={url}
@@ -148,6 +178,7 @@ export default function Carousel({
                   height={height}
                   width={width}
                   layout="responsive"
+                  className="select-none"
                   sizes={
                     website || desktopApp || webApp
                       ? '(max-width: 768px) 100vw, 60vw'
@@ -171,7 +202,7 @@ export default function Carousel({
           <div className="flex justify-center mt-5 md:mt-16 md:mb-24">
             <div
               className={classnames(
-                'swiper-button-prev transition-opacity duration-200 p-3 md:py-1 md:px-0 rounded-md md:rounded',
+                'swiper-button-prev transition-opacity duration-200 p-3 md:py-2.5 md:px-1 rounded-md md:rounded',
                 contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
                 { 'opacity-25 transition-opacity duration-200': isBeginning },
               )}
@@ -198,7 +229,7 @@ export default function Carousel({
 
             <div
               className={classnames(
-                'swiper-button-next transition-opacity duration-200 p-3 md:py-1 md:px-0 rounded-md md:rounded',
+                'swiper-button-next transition-opacity duration-200 p-3 md:py-2.5 md:px-1 rounded-md md:rounded',
                 contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
                 { 'opacity-25 transition-opacity duration-200': isEnd },
               )}
