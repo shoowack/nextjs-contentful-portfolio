@@ -139,12 +139,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
                     )}
                   >
                     {stack.map((item) => (
-                      <StackIcon
-                        stackIcon={item}
-                        isMobile={windowWidth < 768}
-                        contrast={false}
-                        section={title}
-                      />
+                      <StackIcon stackIcon={item} isMobile={windowWidth < 768} section={title} />
                     ))}
                   </ConditionalWrapper>
                 </Container>

@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import classnames from 'classnames';
+import { useTheme } from 'next-themes';
 
 import {
   ACF,
@@ -30,7 +30,7 @@ import {
   Tailwind,
 } from '@lib/stackLogos';
 
-export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
+export default function StackIcon({ stackIcon, section, isMobile }) {
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   let src;
@@ -40,6 +40,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
   const heightPercentage = (percentage) => (iconHeight * percentage) / 100;
   const project = section.replace(/\./g, '-').replace(/ /g, '-').toLowerCase();
   const stackName = stackIcon.replace(/ /g, '-').toLowerCase();
+  const { theme } = useTheme();
 
   switch (stackIcon) {
     case 'ACF':
@@ -51,7 +52,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       height = heightPercentage(97);
       break;
     case 'Contentful':
-      src = contrast ? Contentful.src : ContentfulAlt.src;
+      src = theme === 'dark' ? Contentful.src : ContentfulAlt.src;
       break;
     case 'Firebase':
       src = Firebase.src;
@@ -63,13 +64,13 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       src = Illustrator.src;
       break;
     case 'jQuery':
-      src = contrast ? jQuery.src : jQueryAlt.src;
+      src = theme === 'dark' ? jQuery.src : jQueryAlt.src;
       break;
     case 'MySQL':
       src = MySQL.src;
       break;
     case 'NextJS':
-      src = contrast ? NextJS.src : NextJSAlt.src;
+      src = theme === 'dark' ? NextJS.src : NextJSAlt.src;
       break;
     case 'Photoshop':
       src = Photoshop.src;
@@ -91,14 +92,14 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
       height = heightPercentage(93);
       break;
     case 'Symfony':
-      src = contrast ? Symfony.src : SymfonyAlt.src;
+      src = theme === 'dark' ? Symfony.src : SymfonyAlt.src;
       break;
     case 'WordPress':
-      src = contrast ? WordPress.src : WordPressAlt.src;
+      src = theme === 'dark' ? WordPress.src : WordPressAlt.src;
       height = heightPercentage(93);
       break;
     case 'SASS':
-      src = contrast ? SASS.src : SASSAlt.src;
+      src = theme === 'dark' ? SASS.src : SASSAlt.src;
       height = heightPercentage(95);
       break;
     case 'Formik':
@@ -154,12 +155,7 @@ export default function StackIcon({ stackIcon, contrast, section, isMobile }) {
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="absolute left-1/2 top-0 translate-y-[calc(-100%-10px)] -translate-x-1/2 transform whitespace-nowrap text-center">
-          <div
-            className={classnames(
-              `rounded-lg px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5`,
-              contrast ? 'bg-black text-white' : 'bg-white text-black',
-            )}
-          >
+          <div className="rounded-lg px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-black dark:text-white bg-white text-black">
             {tooltip || stackIcon}
           </div>
         </Popover.Panel>
