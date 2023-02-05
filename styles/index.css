@@ -26,7 +26,7 @@
     }
 
     .darker a:hover {
-        @apply bg-black/20
+        @apply bg-black/20 dark:bg-white/20
     }
 
     .lighter a {

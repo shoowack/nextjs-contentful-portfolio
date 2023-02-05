@@ -46,6 +46,7 @@ export default function Navigation({ headerItems }) {
             </Link>
           </div>
           <div className="header-info-links mt-2 flex items-center justify-end">
+            <ThemeSwitch />
             {headerItems?.map((headerLink, i) => (
               <HeaderInfoLink
                 {...headerLink}
@@ -64,8 +65,6 @@ export default function Navigation({ headerItems }) {
         <p className="mb-0">
           <strong>Closed work permit holder</strong> willing to relocate anywhere in Canada.
         </p>
-
-        <ThemeSwitch />
       </Container>
     </div>
   );

@@ -36,9 +36,9 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
     <StickyContainer>
       <section
         className={classnames(
-          `darker w-full overflow-hidden md:py-10 md:px-0 text-black/75`,
+          `w-full overflow-hidden md:py-10 md:px-0 text-black/75`,
           // contrastColor === 'light' ? 'darker text-black/75' : 'lighter text-white/75',
-          isOdd ? 'bg-[#EFEFEF] dark:bg-[#111]' : 'bg-white dark:bg-black',
+          isOdd ? 'lighter bg-[#EFEFEF] dark:bg-[#111]' : 'darker bg-white dark:bg-black',
         )}
         id={sectionSlug}
       >
