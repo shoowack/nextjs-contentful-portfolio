@@ -32,24 +32,19 @@ background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0
         @apply text-base leading-7 transition-all ease-in-out duration-200;
     }
 
-    .darker a, .lighter a {
+    .darker a,
+    .lighter a {
         @apply leading-8 text-lg font-semibold
     }
 
+    .lighter a,
     .darker a {
-        @apply bg-black/10 text-[#333333] text-[#aaa] dark:bg-white/10
+        @apply bg-black/10 text-[#333333] dark:text-[#aaa] dark:bg-white/10
     }
 
+    .lighter a:hover,
     .darker a:hover {
         @apply bg-black/20 dark:bg-white/20
-    }
-
-    .lighter a {
-        @apply bg-white/10 text-white
-    }
-
-    .lighter a:hover {
-        @apply bg-white/20
     }
 
     strong {

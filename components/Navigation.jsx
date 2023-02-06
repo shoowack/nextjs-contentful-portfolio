@@ -52,6 +52,8 @@ export default function Navigation({ headerItems }) {
                 {...headerLink}
                 animationDelay={`[animation-delay:${(i + 1) * 100}ms]`}
                 key={headerLink.sys.id}
+                i={i}
+                length={headerItems.length}
               />
             ))}
           </div>
