@@ -18,6 +18,7 @@ const ThemeSwitch = () => {
   return currentTheme === 'dark' ? (
     <a
       onClick={() => setTheme('light')}
+      aria-hidden="true"
       className="hover:cursor-pointer inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
     >
       <svg
@@ -47,6 +48,7 @@ const ThemeSwitch = () => {
   ) : (
     <a
       onClick={() => setTheme('dark')}
+      aria-hidden="true"
       className="hover:cursor-pointer inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
     >
       <svg
