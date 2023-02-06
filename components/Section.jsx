@@ -19,7 +19,7 @@ import Carousel from '@components/Carousel';
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
+const Section = ({ title, description, gallery, stack, windowWidth, i, length }) => {
   const {
     query: { slug },
   } = useRouter();
@@ -27,6 +27,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
   const [copyToClipboard, { copyIcon }] = useCopyToClipboard();
   const sectionSlug = title.toLowerCase().split(' ').join('-');
   const isOdd = i % 2;
+  const isLast = i + 1 === length;
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -36,9 +37,10 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
     <StickyContainer>
       <section
         className={classnames(
-          `w-full overflow-hidden md:py-10 md:px-0 text-black/75 border-b border-[#e1e4e8] dark:border-[#30363d]`,
+          `w-full overflow-hidden md:py-10 md:px-0 text-black/75`,
           // contrastColor === 'light' ? 'darker text-black/75' : 'lighter text-white/75',
           isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
+          { 'border-b border-[#e1e4e8] dark:border-[#30363d]': !isLast },
         )}
         id={sectionSlug}
       >

@@ -5,8 +5,12 @@
 @tailwind utilities;
 
 @layer base {
-    body {
+    .dark body {
         background: #2c2d30;
+    }
+
+    body {
+        background: #e9eaed;
     }
 
     .aboutme {
