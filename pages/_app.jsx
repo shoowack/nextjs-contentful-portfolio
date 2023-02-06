@@ -4,6 +4,7 @@ import { GoogleAnalytics } from 'nextjs-google-analytics';
 import '../styles/index.css';
 import BreakpointIndicator from '@components/BreakpointIndicator';
 import { ThemeProvider } from 'next-themes';
+import { Analytics } from '@vercel/analytics/react';
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -13,6 +14,7 @@ const App = ({ Component, pageProps }) => {
       <ThemeProvider attribute="class">
         <Component {...pageProps} />
       </ThemeProvider>
+      <Analytics />
     </>
   );
 };
