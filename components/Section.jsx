@@ -33,7 +33,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
   };
 
   // filter galleries by environment tags (production, development)
-  const filteredGalleries = gallery.filter((gal) =>
+  const filteredGalleries = gallery?.filter((gal) =>
     gal.metadata.tags.some((tag) => tag.sys.id === process.env.NODE_ENV),
   );
 
