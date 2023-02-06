@@ -19,7 +19,7 @@ import Carousel from '@components/Carousel';
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({ title, description, gallery, stack, windowWidth, i, length }) => {
+const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
   const {
     query: { slug },
   } = useRouter();
@@ -27,20 +27,23 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, length })
   const [copyToClipboard, { copyIcon }] = useCopyToClipboard();
   const sectionSlug = title.toLowerCase().split(' ').join('-');
   const isOdd = i % 2;
-  const isLast = i + 1 === length;
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  // filter galleries by environment tags (production, development)
+  const filteredGalleries = gallery.filter((gal) =>
+    gal.metadata.tags.some((tag) => tag.sys.id === process.env.NODE_ENV),
+  );
+
   return (
     <StickyContainer>
       <section
         className={classnames(
-          `w-full overflow-hidden md:py-10 md:px-0 text-black/75`,
+          `w-full overflow-hidden md:py-10 md:px-0 text-black/75 border-b border-[#e1e4e8] dark:border-[#30363d]`,
           // contrastColor === 'light' ? 'darker text-black/75' : 'lighter text-white/75',
           isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
-          { 'border-b border-[#e1e4e8] dark:border-[#30363d]': !isLast },
         )}
         id={sectionSlug}
       >
@@ -150,17 +153,13 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, length })
             <Container className="pb-8 text-center text-[#333333] dark:text-[#aaa]">
               <Balancer>{description && <RichText richText={description} />}</Balancer>
             </Container>
-            {/* <div className="flex items-center ">
-              <div className="pr-96">{description && <RichText richText={description} />}</div>
-            </div> */}
           </Container>
-
-          {gallery?.map((props, index) => (
+          {filteredGalleries.map((entry, index) => (
             <Carousel
-              {...props}
+              {...entry}
               isOdd={isOdd}
               windowWidth={windowWidth}
-              galleryLength={gallery.length}
+              galleryLength={filteredGalleries.length}
               i={index}
             />
           ))}

@@ -14,18 +14,12 @@ export default function InnerPage({ entries, headerItems }) {
     <Layout>
       <div className="z-[2] min-h-full overflow-hidden md:shadow-[0_10px_60px_-10px_rgba(0,0,0,.2)] shadow-[0_10px_30px_-5px_rgba(0,0,0,.2)] md:dark:shadow-[0_10px_60px_rgba(0,0,0,.5)] dark:shadow-[0_10px_30px_rgba(0,0,0,.5)] mb-[360px] sm:mb-[300px] md:mb-[400px]">
         <Navigation headerItems={headerItems} />
-        {/* filter content by environment tags (production, development) */}
+        {/* filter sections by environment tags (production, development) */}
         {entries[0].sections.map(
           (entry, i) =>
-            entry.metadata.tags.find((tags) => tags.sys.id === process.env.NODE_ENV) && (
+            entry.metadata.tags.some((tags) => tags.sys.id === process.env.NODE_ENV) && (
               <Provider>
-                <Section
-                  windowWidth={width}
-                  {...entry.fields}
-                  key={entry.sys.id}
-                  i={i}
-                  length={entries[0].sections.length}
-                />
+                <Section windowWidth={width} {...entry.fields} key={entry.sys.id} i={i} />
               </Provider>
             ),
         )}

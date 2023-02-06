@@ -204,7 +204,7 @@ export default function Carousel({
               className={classnames(
                 'swiper-button-prev transition-opacity duration-200 p-3 md:py-2.5 md:px-1 rounded-md md:rounded',
                 contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
-                { 'opacity-25 transition-opacity duration-200': isBeginning },
+                { 'opacity-50 transition-opacity duration-200': isBeginning },
               )}
               onClick={() => {
                 swiperRef.current?.slidePrev();
@@ -231,7 +231,7 @@ export default function Carousel({
               className={classnames(
                 'swiper-button-next transition-opacity duration-200 p-3 md:py-2.5 md:px-1 rounded-md md:rounded',
                 contrastColor === 'dark' ? 'bg-white text-black' : 'bg-[#333333] text-white',
-                { 'opacity-25 transition-opacity duration-200': isEnd },
+                { 'opacity-50 transition-opacity duration-200': isEnd },
               )}
               onClick={() => {
                 swiperRef.current?.slideNext();
