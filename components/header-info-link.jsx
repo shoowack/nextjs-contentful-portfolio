@@ -22,8 +22,6 @@ const HeaderInfoLink = ({
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
 
-  console.log(i + 1 === length, 'here');
-
   return (
     <Popover className="relative">
       <a
