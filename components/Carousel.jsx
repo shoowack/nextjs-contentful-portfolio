@@ -105,8 +105,8 @@ export default function Carousel({
         className={classnames(
           type.replace(/ /g, '-').toLowerCase(),
           isOdd
-            ? ' before:from-[#EFEFEF] dark:before:from-[#111] after:from-[#EFEFEF] dark:after:from-[#111]'
-            : 'before:from-white dark:before:from-black after:from-white dark:after:from-black',
+            ? ' before:from-[#EFEFEF] dark:before:from-[#0d1117] after:from-[#EFEFEF] dark:after:from-[#0d1117]'
+            : 'before:from-white dark:before:from-[#010409] after:from-white dark:after:from-[#010409]',
           {
             'before:bg-gradient-to-r before:inset-y-0 after:inset-y-0 after:bg-gradient-to-l before:z-[10] after:z-[2] before:content-[""] after:content-[""] before:absolute after:absolute before:h-full after:h-full before:left-0 after:right-0':
               windowWidth > 550 && iphone,
@@ -152,7 +152,7 @@ export default function Carousel({
                 className={classnames('select-none', {
                   'before:w-[400px] after:w-[400px]': iphone,
                   'rounded-[40px]': windowWidth > 550 && iphone,
-                  'rounded-[10px]': desktopApp || ipad,
+                  'rounded-[10px]': webApp || website || desktopApp || ipad,
                 })}
               >
                 {/* <a

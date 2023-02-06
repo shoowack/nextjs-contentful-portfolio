@@ -36,9 +36,9 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
     <StickyContainer>
       <section
         className={classnames(
-          `w-full overflow-hidden md:py-10 md:px-0 text-black/75`,
+          `w-full overflow-hidden md:py-10 md:px-0 text-black/75 border-b border-[#e1e4e8] dark:border-[#30363d]`,
           // contrastColor === 'light' ? 'darker text-black/75' : 'lighter text-white/75',
-          isOdd ? 'lighter bg-[#EFEFEF] dark:bg-[#111]' : 'darker bg-white dark:bg-black',
+          isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
         )}
         id={sectionSlug}
       >
@@ -47,8 +47,8 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
             <header
               className={classnames(
                 i % 2
-                  ? 'bg-[#EFEFEF]/[0.8] dark:bg-[#111]/[0.8]'
-                  : 'bg-white/[0.8] dark:bg-black/[0.8]',
+                  ? 'bg-[#f7f8fa]/[0.8] dark:bg-[#0d1117]/[0.8]'
+                  : 'bg-white/[0.8] dark:bg-[#010409]/[0.8]',
               )}
               style={{
                 ...style,
