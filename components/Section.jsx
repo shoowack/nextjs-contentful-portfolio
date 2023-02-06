@@ -154,7 +154,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
               <Balancer>{description && <RichText richText={description} />}</Balancer>
             </Container>
           </Container>
-          {filteredGalleries.map((entry, index) => (
+          {filteredGalleries?.map((entry, index) => (
             <Carousel
               {...entry}
               isOdd={isOdd}
