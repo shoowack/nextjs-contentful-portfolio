@@ -96,8 +96,8 @@ export default function Carousel({
           clickable: true,
           renderBullet: (index, className) =>
             `<span class="${className}">${[...Array(3)].map((_, bulletIndex) => {
-              return `<div class="owl-dot-el-${bulletIndex}" style="background-color:${
-                isOdd ? '#EFEFEF' : '#fff'
+              return `<div class="owl-dot-el-${bulletIndex} ${
+                isOdd ? 'bg-[#f7f8fa] dark:bg-[#0d1117]' : 'bg-white dark:bg-[#010409]'
               }"></div>`;
             })}
             </span>`,
@@ -105,7 +105,7 @@ export default function Carousel({
         className={classnames(
           type.replace(/ /g, '-').toLowerCase(),
           isOdd
-            ? ' before:from-[#EFEFEF] dark:before:from-[#0d1117] after:from-[#EFEFEF] dark:after:from-[#0d1117]'
+            ? ' before:from-[#f7f8fa] dark:before:from-[#0d1117] after:from-[#f7f8fa] dark:after:from-[#0d1117]'
             : 'before:from-white dark:before:from-[#010409] after:from-white dark:after:from-[#010409]',
           {
             'before:bg-gradient-to-r before:inset-y-0 after:inset-y-0 after:bg-gradient-to-l before:z-[10] after:z-[2] before:content-[""] after:content-[""] before:absolute after:absolute before:h-full after:h-full before:left-0 after:right-0':
