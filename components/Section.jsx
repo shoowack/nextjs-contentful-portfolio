@@ -132,7 +132,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
           )}
         </Sticky>
 
-        <div className="flex flex-col md:pb-5 mt-10">
+        <div className="flex flex-col md:pb-5 md:mt-10">
           <Container className="pb-4">
             {stack && (
               <>
@@ -150,9 +150,13 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
                 </Container>
               </>
             )}
-            <Container className="pb-8 text-center text-[#333333] dark:text-[#aaa]">
-              <Balancer>{description && <RichText richText={description} />}</Balancer>
-            </Container>
+            {description && (
+              <Container className="pb-8 text-center text-[#333333] dark:text-[#aaa]">
+                <Balancer>
+                  <RichText richText={description} />
+                </Balancer>
+              </Container>
+            )}
           </Container>
           {filteredGalleries?.map((entry, index) => (
             <Carousel
