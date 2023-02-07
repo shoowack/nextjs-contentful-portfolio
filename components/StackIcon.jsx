@@ -119,7 +119,7 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
   // eslint-disable-next-line consistent-return
   return isMobile ? (
     <tr>
-      <td width="50%" className="text-right">
+      <td className="text-right">
         <img
           src={src}
           style={{ height: `${height || heightPercentage(100)}px` }}
@@ -127,8 +127,8 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
           className="inline"
         />
       </td>
-      <td width="50%">
-        <p className="m-0 text-left">{stackIcon}</p>
+      <td>
+        <p className="m-0 text-left text-[#333333] dark:text-[#eeeeee]">{stackIcon}</p>
       </td>
     </tr>
   ) : (
