@@ -41,7 +41,7 @@ export default function Carousel({
             className={classnames(
               'mb-4 text-center text-2xl font-extralight text-[#333]/50 dark:text-[#aaa]/50',
               {
-                'mb-10': deviceBezel,
+                'mb-10': deviceBezel && windowWidth > 768,
               },
             )}
           >
@@ -152,7 +152,10 @@ export default function Carousel({
                 className={classnames('select-none', {
                   'before:w-[400px] after:w-[400px]': iphone,
                   'rounded-[40px]': windowWidth > 550 && iphone,
-                  'rounded-[10px]': webApp || website || desktopApp || ipad,
+                  'rounded-[10px]': iphone,
+                  'rounded-[4px]': ipad || website || webApp || desktopApp,
+                  'rounded-[11px]':
+                    (ipad || website || webApp || desktopApp) && windowWidth >= 1024,
                 })}
               >
                 {/* <a
