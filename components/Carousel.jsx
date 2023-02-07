@@ -17,7 +17,9 @@ export default function Carousel({
   const website = type === 'Website';
   const desktopApp = type === 'Desktop App';
   const webApp = type === 'Web App';
-  const ipad = type === 'iPad' || type === 'iPad Landscape';
+  const ipad = type === 'iPad';
+  const ipadLandscape = type === 'iPad Landscape';
+  const ipads = ipad || ipadLandscape;
   const swiperRef = useRef();
   const [isEnd, setIsEnd] = useState(false);
   const [isBeginning, setIsBeginning] = useState(false);
@@ -79,7 +81,7 @@ export default function Carousel({
                   : 3
                 : 2
               : 1
-            : ipad
+            : ipads
             ? windowWidth > 900
               ? windowWidth > 1400
                 ? windowWidth > 2600
@@ -126,12 +128,14 @@ export default function Carousel({
         {deviceBezel && windowWidth > 768 && (
           <img
             src={deviceBezel?.fields.file.url}
-            className="select-none absolute z-50 left-[50%] -translate-x-1/2"
-            style={{ height: `${100 * 1.045}%`, top: '-2.3%' }}
+            className={classnames('select-none absolute z-50 left-[50%] -translate-x-1/2', {
+              'top-[-2.3%] h-[104.5%]': iphone,
+              'top-[-3.64%] h-[107%] left-[50.03%]': ipad,
+              'top-[-4.7%] h-[109.2%]': ipadLandscape,
+            })}
             alt=""
           />
         )}
-
         {/* <LightGallery mode="lg-fade"> */}
         {images?.map(
           ({
@@ -150,28 +154,28 @@ export default function Carousel({
                 key={`gallery-slide-${imageId}`}
                 className={classnames('select-none', {
                   'before:w-[400px] after:w-[400px]': iphone,
-                  'rounded-[40px]': windowWidth > 550 && iphone,
+                  'rounded-[50px]': windowWidth > 550 && iphone,
                   'rounded-[10px]': windowWidth < 550 && iphone,
-                  'rounded-[4px]': ipad || website || webApp || desktopApp,
-                  'rounded-[11px]':
-                    (ipad || website || webApp || desktopApp) && windowWidth >= 1024,
+                  'rounded-[7px]': windowWidth > 550 && ipad,
+                  'rounded-[4px]': ipads || website || webApp || desktopApp,
+                  'rounded-[11px]': (website || webApp || desktopApp) && windowWidth >= 1024,
                 })}
               >
                 {/* <a
-                          data-lg-size={`${width}-${height}`}
-                          className="gallery-item"
-                          data-src={url}
-                          data-sub-html="<h4>Photo by - <a href='https://ii.photography'>Ivan Suvak </a></h4><p>Location - Croatia</p>"
-                        > */}
+                    data-lg-size={`${width}-${height}`}
+                    className="gallery-item"
+                    data-src={url}
+                    data-sub-html="<h4>Photo by - <a href='https://ii.photography'>Ivan Suvak </a></h4><p>Location - Croatia</p>"
+                  > */}
                 {/* <a
-                              style={{ padding: 'unset' }}
-                              onClick={() => {
-                                setLightboxController({
-                                  toggler: !lightboxController.toggler,
-                                  slide: i + 1,
-                                });
-                              }}
-                            > */}
+                      style={{ padding: 'unset' }}
+                      onClick={() => {
+                        setLightboxController({
+                          toggler: !lightboxController.toggler,
+                          slide: i + 1,
+                        });
+                      }}
+                    > */}
 
                 <ContentfulImage
                   quality={100}
@@ -186,7 +190,7 @@ export default function Carousel({
                       ? '(max-width: 768px) 100vw, 60vw'
                       : iphone
                       ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
-                      : ipad
+                      : ipads
                       ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
                       : '1vw'
                   }
