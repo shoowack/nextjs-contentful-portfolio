@@ -42,7 +42,6 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
       <section
         className={classnames(
           `w-full overflow-hidden md:py-10 md:px-0 text-black/75 border-b border-[#e1e4e8] dark:border-[#30363d]`,
-          // contrastColor === 'light' ? 'darker text-black/75' : 'lighter text-white/75',
           isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
         )}
         id={sectionSlug}
@@ -216,7 +215,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
             >
               <div className="group clipboard-title mr-md-n5 flex items-center justify-center">
                 <Balancer>
-                  <p className="mb-0 text-white">
+                  <p className="mb-0 text-white leading-6">
                     Interactive preview of the Near Lock desktop app
                   </p>
                 </Balancer>
@@ -233,11 +232,11 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
                 )}
               </div>
               <Balancer>
-                <small className="text-white/[0.75]">
+                <p className="leading-5 mt-4 text-xs text-white/[0.75] tracking-wider mb-0">
                   {windowWidth >= 1120
                     ? 'some of the features are not available yet'
                     : 'for an interactive preview, please visit desktop version of the website'}
-                </small>
+                </p>
               </Balancer>
             </Container>
           </div>
