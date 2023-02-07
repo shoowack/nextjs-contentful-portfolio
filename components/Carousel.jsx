@@ -42,7 +42,8 @@ export default function Carousel({
             className={classnames(
               'mb-4 text-center text-2xl font-extralight text-[#333]/50 dark:text-[#aaa]/50',
               {
-                'mb-10': deviceBezel && windowWidth > 768,
+                'mb-10': deviceBezel && windowWidth >= 768 && iphone,
+                'mb-16': deviceBezel && windowWidth >= 900 && ipads,
               },
             )}
           >
@@ -110,10 +111,17 @@ export default function Carousel({
             : 'before:from-white dark:before:from-[#010409] after:from-white dark:after:from-[#010409]',
           {
             'before:bg-gradient-to-r before:inset-y-0 after:inset-y-0 after:bg-gradient-to-l before:z-[10] after:z-[2] before:content-[""] after:content-[""] before:absolute after:absolute before:h-full after:h-full before:left-0 after:right-0':
-              windowWidth > 550 && iphone,
-            'before:w-[150px] after:w-[150px]': windowWidth > 550 && windowWidth < 990 && iphone,
-            'before:w-[300px] after:w-[300px]': windowWidth > 991 && windowWidth < 1200 && iphone,
-            'before:w-[500px] after:w-[500px]': windowWidth > 1201 && iphone,
+              (windowWidth > 550 && iphone) ||
+              (windowWidth > 900 && ipads) ||
+              (windowWidth >= 768 && desktopApp) ||
+              webApp ||
+              website,
+            'before:w-[220px] after:w-[220px]': windowWidth > 550 && windowWidth <= 1400 && ipads,
+            'before:w-[350px] after:w-[350px]': windowWidth > 1400 && ipads,
+            'before:w-[150px] after:w-[150px]': windowWidth > 550 && windowWidth <= 991 && iphone,
+            'before:w-[250px] after:w-[300px]': windowWidth > 991 && windowWidth <= 1200 && iphone,
+            'before:w-[400px] after:w-[400px]': windowWidth > 1200 && iphone,
+            'before:w-[15%] after:w-[15%]': windowWidth >= 768 && (desktopApp || webApp || website),
           },
         )}
         modules={[Pagination, Navigation]}
@@ -122,10 +130,11 @@ export default function Carousel({
         }}
         style={{
           padding:
-            website || desktopApp || webApp ? (windowWidth > 768 ? '0 20%' : '0 15px') : '0 40px',
+            website || desktopApp || webApp ? (windowWidth >= 768 ? '0 20%' : '0 15px') : '0 40px',
         }}
       >
-        {deviceBezel && windowWidth > 768 && (
+        {((deviceBezel && windowWidth > 900 && ipads) ||
+          (deviceBezel && windowWidth >= 768 && iphone)) && (
           <img
             src={deviceBezel?.fields.file.url}
             className={classnames('select-none absolute z-50 left-[50%] -translate-x-1/2', {
@@ -153,9 +162,10 @@ export default function Carousel({
               <SwiperSlide
                 key={`gallery-slide-${imageId}`}
                 className={classnames('select-none', {
-                  'before:w-[400px] after:w-[400px]': iphone,
-                  'rounded-[50px]': windowWidth > 550 && iphone,
-                  'rounded-[10px]': windowWidth < 550 && iphone,
+                  'rounded-[30px]': windowWidth > 1200 && iphone,
+                  'rounded-[35px]': windowWidth > 991 && windowWidth <= 1200 && iphone,
+                  'rounded-[43px]': windowWidth >= 768 && windowWidth <= 991 && iphone,
+                  'rounded-[10px]': windowWidth <= 768 && iphone,
                   'rounded-[7px]': windowWidth > 550 && ipad,
                   'rounded-[4px]': ipads || website || webApp || desktopApp,
                   'rounded-[11px]': (website || webApp || desktopApp) && windowWidth >= 1024,
