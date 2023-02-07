@@ -102,10 +102,17 @@
         &-active {
             opacity: 1;
             filter: saturate(1) grayscale(0) contrast(1);
-            transition: opacity .2s ease-in-out, box-shadow .2s ease-in-out, border-radius .2s ease-in-out .1s, filter .2s ease-in-out;
+            transition: opacity .2s ease-in-out, box-shadow .35s ease-in-out, border-radius .2s ease-in-out .1s, filter .2s ease-in-out;
             box-shadow:
                 0 35px 55px rgb(0 0 0 / 8%),
                 0 25px 63px rgb(0 0 0 / 8%);
+
+            @media (min-width: 768px) {
+                box-shadow:
+                    0 25px 30px rgb(0 0 0 / 30%),
+                    0 35px 55px rgb(0 0 0 / 8%),
+                    0 25px 63px rgb(0 0 0 / 8%);
+            }
         }
     }
 
