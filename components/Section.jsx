@@ -50,17 +50,26 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
           {({ style, isSticky }) => (
             <header
               className={classnames(
+                'z-[1080]',
                 i % 2
-                  ? 'bg-[#f7f8fa]/[0.8] dark:bg-[#0d1117]/[0.8]'
-                  : 'bg-white/[0.8] dark:bg-[#010409]/[0.8]',
+                  ? 'bg-[#f7f8fa]/[0.6] dark:bg-[#0d1117]/[0.6]'
+                  : 'bg-white/[0.6] dark:bg-[#010409]/[0.6]',
+                {
+                  'backdrop-blur-[10px]': windowWidth <= 639,
+                  'after:content-[""] after:w-full after:h-px dark:after:bg-white/10 after:bg-black/5 after:bottom-0 after:fixed':
+                    isSticky,
+                },
               )}
               style={{
                 ...style,
-                zIndex: 1080, // above tooltips
-                boxShadow: isSticky ? '0px 0px 20px -10px rgba(0,0,0,.3)' : 'none',
-                backdropFilter: 'blur(10px)',
               }}
             >
+              <div
+                className={classnames({
+                  'before:[inset:-1px_0px_-50%] after:[inset:-1px_0px_-50%] before:[mask-image:linear-gradient(to_bottom,black_48px,transparent_70px)] after:content-[""] before:content-[""] before:absolute after:absolute before:pointer-events-none before:select-none before:backdrop-blur-[12px]':
+                    isSticky && windowWidth > 639,
+                })}
+              />
               <Container
                 className={classnames(
                   {
@@ -93,7 +102,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
                       className={classnames(
                         'align-self-center text-nowrap font-black [transition:font-size_0.2s] text-[#333333] dark:text-[#eeeeee]', // don't animate all properties!
                         {
-                          'sm:text-2xl': isSticky,
+                          'sm:text-2xl font-medium': isSticky,
                           'sm:ml-28 md:ml-24': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
                           'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky, // has to take into consideration width of the "designs" button
                           'text-3xl leading-[78px] sm:ml-6 md:mr-4 md:text-[60px]': !isSticky,
