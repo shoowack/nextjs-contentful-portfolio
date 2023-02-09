@@ -66,7 +66,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
             >
               <div
                 className={classnames({
-                  'before:[inset:-1px_0px_-80px] before:[mask-image:linear-gradient(to_bottom,black_42px,transparent_70px)] before:content-[""] before:absolute before:pointer-events-none before:select-none before:backdrop-blur-[12px]':
+                  'before:[inset:-1px_0px_-80px] dark:before:[mask-image:linear-gradient(to_bottom,black_47px,transparent_70px)] before:[mask-image:linear-gradient(to_bottom,black_44px,transparent_70px)] before:content-[""] before:absolute before:pointer-events-none before:select-none before:backdrop-blur-[12px]':
                     isSticky && windowWidth > 639,
                 })}
               />

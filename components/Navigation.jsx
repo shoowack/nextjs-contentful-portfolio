@@ -50,7 +50,6 @@ export default function Navigation({ headerItems }) {
             {headerItems?.map((headerLink, i) => (
               <HeaderInfoLink
                 {...headerLink}
-                animationDelay={`[animation-delay:${(i + 1) * 100}ms]`}
                 key={headerLink.sys.id}
                 i={i}
                 length={headerItems.length}

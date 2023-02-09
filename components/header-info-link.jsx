@@ -15,12 +15,13 @@ const HeaderInfoLink = ({
   openInNewTab = false,
   size = 'lg',
   iconColor,
-  animationDelay,
   i,
   length,
 }) => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
+
+  console.log((i + 1) * 1000);
 
   return (
     <Popover className="relative">
@@ -37,7 +38,8 @@ const HeaderInfoLink = ({
         onMouseLeave={() => setTooltipOpen(false)}
       >
         <FontAwesomeIcon
-          className={`absolute top-0 animate-preload opacity-0 ${animationDelay}`}
+          className="absolute top-0 animate-preload opacity-0"
+          style={{ animationDelay: `${(i + 1) * 100}ms` }}
           icon={icon.split(',')}
           size={size}
           color={iconColor}
