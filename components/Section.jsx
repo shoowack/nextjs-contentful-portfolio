@@ -52,8 +52,8 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
               className={classnames(
                 'z-[1080]',
                 i % 2
-                  ? 'bg-[#f7f8fa]/[0.6] dark:bg-[#0d1117]/[0.6]'
-                  : 'bg-white/[0.6] dark:bg-[#010409]/[0.6]',
+                  ? 'bg-[#f7f8fa]/[0.8] dark:bg-[#0d1117]/[0.6]'
+                  : 'bg-white/[0.8] dark:bg-[#010409]/[0.6]',
                 {
                   'backdrop-blur-[10px]': windowWidth <= 639,
                   'after:content-[""] after:w-full after:h-px dark:after:bg-white/10 after:bg-black/5 after:bottom-0 after:fixed':
@@ -66,7 +66,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
             >
               <div
                 className={classnames({
-                  'before:[inset:-1px_0px_-50%] after:[inset:-1px_0px_-50%] before:[mask-image:linear-gradient(to_bottom,black_48px,transparent_70px)] after:content-[""] before:content-[""] before:absolute after:absolute before:pointer-events-none before:select-none before:backdrop-blur-[12px]':
+                  'before:[inset:-1px_0px_-80px] after:[inset:-1px_0px_-70px] before:[mask-image:linear-gradient(to_bottom,black_42px,transparent_70px)] after:content-[""] before:content-[""] before:absolute after:absolute before:pointer-events-none after:pointer-events-none before:select-none before:backdrop-blur-[12px]':
                     isSticky && windowWidth > 639,
                 })}
               />
