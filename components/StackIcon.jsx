@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { useTheme } from 'next-themes';
 
@@ -31,6 +31,9 @@ import {
 } from '@lib/stackLogos';
 
 export default function StackIcon({ stackIcon, section, isMobile }) {
+  const [mounted, setMounted] = useState(false);
+  const { systemTheme, theme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   let src;
@@ -40,7 +43,15 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
   const heightPercentage = (percentage) => (iconHeight * percentage) / 100;
   const project = section.replace(/\./g, '-').replace(/ /g, '-').toLowerCase();
   const stackName = stackIcon.replace(/ /g, '-').toLowerCase();
-  const { theme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   switch (stackIcon) {
     case 'ACF':
@@ -52,7 +63,7 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
       height = heightPercentage(97);
       break;
     case 'Contentful':
-      src = theme === 'dark' ? Contentful.src : ContentfulAlt.src;
+      src = currentTheme === 'dark' ? Contentful.src : ContentfulAlt.src;
       break;
     case 'Firebase':
       src = Firebase.src;
@@ -64,13 +75,13 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
       src = Illustrator.src;
       break;
     case 'jQuery':
-      src = theme === 'dark' ? jQuery.src : jQueryAlt.src;
+      src = currentTheme === 'dark' ? jQuery.src : jQueryAlt.src;
       break;
     case 'MySQL':
       src = MySQL.src;
       break;
     case 'NextJS':
-      src = theme === 'dark' ? NextJS.src : NextJSAlt.src;
+      src = currentTheme === 'dark' ? NextJS.src : NextJSAlt.src;
       break;
     case 'Photoshop':
       src = Photoshop.src;
@@ -92,7 +103,7 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
       height = heightPercentage(93);
       break;
     case 'Symfony':
-      src = theme === 'dark' ? Symfony.src : SymfonyAlt.src;
+      src = currentTheme === 'dark' ? Symfony.src : SymfonyAlt.src;
       break;
     case 'WordPress':
       src = theme === 'dark' ? WordPress.src : WordPressAlt.src;

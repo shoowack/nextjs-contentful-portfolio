@@ -1,0 +1,106 @@
+:root {
+    --ease-elastic-4: cubic-bezier(.5, 1.5, .75, 1.25);
+    --ease-elastic-3: cubic-bezier(.5, 1.25, .75, 1.25);
+    --ease-out-5: cubic-bezier(0, 0, 0, 1);
+    --ease-3: cubic-bezier(.25, 0, .3, 1);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+
+    & > svg {
+        inline-size: 100%;
+        block-size: 100%;
+        stroke-linecap: round;
+        max-width: 40px;
+        max-height: 40px;
+        margin: auto;
+    }
+
+    .sun-and-moon {
+        transition: transform .5s var(--ease-elastic-4);
+
+        & > :is(.moon, .sun, .sun-beams) {
+            transform-origin: center center;
+        }
+
+        // & > :is(.moon) {
+        //     fill: #ff0000 !important;
+        // }
+
+        // & > :is(.sun) {
+        //     fill: #00ff00;
+        // }
+
+        & > .sun-beams {
+            // stroke: #dd0000;
+            stroke-width: 2px;
+        }
+
+        html.dark & {
+            & > .sun {
+                transform: scale(1.75);
+            }
+
+            & > .sun-beams {
+                opacity: 0;
+            }
+
+            & > .moon > circle {
+                transform: translateX(-7px);
+            }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            & > .sun {
+                transition: transform .5s var(--ease-elastic-3), stroke .5s, fill .5s;
+            }
+
+            & > .sun-beams {
+                transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3), stroke .5s, fill .5s;
+            }
+
+            & .moon > circle {
+                transition: transform .25s var(--ease-out-5);
+            }
+
+            html.dark & {
+                & > .sun {
+                    transform: scale(1.75);
+                    transition-timing-function: var(--ease-3);
+                    transition-duration: .25s;
+                }
+
+                & > .sun-beams {
+                   transform: rotateZ(-25deg);
+                    transition-duration: .15s;
+                }
+
+                & > .moon > circle {
+                    transition-delay: .25s;
+                    transition-duration: .5s;
+                }
+            }
+        }
+
+    }
+    &:hover {
+        .sun-beams {
+            transform: rotate(45deg);
+            stroke: rgb(207, 155, 33);
+        }
+
+        .sun-and-moon>:is(.moon,.sun) {
+            fill: rgb(241, 211, 2);
+        }
+    }
+}
+
+html.dark .theme-toggle:hover .sun-and-moon>:is(.moon,.sun) {
+    fill: rgb(144, 242, 221);
+}

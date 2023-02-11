@@ -1,27 +1,23 @@
 import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Popover, Transition } from '@headlessui/react';
 import classnames from 'classnames';
 
 const HeaderInfoLink = ({
-  sys: { id },
+  id,
   link,
   tooltipText,
-  icon,
   openInNewTab = false,
-  size = 'lg',
-  iconColor,
-  i,
-  length,
+  last,
+  children,
+  className,
 }) => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
-
-  console.log((i + 1) * 1000);
 
   return (
     <Popover className="relative">
@@ -32,18 +28,20 @@ const HeaderInfoLink = ({
         rel="noreferrer"
         id={`tooltip-${id}`}
         className={classnames(
-          'group inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+          'group inline-flex items-center h-9 w-9 justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+          className,
         )}
         onMouseEnter={() => setTooltipOpen(true)}
         onMouseLeave={() => setTooltipOpen(false)}
       >
-        <FontAwesomeIcon
+        {children}
+        {/* <FontAwesomeIcon
           className="absolute top-0 animate-preload opacity-0"
           style={{ animationDelay: `${(i + 1) * 100}ms` }}
           icon={icon.split(',')}
           size={size}
           color={iconColor}
-        />
+        /> */}
       </a>
 
       <Transition
@@ -59,7 +57,7 @@ const HeaderInfoLink = ({
         <Popover.Panel
           className={classnames(
             'absolute bottom-2 translate-y-[calc(100%+10px)] transform whitespace-nowrap text-center dark:bg-black bg-white',
-            { '-translate-x-1/2 left-1/2 ': !(i + 1 === length), 'right-0': i + 1 === length },
+            last ? 'right-0' : '-translate-x-1/2 left-1/2',
           )}
         >
           <div
