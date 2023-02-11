@@ -21,8 +21,6 @@ const HeaderInfoLink = ({
   const [tooltipOpen, setTooltipOpen] = useState(false);
   library.add(fab, fas);
 
-  console.log((i + 1) * 1000);
-
   return (
     <Popover className="relative">
       <a
