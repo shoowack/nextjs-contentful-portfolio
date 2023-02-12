@@ -49,7 +49,7 @@ export default function Meta() {
       additionalLinkTags={[
         {
           rel: 'icon',
-          href: `${siteURL}/favicon.ico`,
+          href: `${siteURL}/favicon/favicon.ico`,
         },
       ]}
     />
