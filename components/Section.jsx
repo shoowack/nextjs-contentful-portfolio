@@ -158,11 +158,20 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                   <ConditionalWrapper
                     condition={windowWidth < 768}
                     wrapper={(children) => (
-                      <table className="border-separate border-spacing-4">{children}</table>
+                      <table className="border-separate border-spacing-4">
+                        <tbody>{children}</tbody>
+                      </table>
                     )}
                   >
-                    {stack.map((item) => (
-                      <StackIcon stackIcon={item} isMobile={windowWidth < 768} section={title} />
+                    {stack.map((item, i) => (
+                      <StackIcon
+                        key={`${title.replace(/ /g, '-').toLowerCase()}-${item
+                          .replace(/ /g, '-')
+                          .toLowerCase()}-${i}`}
+                        stackIcon={item}
+                        isMobile={windowWidth < 768}
+                        section={title}
+                      />
                     ))}
                   </ConditionalWrapper>
                 </Container>
@@ -181,6 +190,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
           </Container>
           {filteredGalleries?.map((entry, index) => (
             <Carousel
+              key={entry.sys.id}
               {...entry}
               isOdd={isOdd}
               windowWidth={windowWidth}
