@@ -271,7 +271,11 @@ export default function Carousel({
           </div>
         )
       }
-      <Container className="my-12">{i !== galleryLength - 1 && <hr className="m-0" />}</Container>
+      <Container className="my-12">
+        {i !== galleryLength - 1 && (
+          <hr className="m-0 h-px border-0 bg-[#e1e4e8] dark:bg-[#30363d]" />
+        )}
+      </Container>
     </div>
   );
 }

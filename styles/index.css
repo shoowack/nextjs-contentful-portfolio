@@ -63,10 +63,6 @@
         @apply font-semibold whitespace-nowrap bg-highlight text-[#333333]
     }
 
-    hr {
-        @apply h-px border-0 bg-[#e1e4e8] dark:bg-[#30363d]
-    }
-
     .tab-content h5 {
         @apply font-medium
     }

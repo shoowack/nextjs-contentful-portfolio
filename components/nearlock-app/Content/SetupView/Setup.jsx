@@ -162,9 +162,9 @@ export default function Setup({ setActiveTab, isDarkMode }) {
             ))}
             {i < setupData.length - 1 && (
               <hr
-                className={classnames('my-4 w-full', {
-                  '!bg-white/[.05]': isDarkMode,
-                  '!bg-black/[.05]': !isDarkMode,
+                className={classnames('my-4 w-full h-px border-0', {
+                  'bg-white/[.05]': isDarkMode,
+                  'bg-black/[.05]': !isDarkMode,
                 })}
               />
             )}
