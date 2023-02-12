@@ -34,7 +34,7 @@
 
     .darker a,
     .lighter a {
-        @apply leading-8 text-lg font-semibold
+        @apply text-base leading-6 md:text-lg md:leading-8 font-semibold
     }
 
     .lighter a,
@@ -52,11 +52,11 @@
     }
 
     p, code {
-        @apply mb-5 font-['Graphik'] text-lg leading-8;
+        @apply mb-5 font-['Graphik'] text-base leading-6 md:text-lg md:leading-8;
     }
 
     a, code {
-        @apply px-[7px] py-[4px] rounded
+        @apply px-[5px] py-[2px] md:px-[7px] md:py-[4px] rounded
     }
 
     code {

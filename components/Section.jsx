@@ -6,11 +6,8 @@ import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-// import LightGallery from 'lightgallery/react';
-// import { LightGallerySettings } from 'lightgallery/lg-settings';
 import StackIcon from '@components/StackIcon';
 import Link from 'next/link';
-// import FsLightbox from 'fslightbox-react';
 import Balancer from 'react-wrap-balancer';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
 import NearLockApp from '@components/nearlock-app/NearLockApp';
@@ -172,11 +169,14 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
               </>
             )}
             {description && (
-              <Container className="pb-8 text-center text-[#333333] dark:text-[#aaa]">
-                <Balancer>
+              <div className="pb-8 sm:text-center text-[#333333] dark:text-[#aaa]">
+                <ConditionalWrapper
+                  condition={windowWidth >= 640}
+                  wrapper={(children) => <Balancer>{children}</Balancer>}
+                >
                   <RichText richText={description} />
-                </Balancer>
-              </Container>
+                </ConditionalWrapper>
+              </div>
             )}
           </Container>
           {filteredGalleries?.map((entry, index) => (

@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper';
 import classnames from 'classnames';
 import Container from '@components/Container';
+// import LightGallery from 'lightgallery/react';
+// import FsLightbox from 'fslightbox-react';
 
 export default function Carousel({
   fields: { type, images, deviceBezel },
@@ -76,11 +78,11 @@ export default function Carousel({
                 ? windowWidth > 1200
                   ? windowWidth > 2200
                     ? windowWidth > 2600
-                      ? 6
-                      : 5
-                    : 4
-                  : 3
-                : 2
+                      ? 7
+                      : 6
+                    : 5
+                  : 4
+                : 3
               : 1
             : ipads
             ? windowWidth > 900
@@ -137,11 +139,14 @@ export default function Carousel({
           (deviceBezel && windowWidth >= 768 && iphone)) && (
           <img
             src={deviceBezel?.fields.file.url}
-            className={classnames('select-none absolute z-50 left-[50%] -translate-x-1/2', {
-              'top-[-2.3%] h-[104.5%]': iphone,
-              'top-[-3.64%] h-[107%] left-[50.03%]': ipad,
-              'top-[-4.7%] h-[109.2%]': ipadLandscape,
-            })}
+            className={classnames(
+              'select-none absolute z-50 left-[50%] -translate-x-1/2 pointer-events-none',
+              {
+                'top-[-2.3%] h-[104.5%]': iphone,
+                'top-[-3.64%] h-[107%] left-[50.03%]': ipad,
+                'top-[-4.7%] h-[109.2%]': ipadLandscape,
+              },
+            )}
             alt=""
           />
         )}
@@ -162,10 +167,8 @@ export default function Carousel({
               <SwiperSlide
                 key={`gallery-slide-${imageId}`}
                 className={classnames('select-none', {
-                  'rounded-[30px]': windowWidth > 1200 && iphone,
-                  'rounded-[35px]': windowWidth > 991 && windowWidth <= 1200 && iphone,
-                  'rounded-[43px]': windowWidth >= 768 && windowWidth <= 991 && iphone,
-                  'rounded-[10px]': windowWidth <= 768 && iphone,
+                  'rounded-[26px]': windowWidth >= 768 && iphone,
+                  'rounded-[10px]': windowWidth < 768 && iphone,
                   'rounded-[7px]': windowWidth > 550 && ipad,
                   'rounded-[4px]': ipads || website || webApp || desktopApp,
                   'rounded-[11px]': (website || webApp || desktopApp) && windowWidth >= 1024,
@@ -173,20 +176,18 @@ export default function Carousel({
               >
                 {/* <a
                     data-lg-size={`${width}-${height}`}
-                    className="gallery-item"
+                    className="gallery-item hover:cursor-zoom-in"
                     data-src={url}
                     data-sub-html="<h4>Photo by - <a href='https://ii.photography'>Ivan Suvak </a></h4><p>Location - Croatia</p>"
+                    style={{ padding: 'unset' }}
+                    onClick={() => {
+                      setLightboxController({
+                        toggler: !lightboxController.toggler,
+                        slide: 1,
+                      });
+                    }}
+                    aria-hidden
                   > */}
-                {/* <a
-                      style={{ padding: 'unset' }}
-                      onClick={() => {
-                        setLightboxController({
-                          toggler: !lightboxController.toggler,
-                          slide: i + 1,
-                        });
-                      }}
-                    > */}
-
                 <ContentfulImage
                   quality={100}
                   src={url}
