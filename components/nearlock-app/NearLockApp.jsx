@@ -81,7 +81,7 @@ function NearLockApp({ isDarkMode }) {
     },
     {
       id: 7,
-      title: 'Setup',
+      title: 'Settings',
       showInMenu: true,
     },
     {

@@ -1,5 +1,5 @@
-import ListItem from '@components/nearlock-app/Content/SetupView/ListItem';
-import ListHeader from '@components/nearlock-app/Content/SetupView/ListHeader';
+import ListItem from '@components/nearlock-app/Content/SettingsView/ListItem';
+import ListHeader from '@components/nearlock-app/Content/SettingsView/ListHeader';
 import { Tab } from '@headlessui/react';
 import classnames from 'classnames';
 import {
@@ -16,7 +16,7 @@ import {
   failedLoginPhotos,
   loginHistory,
   notifications,
-} from '@components/nearlock-app/Content/SetupView/SetupIcons';
+} from '@components/nearlock-app/Content/SettingsView/SettingsIcons';
 
 export default function Setup({ setActiveTab, isDarkMode }) {
   const setupData = [
