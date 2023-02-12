@@ -45,10 +45,7 @@ const Content = ({
         activeTab={activeTab}
       />
 
-      <Tab.Panels
-        className="tab-content h-full overflow-scroll pt-[52px]"
-        selectedIndex={activeTab}
-      >
+      <Tab.Panels className="tab-content h-full overflow-scroll pt-[52px]">
         {/* Welcome - ID: 0 */}
         <Welcome setIsModalOpen={setIsModalOpen} isDarkMode={isDarkMode} />
         {/* Advanced - ID: 1 */}
