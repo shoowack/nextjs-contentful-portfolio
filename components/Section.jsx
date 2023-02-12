@@ -163,11 +163,9 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                       </table>
                     )}
                   >
-                    {stack.map((item, i) => (
+                    {stack.map((item) => (
                       <StackIcon
-                        key={`${title.replace(/ /g, '-').toLowerCase()}-${item
-                          .replace(/ /g, '-')
-                          .toLowerCase()}-${i}`}
+                        key={`${sectionSlug}-${item.replace(/ /g, '-').toLowerCase()}`}
                         stackIcon={item}
                         isMobile={windowWidth < 768}
                         section={title}
