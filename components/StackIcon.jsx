@@ -28,6 +28,7 @@ import {
   SASS,
   SASSAlt,
   Tailwind,
+  TypeScript,
 } from '@lib/stackLogos';
 
 export default function StackIcon({ stackIcon, section, isMobile }) {
@@ -111,6 +112,9 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
     case 'Tailwind':
       src = Tailwind.src;
       height = heightPercentage(70);
+      break;
+    case 'TypeScript':
+      src = TypeScript.src;
       break;
     default:
       return;
