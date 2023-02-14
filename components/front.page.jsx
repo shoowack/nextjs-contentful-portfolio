@@ -8,7 +8,7 @@ export default function FrontPage({
   title,
   subscript,
   superscript,
-  backgroundImage: { url },
+  backgroundImage: { url, description },
 }) {
   return (
     <Link
@@ -28,9 +28,9 @@ export default function FrontPage({
             </h1>
           )}
           {subscript && (
-            <h3 className="text-center px-5 text-sm xl:text-2xl font-graphik font-light uppercase tracking-widest text-white drop-shadow-[0px_2px_5px_rgba(0,0,0,0.5)] sm:mt-0 md:text-[1vw] md:transition-all md:duration-300 md:group-hover/section:text-[1.6vw] xl:group-hover/section:text-[2.25rem]">
+            <p className="mb-0 text-center px-5 text-sm xl:text-2xl font-graphik font-light uppercase tracking-widest text-white drop-shadow-[0px_2px_5px_rgba(0,0,0,0.5)] sm:mt-0 md:text-[1vw] md:transition-all md:duration-300 md:group-hover/section:text-[1.6vw] xl:group-hover/section:text-[2.25rem]">
               {subscript}
-            </h3>
+            </p>
           )}
         </div>
       )}
@@ -48,6 +48,7 @@ export default function FrontPage({
           sizes="(max-width: 768px) 100vw, 50vw" // 50vw because the image is wider than 33% on hover
           layout="fill"
           className="absolute -z-10 h-full w-full object-cover"
+          alt={description}
         />
       )}
     </Link>
