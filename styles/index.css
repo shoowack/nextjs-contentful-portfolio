@@ -103,3 +103,11 @@
      }
   }
 }
+
+rect[class^="styles_block__"] {
+    stroke: rgba(0,0,0,.03) !important
+}
+
+.dark rect[class^="styles_block__"] {
+    stroke: rgba(0,0,0,.1) !important
+}

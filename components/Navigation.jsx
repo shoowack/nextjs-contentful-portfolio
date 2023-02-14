@@ -1,9 +1,29 @@
 import Link from 'next/link';
 import Container from '@components/Container';
 import HeaderInfoLink from '@components/header-info-link';
+import GitHubCalendar from 'react-github-calendar';
+import { Disclosure, Transition } from '@headlessui/react';
 import ThemeSwitch from './ThemeSwitch';
+import { useTheme } from 'next-themes';
+// import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
 export default function Navigation({ headerItems }) {
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
+  const githubCalendarTheme = currentTheme === 'dark' ? {
+      "level0": "#222",
+      "level1": "hsla(120, 100%, 50%, 1)",
+      "level2": "hsla(120, 100%, 40%, 1)",
+      "level3": "hsla(120, 100%, 30%, 1)",
+      "level4": "hsla(120, 100%, 20%, 1)",
+    } : {
+      "level0": "hsla(0, 0%, 97%, 1)",
+      "level1": "hsla(120, 100%, 80%, 1)",
+      "level2": "hsla(120, 100%, 70%, 1)",
+      "level3": "hsla(120, 100%, 60%, 1)",
+      "level4": "hsla(120, 100%, 50%, 1)",
+    }
+
   return (
     <div className="aboutme text:black md:py-10 xl:py-14 py-2 pb-5 dark:text-white">
       <Container>
@@ -66,6 +86,48 @@ export default function Navigation({ headerItems }) {
         <p className="mb-0">
           <strong>Closed work permit holder</strong> willing to relocate anywhere in Canada.
         </p>
+
+        <Disclosure>
+          {({ open }) => (
+            <>
+              <Disclosure.Button className={"mt-5 block mx-auto"}>
+                Contribution graph
+                {open ? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className='h-4 inline ml-1'>
+                  <path fill-rule="evenodd" d="M11.47 7.72a.75.75 0 011.06 0l7.5 7.5a.75.75 0 11-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 01-1.06-1.06l7.5-7.5z" clip-rule="evenodd"/>
+                    </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" className='h-4 inline ml-1'>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                </svg>}
+              </Disclosure.Button>
+
+              {/*
+                Use the `Transition` + `open` render prop argument to add transitions.
+              */}
+              <Transition
+                show={open}
+                enter="transition duration-100 ease-out"
+                enterFrom="transform scale-95 opacity-0"
+                enterTo="transform scale-100 opacity-100"
+                leave="transition duration-75 ease-out"
+                leaveFrom="transform scale-100 opacity-100"
+                leaveTo="transform scale-95 opacity-0"
+              >
+                {/*
+                  Don't forget to add `static` to your `Disclosure.Panel`!
+                */}
+                <Disclosure.Panel static className="flex justify-center mt-4">
+                  <GitHubCalendar
+                    username="shoowack"
+                    color="#00ff00"
+                    blockMargin={0}
+                    blockRadius={0}
+                    blockSize={18}
+                    theme={githubCalendarTheme}
+                  />
+                </Disclosure.Panel>
+              </Transition>
+            </>
+          )}
+        </Disclosure>
       </Container>
     </div>
   );
