@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 export default function RichTextAsset({ id, assets }) {
   const asset = assets?.find((item) => item.sys.id === id);

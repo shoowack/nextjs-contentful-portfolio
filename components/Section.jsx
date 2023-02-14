@@ -86,11 +86,9 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                   {isSticky &&
                     windowWidth > 639 &&
                     (slug === 'apps-and-websites' || slug === 'designs') && (
-                      <Link href="/">
-                        <a className="px-2 py-0.5 !text-base">
-                          <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
-                          Home
-                        </a>
+                      <Link href="/" className="px-2 py-0.5 !text-base">
+                        <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
+                        Home
                       </Link>
                     )}
                   {/* "clipboard-title" class is needed for share section link */}
@@ -137,11 +135,12 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                   {isSticky &&
                     windowWidth > 639 &&
                     (slug === 'apps-and-websites' || slug === 'designs') && (
-                      <Link href={slug === 'designs' ? '/apps-and-websites' : '/designs'}>
-                        <a className="px-2 py-0.5 !text-base">
-                          {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
-                          <FontAwesomeIcon icon={faAngleRight} className="ml-1" />
-                        </a>
+                      <Link
+                        href={slug === 'designs' ? '/apps-and-websites' : '/designs'}
+                        className="px-2 py-0.5 !text-base"
+                      >
+                        {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
+                        <FontAwesomeIcon icon={faAngleRight} className="ml-1" />
                       </Link>
                     )}
                 </div>
