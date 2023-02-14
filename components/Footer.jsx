@@ -76,7 +76,7 @@ export default function Footer() {
           <form onSubmit={handleSubmit} className="grid gap-y-2 gap-x-5 py-4 sm:grid-cols-2">
             <label
               htmlFor="email"
-              className="self-center font-['Inter'] text-sm font-medium text-[#333] dark:text-white sm:justify-self-end"
+              className="self-center font-graphik text-sm font-medium text-[#333] dark:text-white sm:justify-self-end"
             >
               Your Email:
             </label>
@@ -89,12 +89,12 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => handleChange(e)}
                 disabled={isLoading}
-                className="block w-full rounded-md border border-black/20 dark:border-white/10 bg-white dark:bg-[#424348] py-2 px-3 font-['Inter'] text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] dark:ring-offset-[#2c2d30] transition duration-200 ease-in dark:focus:border-white/10 focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-3/4 sm:text-sm lg:w-1/2"
+                className="block w-full rounded-md border border-black/20 dark:border-white/10 bg-white dark:bg-[#424348] py-2 px-3 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] dark:ring-offset-[#2c2d30] transition duration-200 ease-in dark:focus:border-white/10 focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-3/4 sm:text-sm lg:w-1/2"
               />
             </div>
             <label
               htmlFor="message"
-              className="mt-1 font-['Inter'] text-sm font-medium text-[#333] dark:text-white sm:justify-self-end"
+              className="mt-1 font-graphik text-sm font-medium text-[#333] dark:text-white sm:justify-self-end"
             >
               Your Message:
             </label>
@@ -103,7 +103,7 @@ export default function Footer() {
                 rows={3}
                 required="required"
                 name="message"
-                className="block w-full rounded-md border border-black/20 dark:border-white/10 bg-white dark:bg-[#424348] py-2 px-3 font-['Inter'] text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] dark:ring-offset-[#2c2d30] transition duration-200 ease-in dark:focus:border-white/10 focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-3/4 sm:text-sm lg:w-1/2"
+                className="block w-full rounded-md border border-black/20 dark:border-white/10 bg-white dark:bg-[#424348] py-2 px-3 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] dark:ring-offset-[#2c2d30] transition duration-200 ease-in dark:focus:border-white/10 focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-3/4 sm:text-sm lg:w-1/2"
                 value={message}
                 onChange={(e) => handleChange(e)}
                 disabled={isLoading}

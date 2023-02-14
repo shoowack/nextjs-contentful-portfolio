@@ -27,10 +27,7 @@ module.exports = {
         tight: 1.2,
       },
       fontFamily: {
-        'sans': ['Open Sans', 'sans-serif'],
-        'Inter': ['Inter', 'sans-serif'],
-        'Raleway': ['Raleway', 'sans-serif'],
-        'Graphik': ['Graphik', 'sans-serif'],
+        'graphik': ['var(--font-graphik)'],
       },
       fontSize: {
         '5xl': '2.5rem',
