@@ -6,11 +6,8 @@ import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-// import LightGallery from 'lightgallery/react';
-// import { LightGallerySettings } from 'lightgallery/lg-settings';
 import StackIcon from '@components/StackIcon';
 import Link from 'next/link';
-// import FsLightbox from 'fslightbox-react';
 import Balancer from 'react-wrap-balancer';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
 import NearLockApp from '@components/nearlock-app/NearLockApp';
@@ -19,7 +16,7 @@ import Carousel from '@components/Carousel';
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
+const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }) => {
   const {
     query: { slug },
   } = useRouter();
@@ -98,31 +95,44 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
                     )}
                   {/* "clipboard-title" class is needed for share section link */}
                   <div className="group clipboard-title flex items-center justify-center md:-mr-8">
-                    <h2
-                      className={classnames(
-                        'align-self-center text-nowrap font-black [transition:font-size_0.2s] text-[#333333] dark:text-[#eeeeee]', // don't animate all properties!
-                        {
-                          'sm:text-2xl font-medium': isSticky,
-                          'sm:ml-28 md:ml-24': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
-                          'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky, // has to take into consideration width of the "designs" button
-                          'text-3xl leading-[78px] sm:ml-6 md:mr-4 md:text-[60px]': !isSticky,
-                        },
-                      )}
+                    <div
+                      className={classnames('flex items-center', {
+                        'sm:ml-28 md:ml-24': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
+                        'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky, // has to take into consideration width of the "designs" button
+                        'sm:ml-6 md:mr-4': !isSticky,
+                      })}
                     >
-                      {title}
-                    </h2>
-                    {typeof window !== 'undefined' && windowWidth > 639 && (
-                      <button
-                        type="button"
-                        color="link"
-                        className="clipboard-btn ml-2 opacity-0 [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]"
-                        onClick={() =>
-                          copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
-                        }
+                      {isSticky && appLogo && (
+                        <img
+                          src={appLogo?.fields.file.url}
+                          className="h-6 inline mr-2"
+                          alt={title}
+                        />
+                      )}
+                      <h2
+                        className={classnames(
+                          'align-self-center text-nowrap font-black [transition:font-size_0.2s] text-[#333333] dark:text-[#eeeeee]', // don't animate all properties!
+                          {
+                            'sm:text-2xl font-medium': isSticky,
+                            'text-3xl leading-[78px] md:text-[60px]': !isSticky,
+                          },
+                        )}
                       >
-                        <FontAwesomeIcon icon={copyIcon} color="#000" />
-                      </button>
-                    )}
+                        {title}
+                      </h2>
+                      {typeof window !== 'undefined' && windowWidth > 639 && (
+                        <button
+                          type="button"
+                          color="link"
+                          className="clipboard-btn ml-2 opacity-0 [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]"
+                          onClick={() =>
+                            copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
+                          }
+                        >
+                          <FontAwesomeIcon icon={copyIcon} color="#000" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                   {isSticky &&
                     windowWidth > 639 &&
@@ -148,26 +158,37 @@ const Section = ({ title, description, gallery, stack, windowWidth, i }) => {
                   <ConditionalWrapper
                     condition={windowWidth < 768}
                     wrapper={(children) => (
-                      <table className="border-separate border-spacing-4">{children}</table>
+                      <table className="border-separate border-spacing-4">
+                        <tbody>{children}</tbody>
+                      </table>
                     )}
                   >
                     {stack.map((item) => (
-                      <StackIcon stackIcon={item} isMobile={windowWidth < 768} section={title} />
+                      <StackIcon
+                        key={`${sectionSlug}-${item.replace(/ /g, '-').toLowerCase()}`}
+                        stackIcon={item}
+                        isMobile={windowWidth < 768}
+                        section={title}
+                      />
                     ))}
                   </ConditionalWrapper>
                 </Container>
               </>
             )}
             {description && (
-              <Container className="pb-8 text-center text-[#333333] dark:text-[#aaa]">
-                <Balancer>
+              <div className="pb-8 sm:text-center text-[#333333] dark:text-[#aaa]">
+                <ConditionalWrapper
+                  condition={windowWidth >= 640}
+                  wrapper={(children) => <Balancer>{children}</Balancer>}
+                >
                   <RichText richText={description} />
-                </Balancer>
-              </Container>
+                </ConditionalWrapper>
+              </div>
             )}
           </Container>
           {filteredGalleries?.map((entry, index) => (
             <Carousel
+              key={entry.sys.id}
               {...entry}
               isOdd={isOdd}
               windowWidth={windowWidth}

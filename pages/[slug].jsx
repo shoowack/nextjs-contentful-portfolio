@@ -18,8 +18,8 @@ export default function InnerPage({ entries, headerItems }) {
         {entries[0].sections.map(
           (entry, i) =>
             entry.metadata.tags.some((tags) => tags.sys.id === process.env.NODE_ENV) && (
-              <Provider>
-                <Section windowWidth={width} {...entry.fields} key={entry.sys.id} i={i} />
+              <Provider key={`provider-${entry.sys.id}`}>
+                <Section windowWidth={width} {...entry.fields} i={i} />
               </Provider>
             ),
         )}

@@ -46,11 +46,16 @@ const Sidebar = ({
               toggleTab(id);
             }}
           >
-            <img
-              src={`/nearlock-app/menu/${title.toLowerCase().split(' ').join('-')}.svg`}
-              className="mr-2 ml-1 h-[17px]"
-              alt=""
-            />
+            {
+              // this condition is needed so that it doesn't try to load images that are not even shown
+              showInMenu && (
+                <img
+                  src={`/nearlock-app/menu/${title.toLowerCase().split(' ').join('-')}.svg`}
+                  className="mr-2 ml-1 h-[17px]"
+                  alt=""
+                />
+              )
+            }
             {title}
           </Tab>
         ))}

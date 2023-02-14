@@ -5,7 +5,7 @@ import {
   Welcome,
   Devices,
   Clipboard,
-  Setup,
+  Settings,
   Notifications,
 } from '@components/nearlock-app/Content/';
 // import btOff from "./btOff.json";
@@ -45,10 +45,7 @@ const Content = ({
         activeTab={activeTab}
       />
 
-      <Tab.Panels
-        className="tab-content h-full overflow-scroll pt-[52px]"
-        selectedIndex={activeTab}
-      >
+      <Tab.Panels className="tab-content h-full overflow-scroll pt-[52px]">
         {/* Welcome - ID: 0 */}
         <Welcome setIsModalOpen={setIsModalOpen} isDarkMode={isDarkMode} />
         {/* Advanced - ID: 1 */}
@@ -75,8 +72,8 @@ const Content = ({
         <Tab.Panel />
         {/* Help - ID: 6 */}
         <Tab.Panel />
-        {/* Setup - ID: 7 */}
-        <Setup setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+        {/* Settings - ID: 7 */}
+        <Settings setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
         {/* Photos and History - ID: 8 */}
         <Tab.Panel />
         {/* Updates - ID: 9 */}
