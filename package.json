@@ -2,7 +2,6 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "now-build": "next build",
     "build": "next build",
     "start": "next start",
     "setup": "node ./contentful/setup.js $CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN",
