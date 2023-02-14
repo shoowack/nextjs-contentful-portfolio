@@ -6,6 +6,10 @@ import BreakpointIndicator from '@components/BreakpointIndicator';
 import { ThemeProvider } from 'next-themes';
 import { Analytics } from '@vercel/analytics/react';
 
+import localFont from '@next/font/local';
+
+const myFont = localFont({ src: './../assets/font/Graphik-Thin.woff2' });
+
 const App = ({ Component, pageProps }) => {
   return (
     <>
