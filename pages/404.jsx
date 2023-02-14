@@ -12,10 +12,11 @@ export default function Custom404() {
       </p>
       <p>
         You may find what you were looking for on our{' '}
-        <Link href="/">
-          <a className="bg-black/10 hover:bg-black/20 transition-all ease-in-out duration-500">
-            Homepage
-          </a>
+        <Link
+          href="/"
+          className="bg-black/10 hover:bg-black/20 transition-all ease-in-out duration-500"
+        >
+          Homepage
         </Link>
       </p>
     </div>
