@@ -109,10 +109,10 @@ export default function Carousel({
         className={classnames(
           type.replace(/ /g, '-').toLowerCase(),
           isOdd
-            ? ' before:from-[#f7f8fa] dark:before:from-[#0d1117] after:from-[#f7f8fa] dark:after:from-[#0d1117]'
-            : 'before:from-white dark:before:from-[#010409] after:from-white dark:after:from-[#010409]',
+            ? ' before:from-[#f7f8fa] after:from-[#f7f8fa] dark:before:from-[#0d1117] dark:after:from-[#0d1117]'
+            : 'before:from-white after:from-white dark:before:from-[#010409] dark:after:from-[#010409]',
           {
-            'before:bg-gradient-to-r before:inset-y-0 after:inset-y-0 after:bg-gradient-to-l before:z-[10] after:z-[2] before:content-[""] after:content-[""] before:absolute after:absolute before:h-full after:h-full before:left-0 after:right-0':
+            'before:absolute before:inset-y-0 before:left-0 before:z-[10] before:h-full before:bg-gradient-to-r before:content-[""] after:absolute after:inset-y-0 after:right-0 after:z-[2] after:h-full after:bg-gradient-to-l after:content-[""]':
               (windowWidth > 550 && iphone) ||
               (windowWidth > 900 && ipads) ||
               (windowWidth >= 768 && desktopApp) ||
@@ -137,18 +137,25 @@ export default function Carousel({
       >
         {((deviceBezel && windowWidth > 900 && ipads) ||
           (deviceBezel && windowWidth >= 768 && iphone)) && (
-          <img
-            src={deviceBezel?.fields.file.url}
+          <div
+            aria-hidden
             className={classnames(
-              'select-none absolute z-50 left-[50%] -translate-x-1/2 pointer-events-none',
+              'pointer-events-none absolute left-[50%] z-50 w-full -translate-x-1/2 select-none',
               {
                 'top-[-2.3%] h-[104.5%]': iphone,
-                'top-[-3.64%] h-[107%] left-[50.03%]': ipad,
+                'top-[-3.64%] left-[50.03%] h-[107%]': ipad,
                 'top-[-4.7%] h-[109.2%]': ipadLandscape,
               },
             )}
-            alt=""
-          />
+          >
+            <ContentfulImage
+              quality={100}
+              layout="fill"
+              src={deviceBezel?.fields.file.url}
+              objectFit="contain"
+              aria-hidden
+            />
+          </div>
         )}
         {/* <LightGallery mode="lg-fade"> */}
         {images?.map(
@@ -160,6 +167,7 @@ export default function Carousel({
                   image: { width, height },
                 },
               },
+              description,
             },
             sys: { id: imageId },
           }) => {
@@ -191,7 +199,7 @@ export default function Carousel({
                 <ContentfulImage
                   quality={100}
                   src={url}
-                  alt=""
+                  alt={description}
                   height={height}
                   width={width}
                   layout="responsive"
@@ -216,10 +224,10 @@ export default function Carousel({
       {
         // this is not the same as galleryLength which is used for managing last divider
         images.length > 1 && (
-          <div className="flex justify-center mt-5 md:mt-16 md:mb-24">
+          <div className="mt-5 flex justify-center md:mt-16 md:mb-24">
             <div
               className={classnames(
-                'swiper-button-prev transition-opacity duration-200 p-3 md:py-2.5 md:px-1 rounded-md md:rounded dark:bg-white dark:text-black bg-[#333333] text-white',
+                'swiper-button-prev rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:py-2.5 md:px-1',
                 { 'opacity-50 transition-opacity duration-200': isBeginning },
               )}
               onClick={() => {
@@ -233,7 +241,7 @@ export default function Carousel({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="w-5 h-5"
+                className="h-5 w-5"
               >
                 <path
                   fillRule="evenodd"
@@ -245,7 +253,7 @@ export default function Carousel({
 
             <div
               className={classnames(
-                'swiper-button-next transition-opacity duration-200 p-3 md:py-2.5 md:px-1 rounded-md md:rounded dark:bg-white dark:text-black bg-[#333333] text-white',
+                'swiper-button-next rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:py-2.5 md:px-1',
                 { 'opacity-50 transition-opacity duration-200': isEnd },
               )}
               onClick={() => {
@@ -259,7 +267,7 @@ export default function Carousel({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="w-5 h-5"
+                className="h-5 w-5"
               >
                 <path
                   fillRule="evenodd"

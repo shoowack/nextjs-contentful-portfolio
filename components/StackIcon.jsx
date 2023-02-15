@@ -132,7 +132,14 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
     <tr>
       <td className="text-right">
         <div style={{ height: `${height || heightPercentage(100)}px`, width }} className="relative">
-          <Image src={src} alt={tooltip || stackIcon} className="inline" loader={loader} fill />
+          <Image
+            src={src}
+            alt={tooltip || stackIcon}
+            className="inline"
+            loader={loader}
+            fill
+            sizes="(max-width: 768px) 20vw, 10vw"
+          />
         </div>
       </td>
       <td>
@@ -144,7 +151,7 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
       <div
         key={`${project}-${stackName}`}
         style={{ height: `${height || heightPercentage(100)}px`, width }}
-        className="mx-1"
+        className="relative mx-1"
       >
         <Image
           src={src}
@@ -153,6 +160,7 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
           onMouseLeave={() => setTooltipOpen(false)}
           loader={loader}
           fill
+          sizes="(max-width: 768px) 20vw, 10vw"
         />
       </div>
 
