@@ -12,12 +12,9 @@
     -webkit-tap-highlight-color: transparent;
 
     & > svg {
-        inline-size: 100%;
-        block-size: 100%;
+        inline-size: 19px;
+        block-size: 20px;
         stroke-linecap: round;
-        max-width: 40px;
-        max-height: 40px;
-        margin: auto;
     }
 
     .sun-and-moon {

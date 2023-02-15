@@ -34,7 +34,7 @@ const HeaderInfoLink = ({
         onMouseLeave={() => setTooltipOpen(false)}
       >
         {createElement(RI[`${icon}`], {
-          style: { animationDelay: `${i * 100}ms` },
+          style: { animationDelay: `${(i + 2) * 100}ms` },
           className: 'absolute animate-preload opacity-0',
           color: iconColor || (currentTheme === 'dark' ? '#fff' : '000'),
           size,
