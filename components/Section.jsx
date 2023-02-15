@@ -95,8 +95,10 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                   <div className="clipboard-title group flex items-center justify-center md:-mr-8">
                     <div
                       className={classnames('flex items-center', {
-                        'sm:ml-28 md:ml-24': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
-                        'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky, // has to take into consideration width of the "designs" button
+                        'sm:ml-32 md:ml-24': slug === 'designs' && isSticky && !appLogo, // has to take into consideration width of the "apps and websites" button
+                        'md:ml-16 sm:ml-24': slug === 'designs' && isSticky && appLogo, // has to take into consideration width of the "apps and websites" button and AppLogo
+                        'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky && !appLogo, // has to take into consideration width of the "designs" button
+                        'sm:ml-2 md:-ml-6': slug === 'apps-and-websites' && isSticky && appLogo, // has to take into consideration width of the "designs" button and AppLogo
                         'sm:ml-6 md:mr-4': !isSticky,
                       })}
                     >
@@ -122,12 +124,15 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                         <button
                           type="button"
                           color="link"
-                          className="clipboard-btn ml-2 opacity-0 [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]"
+                          className={classnames(
+                            'clipboard-btn opacity-0 text-[#333333] dark:text-[#eeeeee] [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]',
+                            isSticky ? 'ml-2' : 'ml-4',
+                          )}
                           onClick={() =>
                             copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
                           }
                         >
-                          <FontAwesomeIcon icon={copyIcon} color="#000" />
+                          <FontAwesomeIcon icon={copyIcon} />
                         </button>
                       )}
                     </div>
