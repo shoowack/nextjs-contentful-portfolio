@@ -10,6 +10,25 @@ import {
   IoLogoDribbble,
   IoAt,
 } from 'react-icons/io5';
+
+import {
+  BsEnvelope,
+  BsLinkedin,
+  BsGithub,
+  BsFileEarmarkTextFill,
+  BsDribbble,
+  BsFillCameraFill,
+} from 'react-icons/bs';
+
+import {
+  RiMailLine,
+  RiCamera2Line,
+  RiDribbbleLine,
+  RiFile2Line,
+  RiGithubLine,
+  RiLinkedinBoxLine,
+} from 'react-icons/ri';
+
 import { useTheme } from 'next-themes';
 import ThemeSwitch from './ThemeSwitch';
 
@@ -30,12 +49,12 @@ export default function Navigation({ headerItems }) {
   }
 
   return (
-    <div className="aboutme text:black md:py-10 xl:py-14 py-2 pb-5 dark:text-white">
+    <div className="aboutme text:black py-2 pb-5 dark:text-white md:py-10 xl:py-14">
       <Container>
-        <div className="flex flex-row justify-between mb-5">
-          <div className="w-[55px] flex items-center justify-between">
+        <div className="mb-5 flex flex-row justify-between">
+          <div className="flex w-[55px] items-center justify-between">
             <Link href="/" passHref legacyBehavior>
-              <a className="group logo flex origin-[left_50%] scale-50 flex-row items-center p-0 md:hover:w-[200px] sm:scale-75 md:scale-100">
+              <a className="logo group flex origin-[left_50%] scale-50 flex-row items-center p-0 sm:scale-75 md:scale-100 md:hover:w-[200px]">
                 <svg
                   width="20px"
                   height="17px"
@@ -75,43 +94,57 @@ export default function Navigation({ headerItems }) {
 
             <HeaderInfoLink
               id="1"
-              link="https://www.linkedin.com/in/ivan-suvak-martinovic/"
-              tooltipText="LinkedIn Profile"
+              link="mailto:isuvak@gmail.com"
+              tooltipText="Email me"
               openInNewTab
             >
-              <IoLogoLinkedin
+              <RiMailLine
                 color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={20}
-                className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '100ms' }}
-              />
-            </HeaderInfoLink>
-            <HeaderInfoLink
-              id="2"
-              link="https://github.com/shoowack"
-              tooltipText="GitHub"
-              openInNewTab
-            >
-              <IoLogoGithub
-                color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={20}
+                size={21}
                 className="absolute animate-preload opacity-0"
                 style={{ animationDelay: '200ms' }}
               />
             </HeaderInfoLink>
             <HeaderInfoLink
-              id="3"
+              id="2"
               link="https://assets.ctfassets.net/8gwjxlncuroo/2A4Ph6n4s2nlLo02und0tn/a606a06c734fc36512ba1d3ddfa1cbd0/Ivan_Suvak_Martinovic_CV.pdf"
               tooltipText="Download CV"
+              openInNewTab
             >
-              <IoDocument
+              <RiFile2Line
                 color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={20}
+                size={21}
                 className="absolute animate-preload opacity-0"
                 style={{ animationDelay: '300ms' }}
               />
             </HeaderInfoLink>
             <HeaderInfoLink
+              id="3"
+              link="https://www.linkedin.com/in/ivan-suvak-martinovic/"
+              tooltipText="LinkedIn Profile"
+              openInNewTab
+            >
+              <RiLinkedinBoxLine
+                color={currentTheme === 'dark' ? '#fff' : '000'}
+                size={22}
+                className="absolute animate-preload opacity-0"
+                style={{ animationDelay: '400ms' }}
+              />
+            </HeaderInfoLink>
+            <HeaderInfoLink
+              id="4"
+              link="https://github.com/shoowack"
+              tooltipText="GitHub"
+              openInNewTab
+            >
+              <RiGithubLine
+                color={currentTheme === 'dark' ? '#fff' : '000'}
+                size={21}
+                className="absolute animate-preload opacity-0"
+                style={{ animationDelay: '500ms' }}
+              />
+            </HeaderInfoLink>
+            {/* <HeaderInfoLink
               id="4"
               link="mailto:isuvak@gmail.com"
               tooltipText="E-mail me"
@@ -121,21 +154,21 @@ export default function Navigation({ headerItems }) {
               <IoAt
                 color={currentTheme === 'dark' ? '#fff' : '000'}
                 size={24}
-                className="absolute animate-preload opacity-0 translate-y-[-2px]"
+                className="absolute translate-y-[-2px] animate-preload opacity-0"
                 style={{ animationDelay: '400ms' }}
               />
-            </HeaderInfoLink>
+            </HeaderInfoLink> */}
             <HeaderInfoLink
               id="5"
               link="https://dribbble.com/Shoowack"
               tooltipText="Dribbble"
               openInNewTab
             >
-              <IoLogoDribbble
+              <RiDribbbleLine
                 color={currentTheme === 'dark' ? '#fff' : '000'}
                 size={20}
                 className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '500ms' }}
+                style={{ animationDelay: '600ms' }}
               />
             </HeaderInfoLink>
             <HeaderInfoLink
@@ -143,12 +176,13 @@ export default function Navigation({ headerItems }) {
               link="http://ii.photography/"
               tooltipText="Photography<br>Portfolio"
               openInNewTab
+              last
             >
-              <IoCamera
+              <RiCamera2Line
                 color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={21}
+                size={22}
                 className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '600ms' }}
+                style={{ animationDelay: '700ms' }}
               />
             </HeaderInfoLink>
 

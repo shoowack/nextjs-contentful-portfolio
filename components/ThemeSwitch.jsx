@@ -13,15 +13,14 @@ const ThemeSwitch = () => {
     <div className="relative">
       <a
         rel="noreferrer"
-        id="theme-toggle"
         className={classnames(
-          'theme-toggle inline-flex items-center h-9 w-9 justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+          'theme-toggle inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
         )}
         onClick={toggleTheme}
         aria-hidden
       >
         <svg
-          className="sun-and-moon p-[9px] absolute animate-preload opacity-0"
+          className="sun-and-moon absolute !-top-[1px] animate-preload p-[9px] opacity-0"
           aria-hidden="true"
           width="24"
           height="24"
