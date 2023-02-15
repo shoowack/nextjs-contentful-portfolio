@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { useTheme } from 'next-themes';
+import Image from 'next/image';
 
 import {
   ACF,
@@ -31,6 +32,10 @@ import {
   TypeScript,
 } from '@lib/stackLogos';
 
+const loader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 export default function StackIcon({ stackIcon, section, isMobile }) {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme } = useTheme();
@@ -39,9 +44,11 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
 
   let src;
   let height;
+  const width = 40;
   let tooltip;
   const iconHeight = 30;
   const heightPercentage = (percentage) => (iconHeight * percentage) / 100;
+  // const heightPercentage = (percentage) => (iconHeight * percentage) / 100;
   const project = section.replace(/\./g, '-').replace(/ /g, '-').toLowerCase();
   const stackName = stackIcon.replace(/ /g, '-').toLowerCase();
 
@@ -135,12 +142,16 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
   return isMobile ? (
     <tr>
       <td className="text-right">
-        <img
-          src={src}
-          style={{ height: `${height || heightPercentage(100)}px` }}
-          alt={tooltip || stackIcon}
-          className="inline"
-        />
+        <div style={{ height: `${height || heightPercentage(100)}px`, width }} className="relative">
+          <Image
+            src={src}
+            alt={tooltip || stackIcon}
+            className="inline"
+            loader={loader}
+            fill
+            sizes="(max-width: 768px) 20vw, 10vw"
+          />
+        </div>
       </td>
       <td>
         <p className="m-0 text-left text-[#333333] dark:text-[#eeeeee]">{stackIcon}</p>
@@ -148,14 +159,19 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
     </tr>
   ) : (
     <Popover className="relative">
-      <div key={`${project}-${stackName}`}>
-        <img
+      <div
+        key={`${project}-${stackName}`}
+        style={{ height: `${height || heightPercentage(100)}px`, width }}
+        className="relative mx-1"
+      >
+        <Image
           src={src}
-          style={{ height: `${height || heightPercentage(100)}px` }}
           alt={tooltip || stackIcon}
           onMouseEnter={() => setTooltipOpen(true)}
           onMouseLeave={() => setTooltipOpen(false)}
-          className="mx-2"
+          loader={loader}
+          fill
+          sizes="(max-width: 768px) 20vw, 10vw"
         />
       </div>
 
@@ -170,7 +186,7 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="absolute left-1/2 top-0 translate-y-[calc(-100%-10px)] -translate-x-1/2 transform whitespace-nowrap text-center">
-          <div className="rounded-lg px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-black dark:text-white bg-white text-black">
+          <div className="rounded-lg bg-white px-2 py-1 text-black shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-black dark:text-white">
             {tooltip || stackIcon}
           </div>
         </Popover.Panel>
