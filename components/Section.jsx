@@ -38,7 +38,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
     <StickyContainer>
       <section
         className={classnames(
-          `w-full overflow-hidden md:py-10 md:px-0 text-black/75 border-b border-[#e1e4e8] dark:border-[#30363d]`,
+          `w-full overflow-hidden border-b border-[#e1e4e8] text-black/75 dark:border-[#30363d] md:py-10 md:px-0`,
           isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
         )}
         id={sectionSlug}
@@ -53,7 +53,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                   : 'bg-white/[0.8] dark:bg-[#010409]/[0.6]',
                 {
                   'backdrop-blur-[10px]': windowWidth <= 639,
-                  'after:content-[""] after:w-full after:h-px dark:after:bg-white/10 after:bg-black/5 after:bottom-0 after:fixed':
+                  'after:fixed after:bottom-0 after:h-px after:w-full after:bg-black/5 after:content-[""] dark:after:bg-white/10':
                     isSticky,
                 },
               )}
@@ -63,7 +63,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
             >
               <div
                 className={classnames({
-                  'before:[inset:-1px_0px_-80px] dark:before:[mask-image:linear-gradient(to_bottom,black_47px,transparent_70px)] before:[mask-image:linear-gradient(to_bottom,black_44px,transparent_70px)] before:content-[""] before:absolute before:pointer-events-none before:select-none before:backdrop-blur-[12px]':
+                  'before:pointer-events-none before:absolute before:select-none before:backdrop-blur-[12px] before:content-[""] before:[inset:-1px_0px_-80px] before:[mask-image:linear-gradient(to_bottom,black_44px,transparent_70px)] dark:before:[mask-image:linear-gradient(to_bottom,black_47px,transparent_70px)]':
                     isSticky && windowWidth > 639,
                 })}
               />
@@ -92,7 +92,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                       </Link>
                     )}
                   {/* "clipboard-title" class is needed for share section link */}
-                  <div className="group clipboard-title flex items-center justify-center md:-mr-8">
+                  <div className="clipboard-title group flex items-center justify-center md:-mr-8">
                     <div
                       className={classnames('flex items-center', {
                         'sm:ml-28 md:ml-24': slug === 'designs' && isSticky, // has to take into consideration width of the "apps and websites" button
@@ -103,15 +103,15 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                       {isSticky && appLogo && (
                         <img
                           src={appLogo?.fields.file.url}
-                          className="h-6 inline mr-2"
+                          className="mr-2 inline h-6"
                           alt={title}
                         />
                       )}
                       <h2
                         className={classnames(
-                          'align-self-center text-nowrap font-black [transition:font-size_0.2s] text-[#333333] dark:text-[#eeeeee]', // don't animate all properties!
+                          'align-self-center text-nowrap font-black text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee]', // don't animate all properties!
                           {
-                            'sm:text-2xl font-medium': isSticky,
+                            'font-medium sm:text-2xl': isSticky,
                             'text-3xl leading-[78px] md:text-[60px]': !isSticky,
                           },
                         )}
@@ -149,11 +149,11 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
           )}
         </Sticky>
 
-        <div className="flex flex-col md:pb-5 md:mt-10">
+        <div className="flex flex-col md:mt-10 md:pb-5">
           <Container className="pb-4">
             {stack && (
               <>
-                <Container className="flex flex-col justify-center items-center pb-5 md:flex-row !px-0">
+                <Container className="flex flex-col items-center justify-center !px-0 pb-5 md:flex-row">
                   <ConditionalWrapper
                     condition={windowWidth < 768}
                     wrapper={(children) => (
@@ -175,7 +175,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
               </>
             )}
             {description && (
-              <div className="pb-8 sm:text-center text-[#333333] dark:text-[#aaa]">
+              <div className="pb-8 text-[#333333] dark:text-[#aaa] sm:text-center">
                 <ConditionalWrapper
                   condition={windowWidth >= 640}
                   wrapper={(children) => <Balancer>{children}</Balancer>}
@@ -218,7 +218,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
               type="button"
               onClick={toggleDarkMode}
               className={classnames(
-                'group nearlock-app-wrapper-theme-toggler absolute right-12 top-10 z-[1] flex h-12 w-12 items-center justify-center rounded-full [transition:background_0.5s]',
+                'nearlock-app-wrapper-theme-toggler group absolute right-12 top-10 z-[1] flex h-12 w-12 items-center justify-center rounded-full [transition:background_0.5s]',
                 isDarkMode ? 'bg-[#211C21]' : 'bg-white',
                 {
                   dark: isDarkMode,
@@ -242,9 +242,9 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
               fluid="lg"
               className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}
             >
-              <div className="group clipboard-title mr-md-n5 flex items-center justify-center">
+              <div className="clipboard-title mr-md-n5 group flex items-center justify-center">
                 <Balancer>
-                  <p className="mb-0 text-white leading-6">
+                  <p className="mb-0 leading-6 text-white">
                     Interactive preview of the Near Lock desktop app
                   </p>
                 </Balancer>
@@ -261,7 +261,7 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                 )}
               </div>
               <Balancer>
-                <p className="leading-5 mt-4 text-xs text-white/[0.75] tracking-wider mb-0">
+                <p className="mt-4 mb-0 text-xs leading-5 tracking-wider text-white/[0.75]">
                   {windowWidth >= 1120
                     ? 'some of the features are not available yet'
                     : 'for an interactive preview, please visit desktop version of the website'}

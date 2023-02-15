@@ -2,42 +2,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Container from '@components/Container';
 import HeaderInfoLink from '@components/header-info-link';
-import {
-  IoLogoGithub,
-  IoDocument,
-  IoCamera,
-  IoLogoLinkedin,
-  IoLogoDribbble,
-  IoAt,
-} from 'react-icons/io5';
-
-import {
-  BsEnvelope,
-  BsLinkedin,
-  BsGithub,
-  BsFileEarmarkTextFill,
-  BsDribbble,
-  BsFillCameraFill,
-} from 'react-icons/bs';
-
-import {
-  RiMailLine,
-  RiCamera2Line,
-  RiDribbbleLine,
-  RiFile2Line,
-  RiGithubLine,
-  RiLinkedinBoxLine,
-} from 'react-icons/ri';
-
-import { useTheme } from 'next-themes';
 import ThemeSwitch from './ThemeSwitch';
 
 export default function Navigation({ headerItems }) {
-  console.log(headerItems);
-
   const [mounted, setMounted] = useState(false);
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -91,109 +59,17 @@ export default function Navigation({ headerItems }) {
           </div>
           <div className="header-info-links mt-2 flex items-center justify-end">
             <ThemeSwitch />
-
-            <HeaderInfoLink
-              id="1"
-              link="mailto:isuvak@gmail.com"
-              tooltipText="Email me"
-              openInNewTab
-            >
-              <RiMailLine
-                color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={21}
-                className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '200ms' }}
-              />
-            </HeaderInfoLink>
-            <HeaderInfoLink
-              id="2"
-              link="https://assets.ctfassets.net/8gwjxlncuroo/2A4Ph6n4s2nlLo02und0tn/a606a06c734fc36512ba1d3ddfa1cbd0/Ivan_Suvak_Martinovic_CV.pdf"
-              tooltipText="Download CV"
-              openInNewTab
-            >
-              <RiFile2Line
-                color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={21}
-                className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '300ms' }}
-              />
-            </HeaderInfoLink>
-            <HeaderInfoLink
-              id="3"
-              link="https://www.linkedin.com/in/ivan-suvak-martinovic/"
-              tooltipText="LinkedIn Profile"
-              openInNewTab
-            >
-              <RiLinkedinBoxLine
-                color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={22}
-                className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '400ms' }}
-              />
-            </HeaderInfoLink>
-            <HeaderInfoLink
-              id="4"
-              link="https://github.com/shoowack"
-              tooltipText="GitHub"
-              openInNewTab
-            >
-              <RiGithubLine
-                color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={21}
-                className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '500ms' }}
-              />
-            </HeaderInfoLink>
-            {/* <HeaderInfoLink
-              id="4"
-              link="mailto:isuvak@gmail.com"
-              tooltipText="E-mail me"
-              openInNewTab
-              className="pb-1"
-            >
-              <IoAt
-                color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={24}
-                className="absolute translate-y-[-2px] animate-preload opacity-0"
-                style={{ animationDelay: '400ms' }}
-              />
-            </HeaderInfoLink> */}
-            <HeaderInfoLink
-              id="5"
-              link="https://dribbble.com/Shoowack"
-              tooltipText="Dribbble"
-              openInNewTab
-            >
-              <RiDribbbleLine
-                color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={20}
-                className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '600ms' }}
-              />
-            </HeaderInfoLink>
-            <HeaderInfoLink
-              id="6"
-              link="http://ii.photography/"
-              tooltipText="Photography<br>Portfolio"
-              openInNewTab
-              last
-            >
-              <RiCamera2Line
-                color={currentTheme === 'dark' ? '#fff' : '000'}
-                size={22}
-                className="absolute animate-preload opacity-0"
-                style={{ animationDelay: '700ms' }}
-              />
-            </HeaderInfoLink>
-
-            {/* {headerItems?.map((headerLink, i) => (
-              <HeaderInfoLink
-                {...headerLink}
-                key={headerLink.sys.id}
-                i={i}
-                length={headerItems.length}
-              />
-            ))} */}
+            {headerItems.map(
+              (link, i) =>
+                link.contentfulMetadata.tags.some((tags) => tags.name === process.env.NODE_ENV) && (
+                  <HeaderInfoLink
+                    {...link}
+                    i={i}
+                    linksLength={headerItems.length}
+                    key={link.sys.id}
+                  />
+                ),
+            )}
           </div>
         </div>
         <p>

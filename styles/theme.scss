@@ -1,11 +1,9 @@
-:root {
-    --ease-elastic-4: cubic-bezier(.5, 1.5, .75, 1.25);
-    --ease-elastic-3: cubic-bezier(.5, 1.25, .75, 1.25);
-    --ease-out-5: cubic-bezier(0, 0, 0, 1);
-    --ease-3: cubic-bezier(.25, 0, .3, 1);
-}
-
 .theme-toggle {
+    --ease-1: cubic-bezier(.5, 1.5, .75, 1.25);
+    --ease-2: cubic-bezier(.5, 1.25, .75, 1.25);
+    --ease-3: cubic-bezier(.25, 0, .3, 1);
+    --ease-4: cubic-bezier(0, 0, 0, 1);
+
     background: none;
     border: none;
 
@@ -23,22 +21,13 @@
     }
 
     .sun-and-moon {
-        transition: transform .5s var(--ease-elastic-4);
+        transition: transform .5s var(--ease-1);
 
         & > :is(.moon, .sun, .sun-beams) {
             transform-origin: center center;
         }
 
-        // & > :is(.moon) {
-        //     fill: #ff0000 !important;
-        // }
-
-        // & > :is(.sun) {
-        //     fill: #00ff00;
-        // }
-
         & > .sun-beams {
-            // stroke: #dd0000;
             stroke-width: 2px;
         }
 
@@ -58,15 +47,15 @@
 
         @media (prefers-reduced-motion: no-preference) {
             & > .sun {
-                transition: transform .5s var(--ease-elastic-3), stroke .5s, fill .5s;
+                transition: transform .5s var(--ease-2), stroke .5s, fill .5s;
             }
 
             & > .sun-beams {
-                transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3), stroke .5s, fill .5s;
+                transition: transform .5s var(--ease-1), opacity .5s var(--ease-3), stroke .5s, fill .5s;
             }
 
             & .moon > circle {
-                transition: transform .25s var(--ease-out-5);
+                transition: transform .25s var(--ease-4);
             }
 
             html.dark & {
@@ -90,6 +79,10 @@
 
     }
     &:hover {
+        html.dark & .sun-and-moon>:is(.moon,.sun) {
+            fill: rgb(144, 242, 221);
+        }
+
         .sun-beams {
             transform: rotate(45deg);
             stroke: rgb(207, 155, 33);
@@ -99,8 +92,4 @@
             fill: rgb(241, 211, 2);
         }
     }
-}
-
-html.dark .theme-toggle:hover .sun-and-moon>:is(.moon,.sun) {
-    fill: rgb(144, 242, 221);
 }
