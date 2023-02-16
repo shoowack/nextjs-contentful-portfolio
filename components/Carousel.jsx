@@ -178,7 +178,8 @@ export default function Carousel({
                   'rounded-[26px]': windowWidth >= 768 && iphone,
                   'rounded-[10px]': windowWidth < 768 && iphone,
                   'rounded-[7px]': windowWidth > 550 && ipad,
-                  'rounded-[4px]': ipads || website || webApp || desktopApp,
+                  'rounded-[4px]':
+                    ipads || ((website || webApp || desktopApp) && windowWidth < 1024),
                   'rounded-[11px]': (website || webApp || desktopApp) && windowWidth >= 1024,
                 })}
               >
