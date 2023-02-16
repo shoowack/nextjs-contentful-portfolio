@@ -21,6 +21,7 @@ export default function AppStoreDownloadBadge() {
     <Link
       href="https://apps.apple.com/us/app/near-lock/id886882252?itsct=apps_box_badge&amp;itscg=30200"
       className="p-0 inline-flex self-center !bg-transparent"
+      target="_blank"
     >
       <Image
         src={`https://tools.applemediaservices.com/api/badges/download-on-the-app-store/${
