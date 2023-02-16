@@ -109,10 +109,10 @@ export default function Carousel({
         className={classnames(
           type.replace(/ /g, '-').toLowerCase(),
           isOdd
-            ? ' before:from-[#f7f8fa] after:from-[#f7f8fa] dark:before:from-[#0d1117] dark:after:from-[#0d1117]'
-            : 'before:from-white after:from-white dark:before:from-[#010409] dark:after:from-[#010409]',
+            ? ' before:bg-[#f7f8fa]/70 after:bg-[#f7f8fa]/70 dark:before:bg-[#0d1117]/70 dark:after:bg-[#0d1117]/70'
+            : 'before:bg-white/70 after:bg-white/70 dark:before:bg-[#010409]/70 dark:after:bg-[#010409]/70',
           {
-            'before:absolute before:inset-y-0 before:left-0 before:z-[10] before:h-full before:bg-gradient-to-r before:content-[""] after:absolute after:inset-y-0 after:right-0 after:z-[2] after:h-full after:bg-gradient-to-l after:content-[""]':
+            'before:absolute before:[mask-image:linear-gradient(to_right,rgba(255,255,255,1),rgba(255,255,255,0))] after:[mask-image:linear-gradient(to_left,rgba(255,255,255,1),rgba(255,255,255,0))] before:inset-y-0 before:backdrop-blur-[10px] after:backdrop-blur-[10px] before:left-0 before:z-[10] before:h-full before:content-[""] after:absolute after:inset-y-0 after:right-0 after:z-[2] after:h-full after:content-[""]':
               (windowWidth > 550 && iphone) ||
               (windowWidth > 900 && ipads) ||
               (windowWidth >= 768 && desktopApp) ||
