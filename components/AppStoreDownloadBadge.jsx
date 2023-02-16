@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 
-export default function AppStoreDownloadBadge() {
+export default function AppStoreDownloadBadge({ link }) {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
@@ -18,11 +18,7 @@ export default function AppStoreDownloadBadge() {
   }
 
   return (
-    <Link
-      href="https://apps.apple.com/us/app/near-lock/id886882252?itsct=apps_box_badge&amp;itscg=30200"
-      className="p-0 inline-flex self-center !bg-transparent"
-      target="_blank"
-    >
+    <Link href={link} className="p-0 !bg-transparent" target="_blank">
       <Image
         src={`https://tools.applemediaservices.com/api/badges/download-on-the-app-store/${
           currentTheme === 'dark' ? 'white' : 'black'

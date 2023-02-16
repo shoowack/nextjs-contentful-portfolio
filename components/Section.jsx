@@ -17,7 +17,7 @@ import AppStoreDownloadBadge from './AppStoreDownloadBadge';
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }) => {
+const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo, storeLink }) => {
   const {
     query: { slug },
   } = useRouter();
@@ -190,9 +190,9 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                 </ConditionalWrapper>
               </div>
             )}
-            {title === 'Near Lock App' && slug === 'designs' && (
-              <div className="text-center">
-                <AppStoreDownloadBadge />
+            {storeLink && (
+              <div className="flex justify-center">
+                <AppStoreDownloadBadge link={storeLink} />
               </div>
             )}
           </Container>

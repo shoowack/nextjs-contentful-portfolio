@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
         <Head>
           <style type="text/css">{dom.css()}</style>
         </Head>
-        <body>
+        <body className="bg-[#e9eaed] dark:bg-[#2c2d30] antialiased">
           <Main />
           <NextScript />
         </body>
