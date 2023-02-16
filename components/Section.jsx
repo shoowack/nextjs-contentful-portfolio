@@ -12,6 +12,7 @@ import Balancer from 'react-wrap-balancer';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
 import NearLockApp from '@components/nearlock-app/NearLockApp';
 import Carousel from '@components/Carousel';
+import AppStoreDownloadBadge from './AppStoreDownloadBadge';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -187,6 +188,11 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo }
                 >
                   <RichText richText={description} />
                 </ConditionalWrapper>
+              </div>
+            )}
+            {title === 'Near Lock App' && slug === 'designs' && (
+              <div className="text-center">
+                <AppStoreDownloadBadge />
               </div>
             )}
           </Container>
