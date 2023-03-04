@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Container from '@components/Container';
 import RichText from '@madebyconnor/rich-text-to-jsx';
 import { StickyContainer, Sticky } from '@dior/react-sticky';
@@ -12,12 +12,25 @@ import Balancer from 'react-wrap-balancer';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
 import NearLockApp from '@components/nearlock-app/NearLockApp';
 import Carousel from '@components/Carousel';
+// import { useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import AppStoreDownloadBadge from './AppStoreDownloadBadge';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo, storeLink }) => {
+const Section = ({
+  sectionTitle,
+  title,
+  description,
+  gallery,
+  stack,
+  windowWidth,
+  i,
+  appLogo,
+  storeLink,
+  refs,
+}) => {
   const {
     query: { slug },
   } = useRouter();
@@ -25,6 +38,8 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo, 
   const [copyToClipboard, { copyIcon }] = useCopyToClipboard();
   const sectionSlug = title.toLowerCase().split(' ').join('-');
   const isOdd = i % 2;
+  // const isInView = useInView(ref);
+  const isSticky = true;
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -43,117 +58,159 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo, 
           isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
         )}
         id={sectionSlug}
+        ref={(el) => (refs.current[i] = el)}
       >
-        <Sticky topOffset={windowWidth > 767 ? 45 : 20}>
-          {({ style, isSticky }) => (
-            <header
-              className={classnames(
-                'z-[1080]',
-                i % 2
-                  ? 'bg-[#f7f8fa]/[0.8] dark:bg-[#0d1117]/[0.6]'
-                  : 'bg-white/[0.8] dark:bg-[#010409]/[0.6]',
-                {
-                  'backdrop-blur-[10px]': windowWidth <= 639,
-                  'after:fixed after:bottom-0 after:h-px after:w-full after:bg-black/5 after:content-[""] dark:after:bg-white/10':
-                    isSticky,
-                },
-              )}
-              style={{
-                ...style,
-              }}
-            >
-              <div
-                className={classnames({
-                  'before:pointer-events-none before:absolute before:select-none before:backdrop-blur-[12px] before:content-[""] before:[inset:-1px_0px_-80px] before:[mask-image:linear-gradient(to_bottom,black_44px,transparent_70px)] dark:before:[mask-image:linear-gradient(to_bottom,black_47px,transparent_70px)]':
-                    isSticky && windowWidth > 639,
-                })}
-              />
-              <Container
-                className={classnames(
-                  {
-                    sticky: isSticky,
+        <div
+          className="fixed top-0 w-full z-10 bg-red-500"
+          // style={{
+          //   width: `${readingProgress * 100}%`,
+          // }}
+        >
+          {console.log(sectionTitle, 'opa')}
+
+          {sectionTitle && (
+            <>
+              <motion.div
+                animate={{
+                  // x: 0,
+                  // backgroundColor: '#000',
+                  // boxShadow: '10px 10px 0 rgba(0, 0, 0, 0.2)',
+                  // position: 'fixed',
+                  transitionEnd: {
+                    display: 'none',
                   },
-                  'py-2',
-                )}
+                }}
               >
-                <div
-                  className={classnames(
-                    {
-                      'sm:justify-between': isSticky,
-                    },
-                    'flex items-center justify-center',
-                  )}
-                >
-                  {isSticky &&
-                    windowWidth > 639 &&
-                    (slug === 'apps-and-websites' || slug === 'designs') && (
-                      <Link href="/" className="px-2 py-0.5 !text-base">
-                        <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
-                        Home
-                      </Link>
-                    )}
-                  {/* "clipboard-title" class is needed for share section link */}
-                  <div className="clipboard-title group flex items-center justify-center md:-mr-8">
-                    <div
-                      className={classnames('flex items-center', {
-                        'sm:ml-32 md:ml-24': slug === 'designs' && isSticky && !appLogo, // has to take into consideration width of the "apps and websites" button
-                        'md:ml-16 sm:ml-24': slug === 'designs' && isSticky && appLogo, // has to take into consideration width of the "apps and websites" button and AppLogo
-                        'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky && !appLogo, // has to take into consideration width of the "designs" button
-                        'sm:ml-2 md:-ml-6': slug === 'apps-and-websites' && isSticky && appLogo, // has to take into consideration width of the "designs" button and AppLogo
-                        'sm:ml-6 md:mr-4': !isSticky,
-                      })}
-                    >
-                      {isSticky && appLogo && (
-                        <img
-                          src={appLogo?.fields.file.url}
-                          className="mr-2 inline h-6"
-                          alt={title}
-                        />
-                      )}
-                      <h2
-                        className={classnames(
-                          'align-self-center text-nowrap font-black text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee]', // don't animate all properties!
-                          {
-                            'font-medium sm:text-2xl': isSticky,
-                            'text-3xl leading-[78px] md:text-[60px]': !isSticky,
-                          },
-                        )}
-                      >
-                        {title}
-                      </h2>
-                      {typeof window !== 'undefined' && windowWidth > 639 && (
-                        <button
-                          type="button"
-                          color="link"
-                          className={classnames(
-                            'clipboard-btn opacity-0 text-[#333333] dark:text-[#eeeeee] [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]',
-                            isSticky ? 'ml-2' : 'ml-4',
-                          )}
-                          onClick={() =>
-                            copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
-                          }
-                        >
-                          <FontAwesomeIcon icon={copyIcon} />
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                  {isSticky &&
-                    windowWidth > 639 &&
-                    (slug === 'apps-and-websites' || slug === 'designs') && (
-                      <Link
-                        href={slug === 'designs' ? '/apps-and-websites' : '/designs'}
-                        className="px-2 py-0.5 !text-base"
-                      >
-                        {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
-                        <FontAwesomeIcon icon={faAngleRight} className="ml-1" />
-                      </Link>
-                    )}
-                </div>
-              </Container>
-            </header>
+                {sectionTitle[0]}
+              </motion.div>
+              <motion.div
+                animate={{
+                  // x: 0,
+                  // backgroundColor: '#000',
+                  // boxShadow: '10px 10px 0 rgba(0, 0, 0, 0.2)',
+                  // position: 'fixed',
+                  transitionEnd: {
+                    display: 'block',
+                  },
+                }}
+              >
+                {sectionTitle[1]}
+              </motion.div>
+            </>
           )}
-        </Sticky>
+        </div>
+        {/* <Sticky topOffset={windowWidth > 767 ? 45 : 20}>
+          {({ style, isSticky }) => ( */}
+        <header
+          className={classnames(
+            'z-[1080]',
+            i % 2
+              ? 'bg-[#f7f8fa]/[0.8] dark:bg-[#0d1117]/[0.6]'
+              : 'bg-white/[0.8] dark:bg-[#010409]/[0.6]',
+            {
+              'backdrop-blur-[10px]': windowWidth <= 639,
+              'after:fixed after:bottom-0 after:h-px after:w-full after:bg-black/5 after:content-[""] dark:after:bg-white/10':
+                isSticky,
+            },
+          )}
+          // style={{
+          //   ...style,
+          // }}
+        >
+          <div
+            className={classnames({
+              'before:pointer-events-none before:absolute before:select-none before:backdrop-blur-[12px] before:content-[""] before:[inset:-1px_0px_-80px] before:[mask-image:linear-gradient(to_bottom,black_44px,transparent_70px)] dark:before:[mask-image:linear-gradient(to_bottom,black_47px,transparent_70px)]':
+                isSticky && windowWidth > 639,
+            })}
+          />
+          <Container
+            className={classnames(
+              {
+                sticky: isSticky,
+              },
+              'py-2',
+            )}
+          >
+            <div
+              className={classnames(
+                {
+                  'sm:justify-between': isSticky,
+                },
+                'flex items-center justify-center',
+              )}
+            >
+              {isSticky &&
+                windowWidth > 639 &&
+                (slug === 'apps-and-websites' || slug === 'designs') && (
+                  <Link href="/" className="px-2 py-0.5 !text-base">
+                    <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
+                    Home
+                  </Link>
+                )}
+              {/* "clipboard-title" class is needed for share section link */}
+              <div className="clipboard-title group flex items-center justify-center md:-mr-8">
+                <div
+                  className={classnames('flex items-center', {
+                    'sm:ml-32 md:ml-24': slug === 'designs' && isSticky && !appLogo, // has to take into consideration width of the "apps and websites" button
+                    'md:ml-16 sm:ml-24': slug === 'designs' && isSticky && appLogo, // has to take into consideration width of the "apps and websites" button and AppLogo
+                    'sm:ml-8 md:ml-2': slug === 'apps-and-websites' && isSticky && !appLogo, // has to take into consideration width of the "designs" button
+                    'sm:ml-2 md:-ml-6': slug === 'apps-and-websites' && isSticky && appLogo, // has to take into consideration width of the "designs" button and AppLogo
+                    'sm:ml-6 md:mr-4': !isSticky,
+                  })}
+                >
+                  {isSticky && appLogo && (
+                    <img src={appLogo?.fields.file.url} className="mr-2 inline h-6" alt={title} />
+                  )}
+                  <h2
+                    // eslint-disable-next-line no-return-assign, no-param-reassign
+                    className={classnames(
+                      'align-self-center text-nowrap font-black text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee]', // don't animate all properties!
+                      {
+                        'font-medium sm:text-2xl': isSticky,
+                        'text-3xl leading-[78px] md:text-[60px]': !isSticky,
+                      },
+                    )}
+                    // style={{
+                    //   transform: isInView ? 'none' : 'translateY(15px)',
+                    //   opacity: isInView ? 1 : 0,
+                    //   transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s',
+                    // }}
+                  >
+                    {title}
+                  </h2>
+                  {typeof window !== 'undefined' && windowWidth > 639 && (
+                    <button
+                      type="button"
+                      color="link"
+                      className={classnames(
+                        'clipboard-btn opacity-0 text-[#333333] dark:text-[#eeeeee] [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]',
+                        isSticky ? 'ml-2' : 'ml-4',
+                      )}
+                      onClick={() =>
+                        copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
+                      }
+                    >
+                      <FontAwesomeIcon icon={copyIcon} />
+                    </button>
+                  )}
+                </div>
+              </div>
+              {isSticky &&
+                windowWidth > 639 &&
+                (slug === 'apps-and-websites' || slug === 'designs') && (
+                  <Link
+                    href={slug === 'designs' ? '/apps-and-websites' : '/designs'}
+                    className="px-2 py-0.5 !text-base"
+                  >
+                    {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
+                    <FontAwesomeIcon icon={faAngleRight} className="ml-1" />
+                  </Link>
+                )}
+            </div>
+          </Container>
+        </header>
+        {/* )} */}
+        {/* </Sticky> */}
 
         <div className="flex flex-col md:mt-10 md:pb-5">
           <Container className="pb-4">
