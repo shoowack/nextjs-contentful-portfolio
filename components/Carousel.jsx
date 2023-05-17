@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
-import ContentfulImage from '@components/contentful-image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper';
-import classnames from 'classnames';
 import Container from '@components/Container';
+import ContentfulImage from '@components/contentful-image';
+import classnames from 'classnames';
+import { useEffect, useRef, useState } from 'react';
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SidebarHeaderControls from './nearlock-app/SidebarHeaderControls';
 // import LightGallery from 'lightgallery/react';
 // import FsLightbox from 'fslightbox-react';
@@ -47,7 +47,7 @@ export default function Carousel({
               {
                 'mb-10': deviceBezel && windowWidth >= 768 && iphone,
                 'mb-16': deviceBezel && windowWidth >= 900 && ipads,
-                'mb-14': (website || webApp) && windowWidth >= 768,
+                'md:mb-14': (website || webApp) && windowWidth >= 768,
               },
             )}
           >
