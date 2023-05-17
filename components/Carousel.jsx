@@ -45,8 +45,8 @@ export default function Carousel({
             className={classnames(
               'mb-4 text-center text-2xl font-extralight dark:font-normal text-[#333]/50 dark:text-[#aaa]/40',
               {
-                'mb-10': deviceBezel && windowWidth >= 768 && iphone,
-                'mb-16': deviceBezel && windowWidth >= 900 && ipads,
+                'md:mb-10': deviceBezel && windowWidth >= 768 && iphone,
+                'md:mb-16': deviceBezel && windowWidth >= 900 && ipads,
                 'md:mb-14': (website || webApp) && windowWidth >= 768,
               },
             )}
