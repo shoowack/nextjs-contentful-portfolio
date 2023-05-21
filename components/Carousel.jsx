@@ -1,14 +1,15 @@
-import { useEffect, useState, useRef } from 'react';
-import ContentfulImage from '@components/contentful-image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper';
-import classnames from 'classnames';
 import Container from '@components/Container';
+import ContentfulImage from '@components/contentful-image';
+import classnames from 'classnames';
+import { useEffect, useRef, useState } from 'react';
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SidebarHeaderControls from './nearlock-app/SidebarHeaderControls';
 // import LightGallery from 'lightgallery/react';
 // import FsLightbox from 'fslightbox-react';
 
 export default function Carousel({
-  fields: { type, images, deviceBezel },
+  fields: { type, images, deviceBezel, browserThemeColor },
   sys: { id },
   i,
   windowWidth,
@@ -44,8 +45,9 @@ export default function Carousel({
             className={classnames(
               'mb-4 text-center text-2xl font-extralight dark:font-normal text-[#333]/50 dark:text-[#aaa]/40',
               {
-                'mb-10': deviceBezel && windowWidth >= 768 && iphone,
-                'mb-16': deviceBezel && windowWidth >= 900 && ipads,
+                'md:mb-10': deviceBezel && windowWidth >= 768 && iphone,
+                'md:mb-16': deviceBezel && windowWidth >= 900 && ipads,
+                'md:mb-14': (website || webApp) && windowWidth >= 768,
               },
             )}
           >
@@ -157,6 +159,19 @@ export default function Carousel({
             />
           </div>
         )}
+        {(website || webApp) && windowWidth >= 768 && (
+          <div
+            aria-hidden
+            style={{ background: browserThemeColor || '#eee' }}
+            className={classnames(
+              'flex justify-between w-[calc(100%-30px)] items-center md:w-[60%] pointer-events-none absolute left-[50%] top-[-35px] z-50 -translate-x-1/2 select-none h-[35px] rounded-t-[11px]',
+            )}
+          >
+            <SidebarHeaderControls className="ml-2 scale-75" />
+            <div className="self-center -ml-14 bg-black/10 w-96 h-5 rounded-[4px]" />
+            <div />
+          </div>
+        )}
         {/* <LightGallery mode="lg-fade"> */}
         {images?.map(
           ({
@@ -180,7 +195,8 @@ export default function Carousel({
                   'rounded-[7px]': windowWidth > 550 && ipad,
                   'rounded-[4px]':
                     ipads || ((website || webApp || desktopApp) && windowWidth < 1024),
-                  'rounded-[11px]': (website || webApp || desktopApp) && windowWidth >= 1024,
+                  'rounded-[11px]': desktopApp && windowWidth >= 1024,
+                  'rounded-b-[11px]': (website || webApp) && windowWidth >= 1024,
                 })}
               >
                 {/* <a

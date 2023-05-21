@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 
-export default function SidebarHeaderControls({ isDarkMode }) {
+export default function SidebarHeaderControls({ isDarkMode, className }) {
   return (
-    <div className="group/sidebar-header-controls absolute top-5 left-5 z-[2] flex flex-row gap-2.5">
+    <div className={classnames('group/sidebar-header-controls flex flex-row gap-2.5', className)}>
       {Array.from({ length: 3 }, (_, i) => ({ id: i })).map((arr) => (
         <div
           key={`sidebar-header-controls__item-${arr.id}`}

@@ -222,7 +222,7 @@
                 left: 3.5px;
                 width: 2.5px;
                 height: 1px;
-                border-radius: 100%;
+                border-radius: 999px;
               }
 
               .owl-dot-el-1 {
@@ -230,7 +230,7 @@
                 left: 3px;
                 width: 4px;
                 height: 0.1px;
-                border-radius: 100%;
+                border-radius: 999px;
               }
 
               .owl-dot-el-2 {
@@ -247,11 +247,21 @@
 
             &-active {
                 .owl-dot-el-0 {
-                    left: 7px;
-                    bottom: 1px;
-                    width: 2px;
-                    height: 2px;
-                    border-radius: 100%;
+                    left: 6px;
+                }
+            }
+        }
+    }
+
+    &.ipad,
+    &.ipad-landscape {
+        .swiper-pagination .swiper-pagination-bullet {
+            &-active {
+                .owl-dot-el-0 {
+                    bottom: 2px;
+                    width: 4px;
+                    height: 0.1px;
+                    border-radius: 5px;
                 }
                 .owl-dot-el-1,
                 .owl-dot-el-2 {
@@ -268,16 +278,7 @@
 
             &-active {
                 .owl-dot-el-0 {
-                    left: 21px;
-                    bottom: 8px;
-                    width: 2px;
-                    height: 2px;
-                    border-radius: 100%;
-                }
-
-                .owl-dot-el-1,
-                .owl-dot-el-2 {
-                    display: none;
+                    left: 10px;
                 }
             }
         }
@@ -295,7 +296,7 @@
                 .owl-dot-el-2 {
                     height: 1px;
                     width: 1px;
-                    border-radius: 999em;
+                    border-radius: 999px;
                     top: 2px;
                 }
 

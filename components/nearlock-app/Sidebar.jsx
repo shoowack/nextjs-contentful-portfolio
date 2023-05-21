@@ -19,7 +19,8 @@ const Sidebar = ({
         : 'border-r-0 border-transparent',
     )}
   >
-    <SidebarHeaderControls isDarkMode={isDarkMode} />
+    {/* positioning classes are defined here because the component is used elsewhere */}
+    <SidebarHeaderControls isDarkMode={isDarkMode} className="absolute top-5 left-5 z-[2]" />
     <div className="sidebar-content absolute left-[10px] flex h-full w-[210px] flex-col justify-between overflow-hidden pt-12 pb-2">
       <input
         // flex or hidden
