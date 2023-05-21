@@ -75,26 +75,26 @@ export default function Carousel({
           website || desktopApp || webApp
             ? 1
             : iphone
-            ? windowWidth > 550
-              ? windowWidth > 991
-                ? windowWidth > 1200
-                  ? windowWidth > 2200
-                    ? windowWidth > 2600
-                      ? 7
-                      : 6
-                    : 5
-                  : 4
-                : 3
-              : 1
-            : ipads
-            ? windowWidth > 900
-              ? windowWidth > 1400
-                ? windowWidth > 2600
-                  ? 4
+              ? windowWidth > 550
+                ? windowWidth > 991
+                  ? windowWidth > 1200
+                    ? windowWidth > 2200
+                      ? windowWidth > 2600
+                        ? 7
+                        : 6
+                      : 5
+                    : 4
                   : 3
-                : 2
-              : 1
-            : 3
+                : 1
+              : ipads
+                ? windowWidth > 900
+                  ? windowWidth > 1400
+                    ? windowWidth > 2600
+                      ? 4
+                      : 3
+                    : 2
+                  : 1
+                : 3
         }
         centeredSlides
         pagination={{
@@ -102,9 +102,8 @@ export default function Carousel({
           clickable: true,
           renderBullet: (index, className) =>
             `<span class="${className}">${[...Array(3)].map((_, bulletIndex) => {
-              return `<div class="owl-dot-el-${bulletIndex} ${
-                isOdd ? 'bg-[#f7f8fa] dark:bg-[#0d1117]' : 'bg-white dark:bg-[#010409]'
-              }"></div>`;
+              return `<div class="owl-dot-el-${bulletIndex} ${isOdd ? 'bg-[#f7f8fa] dark:bg-[#0d1117]' : 'bg-white dark:bg-[#010409]'
+                }"></div>`;
             })}
             </span>`,
         }}
@@ -139,26 +138,26 @@ export default function Carousel({
       >
         {((deviceBezel && windowWidth > 900 && ipads) ||
           (deviceBezel && windowWidth >= 768 && iphone)) && (
-          <div
-            aria-hidden
-            className={classnames(
-              'pointer-events-none absolute left-[50%] z-50 w-full -translate-x-1/2 select-none',
-              {
-                'top-[-2.3%] h-[104.5%]': iphone,
-                'top-[-3.64%] left-[50.03%] h-[107%]': ipad,
-                'top-[-4.7%] h-[109.2%]': ipadLandscape,
-              },
-            )}
-          >
-            <ContentfulImage
-              quality={100}
-              layout="fill"
-              src={deviceBezel?.fields.file.url}
-              objectFit="contain"
+            <div
               aria-hidden
-            />
-          </div>
-        )}
+              className={classnames(
+                'pointer-events-none absolute left-[50%] z-50 w-full -translate-x-1/2 select-none',
+                {
+                  'top-[-2.3%] h-[104.5%]': iphone,
+                  'top-[-3.64%] left-[50.03%] h-[107%]': ipad,
+                  'top-[-4.7%] h-[109.2%]': ipadLandscape,
+                },
+              )}
+            >
+              <ContentfulImage
+                quality={100}
+                layout="fill"
+                src={deviceBezel?.fields.file.url}
+                objectFit="contain"
+                aria-hidden
+              />
+            </div>
+          )}
         {(website || webApp) && windowWidth >= 768 && (
           <div
             aria-hidden
@@ -225,10 +224,10 @@ export default function Carousel({
                     website || desktopApp || webApp
                       ? '(max-width: 768px) 100vw, 60vw'
                       : iphone
-                      ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
-                      : ipads
-                      ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
-                      : '1vw'
+                        ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
+                        : ipads
+                          ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
+                          : '1vw'
                   }
                 />
                 {/* </a> */}

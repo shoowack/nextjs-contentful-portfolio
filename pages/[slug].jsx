@@ -1,14 +1,17 @@
+import Footer from '@components/Footer';
 import Navigation from '@components/Navigation';
 import Section from '@components/Section';
+import Layout from '@components/layout';
 import { getHeaderLinks } from '@lib/api';
 import { fetchEntries } from '@lib/fetchEntries';
-import Footer from '@components/Footer';
-import { Provider } from 'react-wrap-balancer';
+import { getAllPosts } from '@lib/sanity.client';
 import useWindowDimensions from '@lib/windowSize';
-import Layout from '@components/layout';
+import { Provider } from 'react-wrap-balancer';
 
-export default function InnerPage({ entries, headerItems }) {
+export default function InnerPage({ entries, headerItems, studioData }) {
   const { width } = useWindowDimensions();
+
+  console.log(studioData, 'studioData')
 
   return (
     <Layout>
@@ -38,6 +41,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const headerItems = (await getHeaderLinks()) ?? [];
+  const studioData = await getAllPosts()
+
+  console.log(studioData, 'studio stuff')
 
   const res = await fetchEntries(params.slug);
   const entries = await res.map((entry) => {
@@ -49,6 +55,7 @@ export async function getStaticProps({ params }) {
       slug: params.slug,
       entries,
       headerItems,
+      studioData
     },
   };
 }
