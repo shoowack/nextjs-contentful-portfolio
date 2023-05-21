@@ -222,7 +222,7 @@
                 left: 3.5px;
                 width: 2.5px;
                 height: 1px;
-                border-radius: 100%;
+                border-radius: 999px;
               }
 
               .owl-dot-el-1 {
@@ -230,7 +230,7 @@
                 left: 3px;
                 width: 4px;
                 height: 0.1px;
-                border-radius: 100%;
+                border-radius: 999px;
               }
 
               .owl-dot-el-2 {
@@ -258,9 +258,9 @@
         .swiper-pagination .swiper-pagination-bullet {
             &-active {
                 .owl-dot-el-0 {
-                    bottom: 1px;
+                    bottom: 2px;
                     width: 4px;
-                    height: .5px;
+                    height: 0.1px;
                     border-radius: 5px;
                 }
                 .owl-dot-el-1,
