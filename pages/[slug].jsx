@@ -6,137 +6,125 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getHeaderLinks } from '@lib/api';
 import { fetchEntries } from '@lib/fetchEntries';
+import useScrollDirection from '@lib/useScrollDirection';
 import useWindowDimensions from '@lib/windowSize';
-import { LayoutGroup, motion } from 'framer-motion';
+import cn from 'classnames';
+import { LayoutGroup, motion } from "framer-motion";
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { AiFillHome } from 'react-icons/ai';
+import { HiPaintBrush } from 'react-icons/hi2';
+import { TbAppWindowFilled } from 'react-icons/tb';
 
 export default function InnerPage({ entries, headerItems, slug }) {
   const { width } = useWindowDimensions();
-  const [sectionTitle, setSectionTitle] = useState([]);
-  const [sectionLogo, setSectionLogo] = useState([]);
-  const refs = useRef([]);
   const { sections } = entries[0];
-  const [direction, setDirection] = useState('down');
+  const sliderRef = useRef([]);
+  const [currentSection, setCurrentSection] = useState("");
+  const throttleInProgress = useRef();
 
-  let oldScrollY = 0;
-
-  const controlDirection = () => {
-    if (window.scrollY > oldScrollY) {
-      setDirection('down');
-    } else {
-      setDirection('up');
-    }
-    oldScrollY = window.scrollY;
-  }
+  const scrollDir = useScrollDirection()
 
   useEffect(() => {
-    window.addEventListener('scroll', controlDirection);
+    handleThrottleScroll();
+    window.addEventListener("scroll", handleThrottleScroll);
     return () => {
-      window.removeEventListener('scroll', controlDirection);
+      window.removeEventListener("scroll", handleThrottleScroll);
     };
   }, []);
 
-  const handleIntersection = ([entry]) => {
-    if (entry.isIntersecting) {
-      setSectionTitle((prev) =>
-        [...prev, entry.target.dataset.title].slice(-2),
-      );
-      setSectionLogo((prev) =>
-        [...prev, entry.target.dataset.applogo].slice(-2),
-      );
+  function handleThrottleScroll() {
+    if (throttleInProgress.current) {
+      return;
     }
-  };
+    throttleInProgress.current = true;
+    setTimeout(() => {
+      const scrollPosition = window.scrollY; // => scroll position
 
-  useEffect(() => {
-    const currentRefs = refs.current;
-    const observer = new IntersectionObserver(handleIntersection, {
-      root: null,
-      rootMargin: direction === 'down' ? '10% 0px -90% 0px' : '-10% 0px 90% 0px',
-      threshold: 0,
-    });
+      sliderRef.current.map((section) => section && (scrollPosition >= section.offsetTop - 30)
+        ? setCurrentSection(section.dataset.sysid)
+        : "")
 
-    // Observe each section's ref
-    currentRefs.map((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      // Stop observing each section's ref
-      currentRefs.map((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [direction]);
+      throttleInProgress.current = false;
+    }, 500);
+  }
 
   return (
     <Layout>
       <div
-        className='transition-all h-14 overflow-hidden items-center fixed top-8 w-[40%] left-1/2 -translate-x-1/2 z-10 backdrop-blur-[12px] rounded-full bg-accent-2/70 dark:bg-accent-7/70 dark:border-accent-2/10 shadow-medium border border-accent-7/10'
+        className={cn('transition-all items-center h-14 overflow-hidden fixed top-8 w-[90%] left-1/2 -translate-x-1/2 z-10 backdrop-blur-[12px] rounded-full bg-accent-2/70 dark:bg-accent-7/70 dark:border-accent-2/10 shadow-medium border border-accent-7/10 flex justify-between', {
+          'xl:w-[50%] lg:w-[60%] md:w-[78%]': slug === 'designs',
+          'lg:w-[40%] md:w-[90%]': slug === 'apps-and-websites'
+        })}
       >
-        {width > 639 &&
-          (slug === 'apps-and-websites' || slug === 'designs') && (
-            <Link href="/" className="ml-1 px-2 py-0.5 !text-base left-2 absolute top-1/2 -translate-y-1/2">
+        {(slug === 'apps-and-websites' || slug === 'designs') && (
+          <Link href="/" className="ml-5 px-2 py-0.5 !text-base">
+            {width > 639 ? <>
               <FontAwesomeIcon icon={faAngleLeft} className="mr-2" />
               Home
-            </Link>
-          )}
-        <LayoutGroup>
-          <motion.div
-            className="absolute h-[56px] flex items-center left-1/2"
-            initial={{ x: '-50%', y: 0, opacity: 1 }}
-            animate={{ x: '-50%', y: direction === 'down' ? -50 : 50, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            key={sectionTitle[0]}
-          >
-            {sectionLogo[0] && (
-              <img src={sectionLogo[0]} className="mr-2 inline h-6" alt={sectionTitle} />
+            </> : <AiFillHome />}
+          </Link>
+        )}
+        {sections.map(({ sys: { id }, fields }) =>
+          <LayoutGroup>
+            {currentSection === id && (
+              <motion.div
+                initial={{
+                  y: scrollDir === "up" ? -30 : 30,
+                  display: "none",
+                  opacity: 0,
+                  x: '-50%'
+                }}
+                animate={{
+                  y: 0, display: "flex", opacity: 1,
+                  x: '-50%'
+                }}
+                exit={{
+                  y: scrollDir === "up" ? 30 : -30,
+                  display: "none",
+                  opacity: 0,
+                  x: '-50%'
+                }}
+                key={id}
+                className="absolute left-1/2 flex items-center whitespace-nowrap"
+              >
+                {fields.appLogo && (
+                  <img src={fields.appLogo.fields.file.url} className="mr-2 inline h-6" alt={fields.title} />
+                )}
+                <p className='m-0'>
+                  {fields.title}
+                </p>
+              </motion.div>
             )}
-            {sectionTitle[0]}
-          </motion.div>
-          <motion.div
-            className="absolute h-[56px] flex items-center left-1/2"
-            initial={{ x: '-50%', y: direction === 'down' ? 50 : -50, opacity: 0 }}
-            animate={{ x: '-50%', y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            key={sectionTitle[1]}
+          </LayoutGroup>
+        )}
+        {(slug === 'apps-and-websites' || slug === 'designs') && (
+          <Link
+            href={slug === 'designs' ? '/apps-and-websites' : '/designs'}
+            className="mr-5 px-2 py-0.5 !text-base"
           >
-            {sectionLogo[1] && (
-              <img src={sectionLogo[1]} className="mr-2 inline h-6" alt={sectionTitle} />
-            )}
-            {sectionTitle[1]}
-          </motion.div>
-        </LayoutGroup>
-        {width > 639 &&
-          (slug === 'apps-and-websites' || slug === 'designs') && (
-            <Link
-              href={slug === 'designs' ? '/apps-and-websites' : '/designs'}
-              className="mr-1 px-2 py-0.5 !text-base right-2 absolute top-1/2 -translate-y-1/2"
-            >
-              {slug === 'designs' ? 'Apps And Websites' : 'Designs'}
-              <FontAwesomeIcon icon={faAngleRight} className="ml-2" />
-            </Link>
-          )}
+            {width > 639 && (slug === 'designs' ? 'Apps And Websites' : 'Designs')}
+            {width > 639 ? <FontAwesomeIcon icon={faAngleRight} className="ml-2" /> : slug === 'designs' ? <HiPaintBrush /> : <TbAppWindowFilled className='w-5 h-5' />}
+          </Link>
+        )}
       </div>
       <div className="z-[2] mb-[360px] min-h-full overflow-hidden shadow-[0_10px_30px_-5px_rgba(0,0,0,.2)] dark:shadow-[0_10px_30px_rgba(0,0,0,.5)] sm:mb-[300px] md:mb-[400px] md:shadow-[0_10px_60px_-10px_rgba(0,0,0,.2)] md:dark:shadow-[0_10px_60px_rgba(0,0,0,.5)]">
-
         <Navigation headerItems={headerItems} />
         {/* filter sections by environment tags (production, development) */}
         {sections.map(
-          (entry, i) =>
-            entry.metadata.tags.some((tags) => tags.sys.id === process.env.NODE_ENV) && (
-              <Section
-                windowWidth={width}
-                {...entry.fields}
-                i={i}
-                refs={refs}
-                sectionTitle={sectionTitle}
-              />
-            ),
+          (entry, i) => entry.metadata.tags.some((tags) => tags.sys.id === process.env.NODE_ENV) && (
+            <Section
+              windowWidth={width}
+              {...entry.fields}
+              i={i}
+              sys={entry.sys}
+              sliderRef={sliderRef}
+            />
+          )
         )}
         <Footer />
       </div>
-    </Layout>
+    </Layout >
   );
 }
 
