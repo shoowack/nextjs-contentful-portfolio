@@ -31,7 +31,6 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
         setTimeout(() => {
             const scrollPosition = window.scrollY; // => scroll position
 
-            console.log(sliderRef, 'sliderRef')
             sliderRef.current.map((section) => section && (scrollPosition >= section.offsetTop - 30)
                 ? setCurrentSection(section.dataset.sysid)
                 : "")

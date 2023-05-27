@@ -11,7 +11,6 @@ const AnimatedText = ({ text }) => {
     useEffect(() => {
         if (isInView) {
             controls.start("visible");
-            console.log('startAnimation')
         }
     }, [controls, isInView]);
 
