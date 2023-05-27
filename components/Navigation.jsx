@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Container from '@components/Container';
 import HeaderInfoLink from '@components/header-info-link';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import ThemeSwitch from './ThemeSwitch';
 
-export default function Navigation({ headerItems }) {
+export default function Navigation({ headerItems, aboutSectionRef }) {
   const [mounted, setMounted] = useState(false);
 
   // useEffect only runs on the client, so now we can safely show the UI
@@ -17,7 +17,8 @@ export default function Navigation({ headerItems }) {
   }
 
   return (
-    <div className="aboutme text:black py-2 pb-5 dark:text-white md:py-10 xl:py-14">
+    <div className="aboutme text:black py-2 pb-5 dark:text-white md:py-10 xl:py-14"
+      ref={aboutSectionRef}>
       <Container>
         <div className="mb-5 flex flex-row justify-between">
           <div className="flex w-[55px] items-center justify-between">

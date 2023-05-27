@@ -48,7 +48,7 @@ const Section = ({
       <section
         className={classnames(
           `w-full overflow-hidden border-b border-[#e1e4e8] text-black/75 dark:border-[#30363d] md:py-10 md:px-0`,
-          isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
+          isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]'
         )}
         id={sectionSlug}
         data-sysid={sys.id}
