@@ -42,7 +42,7 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
     // eslint-disable-next-line consistent-return
     useEffect(() => {
         const onScroll = () => {
-            setScrolled(() => window.pageYOffset > aboutSectionRef.current.clientHeight);
+            setScrolled(() => window.pageYOffset > aboutSectionRef?.current?.clientHeight); // optional chaining needed when anchor section links are shared
         };
         window.addEventListener('scroll', onScroll);
 
