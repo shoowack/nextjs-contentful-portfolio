@@ -56,7 +56,7 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
                 'xl:w-[50%] lg:w-[60%] md:w-[78%]': slug === 'designs',
                 'lg:w-[40%] md:w-[90%]': slug === 'apps-and-websites',
                 'opacity-100 top-5 md:top-8': scrolled,
-                'opacity-0 top-0': !scrolled
+                'opacity-0 top-0 pointer-events-none': !scrolled
             })}
         >
             {(slug === 'apps-and-websites' || slug === 'designs') && (
