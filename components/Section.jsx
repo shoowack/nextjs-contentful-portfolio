@@ -10,7 +10,6 @@ import classnames from 'classnames';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Balancer from 'react-wrap-balancer';
-// import { useInView } from 'framer-motion';
 import AppStoreDownloadBadge from './AppStoreDownloadBadge';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
@@ -23,7 +22,6 @@ const Section = ({
   stack,
   windowWidth,
   i,
-  appLogo,
   storeLink,
   sys,
   sliderRef
@@ -71,29 +69,25 @@ const Section = ({
             <div className={classnames('flex items-center justify-center')}
             >
               {/* "clipboard-title" class is needed for share section link */}
-              <div className="clipboard-title group flex items-center justify-center md:-mr-8">
-                <div
-                  className={'flex items-center md:ml-4 '}
+              <div className="clipboard-title group flex items-center justify-center md:-mr-8 md:ml-4">
+                {/* <AnimatedText text={title} /> */}
+                <h2
+                  className={'align-self-center text-nowrap font-black text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee] text-3xl leading-[78px] md:text-[60px]'}
                 >
-                  <h2
-                    // eslint-disable-next-line no-return-assign, no-param-reassign
-                    className={'text-3xl leading-[78px] md:text-[60px] align-self-center text-nowrap font-black text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee]'}
+                  {title}
+                </h2>
+                {typeof window !== 'undefined' && windowWidth > 639 && (
+                  <button
+                    type="button"
+                    color="link"
+                    className={'clipboard-btn md:ml-4 opacity-0 text-[#333333] dark:text-[#eeeeee] [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]'}
+                    onClick={() =>
+                      copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
+                    }
                   >
-                    {title}
-                  </h2>
-                  {typeof window !== 'undefined' && windowWidth > 639 && (
-                    <button
-                      type="button"
-                      color="link"
-                      className={'clipboard-btn md:ml-4 opacity-0 text-[#333333] dark:text-[#eeeeee] [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]'}
-                      onClick={() =>
-                        copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
-                      }
-                    >
-                      <FontAwesomeIcon icon={copyIcon} />
-                    </button>
-                  )}
-                </div>
+                    <FontAwesomeIcon icon={copyIcon} />
+                  </button>
+                )}
               </div>
             </div>
           </Container>
