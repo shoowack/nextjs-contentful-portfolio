@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Image from 'next/legacy/image';
 import cn from 'classnames';
+import Image from 'next/legacy/image';
+import { useState } from 'react';
 
 const contentfulLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;

@@ -103,17 +103,13 @@ const Section = ({
                     )}
                   >
                     {stack.map((item) => (
-                      <StackIcon
-                        key={`${sectionSlug}-${item.replace(/ /g, '-').toLowerCase()}`}
-                        stackIcon={item}
-                        isMobile={windowWidth < 768}
-                        section={title}
-                      />
+                      <StackIcon key={item.sys.id} item={item} isMobile={windowWidth < 768} />
                     ))}
                   </ConditionalWrapper>
                 </Container>
               </>
             )}
+
             {description && (
               <div className="pb-8 text-[#333333] dark:text-[#aaa] sm:text-center">
                 <ConditionalWrapper
