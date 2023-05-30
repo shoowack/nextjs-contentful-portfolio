@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitterSquare, faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
+import { FaFacebookSquare, FaTwitterSquare } from 'react-icons/fa';
 
 const ThirdStep = () => {
   return (
@@ -10,8 +9,8 @@ const ThirdStep = () => {
       <h5>You got it! Cool, isn’t it?</h5>
       <small>Good time to share?</small>
       <div className="mt-3 flex flex-row">
-        <FontAwesomeIcon icon={faTwitterSquare} size="2x" className="mr-2" color="#1da1f2" />
-        <FontAwesomeIcon icon={faFacebookSquare} size="2x" className="ml-2" color="#1877f2" />
+        <FaTwitterSquare className="mr-1 inline text-[#1da1f2] h-8 w-8" />
+        <FaFacebookSquare className="ml-1 inline text-[#1877f2] h-8 w-8" />
       </div>
     </div>
   );

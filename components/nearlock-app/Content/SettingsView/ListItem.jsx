@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import classnames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 const ListItem = ({
   icon,
@@ -50,10 +49,9 @@ const ListItem = ({
       >
         <img src={icon?.src} alt="" />
         {isChecked && (
-          <FontAwesomeIcon
-            icon={faCheck}
+          <FaCheck
             className={classnames(
-              'absolute top-[6px] right-[2px] h-2 w-2 [transition:color_0.5s]',
+              'absolute top-[6px] right-[6px] h-2 w-2 [transition:color_0.5s]',
               {
                 'text-black': isDarkMode,
                 'text-white': !isDarkMode,

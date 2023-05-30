@@ -16,24 +16,32 @@ export default function InnerPage({ entries, headerItems, slug }) {
 
   return (
     <Layout>
-      <NavigationBar aboutSectionRef={aboutSectionRef} slug={slug} width={width} sections={sections} sliderRef={sliderRef} />
+      <NavigationBar
+        aboutSectionRef={aboutSectionRef}
+        slug={slug}
+        width={width}
+        sections={sections}
+        sliderRef={sliderRef}
+      />
       <div className="z-[2] mb-[360px] min-h-full overflow-hidden shadow-[0_10px_30px_-5px_rgba(0,0,0,.2)] dark:shadow-[0_10px_30px_rgba(0,0,0,.5)] sm:mb-[300px] md:mb-[400px] md:shadow-[0_10px_60px_-10px_rgba(0,0,0,.2)] md:dark:shadow-[0_10px_60px_rgba(0,0,0,.5)]">
         <Navigation headerItems={headerItems} aboutSectionRef={aboutSectionRef} />
         {/* filter sections by environment tags (production, development) */}
         {sections.map(
-          (entry, i) => entry.metadata.tags.some((tags) => tags.sys.id === process.env.NODE_ENV) && (
-            <Section
-              windowWidth={width}
-              {...entry.fields}
-              i={i}
-              sys={entry.sys}
-              sliderRef={sliderRef}
-            />
-          )
+          (entry, i) =>
+            entry.metadata.tags.some((tags) => tags.sys.id === process.env.NODE_ENV) && (
+              <Section
+                windowWidth={width}
+                {...entry.fields}
+                i={i}
+                key={`section-${entry.sys.id}`}
+                sys={entry.sys}
+                sliderRef={sliderRef}
+              />
+            ),
         )}
         <Footer />
       </div>
-    </Layout >
+    </Layout>
   );
 }
 

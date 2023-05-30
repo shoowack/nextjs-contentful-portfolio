@@ -1,7 +1,6 @@
-import Layout from 'components/layout';
-import FrontPage from 'components/front.page';
-import { config } from '@fortawesome/fontawesome-svg-core';
 import { getAllCategories } from '@lib/api';
+import FrontPage from 'components/front.page';
+import Layout from 'components/layout';
 
 export default function Index({ preview, allCategories }) {
   return (
@@ -16,8 +15,6 @@ export default function Index({ preview, allCategories }) {
     </>
   );
 }
-
-config.autoAddCss = false;
 
 export async function getStaticProps({ preview = false }) {
   const allCategories = (await getAllCategories(preview)) ?? [];

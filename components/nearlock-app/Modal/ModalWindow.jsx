@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
 import AppButton from '@components/nearlock-app/AppButton';
 import FirstStep from '@components/nearlock-app/Modal/FirstStep';
 import SecondStep from '@components/nearlock-app/Modal/SecondStep';
 import ThirdStep from '@components/nearlock-app/Modal/ThirdStep';
+import classnames from 'classnames';
+import { useState } from 'react';
 
 const Modal = ({
   isModalOpen,
@@ -55,7 +55,7 @@ const Modal = ({
     >
       <div
         className={classnames(
-          'absolute top-1/2 left-1/2 z-[1] flex h-[480px] w-[715px] -translate-x-1/2 -translate-y-1/2 flex-col rounded-[10px] shadow-[0_0_0_1px_hsla(0,0%,0%,0.15),0_25px_60px_-15px_hsla(0,0%,0%,0.35)]',
+          'absolute left-1/2 top-1/2 z-[1] flex h-[480px] w-[715px] -translate-x-1/2 -translate-y-1/2 flex-col rounded-[10px] shadow-[0_0_0_1px_hsla(0,0%,0%,0.15),0_25px_60px_-15px_hsla(0,0%,0%,0.35)]',
           {
             'bg-[#211c1f] text-white': isDarkMode,
             'bg-white': !isDarkMode,
@@ -72,7 +72,7 @@ const Modal = ({
           <div className="flex-1">
             <AppButton
               onClick={setupLater}
-              className={isDarkMode ? `dark nearlock btn-gray` : `nearlock btn-gray`}
+              className={isDarkMode ? `nearlock btn-gray dark` : `nearlock btn-gray`}
             >
               Setup later
             </AppButton>
@@ -84,7 +84,7 @@ const Modal = ({
                   <div
                     // eslint-disable-next-line react/no-array-index-key
                     key={`dot-${i}`}
-                    className={classnames('mx-2 h-2.5 w-2.5 rounded-full border bg-transparent', {
+                    className={classnames('mx-2 h-2.5 w-2.5 rounded-full border', {
                       'mt-px h-[7px] w-[7px] border-0': currentStep === i + 2,
                       'border-[#4C4C4C]': !isDarkMode,
                       'border-[#808080]': isDarkMode,

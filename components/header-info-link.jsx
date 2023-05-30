@@ -1,9 +1,9 @@
-import { createElement, Fragment, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Popover, Transition } from '@headlessui/react';
 import classnames from 'classnames';
-import * as RI from 'react-icons/ri';
 import { useTheme } from 'next-themes';
+import PropTypes from 'prop-types';
+import { createElement, Fragment, useState } from 'react';
+import * as RI from 'react-icons/ri';
 
 const HeaderInfoLink = ({
   link,
@@ -65,19 +65,6 @@ const HeaderInfoLink = ({
       </Transition>
     </Popover>
   );
-};
-
-HeaderInfoLink.propTypes = {
-  icon: PropTypes.string,
-  tooltipText: PropTypes.string,
-  link: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
-  openInNewTab: PropTypes.bool.isRequired,
-};
-
-HeaderInfoLink.defaultProps = {
-  icon: 'RiErrorWarningLine',
-  tooltipText: '',
 };
 
 export default HeaderInfoLink;

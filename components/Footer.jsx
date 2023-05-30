@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faPaperPlane, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import Container from '@components/Container';
+import { useState } from 'react';
+import { FaCheck, FaCircleNotch, FaPaperPlane } from 'react-icons/fa';
 
 import axios from 'axios';
 
@@ -118,20 +117,20 @@ export default function Footer() {
                 disabled={isLoading}
               >
                 {isLoading ? (
-                  <div>
+                  <>
                     Sending
-                    <FontAwesomeIcon icon={faCircleNotch} size="sm" spin="spin" className="ml-2" />
-                  </div>
+                    <FaCircleNotch size="sm" spin="spin" className="ml-2 h-3 w-3 inline animate-spin" />
+                  </>
                 ) : !errors && sentState ? (
-                  <div>
+                  <>
                     Sent
-                    <FontAwesomeIcon icon={faCheck} size="sm" className="ml-2" />
-                  </div>
+                    <FaCheck className="ml-2 h-3 w-3 inline" />
+                  </>
                 ) : (
-                  <div>
+                  <>
                     Send
-                    <FontAwesomeIcon icon={faPaperPlane} size="sm" className="ml-2" />
-                  </div>
+                    <FaPaperPlane className="ml-2 h-3 w-3 inline" />
+                  </>
                 )}
               </button>
             </div>

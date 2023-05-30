@@ -2,13 +2,12 @@ import Carousel from '@components/Carousel';
 import Container from '@components/Container';
 import StackIcon from '@components/StackIcon';
 import NearLockApp from '@components/nearlock-app/NearLockApp';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
 import RichText from '@madebyconnor/rich-text-to-jsx';
 import classnames from 'classnames';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa';
 import Balancer from 'react-wrap-balancer';
 import AppStoreDownloadBadge from './AppStoreDownloadBadge';
 
@@ -24,7 +23,7 @@ const Section = ({
   i,
   storeLink,
   sys,
-  sliderRef
+  sliderRef,
 }) => {
   const {
     query: { slug },
@@ -47,11 +46,12 @@ const Section = ({
     <>
       <section
         className={classnames(
-          `w-full overflow-hidden border-b border-[#e1e4e8] text-black/75 dark:border-[#30363d] md:py-10 md:px-0`,
-          isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]'
+          `w-full overflow-hidden border-b border-[#e1e4e8] text-black/75 dark:border-[#30363d] md:px-0 md:py-10`,
+          isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
         )}
         id={sectionSlug}
         data-sysid={sys.id}
+        // eslint-disable-next-line no-return-assign, no-param-reassign
         ref={(el) => (sliderRef.current[i] = el)}
       >
         <header
@@ -61,31 +61,28 @@ const Section = ({
               ? 'bg-[#f7f8fa]/[0.8] dark:bg-[#0d1117]/[0.6]'
               : 'bg-white/[0.8] dark:bg-[#010409]/[0.6]',
             {
-              'backdrop-blur-[10px]': windowWidth <= 639
+              'backdrop-blur-[10px]': windowWidth <= 639,
             },
           )}
         >
-          <Container className={'py-2'} >
-            <div className={classnames('flex items-center justify-center')}
-            >
+          <Container className="py-2">
+            <div className={classnames('flex items-center justify-center')}>
               {/* "clipboard-title" class is needed for share section link */}
               <div className="clipboard-title group flex items-center justify-center md:-mr-8 md:ml-4">
                 {/* <AnimatedText text={title} /> */}
-                <h2
-                  className={'align-self-center text-nowrap font-black text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee] text-3xl leading-[78px] md:text-[60px]'}
-                >
+                <h2 className="align-self-center text-nowrap text-3xl font-black leading-[78px] text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee] md:text-[60px]">
                   {title}
                 </h2>
                 {typeof window !== 'undefined' && windowWidth > 639 && (
                   <button
                     type="button"
                     color="link"
-                    className={'clipboard-btn md:ml-4 opacity-0 text-[#333333] dark:text-[#eeeeee] [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]'}
+                    className="clipboard-btn text-[#333333] opacity-0 [transition:opacity_0.25s_1500ms] dark:text-[#eeeeee] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms] md:ml-4"
                     onClick={() =>
                       copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
                     }
                   >
-                    <FontAwesomeIcon icon={copyIcon} />
+                    {copyIcon}
                   </button>
                 )}
               </div>
@@ -144,88 +141,85 @@ const Section = ({
             />
           ))}
         </div>
-      </section >
+      </section>
       {/* render MacOS Nearlock app */}
-      {
-        title === 'Near Lock App' && slug === 'designs' && (
-          <div
-            id="near-lock-interactive-app"
-            className={classnames(
-              {
-                dark: isDarkMode,
-              },
-              'nearlock-app-wrapper relative overflow-hidden py-12',
-            )}
-            style={{
-              background: isDarkMode
-                ? '#20364b linear-gradient(32deg, #0F022B 0%, #760697 50%, #360EB0 80%)'
-                : '#D667A3 linear-gradient(32deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)',
-            }}
-          >
-            {windowWidth >= 1120 && (
-              <button
-                type="button"
-                onClick={toggleDarkMode}
-                className={classnames(
-                  'nearlock-app-wrapper-theme-toggler group absolute right-12 top-10 z-[1] flex h-12 w-12 items-center justify-center rounded-full [transition:background_0.5s]',
-                  isDarkMode ? 'bg-[#211C21]' : 'bg-white',
-                  {
-                    dark: isDarkMode,
-                  },
-                )}
-              >
-                <FontAwesomeIcon
-                  icon={isDarkMode ? faSun : faMoon}
-                  size="1x"
-                  color={isDarkMode ? 'yellow' : '#368EFC'}
-                  className="rotate-0 scale-100 transition-transform duration-1000 group-active-[.nearlock-app-wrapper-theme-toggler]:rotate-180 group-active-[.nearlock-app-wrapper-theme-toggler]:scale-50 group-active-[.nearlock-app-wrapper-theme-toggler]:duration-[100ms]"
-                />
-              </button>
-            )}
-            <div
-              className={classnames('my-2', {
-                'mx-4': windowWidth < 768,
-              })}
+      {title === 'Near Lock App' && slug === 'designs' && (
+        <div
+          id="near-lock-interactive-app"
+          className={classnames(
+            {
+              dark: isDarkMode,
+            },
+            'nearlock-app-wrapper relative overflow-hidden py-12',
+          )}
+          style={{
+            background: isDarkMode
+              ? '#20364b linear-gradient(32deg, #0F022B 0%, #760697 50%, #360EB0 80%)'
+              : '#D667A3 linear-gradient(32deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)',
+          }}
+        >
+          {windowWidth >= 1120 && (
+            <button
+              type="button"
+              onClick={toggleDarkMode}
+              className={classnames(
+                'nearlock-app-wrapper-theme-toggler group absolute right-12 top-10 z-[1] flex h-12 w-12 items-center justify-center rounded-full [transition:background_0.5s]',
+                isDarkMode ? 'bg-[#211C21]' : 'bg-white',
+                {
+                  dark: isDarkMode,
+                },
+              )}
             >
-              <Container
-                fluid="lg"
-                className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}
-              >
-                <div className="clipboard-title mr-md-n5 group flex items-center justify-center">
-                  <Balancer>
-                    <p className="mb-0 leading-6 text-white">
-                      Interactive preview of the Near Lock desktop app
-                    </p>
-                  </Balancer>
-                  {typeof window !== 'undefined' && windowWidth > 768 && (
-                    <button
-                      type="button"
-                      className="clipboard-btn ml-2 opacity-0 [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]"
-                      onClick={() =>
-                        copyToClipboard(`${window.location.origin}/${slug}#near-lock-interactive-app`)
-                      }
-                    >
-                      <FontAwesomeIcon icon={copyIcon} color="#fff" />
-                    </button>
-                  )}
-                </div>
+              {isDarkMode ? (
+                <FaSun className="rotate-0 scale-100 text-yellow-400  transition-transform duration-1000 group-active-[.nearlock-app-wrapper-theme-toggler]:rotate-180 group-active-[.nearlock-app-wrapper-theme-toggler]:scale-50 group-active-[.nearlock-app-wrapper-theme-toggler]:duration-[100ms]" />
+              ) : (
+                <FaMoon className="rotate-0 scale-100 text-[#368EFC] transition-transform duration-1000 group-active-[.nearlock-app-wrapper-theme-toggler]:rotate-180 group-active-[.nearlock-app-wrapper-theme-toggler]:scale-50 group-active-[.nearlock-app-wrapper-theme-toggler]:duration-[100ms]" />
+              )}
+            </button>
+          )}
+          <div
+            className={classnames('my-2', {
+              'mx-4': windowWidth < 768,
+            })}
+          >
+            <Container
+              fluid="lg"
+              className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}
+            >
+              <div className="clipboard-title mr-md-n5 group flex items-center justify-center">
                 <Balancer>
-                  <p className="mt-4 mb-0 text-xs leading-5 tracking-wider text-white/[0.75]">
-                    {windowWidth >= 1120
-                      ? 'some of the features are not available yet'
-                      : 'for an interactive preview, please visit desktop version of the website'}
+                  <p className="mb-0 leading-6 text-white">
+                    Interactive preview of the Near Lock desktop app
                   </p>
                 </Balancer>
-              </Container>
-            </div>
-            {windowWidth >= 1120 && (
-              <div className="mb-12">
-                <NearLockApp isDarkMode={isDarkMode} />
+                {typeof window !== 'undefined' && windowWidth > 768 && (
+                  <button
+                    type="button"
+                    className="clipboard-btn ml-2 opacity-0 [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]"
+                    onClick={() =>
+                      copyToClipboard(`${window.location.origin}/${slug}#near-lock-interactive-app`)
+                    }
+                  >
+                    {copyIcon}
+                  </button>
+                )}
               </div>
-            )}
+              <Balancer>
+                <p className="mb-0 mt-4 text-xs leading-5 tracking-wider text-white/[0.75]">
+                  {windowWidth >= 1120
+                    ? 'some of the features are not available yet'
+                    : 'for an interactive preview, please visit desktop version of the website'}
+                </p>
+              </Balancer>
+            </Container>
           </div>
-        )
-      }
+          {windowWidth >= 1120 && (
+            <div className="mb-12">
+              <NearLockApp isDarkMode={isDarkMode} />
+            </div>
+          )}
+        </div>
+      )}
     </>
   );
 };

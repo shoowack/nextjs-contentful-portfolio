@@ -15,12 +15,4 @@ const AppButton = ({ children, onClick, className, disabled }) => (
   </button>
 );
 
-AppButton.propTypes = {
-  onClick: PropTypes.func,
-};
-
-AppButton.defaultProps = {
-  onClick: null,
-};
-
 export default AppButton;
