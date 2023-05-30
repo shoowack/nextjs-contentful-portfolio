@@ -2,6 +2,7 @@ import Carousel from '@components/Carousel';
 import Container from '@components/Container';
 import StackIcon from '@components/StackIcon';
 import NearLockApp from '@components/nearlock-app/NearLockApp';
+import { designsSlug } from '@lib/constants';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
 import RichText from '@madebyconnor/rich-text-to-jsx';
 import classnames from 'classnames';
@@ -139,7 +140,7 @@ const Section = ({
         </div>
       </section>
       {/* render MacOS Nearlock app */}
-      {title === 'Near Lock App' && slug === 'designs' && (
+      {title === 'Near Lock App' && slug === designsSlug && (
         <div
           id="near-lock-interactive-app"
           className={classnames(

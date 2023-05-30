@@ -4,6 +4,7 @@ import NavigationBar from '@components/NavigationBar';
 import Section from '@components/Section';
 import Layout from '@components/layout';
 import { getHeaderLinks } from '@lib/api';
+import { appsAndWebsitesSlug, designsSlug } from '@lib/constants';
 import { fetchEntries } from '@lib/fetchEntries';
 import useWindowDimensions from '@lib/windowSize';
 import { useRef } from 'react';
@@ -47,7 +48,7 @@ export default function InnerPage({ entries, headerItems, slug }) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { slug: 'designs' } }, { params: { slug: 'apps-and-websites' } }],
+    paths: [{ params: { slug: designsSlug } }, { params: { slug: appsAndWebsitesSlug } }],
     fallback: false,
   };
 }

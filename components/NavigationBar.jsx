@@ -1,3 +1,4 @@
+import { appsAndWebsitesSlug, designsSlug } from '@lib/constants';
 import useScrollDirection from '@lib/useScrollDirection';
 import cn from 'classnames';
 import { LayoutGroup, motion } from 'framer-motion';
@@ -58,14 +59,14 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
       className={cn(
         'transition-all items-center overflow-hidden fixed w-[90%] left-1/2 -translate-x-1/2 z-10 backdrop-blur-[12px] rounded-full bg-accent-2/70 dark:bg-accent-7/70 dark:border-accent-2/10 shadow-medium border border-accent-7/10 flex justify-between',
         {
-          'xl:w-[50%] lg:w-[60%] md:w-[78%]': slug === 'designs',
-          'lg:w-[40%] md:w-[90%]': slug === 'apps-and-websites',
+          'xl:w-[50%] lg:w-[60%] md:w-[78%]': slug === designsSlug,
+          'lg:w-[40%] md:w-[90%]': slug === appsAndWebsitesSlug,
           'opacity-100 top-5 md:top-8': scrolled,
           'opacity-0 top-0 pointer-events-none': !scrolled,
         },
       )}
     >
-      {(slug === 'apps-and-websites' || slug === 'designs') && (
+      {(slug === appsAndWebsitesSlug || slug === designsSlug) && (
         <Link href="/" className="ml-2 p-4 !text-base">
           {width > 639 ? (
             <>
@@ -118,15 +119,15 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
           )}
         </LayoutGroup>
       ))}
-      {(slug === 'apps-and-websites' || slug === 'designs') && (
+      {(slug === appsAndWebsitesSlug || slug === designsSlug) && (
         <Link
-          href={slug === 'designs' ? '/apps-and-websites' : '/designs'}
+          href={slug === designsSlug ? `/${appsAndWebsitesSlug}` : `/${designsSlug}`}
           className="mr-2 p-4 !text-base"
         >
-          {width > 639 && (slug === 'designs' ? 'Apps And Websites' : 'Designs')}
+          {width > 639 && (slug === designsSlug ? 'Apps And Websites' : 'Designs')}
           {width > 639 ? (
             <FaAngleRight className="ml-2 inline" />
-          ) : slug === 'designs' ? (
+          ) : slug === designsSlug ? (
             <TbAppWindowFilled className="h-5 w-5" />
           ) : (
             <HiPaintBrush />
