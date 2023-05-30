@@ -105,7 +105,7 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
                     className="mr-5 px-2 py-0.5 !text-base"
                 >
                     {width > 639 && (slug === 'designs' ? 'Apps And Websites' : 'Designs')}
-                    {width > 639 ? <FontAwesomeIcon icon={faAngleRight} className="ml-2" /> : slug === 'designs' ? <HiPaintBrush /> : <TbAppWindowFilled className='w-5 h-5' />}
+                    {width > 639 ? <FontAwesomeIcon icon={faAngleRight} className="ml-2" /> : slug === 'designs' ? <TbAppWindowFilled className='w-5 h-5' /> : <HiPaintBrush />}
                 </Link>
             )}
         </div>
