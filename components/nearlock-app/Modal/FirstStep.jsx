@@ -2,7 +2,7 @@ const FirstStep = ({ owner, device }) => {
   return (
     <div className="flex grow flex-col justify-center p-5 text-center">
       <svg
-        className="my-5 mx-auto"
+        className="mx-auto my-5"
         width="102px"
         height="100px"
         viewBox="0 0 102 187"

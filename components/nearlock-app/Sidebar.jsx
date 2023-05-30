@@ -1,6 +1,6 @@
-import classnames from 'classnames';
-import { Tab } from '@headlessui/react';
 import SidebarHeaderControls from '@components/nearlock-app/SidebarHeaderControls';
+import { Tab } from '@headlessui/react';
+import classnames from 'classnames';
 
 const Sidebar = ({
   isSidebarOpen,
@@ -20,11 +20,11 @@ const Sidebar = ({
     )}
   >
     {/* positioning classes are defined here because the component is used elsewhere */}
-    <SidebarHeaderControls isDarkMode={isDarkMode} className="absolute top-5 left-5 z-[2]" />
-    <div className="sidebar-content absolute left-[10px] flex h-full w-[210px] flex-col justify-between overflow-hidden pt-12 pb-2">
+    <SidebarHeaderControls isDarkMode={isDarkMode} className="absolute left-5 top-5 z-[2]" />
+    <div className="sidebar-content absolute left-[10px] flex h-full w-[210px] flex-col justify-between overflow-hidden pb-2 pt-12">
       <input
         // flex or hidden
-        className="sidebar-search left-[10px] z-[3] mt-1 mb-2 hidden w-full flex-col justify-between overflow-hidden rounded-lg border-0 bg-black/[0.06] py-1.5 px-3 text-[13px] shadow-[0_0_0_1.5px_hsla(0,0%,0%,0.09)] outline-none placeholder:text-white/[0.25]"
+        className="sidebar-search left-[10px] z-[3] mb-2 mt-1 hidden w-full flex-col justify-between overflow-hidden rounded-lg border-0 bg-black/[0.06] px-3 py-1.5 text-[13px] shadow-[0_0_0_1.5px_hsla(0,0%,0%,0.09)] outline-none placeholder:text-white/[0.25]"
         placeholder="Search..."
       />
       <Tab.List className="flex grow flex-col">
@@ -52,7 +52,7 @@ const Sidebar = ({
               showInMenu && (
                 <img
                   src={`/nearlock-app/menu/${title.toLowerCase().split(' ').join('-')}.svg`}
-                  className="mr-2 ml-1 h-[17px]"
+                  className="ml-1 mr-2 h-[17px]"
                   alt=""
                 />
               )
@@ -71,7 +71,7 @@ const Sidebar = ({
             },
           )}
         >
-          <img src="/nearlock-app/menu/iphone.svg" className="mr-2 ml-1 h-[17px]" alt="" />
+          <img src="/nearlock-app/menu/iphone.svg" className="ml-1 mr-2 h-[17px]" alt="" />
           {owner}&apos;s iPhone
           <div className="ml-auto mr-1 h-2 w-2 rounded bg-gradient-to-b from-[#2dff1a] to-[#13e600] shadow-[0_0_0_1px_hsla(0,0%,0%,0.1),0_0_0_2px_hsla(0,0%,0%,0.05),0_0_10px_0px_hsla(121,100%,59%,0.75)]" />
         </div>

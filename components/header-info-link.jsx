@@ -1,9 +1,9 @@
 import { Popover, Transition } from '@headlessui/react';
 import classnames from 'classnames';
 import { useTheme } from 'next-themes';
-import PropTypes from 'prop-types';
-import { createElement, Fragment, useState } from 'react';
+import { Fragment, createElement, useState } from 'react';
 import * as RI from 'react-icons/ri';
+import sanitizeHtml from 'sanitize-html';
 
 const HeaderInfoLink = ({
   link,
@@ -59,7 +59,8 @@ const HeaderInfoLink = ({
         >
           <div
             className="rounded-lg  px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5 "
-            dangerouslySetInnerHTML={{ __html: tooltipText }}
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(tooltipText) }}
           />
         </Popover.Panel>
       </Transition>

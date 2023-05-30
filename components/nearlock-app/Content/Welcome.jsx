@@ -1,6 +1,6 @@
+import AppButton from '@components/nearlock-app/AppButton';
 import { Tab } from '@headlessui/react';
 import classnames from 'classnames';
-import AppButton from '@components/nearlock-app/AppButton';
 
 export default function Welcome({ setIsModalOpen, isDarkMode }) {
   return (
@@ -8,7 +8,7 @@ export default function Welcome({ setIsModalOpen, isDarkMode }) {
       <div className="flex flex-col items-center">
         <img
           src="/nearlock-app/nearlock-logo.svg"
-          className="mt-28 mb-12 h-[200px]"
+          className="mb-12 mt-28 h-[200px]"
           alt="NearLock Logo"
         />
         <div className="flex w-3/5 flex-col items-center">

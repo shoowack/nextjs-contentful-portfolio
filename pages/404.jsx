@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Custom404() {
   const router = useRouter();
@@ -14,7 +14,7 @@ export default function Custom404() {
         You may find what you were looking for on our{' '}
         <Link
           href="/"
-          className="bg-black/10 hover:bg-black/20 transition-all ease-in-out duration-500"
+          className="bg-black/10 transition-all duration-500 ease-in-out hover:bg-black/20"
         >
           Homepage
         </Link>

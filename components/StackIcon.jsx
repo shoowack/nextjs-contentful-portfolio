@@ -1,35 +1,35 @@
-import { Fragment, useEffect, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
+import { Fragment, useEffect, useState } from 'react';
 
 import {
   ACF,
-  Firebase,
-  Formik,
+  Bootstrap,
   Contentful,
   ContentfulAlt,
-  Bootstrap,
+  Firebase,
+  Formik,
   GraphQL,
-  jQuery,
-  jQueryAlt,
+  Illustrator,
+  MySQL,
   NextJS,
   NextJSAlt,
+  PHP,
+  Photoshop,
   React,
   Redux,
+  SASS,
+  SASSAlt,
   Sketch,
   Symfony,
   SymfonyAlt,
-  WordPress,
-  WordPressAlt,
-  PHP,
-  Photoshop,
-  MySQL,
-  Illustrator,
-  SASS,
-  SASSAlt,
   Tailwind,
   TypeScript,
+  WordPress,
+  WordPressAlt,
+  jQuery,
+  jQueryAlt,
 } from '@lib/stackLogos';
 
 const loader = ({ src, width, quality }) => {
@@ -135,6 +135,7 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
       src = TypeScript.src;
       break;
     default:
+      // eslint-disable-next-line consistent-return
       return;
   }
 
@@ -185,7 +186,7 @@ export default function StackIcon({ stackIcon, section, isMobile }) {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute left-1/2 top-0 translate-y-[calc(-100%-10px)] -translate-x-1/2 transform whitespace-nowrap text-center">
+        <Popover.Panel className="absolute left-1/2 top-0 -translate-x-1/2 translate-y-[calc(-100%-10px)] transform whitespace-nowrap text-center">
           <div className="rounded-lg bg-white px-2 py-1 text-black shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-black dark:text-white">
             {tooltip || stackIcon}
           </div>

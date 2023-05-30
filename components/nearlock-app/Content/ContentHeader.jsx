@@ -62,7 +62,7 @@ export function ContentHeader({
       <div className="flex items-center">
         <input
           className={classnames(
-            'pointer-events-none m-0 h-[30px] w-0 rounded-[7px] border-0 bg-[length:12px_12px] bg-[left_0.5rem_center] bg-no-repeat py-0 pr-[30px] pl-[28px] text-xs opacity-0 outline outline-1 [transition:background_0.5s,width_0.5s,opacity_0.5s,color_0.5s] focus:outline-none',
+            'pointer-events-none m-0 h-[30px] w-0 rounded-[7px] border-0 bg-[length:12px_12px] bg-[left_0.5rem_center] bg-no-repeat py-0 pl-[28px] pr-[30px] text-xs opacity-0 outline outline-1 [transition:background_0.5s,width_0.5s,opacity_0.5s,color_0.5s] focus:outline-none',
             {
               'pointer-events-auto w-[240px] opacity-100 ring-[#368ffc] focus:ring': isSearchOpen,
               'bg-[#F4F3F7] text-black outline-black/[0.06]': !isDarkMode,
@@ -85,7 +85,7 @@ export function ContentHeader({
         />
         <div
           className={classnames(
-            'absolute top-2.5 right-2.5 flex rounded-md p-[8px] opacity-100 [transition:transform_0.5s,opacity_0.5s] hover:bg-black/10',
+            'absolute right-2.5 top-2.5 flex rounded-md p-[8px] opacity-100 [transition:transform_0.5s,opacity_0.5s] hover:bg-black/10',
             {
               'pointer-events-none scale-0 opacity-0': isSearchOpen,
             },

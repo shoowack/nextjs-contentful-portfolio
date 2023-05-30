@@ -1,12 +1,12 @@
+import AppButton from '@components/nearlock-app/AppButton';
 import { Tab } from '@headlessui/react';
 import classnames from 'classnames';
-import AppButton from '@components/nearlock-app/AppButton';
 
 const Keystroke = ({ children, className, isDarkMode }) => {
   return (
     <div
       className={classnames(
-        'inline rounded-[10px] py-[5px] px-[8px] text-[11px] uppercase ring-[1.5px] [transition:box-shadow_0.5s]',
+        'inline rounded-[10px] px-[8px] py-[5px] text-[11px] uppercase ring-[1.5px] [transition:box-shadow_0.5s]',
         className,
         isDarkMode ? 'ring-[#666666]' : 'ring-[#d9d9d9]',
       )}
@@ -53,7 +53,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
                   </g>
                 </g>
               </svg>
-              <small className="mt-1 ml-3 w-[250px] text-center">
+              <small className="ml-3 mt-1 w-[250px] text-center">
                 Use Menu bar shortcut on your Mac to copy Clipboard from your iPhone
               </small>
             </div>
@@ -92,7 +92,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
               </svg>
             </div>
           </div>
-          <div className="flex items-center justify-center p-5 mt-12">
+          <div className="mt-12 flex items-center justify-center p-5">
             <AppButton className="nearlock btn-blue">Send Clipboard</AppButton>
             <small className="mx-4">or press</small>
             <div>

@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <title>Ivan Suvak Martinovic Portfolio</title>
         <Head />
-        <body className="bg-[#e9eaed] dark:bg-[#2c2d30] antialiased">
+        <body className="bg-[#e9eaed] antialiased dark:bg-[#2c2d30]">
           <Main />
           <NextScript />
         </body>

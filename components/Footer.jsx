@@ -66,13 +66,13 @@ export default function Footer() {
   const { email, message } = form;
 
   return (
-    <div className="fixed bottom-0 -z-10 w-full bg-[#e9eaed] dark:bg-[#2c2d30] text-[#333] dark:text-white md:py-10">
+    <div className="fixed bottom-0 -z-10 w-full bg-[#e9eaed] text-[#333] dark:bg-[#2c2d30] dark:text-white md:py-10">
       <Container>
         <h2 className="text-nowrap flex justify-center text-3xl font-black leading-[78px] md:text-[60px]">
           Contact
         </h2>
         <div>
-          <form onSubmit={handleSubmit} className="grid gap-y-2 gap-x-5 py-4 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="grid gap-x-5 gap-y-2 py-4 sm:grid-cols-2">
             <label
               htmlFor="email"
               className="self-center font-graphik text-sm font-medium text-[#333] dark:text-white sm:justify-self-end"
@@ -88,7 +88,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => handleChange(e)}
                 disabled={isLoading}
-                className="block w-full rounded-md border border-black/20 dark:border-white/10 bg-white dark:bg-[#424348] py-2 px-3 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] dark:ring-offset-[#2c2d30] transition duration-200 ease-in dark:focus:border-white/10 focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-3/4 sm:text-sm lg:w-1/2"
+                className="block w-full rounded-md border border-black/20 bg-white px-3 py-2 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] transition duration-200 ease-in focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-[#424348] dark:ring-offset-[#2c2d30] dark:focus:border-white/10 sm:w-3/4 sm:text-sm lg:w-1/2"
               />
             </div>
             <label
@@ -102,7 +102,7 @@ export default function Footer() {
                 rows={3}
                 required="required"
                 name="message"
-                className="block w-full rounded-md border border-black/20 dark:border-white/10 bg-white dark:bg-[#424348] py-2 px-3 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] dark:ring-offset-[#2c2d30] transition duration-200 ease-in dark:focus:border-white/10 focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-3/4 sm:text-sm lg:w-1/2"
+                className="block w-full rounded-md border border-black/20 bg-white px-3 py-2 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] transition duration-200 ease-in focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-[#424348] dark:ring-offset-[#2c2d30] dark:focus:border-white/10 sm:w-3/4 sm:text-sm lg:w-1/2"
                 value={message}
                 onChange={(e) => handleChange(e)}
                 disabled={isLoading}
@@ -112,24 +112,28 @@ export default function Footer() {
             <div>
               <button
                 type="submit"
-                className="hover:bg-blue rounded-md border border-transparent bg-[#2189ff] py-2 px-3 text-sm font-medium text-white shadow-sm ring-offset-[#2c2d30] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="hover:bg-blue rounded-md border border-transparent bg-[#2189ff] px-3 py-2 text-sm font-medium text-white shadow-sm ring-offset-[#2c2d30] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 color={!errors && sentState ? 'success' : 'primary'}
                 disabled={isLoading}
               >
                 {isLoading ? (
                   <>
                     Sending
-                    <FaCircleNotch size="sm" spin="spin" className="ml-2 h-3 w-3 inline animate-spin" />
+                    <FaCircleNotch
+                      size="sm"
+                      spin="spin"
+                      className="ml-2 inline h-3 w-3 animate-spin"
+                    />
                   </>
                 ) : !errors && sentState ? (
                   <>
                     Sent
-                    <FaCheck className="ml-2 h-3 w-3 inline" />
+                    <FaCheck className="ml-2 inline h-3 w-3" />
                   </>
                 ) : (
                   <>
                     Send
-                    <FaPaperPlane className="ml-2 h-3 w-3 inline" />
+                    <FaPaperPlane className="ml-2 inline h-3 w-3" />
                   </>
                 )}
               </button>

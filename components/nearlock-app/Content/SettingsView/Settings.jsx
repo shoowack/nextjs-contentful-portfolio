@@ -1,22 +1,22 @@
-import ListItem from '@components/nearlock-app/Content/SettingsView/ListItem';
 import ListHeader from '@components/nearlock-app/Content/SettingsView/ListHeader';
-import { Tab } from '@headlessui/react';
-import classnames from 'classnames';
+import ListItem from '@components/nearlock-app/Content/SettingsView/ListItem';
 import {
+  btDisconnect,
+  failedLoginPhotos,
   knock,
+  loginHistory,
+  loginPhotos,
   nearlock,
+  notifications,
+  openSpace,
+  screensaver,
+  sleep,
+  smallerDistances,
   touchId,
   yesNo,
-  sleep,
-  screensaver,
-  openSpace,
-  btDisconnect,
-  smallerDistances,
-  loginPhotos,
-  failedLoginPhotos,
-  loginHistory,
-  notifications,
 } from '@components/nearlock-app/Content/SettingsView/SettingsIcons';
+import { Tab } from '@headlessui/react';
+import classnames from 'classnames';
 
 export default function Setup({ setActiveTab, isDarkMode }) {
   const setupData = [
@@ -162,7 +162,7 @@ export default function Setup({ setActiveTab, isDarkMode }) {
             ))}
             {i < setupData.length - 1 && (
               <hr
-                className={classnames('my-4 w-full h-px border-0', {
+                className={classnames('my-4 h-px w-full border-0', {
                   'bg-white/[.05]': isDarkMode,
                   'bg-black/[.05]': !isDarkMode,
                 })}

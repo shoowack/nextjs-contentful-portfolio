@@ -1,7 +1,7 @@
 const SecondStep = ({ isDarkMode }) => {
   return (
     <div className="flex grow flex-row px-5">
-      <div className="ml-10 -mr-10 flex w-[300px] flex-col items-center justify-center py-5 text-center">
+      <div className="-mr-10 ml-10 flex w-[300px] flex-col items-center justify-center py-5 text-center">
         <h5>Now use your iPhone to finish setting up Near Lock</h5>
         <small className="w-3/4">Your data is encrypted and stored only on your devices</small>
 

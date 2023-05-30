@@ -32,7 +32,7 @@ const ListItem = ({
       aria-hidden
     >
       {newBadge && (
-        <div className="absolute top-px left-0 z-[1] rounded-full bg-red-500 px-[7px] py-[2px] text-[9px] uppercase text-white">
+        <div className="absolute left-0 top-px z-[1] rounded-full bg-red-500 px-[7px] py-[2px] text-[9px] uppercase text-white">
           New
         </div>
       )}
@@ -40,7 +40,7 @@ const ListItem = ({
         className={classnames(
           'flex h-[60px] w-[60px] items-center justify-center overflow-hidden rounded-xl [transition:background_0.5s]',
           {
-            'before:border--0 relative shadow-[0_0_0_3px_#368EFC_inset] before:absolute before:top-0 before:right-0 before:border-r-[30px] before:border-b-[30px] before:border-t-0 before:border-solid before:border-y-transparent before:border-r-[#368EFC] before:border-l-transparent before:content-[""]':
+            'before:border--0 relative shadow-[0_0_0_3px_#368EFC_inset] before:absolute before:right-0 before:top-0 before:border-b-[30px] before:border-r-[30px] before:border-t-0 before:border-solid before:border-y-transparent before:border-l-transparent before:border-r-[#368EFC] before:content-[""]':
               isChecked,
             'bg-[#EAEAEA]': !isDarkMode,
             'bg-white/[0.075]': isDarkMode,
@@ -51,7 +51,7 @@ const ListItem = ({
         {isChecked && (
           <FaCheck
             className={classnames(
-              'absolute top-[6px] right-[6px] h-2 w-2 [transition:color_0.5s]',
+              'absolute right-[6px] top-[6px] h-2 w-2 [transition:color_0.5s]',
               {
                 'text-black': isDarkMode,
                 'text-white': !isDarkMode,

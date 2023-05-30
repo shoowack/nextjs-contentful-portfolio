@@ -1,8 +1,8 @@
+import AppButton from '@components/nearlock-app/AppButton';
+import btConnect from '@components/nearlock-app/Content/btConnect.json';
 import { Tab } from '@headlessui/react';
 import classnames from 'classnames';
-import AppButton from '@components/nearlock-app/AppButton';
 import Lottie from 'lottie-react';
-import btConnect from '@components/nearlock-app/Content/btConnect.json';
 
 export default function Devices({
   isSetupDone,
@@ -26,7 +26,7 @@ export default function Devices({
             <small>Currently connected devices</small>
           </div> */}
           <div className="flex grow flex-col justify-center">
-            <div className="mx-auto mt-14 mb-20 flex w-[550px]">
+            <div className="mx-auto mb-20 mt-14 flex w-[550px]">
               <div className="flex flex-col items-center">
                 <svg
                   width="175px"
@@ -49,7 +49,7 @@ export default function Devices({
                 <small className="mt-3">{owner}’s MacBook Pro</small>
               </div>
               <div className="before:-z[1] mb-5 flex grow flex-col items-center justify-center before:relative before:ml-[15px] before:h-1 before:w-[calc(100%+47px)] before:bg-[#368EFC] before:shadow-[0_0_10px_-1px_#368EFC] before:content-['']">
-                <div className="absolute mt-[-90px] rounded-lg bg-green-600 px-5 py-1.5 text-sm text-white transition-all duration-500 before:absolute before:left-1/2 before:-bottom-2 before:h-0 before:w-0 before:-translate-x-1/2 before:border-x-8 before:border-t-8 before:border-b-0 before:border-solid before:border-x-transparent before:border-b-transparent before:border-t-green-600 before:content-['']">
+                <div className="absolute mt-[-90px] rounded-lg bg-green-600 px-5 py-1.5 text-sm text-white transition-all duration-500 before:absolute before:-bottom-2 before:left-1/2 before:h-0 before:w-0 before:-translate-x-1/2 before:border-x-8 before:border-b-0 before:border-t-8 before:border-solid before:border-x-transparent before:border-b-transparent before:border-t-green-600 before:content-['']">
                   3 meters
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default function Devices({
             animationData={btConnect}
             loop
             autoplay
-            className="absolute top-[-200px] left-1/2 h-[800px] w-[800px] -translate-x-1/2"
+            className="absolute left-1/2 top-[-200px] h-[800px] w-[800px] -translate-x-1/2"
           />
           <div className="absolute top-[400px] flex w-3/5 flex-col items-center">
             <h5

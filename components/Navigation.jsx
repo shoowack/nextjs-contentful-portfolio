@@ -17,8 +17,10 @@ export default function Navigation({ headerItems, aboutSectionRef }) {
   }
 
   return (
-    <div className="aboutme text:black py-2 pb-5 dark:text-white md:py-10 xl:py-14"
-      ref={aboutSectionRef}>
+    <div
+      className="aboutme text:black py-2 pb-5 dark:text-white md:py-10 xl:py-14"
+      ref={aboutSectionRef}
+    >
       <Container>
         <div className="mb-5 flex flex-row justify-between">
           <div className="flex w-[55px] items-center justify-between">

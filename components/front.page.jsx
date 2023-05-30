@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import ContentfulImage from '@components/contentful-image';
+import Link from 'next/link';
 
 export default function FrontPage({
   sys: { id },
@@ -22,13 +22,13 @@ export default function FrontPage({
           {title && (
             <h1
               data-parent={title}
-              className="bg:bg-shine xl:text-6xl text-lg sm:text-[4vw] md:group-hover/section:pb-8 md:pb-5 whitespace-nowrap font-graphik font-semibold uppercase leading-10 !text-white/80 drop-shadow-[0px_2px_5px_rgba(0,0,0,0.5)] before:absolute before:left-0 before:top-0 before:w-full before:bg-[length:200%] before:bg-clip-text before:bg-right before:text-transparent before:content-[attr(data-parent)] md:text-[2.5vw] md:transition-[font-size,padding] md:duration-300 md:group-hover/section:text-[3vw] xl:group-hover/section:text-[4rem] md:group-hover/section:before:animate-shine"
+              className="bg:bg-shine whitespace-nowrap font-graphik text-lg font-semibold uppercase leading-10 !text-white/80 drop-shadow-[0px_2px_5px_rgba(0,0,0,0.5)] before:absolute before:left-0 before:top-0 before:w-full before:bg-[length:200%] before:bg-clip-text before:bg-right before:text-transparent before:content-[attr(data-parent)] sm:text-[4vw] md:pb-5 md:text-[2.5vw] md:transition-[font-size,padding] md:duration-300 md:group-hover/section:pb-8 md:group-hover/section:text-[3vw] md:group-hover/section:before:animate-shine xl:text-6xl xl:group-hover/section:text-[4rem]"
             >
               {title}
             </h1>
           )}
           {subscript && (
-            <p className="mb-0 text-center px-5 text-sm xl:text-2xl font-graphik font-light uppercase tracking-widest text-white drop-shadow-[0px_2px_5px_rgba(0,0,0,0.5)] sm:mt-0 md:text-[1vw] md:transition-all md:duration-300 md:group-hover/section:text-[1.6vw] xl:group-hover/section:text-[2.25rem]">
+            <p className="mb-0 px-5 text-center font-graphik text-sm font-light uppercase tracking-widest text-white drop-shadow-[0px_2px_5px_rgba(0,0,0,0.5)] sm:mt-0 md:text-[1vw] md:transition-all md:duration-300 md:group-hover/section:text-[1.6vw] xl:text-2xl xl:group-hover/section:text-[2.25rem]">
               {subscript}
             </p>
           )}

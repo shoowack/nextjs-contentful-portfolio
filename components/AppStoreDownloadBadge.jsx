@@ -1,7 +1,7 @@
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
 
 export default function AppStoreDownloadBadge({ link }) {
   const [mounted, setMounted] = useState(false);
@@ -18,7 +18,7 @@ export default function AppStoreDownloadBadge({ link }) {
   }
 
   return (
-    <Link href={link} className="p-0 !bg-transparent" target="_blank">
+    <Link href={link} className="!bg-transparent p-0" target="_blank">
       <Image
         src={`https://tools.applemediaservices.com/api/badges/download-on-the-app-store/${
           currentTheme === 'dark' ? 'white' : 'black'

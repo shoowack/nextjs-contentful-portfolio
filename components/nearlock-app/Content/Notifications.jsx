@@ -1,8 +1,8 @@
-import * as dayjs from 'dayjs';
-import { useState, useEffect } from 'react';
+import AppButton from '@components/nearlock-app/AppButton';
 import { Tab } from '@headlessui/react';
 import classnames from 'classnames';
-import AppButton from '@components/nearlock-app/AppButton';
+import * as dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
 
 export default function Notifications({ isDarkMode }) {
   const [dateState, setDateState] = useState(dayjs().format('ddd MMM D h:mm A'));
@@ -52,17 +52,17 @@ export default function Notifications({ isDarkMode }) {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-[130px] left-[282.5px] overflow-hidden z-[1]">
+      <div className="absolute bottom-[130px] left-[282.5px] z-[1] overflow-hidden">
         <div
           className={classnames(
-            'border border-solid backdrop-blur-[100px] gap-2.5 w-[350px] p-[10px] rounded-2xl flex items-center m-5 transition-all duration-500 ease-in-out',
+            'm-5 flex w-[350px] items-center gap-2.5 rounded-2xl border border-solid p-[10px] backdrop-blur-[100px] transition-all duration-500 ease-in-out',
             notificationShow ? 'translate-x-0' : 'translate-x-[400px]',
             isDarkMode
-              ? 'bg-[#35343C] border-[#575259] shadow-[0_0_0_0.5px_rgba(0,0,0,0.5),0_0_8px_-2px_rgba(0,0,0,0.75)]'
-              : 'bg-[#f5f5f5]/[0.8] border-[#E4E3EA] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15),0_0_8px_-2px_rgba(0,0,0,0.5)]',
+              ? 'border-[#575259] bg-[#35343C] shadow-[0_0_0_0.5px_rgba(0,0,0,0.5),0_0_8px_-2px_rgba(0,0,0,0.75)]'
+              : 'border-[#E4E3EA] bg-[#f5f5f5]/[0.8] shadow-[0_0_0_0.5px_rgba(0,0,0,0.15),0_0_8px_-2px_rgba(0,0,0,0.5)]',
           )}
         >
-          <div className="flex shadow-[0_1px_2px_-1px_rgba(0,0,0,0.50)] m-[3px] rounded-lg items-center justify-center bg-white w-[37px] h-[37px]">
+          <div className="m-[3px] flex h-[37px] w-[37px] items-center justify-center rounded-lg bg-white shadow-[0_1px_2px_-1px_rgba(0,0,0,0.50)]">
             <img src="/nearlock-app/setup/nearlock.svg" alt="" className="w-4" />
           </div>
           <div className="flex flex-col">
@@ -75,12 +75,12 @@ export default function Notifications({ isDarkMode }) {
           </div>
         </div>
       </div>
-      <div className="notifications-clock drop-shadow-[0_1px_3px_rgba(0,0,0,0.30)] z-[1] absolute bottom-[247px] text-white left-[510px] font-normal text-sm">
+      <div className="notifications-clock absolute bottom-[247px] left-[510px] z-[1] text-sm font-normal text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.30)]">
         {dateState}
       </div>
       <img
         src="/nearlock-app/notifications-screen.png"
-        className="absolute bottom-0 w-[750px] left-0"
+        className="absolute bottom-0 left-0 w-[750px]"
         alt="NearLock notification screen"
       />
     </Tab.Panel>

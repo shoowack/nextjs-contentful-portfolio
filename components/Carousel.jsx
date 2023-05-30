@@ -43,7 +43,7 @@ export default function Carousel({
         <Container>
           <h3
             className={classnames(
-              'mb-4 text-center text-2xl font-extralight dark:font-normal text-[#333]/50 dark:text-[#aaa]/40',
+              'mb-4 text-center text-2xl font-extralight text-[#333]/50 dark:font-normal dark:text-[#aaa]/40',
               {
                 'md:mb-10': deviceBezel && windowWidth >= 768 && iphone,
                 'md:mb-16': deviceBezel && windowWidth >= 900 && ipads,
@@ -145,7 +145,7 @@ export default function Carousel({
               'pointer-events-none absolute left-[50%] z-50 w-full -translate-x-1/2 select-none',
               {
                 'top-[-2.3%] h-[104.5%]': iphone,
-                'top-[-3.64%] left-[50.03%] h-[107%]': ipad,
+                'left-[50.03%] top-[-3.64%] h-[107%]': ipad,
                 'top-[-4.7%] h-[109.2%]': ipadLandscape,
               },
             )}
@@ -164,11 +164,11 @@ export default function Carousel({
             aria-hidden
             style={{ background: browserThemeColor || '#eee' }}
             className={classnames(
-              'flex justify-between w-[calc(100%-30px)] items-center md:w-[60%] pointer-events-none absolute left-[50%] top-[-35px] z-50 -translate-x-1/2 select-none h-[35px] rounded-t-[11px]',
+              'pointer-events-none absolute left-[50%] top-[-35px] z-50 flex h-[35px] w-[calc(100%-30px)] -translate-x-1/2 select-none items-center justify-between rounded-t-[11px] md:w-[60%]',
             )}
           >
             <SidebarHeaderControls className="ml-2 scale-75" />
-            <div className="self-center -ml-14 bg-black/10 w-96 h-5 rounded-[4px]" />
+            <div className="-ml-14 h-5 w-96 self-center rounded-[4px] bg-black/10" />
             <div />
           </div>
         )}
@@ -241,10 +241,10 @@ export default function Carousel({
       {
         // this is not the same as galleryLength which is used for managing last divider
         images.length > 1 && (
-          <div className="mt-5 flex justify-center md:mt-16 md:mb-24">
+          <div className="mt-5 flex justify-center md:mb-24 md:mt-16">
             <div
               className={classnames(
-                'swiper-button-prev rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:py-2.5 md:px-1',
+                'swiper-button-prev rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:px-1 md:py-2.5',
                 { 'opacity-50 transition-opacity duration-200': isBeginning },
               )}
               onClick={() => {
@@ -270,7 +270,7 @@ export default function Carousel({
 
             <div
               className={classnames(
-                'swiper-button-next rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:py-2.5 md:px-1',
+                'swiper-button-next rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:px-1 md:py-2.5',
                 { 'opacity-50 transition-opacity duration-200': isEnd },
               )}
               onClick={() => {
