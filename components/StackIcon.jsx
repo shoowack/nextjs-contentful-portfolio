@@ -1,7 +1,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import { useTheme } from 'next-themes';
 import { Fragment, useEffect, useState } from 'react';
-import ContentfulImage from './contentful-image';
+import ContentfulImage from './ContentfulImage';
 
 const loader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
@@ -46,14 +46,12 @@ export default function StackIcon({
         <div className="relative h-7 w-7">
           <ContentfulImage
             quality={100}
-            layout="fill"
-            objectFit="contain"
+            fill
             aria-hidden
             src={currentTheme === 'light' ? darkLogoUrl : lightLogoUrl}
             alt={name}
-            className="inline"
+            className="inline object-contain"
             loader={loader}
-            fill
             onMouseEnter={() => setTooltipOpen(true)}
             onMouseLeave={() => setTooltipOpen(false)}
             sizes="(max-width: 768px) 20vw, 10vw"
@@ -69,12 +67,10 @@ export default function StackIcon({
       <div className="relative mx-2 h-8 w-8">
         <ContentfulImage
           quality={100}
-          layout="fill"
-          objectFit="contain"
           aria-hidden
           src={currentTheme === 'light' ? darkLogoUrl : lightLogoUrl}
           alt={name}
-          className="inline"
+          className="inline object-contain"
           loader={loader}
           fill
           onMouseEnter={() => setTooltipOpen(true)}

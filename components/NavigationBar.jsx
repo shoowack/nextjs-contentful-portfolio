@@ -7,7 +7,7 @@ import { AiFillHome } from 'react-icons/ai';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { HiPaintBrush } from 'react-icons/hi2';
 import { TbAppWindowFilled } from 'react-icons/tb';
-import ContentfulImage from './contentful-image';
+import ContentfulImage from './ContentfulImage';
 
 export default function NavigationBar({ aboutSectionRef, slug, width, sections, sliderRef }) {
   const [scrolled, setScrolled] = useState(false);
@@ -108,7 +108,8 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
                     src={fields.appLogo.fields.file.url}
                     className="object-fit"
                     alt={fields.title}
-                    layout="fill"
+                    fill
+                    sizes="100vw"
                   />
                 </div>
               )}

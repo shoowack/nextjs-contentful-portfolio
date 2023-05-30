@@ -1,5 +1,5 @@
 import { useTheme } from 'next-themes';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -26,6 +26,7 @@ export default function AppStoreDownloadBadge({ link }) {
         alt="Download on the App Store"
         height={40}
         width={120}
+        unoptimized
         loader={({ src }) => src}
       />
     </Link>

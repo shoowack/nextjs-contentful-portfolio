@@ -18,7 +18,7 @@ export default function Navigation({ headerItems, aboutSectionRef }) {
 
   return (
     <div
-      className="aboutme text:black py-2 pb-5 dark:text-white md:py-10 xl:py-14"
+      className="aboutme text:black py-2 pb-5 dark:text-white md:py-5 md:pb-10 xl:pb-14"
       ref={aboutSectionRef}
     >
       <Container>

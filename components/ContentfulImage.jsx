@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const contentfulLoader = ({ src, width, quality }) => {

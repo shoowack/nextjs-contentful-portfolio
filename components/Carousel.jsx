@@ -1,5 +1,5 @@
 import Container from '@components/Container';
-import ContentfulImage from '@components/contentful-image';
+import ContentfulImage from '@components/ContentfulImage';
 import classnames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { Navigation, Pagination } from 'swiper';
@@ -152,10 +152,11 @@ export default function Carousel({
           >
             <ContentfulImage
               quality={100}
-              layout="fill"
+              fill
               src={deviceBezel?.fields.file.url}
-              objectFit="contain"
+              className="object-contain"
               aria-hidden
+              alt="Device Bezel"
             />
           </div>
         )}
@@ -219,7 +220,6 @@ export default function Carousel({
                   alt={description}
                   height={height}
                   width={width}
-                  layout="responsive"
                   className="select-none"
                   sizes={
                     website || desktopApp || webApp
