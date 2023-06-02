@@ -71,7 +71,7 @@ const Section = ({
               {/* "clipboard-title" class is needed for share section link */}
               <div className="clipboard-title group flex items-center justify-center md:-mr-8 md:ml-4">
                 {/* <AnimatedText text={title} /> */}
-                <h2 className="align-self-center text-nowrap text-3xl font-black leading-[78px] text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee] md:text-[60px]">
+                <h2 className="whitespace-nowrap text-3xl font-black leading-[78px] text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee] md:text-[60px]">
                   {title}
                 </h2>
                 {typeof window !== 'undefined' && windowWidth > 639 && (
@@ -179,9 +179,7 @@ const Section = ({
               'mx-4': windowWidth < 768,
             })}
           >
-            <Container
-              className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}
-            >
+            <Container className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}>
               <div className="clipboard-title mr-md-n5 group flex items-center justify-center">
                 <Balancer>
                   <p className="mb-0 leading-6 text-white">

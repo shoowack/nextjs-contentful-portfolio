@@ -4,6 +4,7 @@ const ThirdStep = () => {
   return (
     <div className="flex grow flex-col items-center justify-center px-5">
       <div className="mb-12 mt-6">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="./third-step.png" alt="" className="h-[130px]" />
       </div>
       <h5>You got it! Cool, isn’t it?</h5>

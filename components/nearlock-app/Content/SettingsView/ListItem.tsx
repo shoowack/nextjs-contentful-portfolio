@@ -3,15 +3,15 @@ import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
 type Props = {
-  icon: { src: string}
-  title: string
-  desc: string
-  checked: string
-  newBadge: string
-  extraInfo: string
-  setActiveTab: Function
-  isDarkMode: string
-}
+  icon: { src: string };
+  title: string;
+  desc: string;
+  checked: string;
+  newBadge: string;
+  extraInfo: string;
+  setActiveTab: (arg0: number) => void;
+  isDarkMode: string;
+};
 
 const ListItem: React.FC = ({
   icon,
@@ -51,13 +51,14 @@ const ListItem: React.FC = ({
         className={classnames(
           'flex h-[60px] w-[60px] items-center justify-center overflow-hidden rounded-xl [transition:background_0.5s]',
           {
-            'before:border--0 relative shadow-[0_0_0_3px_#368EFC_inset] before:absolute before:right-0 before:top-0 before:border-b-[30px] before:border-r-[30px] before:border-t-0 before:border-solid before:border-y-transparent before:border-l-transparent before:border-r-[#368EFC] before:content-[""]':
+            'relative shadow-[0_0_0_3px_#368EFC_inset] before:absolute before:right-0 before:top-0 before:border-0 before:border-b-[30px] before:border-r-[30px] before:border-solid before:border-y-transparent before:border-l-transparent before:border-r-[#368EFC] before:content-[""]':
               isChecked,
             'bg-[#EAEAEA]': !isDarkMode,
             'bg-white/[0.075]': isDarkMode,
           },
         )}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={icon?.src} alt="" />
         {isChecked && (
           <FaCheck

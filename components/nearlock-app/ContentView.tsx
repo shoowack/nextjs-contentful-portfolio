@@ -1,13 +1,13 @@
-import classnames from 'classnames';
-import { Tab } from '@headlessui/react';
 import {
-  ContentHeader,
-  Welcome,
-  Devices,
   Clipboard,
-  Settings,
+  ContentHeader,
+  Devices,
   Notifications,
+  Settings,
+  Welcome,
 } from '@components/nearlock-app/Content/';
+import { Tab } from '@headlessui/react';
+import classnames from 'classnames';
 // import btOff from "./btOff.json";
 // import wifiConnected from "./wifiConnected.json";
 
@@ -29,7 +29,7 @@ const Content = ({
 }) => {
   return (
     <div
-      className={classnames('content relative z-[1] h-full grow [transition:background_0.5s]', {
+      className={classnames('relative z-[1] h-full grow [transition:background_0.5s]', {
         'bg-[#211C21]': isDarkMode,
         'bg-white': !isDarkMode,
       })}

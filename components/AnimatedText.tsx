@@ -62,7 +62,7 @@ const AnimatedText = ({ text }) => {
       {letters.map((letter: string, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <motion.span variants={child} key={index}>
-            {letter === ' ' ? '\u00A0' : letter}
+          {letter === ' ' ? '\u00A0' : letter}
         </motion.span>
       ))}
     </motion.div>

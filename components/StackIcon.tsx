@@ -1,7 +1,7 @@
+import ContentfulImage from '@components/ContentfulImage';
 import { Popover, Transition } from '@headlessui/react';
 import { useTheme } from 'next-themes';
 import { Fragment, useEffect, useState } from 'react';
-import ContentfulImage from './ContentfulImage';
 
 const loader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
@@ -89,8 +89,8 @@ export default function StackIcon({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <Popover.Panel className="absolute left-1/2 top-0 -translate-x-1/2 translate-y-[calc(-100%-10px)] transform whitespace-nowrap text-center">
-          <div className="rounded-lg bg-white px-2 py-1 text-black shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-black dark:text-white">
+        <Popover.Panel className="absolute left-1/2 top-0 -translate-x-1/2 translate-y-[calc(-100%-10px)] whitespace-nowrap text-center">
+          <div className="rounded-lg bg-white px-2 py-1 text-black shadow-lg ring-1 ring-black/5 dark:bg-black/5 dark:text-white">
             {name}
           </div>
         </Popover.Panel>

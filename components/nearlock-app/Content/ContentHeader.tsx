@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-export function ContentHeader({
+export default function ContentHeader({
   isSidebarOpen,
   toggleSidebar,
   isSearchOpen,
@@ -12,6 +12,7 @@ export function ContentHeader({
 }) {
   return (
     <div
+      // eslint-disable-next-line tailwindcss/no-custom-classname
       className={classnames(
         'content-header absolute z-[1] flex w-full flex-row items-center justify-between border-b px-[10px] py-[9px] backdrop-blur-[10px] [transition:all_0.5s]',
         {
@@ -51,10 +52,11 @@ export function ContentHeader({
         </svg>
       </div>
       <div
+        // eslint-disable-next-line tailwindcss/no-custom-classname
         className={classnames('content-header__title [transition:margin_0.5s]', {
           // negative paddings to center the title if sidebar or search are active
-          '-ml-[80px]': !isSidebarOpen,
-          '-mr-[180px]': isSearchOpen,
+          'ml-[-80px]': !isSidebarOpen,
+          'mr-[-180px]': isSearchOpen,
         })}
       >
         {menuItems[activeTab].title}
@@ -73,6 +75,7 @@ export function ContentHeader({
           ref={searchRef}
           style={{ backgroundImage: 'url(./../../nearlock-app/search.svg)' }}
         />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/nearlock-app/search-close.svg"
           className={classnames('absolute right-5 h-3.5 w-3.5', {
@@ -123,5 +126,3 @@ export function ContentHeader({
     </div>
   );
 }
-
-export default ContentHeader;

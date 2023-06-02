@@ -1,5 +1,5 @@
-import { useTheme } from 'next-themes';
 import classnames from 'classnames';
+import { useTheme } from 'next-themes';
 
 const ThemeSwitch = () => {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -14,7 +14,7 @@ const ThemeSwitch = () => {
       <a
         rel="noreferrer"
         className={classnames(
-          'theme-toggle flex h-9 w-9 items-center justify-center rounded-md bg-transparent p-[9px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+          'theme-toggle flex h-9 w-9 items-center justify-center rounded-md bg-transparent p-[9px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75',
         )}
         onClick={toggleTheme}
         aria-hidden

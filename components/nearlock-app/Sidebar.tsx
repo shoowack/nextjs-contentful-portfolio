@@ -12,6 +12,7 @@ const Sidebar = ({
   owner,
 }) => (
   <div
+    // eslint-disable-next-line tailwindcss/no-custom-classname
     className={classnames(
       'sidebar h-full w-0 min-w-0 transition-all duration-500',
       isSidebarOpen
@@ -21,9 +22,11 @@ const Sidebar = ({
   >
     {/* positioning classes are defined here because the component is used elsewhere */}
     <SidebarHeaderControls isDarkMode={isDarkMode} className="absolute left-5 top-5 z-[2]" />
+    {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
     <div className="sidebar-content absolute left-[10px] flex h-full w-[210px] flex-col justify-between overflow-hidden pb-2 pt-12">
       <input
         // flex or hidden
+        // eslint-disable-next-line tailwindcss/no-custom-classname
         className="sidebar-search left-[10px] z-[3] mb-2 mt-1 hidden w-full flex-col justify-between overflow-hidden rounded-lg border-0 bg-black/[0.06] px-3 py-1.5 text-[13px] shadow-[0_0_0_1.5px_hsla(0,0%,0%,0.09)] outline-none placeholder:text-white/[0.25]"
         placeholder="Search..."
       />
@@ -50,6 +53,7 @@ const Sidebar = ({
             {
               // this condition is needed so that it doesn't try to load images that are not even shown
               showInMenu && (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={`/nearlock-app/menu/${title.toLowerCase().split(' ').join('-')}.svg`}
                   className="ml-1 mr-2 h-[17px]"
@@ -71,6 +75,7 @@ const Sidebar = ({
             },
           )}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/nearlock-app/menu/iphone.svg" className="ml-1 mr-2 h-[17px]" alt="" />
           {owner}&apos;s iPhone
           <div className="ml-auto mr-1 h-2 w-2 rounded bg-gradient-to-b from-[#2dff1a] to-[#13e600] shadow-[0_0_0_1px_hsla(0,0%,0%,0.1),0_0_0_2px_hsla(0,0%,0%,0.05),0_0_10px_0px_hsla(121,100%,59%,0.75)]" />

@@ -1,7 +1,7 @@
 type Props = {
-  title: string
-  desc: string
-}
+  title: string;
+  desc: string;
+};
 
 const ListHeader = ({ title, desc }: Props) => (
   <div className="pb-3">

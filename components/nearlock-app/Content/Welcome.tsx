@@ -6,6 +6,7 @@ export default function Welcome({ setIsModalOpen, isDarkMode }) {
   return (
     <Tab.Panel>
       <div className="flex flex-col items-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/nearlock-app/nearlock-logo.svg"
           className="mb-12 mt-28 h-[200px]"

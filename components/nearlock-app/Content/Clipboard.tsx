@@ -21,6 +21,7 @@ export default function Clipboard({ isSetupDone, isDarkMode, setActiveTab, isSid
     <Tab.Panel>
       {isSetupDone ? (
         <>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/nearlock-app/clipboard.png" className="mx-auto flex" width="820px" alt="" />
           <div className="flex justify-between">
             <div className="flex">

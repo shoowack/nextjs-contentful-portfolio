@@ -1,3 +1,4 @@
+import ContentfulImage from '@components/ContentfulImage';
 import { appsAndWebsitesSlug, designsSlug } from '@lib/constants';
 import useScrollDirection from '@lib/useScrollDirection';
 import cn from 'classnames';
@@ -8,7 +9,6 @@ import { AiFillHome } from 'react-icons/ai';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { HiPaintBrush } from 'react-icons/hi2';
 import { TbAppWindowFilled } from 'react-icons/tb';
-import ContentfulImage from './ContentfulImage';
 
 export default function NavigationBar({ aboutSectionRef, slug, width, sections, sliderRef }) {
   const [scrolled, setScrolled] = useState(false);
@@ -107,7 +107,7 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
                 <div className="relative mr-2 inline h-6 w-6">
                   <ContentfulImage
                     src={fields.appLogo.fields.file.url}
-                    className="object-fit"
+                    className="object-contain"
                     alt={fields.title}
                     fill
                     sizes="100vw"
@@ -125,6 +125,7 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
           className="mr-2 p-4 !text-base"
         >
           {width > 639 && (slug === designsSlug ? 'Apps And Websites' : 'Designs')}
+          {/* eslint-disable-next-line no-nested-ternary */}
           {width > 639 ? (
             <FaAngleRight className="ml-2 inline" />
           ) : slug === designsSlug ? (

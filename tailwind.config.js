@@ -2,10 +2,7 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   darkMode: 'class',
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -15,7 +12,7 @@ module.exports = {
         success: '#0070f3',
         blue: colors.blue,
         slate: colors.slate,
-        'highlight': '#ff0'
+        highlight: '#ff0',
       },
       spacing: {
         28: '7rem',
@@ -27,7 +24,7 @@ module.exports = {
         tight: 1.2,
       },
       fontFamily: {
-        'graphik': ['var(--font-graphik)'],
+        graphik: ['var(--font-graphik)'],
       },
       fontSize: {
         '5xl': '2.5rem',
@@ -40,29 +37,29 @@ module.exports = {
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
       },
       keyframes: {
-        'shine': {
+        shine: {
           '0%': { backgroundPosition: '-100%' },
           '100%': { backgroundPosition: '100%' },
         },
-        'preload': {
+        preload: {
           '30%': {
             opacity: 0,
-            top: '20px'
+            top: '20px',
           },
           '100%': {
             opacity: 1,
-            top: '8px'
-          }
-        }
+            top: '8px',
+          },
+        },
       },
       animation: {
         shine: 'shine 2s ease-in-out',
-        preload: 'preload 1s ease-in-out forwards'
-      }
+        preload: 'preload 1s ease-in-out forwards',
+      },
     },
   },
   future: {
     hoverOnlyWhenSupported: true,
   },
   plugins: [],
-}
+};

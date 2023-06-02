@@ -30,6 +30,7 @@ const SecondStep = ({ isDarkMode }) => {
         </svg>
       </div>
       <div className="relative flex items-end">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="./second-step.png" alt="" className="h-[400px] object-contain" />
       </div>
     </div>

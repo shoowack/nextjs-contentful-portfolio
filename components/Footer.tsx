@@ -1,12 +1,13 @@
 import Container from '@components/Container';
 import axios from 'axios';
+import cn from 'classnames';
 import { useState } from 'react';
 import { FaCheck, FaCircleNotch, FaPaperPlane } from 'react-icons/fa';
 
 export default function Footer() {
   const [isLoading, setIsLoading] = useState(false);
   const [sentState, setSentState] = useState(false);
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState(null);
   const [form, setForm] = useState({ email: '', message: '' });
 
   const handleSubmit = (e) => {
@@ -65,9 +66,16 @@ export default function Footer() {
   const { email, message } = form;
 
   return (
-    <div className="fixed bottom-0 -z-10 w-full bg-[#e9eaed] text-[#333] dark:bg-[#2c2d30] dark:text-white md:py-10">
+    <div
+      className={cn(
+        'fixed bottom-0 -z-10 w-full bg-[#e9eaed] text-[#333] dark:bg-[#2c2d30] dark:text-white md:pt-10',
+        {
+          'md:pb-10': errors === null,
+        },
+      )}
+    >
       <Container>
-        <h2 className="text-nowrap flex justify-center text-3xl font-black leading-[78px] md:text-[60px]">
+        <h2 className="flex justify-center whitespace-nowrap text-3xl font-black leading-[78px] md:text-[60px]">
           Contact
         </h2>
         <div>
@@ -87,7 +95,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => handleChange(e)}
                 disabled={isLoading}
-                className="block w-full rounded-md border border-black/20 bg-white px-3 py-2 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] transition duration-200 ease-in focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-[#424348] dark:ring-offset-[#2c2d30] dark:focus:border-white/10 sm:w-3/4 sm:text-sm lg:w-1/2"
+                className="block w-full rounded-md border border-black/20 bg-white px-3 py-2 font-graphik text-sm font-medium text-white shadow-sm ring-offset-[#e9eaed] transition duration-200 ease-in placeholder:text-gray-400 focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-[#424348] dark:ring-offset-[#2c2d30] dark:focus:border-white/10 sm:w-3/4 sm:text-sm lg:w-1/2"
               />
             </div>
             <label
@@ -101,7 +109,7 @@ export default function Footer() {
                 rows={3}
                 required
                 name="message"
-                className="block w-full rounded-md border border-black/20 bg-white px-3 py-2 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] transition duration-200 ease-in focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-[#424348] dark:ring-offset-[#2c2d30] dark:focus:border-white/10 sm:w-3/4 sm:text-sm lg:w-1/2"
+                className="block w-full rounded-md border border-black/20 bg-white px-3 py-2 font-graphik text-sm font-medium text-white shadow-sm ring-offset-[#e9eaed] transition duration-200 ease-in placeholder:text-gray-400 focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-[#424348] dark:ring-offset-[#2c2d30] dark:focus:border-white/10 sm:w-3/4 sm:text-sm lg:w-1/2"
                 value={message}
                 onChange={(e) => handleChange(e)}
                 disabled={isLoading}
@@ -111,17 +119,15 @@ export default function Footer() {
             <div>
               <button
                 type="submit"
-                className="hover:bg-blue rounded-md border border-transparent bg-[#2189ff] px-3 py-2 text-sm font-medium text-white shadow-sm ring-offset-[#2c2d30] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="rounded-md border border-transparent bg-[#2189ff] px-3 py-2 text-sm font-medium text-white shadow-sm ring-offset-[#2c2d30] hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 color={!errors && sentState ? 'success' : 'primary'}
                 disabled={isLoading}
               >
+                {/* eslint-disable-next-line no-nested-ternary */}
                 {isLoading ? (
                   <>
                     Sending
-                    <FaCircleNotch
-                      size="sm"
-                      className="ml-2 inline h-3 w-3 animate-spin"
-                    />
+                    <FaCircleNotch size="sm" className="ml-2 inline h-3 w-3 animate-spin" />
                   </>
                 ) : !errors && sentState ? (
                   <>
@@ -139,11 +145,11 @@ export default function Footer() {
             <div />
             {errors && (
               <div>
-                <p className="text-danger mb-0">Errors:</p>
+                <p className="mb-0 text-base text-red-500">Errors:</p>
                 {errors.map((error) =>
                   error.field ? (
-                    <p>
-                      <span className="text-capitalize">{error.field}</span>: {error.message}
+                    <p className="mb-0 text-base text-red-300">
+                      <span className="capitalize">{error.field}</span>: {error.message}
                     </p>
                   ) : (
                     <p>{error.message}</p>

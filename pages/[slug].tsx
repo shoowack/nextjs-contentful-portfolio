@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const headerItems = (await getHeaderLinks()) ?? [];
 
   const res: any = await fetchEntries(params.slug);
-  const entries = await res.map(entry => entry.fields);
+  const entries = await res.map((entry) => entry.fields);
 
   return {
     props: {

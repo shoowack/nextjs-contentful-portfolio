@@ -1,10 +1,11 @@
+/* eslint-disable no-nested-ternary */
 import Container from '@components/Container';
 import ContentfulImage from '@components/ContentfulImage';
+import SidebarHeaderControls from '@components/nearlock-app/SidebarHeaderControls';
 import classnames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SidebarHeaderControls from './nearlock-app/SidebarHeaderControls';
 // import LightGallery from 'lightgallery/react';
 // import FsLightbox from 'fslightbox-react';
 
@@ -244,7 +245,7 @@ export default function Carousel({
           <div className="mt-5 flex justify-center md:mb-24 md:mt-16">
             <div
               className={classnames(
-                'swiper-button-prev rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:px-1 md:py-2.5',
+                'm-1 cursor-pointer rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:px-1 md:py-2.5',
                 { 'opacity-50 transition-opacity duration-200': isBeginning },
               )}
               onClick={() => {
@@ -270,7 +271,7 @@ export default function Carousel({
 
             <div
               className={classnames(
-                'swiper-button-next rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:px-1 md:py-2.5',
+                'm-1 cursor-pointer rounded-md bg-[#333333] p-3 text-white transition-opacity duration-200 dark:bg-white dark:text-black md:rounded md:px-1 md:py-2.5',
                 { 'opacity-50 transition-opacity duration-200': isEnd },
               )}
               onClick={() => {

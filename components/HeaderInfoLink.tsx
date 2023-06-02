@@ -53,7 +53,7 @@ const HeaderInfoLink = ({
       >
         <Popover.Panel
           className={classnames(
-            'absolute bottom-2 translate-y-[calc(100%+10px)] transform whitespace-nowrap bg-white text-center dark:bg-black',
+            'absolute bottom-2 translate-y-[calc(100%+10px)] whitespace-nowrap bg-white text-center dark:bg-black',
             linksLength === i + 1 ? 'right-0' : 'left-1/2 -translate-x-1/2',
           )}
         >

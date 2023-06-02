@@ -2,8 +2,8 @@ import classnames from 'classnames';
 
 type Props = {
   isDarkMode?: string;
-  className: string
-}
+  className: string;
+};
 
 export default function SidebarHeaderControls({ isDarkMode, className }: Props) {
   return (

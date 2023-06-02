@@ -3,9 +3,9 @@ import { MouseEventHandler, ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
-  onClick?: MouseEventHandler<HTMLButtonElement>
-  className?: string
-  disabled?: boolean
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  className?: string;
+  disabled?: boolean;
 };
 
 const AppButton = ({ children, onClick, className, disabled }: Props) => (

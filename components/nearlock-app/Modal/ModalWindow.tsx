@@ -96,6 +96,7 @@ const Modal = ({
             <AppButton
               className="nearlock btn-blue"
               onClick={() =>
+                // eslint-disable-next-line no-nested-ternary
                 currentStep === 1 ? setStep(2) : currentStep === 2 ? setStep(3) : finishSetup()
               }
             >
