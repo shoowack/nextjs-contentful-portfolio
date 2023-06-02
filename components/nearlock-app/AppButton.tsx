@@ -1,6 +1,14 @@
 import classnames from 'classnames';
+import { MouseEventHandler, ReactNode } from 'react';
 
-const AppButton = ({ children, onClick, className, disabled }) => (
+type Props = {
+  children: ReactNode;
+  onClick?: MouseEventHandler<HTMLButtonElement>
+  className?: string
+  disabled?: boolean
+};
+
+const AppButton = ({ children, onClick, className, disabled }: Props) => (
   <button
     type="button"
     className={classnames(

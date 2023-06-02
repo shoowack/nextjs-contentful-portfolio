@@ -1,13 +1,12 @@
 import Container from '@components/Container';
+import axios from 'axios';
 import { useState } from 'react';
 import { FaCheck, FaCircleNotch, FaPaperPlane } from 'react-icons/fa';
-
-import axios from 'axios';
 
 export default function Footer() {
   const [isLoading, setIsLoading] = useState(false);
   const [sentState, setSentState] = useState(false);
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState([]);
   const [form, setForm] = useState({ email: '', message: '' });
 
   const handleSubmit = (e) => {
@@ -83,7 +82,7 @@ export default function Footer() {
               <input
                 type="email"
                 name="email"
-                required="required"
+                required
                 placeholder="email@domain.com"
                 value={email}
                 onChange={(e) => handleChange(e)}
@@ -100,7 +99,7 @@ export default function Footer() {
             <div>
               <textarea
                 rows={3}
-                required="required"
+                required
                 name="message"
                 className="block w-full rounded-md border border-black/20 bg-white px-3 py-2 font-graphik text-sm font-medium text-white placeholder-gray-400 shadow-sm ring-offset-[#e9eaed] transition duration-200 ease-in focus:border-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-white/10 dark:bg-[#424348] dark:ring-offset-[#2c2d30] dark:focus:border-white/10 sm:w-3/4 sm:text-sm lg:w-1/2"
                 value={message}
@@ -121,7 +120,6 @@ export default function Footer() {
                     Sending
                     <FaCircleNotch
                       size="sm"
-                      spin="spin"
                       className="ml-2 inline h-3 w-3 animate-spin"
                     />
                   </>

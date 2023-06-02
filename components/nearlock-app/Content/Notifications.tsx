@@ -1,7 +1,7 @@
 import AppButton from '@components/nearlock-app/AppButton';
 import { Tab } from '@headlessui/react';
 import classnames from 'classnames';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 
 export default function Notifications({ isDarkMode }) {

@@ -1,3 +1,4 @@
+import AppStoreDownloadBadge from '@components/AppStoreDownloadBadge';
 import Carousel from '@components/Carousel';
 import Container from '@components/Container';
 import StackIcon from '@components/StackIcon';
@@ -10,7 +11,6 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import Balancer from 'react-wrap-balancer';
-import AppStoreDownloadBadge from './AppStoreDownloadBadge';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -180,7 +180,6 @@ const Section = ({
             })}
           >
             <Container
-              fluid="lg"
               className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}
             >
               <div className="clipboard-title mr-md-n5 group flex items-center justify-center">

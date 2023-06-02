@@ -1,8 +1,8 @@
 import Container from '@components/Container';
-import HeaderInfoLink from '@components/header-info-link';
+import HeaderInfoLink from '@components/HeaderInfoLink';
+import ThemeSwitch from '@components/ThemeSwitch';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import ThemeSwitch from './ThemeSwitch';
 
 export default function Navigation({ headerItems, aboutSectionRef }) {
   const [mounted, setMounted] = useState(false);

@@ -1,6 +1,11 @@
 import classnames from 'classnames';
 
-export default function SidebarHeaderControls({ isDarkMode, className }) {
+type Props = {
+  isDarkMode?: string;
+  className: string
+}
+
+export default function SidebarHeaderControls({ isDarkMode, className }: Props) {
   return (
     <div className={classnames('group/sidebar-header-controls flex flex-row gap-2.5', className)}>
       {Array.from({ length: 3 }, (_, i) => ({ id: i })).map((arr) => (

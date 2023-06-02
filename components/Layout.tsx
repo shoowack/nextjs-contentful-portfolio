@@ -1,7 +1,7 @@
-import Meta from './meta';
+import Meta from '@components/Meta';
 
 // eslint-disable-next-line no-unused-vars
-export default function Layout({ preview, children }) {
+export default function Layout({ children }: any) {
   return (
     <>
       <Meta />

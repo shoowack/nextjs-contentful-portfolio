@@ -1,12 +1,13 @@
 import Footer from '@components/Footer';
+import Layout from '@components/Layout';
 import Navigation from '@components/Navigation';
 import NavigationBar from '@components/NavigationBar';
 import Section from '@components/Section';
-import Layout from '@components/layout';
 import { getHeaderLinks } from '@lib/api';
 import { appsAndWebsitesSlug, designsSlug } from '@lib/constants';
 import { fetchEntries } from '@lib/fetchEntries';
 import useWindowDimensions from '@lib/windowSize';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRef } from 'react';
 
 export default function InnerPage({ entries, headerItems, slug }) {
@@ -46,20 +47,18 @@ export default function InnerPage({ entries, headerItems, slug }) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [{ params: { slug: designsSlug } }, { params: { slug: appsAndWebsitesSlug } }],
     fallback: false,
   };
-}
+};
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const headerItems = (await getHeaderLinks()) ?? [];
 
-  const res = await fetchEntries(params.slug);
-  const entries = await res.map((entry) => {
-    return entry.fields;
-  });
+  const res: any = await fetchEntries(params.slug);
+  const entries = await res.map(entry => entry.fields);
 
   return {
     props: {
@@ -68,4 +67,4 @@ export async function getStaticProps({ params }) {
       headerItems,
     },
   };
-}
+};

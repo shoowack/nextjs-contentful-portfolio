@@ -13,7 +13,7 @@ import ContentfulImage from './ContentfulImage';
 export default function NavigationBar({ aboutSectionRef, slug, width, sections, sliderRef }) {
   const [scrolled, setScrolled] = useState(false);
   const [currentSection, setCurrentSection] = useState('');
-  const throttleInProgress = useRef();
+  const throttleInProgress = useRef(null);
   const scrollDir = useScrollDirection();
 
   function handleThrottleScroll() {

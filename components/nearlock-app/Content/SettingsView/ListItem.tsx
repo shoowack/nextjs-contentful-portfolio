@@ -2,7 +2,18 @@ import classnames from 'classnames';
 import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
-const ListItem = ({
+type Props = {
+  icon: { src: string}
+  title: string
+  desc: string
+  checked: string
+  newBadge: string
+  extraInfo: string
+  setActiveTab: Function
+  isDarkMode: string
+}
+
+const ListItem: React.FC = ({
   icon,
   title,
   desc,
@@ -11,7 +22,7 @@ const ListItem = ({
   extraInfo,
   setActiveTab,
   isDarkMode,
-}) => {
+}: Props) => {
   const [isChecked, setIsChecked] = useState(!!checked);
 
   return (

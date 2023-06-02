@@ -1,9 +1,12 @@
 import copy from 'copy-to-clipboard';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { FaCheck, FaLink } from 'react-icons/fa';
 
-export default function useCopyToClipboard() {
-  const [value, setValue] = useState();
+type CopiedValue = string | null
+type CopiedResult = [Function, { value: CopiedValue, copyIcon: ReactNode }]
+
+export default function useCopyToClipboard(): CopiedResult {
+  const [value, setValue] = useState<CopiedValue>(null)
   const [copyIcon, setCopyIcon] = useState(<FaLink className="inline h-5 w-5" />);
 
   const copyToClipboard = (text, options) => {

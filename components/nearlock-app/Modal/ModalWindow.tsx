@@ -16,10 +16,6 @@ const Modal = ({
 }) => {
   const [currentStep, setStep] = useState(1);
 
-  const goBack = () => {
-    setStep((prevStep) => prevStep - 1);
-  };
-
   const finishSetup = () => {
     setIsModalOpen(false);
     setStep(1);
@@ -39,11 +35,11 @@ const Modal = ({
       case 1:
         return <FirstStep owner={owner} device={device} />;
       case 2:
-        return <SecondStep goBack={goBack} isDarkMode={isDarkMode} />;
+        return <SecondStep isDarkMode={isDarkMode} />;
       case 3:
-        return <ThirdStep goBack={goBack} />;
+        return <ThirdStep />;
       default:
-        return <FirstStep />;
+        return <FirstStep owner={owner} device={device} />;
     }
   };
 

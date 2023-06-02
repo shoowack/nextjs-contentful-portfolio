@@ -1,12 +1,12 @@
-import '../styles/inner-page.scss';
-import '../styles/swiper.scss';
+import BreakpointIndicator from '@components/BreakpointIndicator';
+import localFont from '@next/font/local';
+import { Analytics } from '@vercel/analytics/react';
+import { ThemeProvider } from 'next-themes';
+import type { AppProps } from 'next/app';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 import '../styles/index.css';
-import BreakpointIndicator from '@components/BreakpointIndicator';
-import { ThemeProvider } from 'next-themes';
-import { Analytics } from '@vercel/analytics/react';
-
-import localFont from '@next/font/local';
+import '../styles/inner-page.scss';
+import '../styles/swiper.scss';
 
 const graphik = localFont({
   src: [
@@ -104,7 +104,7 @@ const graphik = localFont({
   variable: '--font-graphik',
 });
 
-const App = ({ Component, pageProps }) => {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <BreakpointIndicator />
@@ -117,6 +117,4 @@ const App = ({ Component, pageProps }) => {
       <Analytics />
     </>
   );
-};
-
-export default App;
+}

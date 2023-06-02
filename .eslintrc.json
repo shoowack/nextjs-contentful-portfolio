@@ -1,152 +1,194 @@
 {
-    "extends": [
-      "next/core-web-vitals",
-      "airbnb",
-      "airbnb/hooks",
-      "plugin:prettier/recommended",
-      "prettier",
-      "plugin:tailwindcss/recommended"
-    ],
-    "rules": {
-      // ** prettier rules **
-      "prettier/prettier": [ "error", {
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier",
+    "plugin:tailwindcss/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    // ** prettier rules **
+    "prettier/prettier": [
+      "error",
+      {
         "singleQuote": true,
         "semi": true,
         "trailingComma": "all",
         "printWidth": 100,
         "arrowParens": "always"
-      }],
-      // ** turn off eslint rules to avoid conflict with prettier **
-      // doesn't recognize mandatory semicolons after arrow functions in classes
-      "semi": [ "off", "never" ],
-      // causes double commas
-      "comma-dangle": ["off"],
-      // conflicts with prettier
-      "indent": [  "off"],
-      "import/no-unresolved": "off",
-      "react/react-in-jsx-scope": "off",
-      "jsx-a11y/anchor-is-valid": "off",
-      "react/prop-types": "off",
-      "jsx-a11y/control-has-associated-label": "off",
-      "react/jsx-props-no-spreading": "off",
-      "no-unused-expressions": [2, { "allowShortCircuit": true }],
-      "no-restricted-syntax": "off",
-      "import/no-cycle": "off",
-      "no-nested-ternary": "off",
-      "no-console": ["warn", { "allow": ["warn", "error"] }],
-      "import/no-extraneous-dependencies": "off",
-      "jsx-a11y/label-has-associated-control": [ 2, {
-        "controlComponents": ["Field", "Input"],
-        "depth": 3
-      }],
-      "camelcase": "off",
-      "react/forbid-prop-types": "off",
-      "new-cap": "off",
-      "tailwindcss/no-custom-classname": "off",
-      "tailwindcss/migration-from-tailwind-2": "off"
-    },
-    "overrides": [
-      {
-        "files": ["./*.js", "assets/js/common/*.js", "assets/js/partner-landing/**/*.{js,jsx}", "assets/js/passbuyer-landing/**/*.{js,jsx}", "assets/js/admin/**/*.{js,jsx}"],
-        "rules": {
-          "prettier/prettier": "off",
-          "func-names": "off",
-          "prefer-arrow-callback": "off",
-          "indent": "off",
-          "quotes": "off",
-          "space-before-function-paren": "off",
-          "import/first": "off",
-          "import/no-extraneous-dependencies": "off",
-          "import/newline-after-import": "off",
-          "import/order": "off",
-          "import/extensions": "off",
-          "no-var": "off",
-          "vars-on-top": "off",
-          "consistent-return": "off",
-          "no-shadow": "off",
-          "no-unused-vars": "off",
-          "object-shorthand": "off",
-          "space-before-blocks": "off",
-          "prefer-template": "off",
-          "quote-props": "off",
-          "space-in-parens": "off",
-          "array-bracket-spacing": "off",
-          "keyword-spacing": "off",
-          "no-else-return": "off",
-          "max-len": "off",
-          "object-curly-newline": "off",
-          "comma-dangle": "off",
-          "semi": "off",
-          "default-case": "off",
-          "no-param-reassign": "off",
-          "no-redeclare": "off",
-          "no-multi-spaces": "off",
-          "padded-blocks": "off",
-          "eqeqeq": "off",
-          "block-scoped-var": "off",
-          "radix": "off",
-          "brace-style": "off",
-          "comma-spacing": "off",
-          "wrap-iife": "off",
-          "key-spacing": "off",
-          "prefer-const": "off",
-          "newline-per-chained-call": "off",
-          "operator-linebreak": "off",
-          "no-multiple-empty-lines": "off",
-          "no-use-before-define": "off",
-          "prefer-rest-params": "off",
-          "eol-last": "off",
-          "no-unused-expressions": "off",
-          "space-infix-ops": "off",
-          "no-plusplus": "off",
-          "object-curly-spacing": "off",
-          "spaced-comment": "off",
-          "func-call-spacing": "off",
-          "no-spaced-func": "off",
-          "no-underscore-dangle": "off",
-          "no-trailing-spaces": "off",
-          "no-restricted-syntax": "off",
-          "dot-notation": "off",
-          "no-restricted-globals": "off",
-          "eslint(global-require": "off",
-          "camelcase": "off",
-          "one-var": "off",
-          "global-require": "off",
-          "prefer-destructuring": "off",
-          "no-return-assign": "off",
-          "implicit-arrow-linebreak": "off",
-          "function-paren-newline": "off",
-          "arrow-parens": "off",
-          "space-unary-ops": "off",
-          "curly": "off",
-          "nonblock-statement-body-position": "off",
-          "no-throw-literal": "off",
-          "no-useless-concat": "off",
-          "object-property-newline": "off",
-          "no-lone-blocks": "off",
-          "block-spacing": "off",
-          "react/jsx-indent": "off",
-          "react/jsx-indent-props": "off",
-          "react/jsx-filename-extension": "off",
-          "no-new": "off"
-        }
       }
     ],
-    "settings": {
-      "react": {
-        "version": "detect"
+    // ** turn off eslint rules to avoid conflict with prettier **
+    // doesn't recognize mandatory semicolons after arrow functions in classes
+    "semi": [
+      "off",
+      "never"
+    ],
+    // causes double commas
+    "comma-dangle": [
+      "off"
+    ],
+    // conflicts with prettier
+    "indent": [
+      "off"
+    ],
+    "import/no-unresolved": "off",
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-unused-expressions": [
+      2,
+      {
+        "allowShortCircuit": true
       }
-    },
-    "env": {
-        "browser": true,
-        "jquery": true
-    },
-    "globals": {
-      "toastr": true,
-      "google": true,
-      "Translator": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 2020
+    ],
+    "no-restricted-syntax": "off",
+    "import/no-cycle": "off",
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "import/no-extraneous-dependencies": "off",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "controlComponents": [
+          "Field",
+          "Input"
+        ],
+        "depth": 3
+      }
+    ],
+    "camelcase": "off",
+    "react/forbid-prop-types": "off",
+    "new-cap": "off",
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "./*.{ts,tsx}"
+      ],
+      "rules": {
+        "prettier/prettier": "off",
+        "func-names": "off",
+        "prefer-arrow-callback": "off",
+        "indent": "off",
+        "quotes": "off",
+        "space-before-function-paren": "off",
+        "import/first": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/newline-after-import": "off",
+        "import/order": "off",
+        "import/extensions": "off",
+        "no-var": "off",
+        "vars-on-top": "off",
+        "consistent-return": "off",
+        "no-shadow": "off",
+        "no-unused-vars": "off",
+        "object-shorthand": "off",
+        "space-before-blocks": "off",
+        "prefer-template": "off",
+        "quote-props": "off",
+        "space-in-parens": "off",
+        "array-bracket-spacing": "off",
+        "keyword-spacing": "off",
+        "no-else-return": "off",
+        "max-len": "off",
+        "object-curly-newline": "off",
+        "comma-dangle": "off",
+        "semi": "off",
+        "default-case": "off",
+        "no-param-reassign": "off",
+        "no-redeclare": "off",
+        "no-multi-spaces": "off",
+        "padded-blocks": "off",
+        "eqeqeq": "off",
+        "block-scoped-var": "off",
+        "radix": "off",
+        "brace-style": "off",
+        "comma-spacing": "off",
+        "wrap-iife": "off",
+        "key-spacing": "off",
+        "prefer-const": "off",
+        "newline-per-chained-call": "off",
+        "operator-linebreak": "off",
+        "no-multiple-empty-lines": "off",
+        "no-use-before-define": "off",
+        "prefer-rest-params": "off",
+        "eol-last": "off",
+        "no-unused-expressions": "off",
+        "space-infix-ops": "off",
+        "no-plusplus": "off",
+        "object-curly-spacing": "off",
+        "spaced-comment": "off",
+        "func-call-spacing": "off",
+        "no-spaced-func": "off",
+        "no-underscore-dangle": "off",
+        "no-trailing-spaces": "off",
+        "no-restricted-syntax": "off",
+        "dot-notation": "off",
+        "no-restricted-globals": "off",
+        "eslint(global-require": "off",
+        "camelcase": "off",
+        "one-var": "off",
+        "global-require": "off",
+        "prefer-destructuring": "off",
+        "no-return-assign": "off",
+        "implicit-arrow-linebreak": "off",
+        "function-paren-newline": "off",
+        "arrow-parens": "off",
+        "space-unary-ops": "off",
+        "curly": "off",
+        "nonblock-statement-body-position": "off",
+        "no-throw-literal": "off",
+        "no-useless-concat": "off",
+        "object-property-newline": "off",
+        "no-lone-blocks": "off",
+        "block-spacing": "off",
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off",
+        "no-new": "off",
+        "react/react-in-jsx-scope": "off"
+      }
     }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "jquery": true
+  },
+  "globals": {
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  }
 }

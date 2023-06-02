@@ -1,6 +1,6 @@
 import ContentfulImage from '@components/ContentfulImage';
+import Layout from '@components/Layout';
 import { getAllCategories } from '@lib/api';
-import Layout from 'components/layout';
 import Link from 'next/link';
 
 export default function Index({ preview, allCategories }) {
@@ -17,10 +17,7 @@ export default function Index({ preview, allCategories }) {
             superscript,
             backgroundImage: { url, description },
           }) => (
-            <Link
-              href={link}
-              key={id}
-              className="group/section grow-1 relative flex h-1/3 w-full flex-1 justify-center transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-t before:from-[#333] before:content-[''] md:h-full md:before:bg-none md:hover:grow-[1.8]"
+            <Link href={link} key={id} className="group/section relative flex h-1/3 w-full flex-1 justify-center transition-all duration-300 before:absolute before:inset-0 before:bg-gradient-to-t before:from-[#333] before:content-[''] md:h-full md:before:bg-none md:hover:grow-[1.8]"
               target={openInNewTab ? '_blank' : '_self'}
             >
               {title && subscript && (

@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import classnames from 'classnames';
+import ContentView from '@components/nearlock-app/ContentView';
+import Modal from '@components/nearlock-app/Modal/ModalWindow';
+import Sidebar from '@components/nearlock-app/Sidebar';
 import { Tab } from '@headlessui/react';
-import Modal from './Modal/ModalWindow';
-import ContentView from './ContentView';
-import Sidebar from './Sidebar';
+import classnames from 'classnames';
+import { useRef, useState } from 'react';
 
 function NearLockApp({ isDarkMode }) {
   const [activeTab, setActiveTab] = useState(0);

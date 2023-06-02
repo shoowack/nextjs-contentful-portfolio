@@ -2,7 +2,7 @@ import Container from '@components/Container';
 import ContentfulImage from '@components/ContentfulImage';
 import classnames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
-import { Navigation, Pagination } from 'swiper';
+import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SidebarHeaderControls from './nearlock-app/SidebarHeaderControls';
 // import LightGallery from 'lightgallery/react';
@@ -23,7 +23,7 @@ export default function Carousel({
   const ipad = type === 'iPad';
   const ipadLandscape = type === 'iPad Landscape';
   const ipads = ipad || ipadLandscape;
-  const swiperRef = useRef();
+  const swiperRef = useRef<SwiperCore>();
   const [isEnd, setIsEnd] = useState(false);
   const [isBeginning, setIsBeginning] = useState(false);
 
