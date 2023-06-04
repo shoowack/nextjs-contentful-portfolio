@@ -1,10 +1,16 @@
 import Container from '@components/Container';
 import HeaderInfoLink from '@components/HeaderInfoLink';
 import ThemeSwitch from '@components/ThemeSwitch';
+import { HeaderItemsType } from '@interfaces/header-items';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { MutableRefObject, useEffect, useState } from 'react';
 
-export default function Navigation({ headerItems, aboutSectionRef }) {
+type Props = {
+  headerItems: HeaderItemsType[];
+  aboutSectionRef: MutableRefObject<HTMLDivElement>;
+};
+
+const Navigation: React.FC<Props> = ({ headerItems, aboutSectionRef }) => {
   const [mounted, setMounted] = useState(false);
 
   // useEffect only runs on the client, so now we can safely show the UI
@@ -18,7 +24,7 @@ export default function Navigation({ headerItems, aboutSectionRef }) {
 
   return (
     <div
-      className="aboutme text-black py-2 pb-5 dark:text-white md:py-5 md:pb-10 xl:pb-14"
+      className="aboutme py-2 pb-5 text-black dark:text-white md:py-5 md:pb-10 xl:pb-14"
       ref={aboutSectionRef}
     >
       <Container>
@@ -26,7 +32,7 @@ export default function Navigation({ headerItems, aboutSectionRef }) {
           <div className="flex w-[55px] items-center justify-between">
             <Link
               href="/"
-              className="logo group flex origin-[left_50%] scale-50 flex-row items-center p-0 sm:scale-75 md:scale-100 md:hover:w-[200px]"
+              className="group flex origin-[left_50%] scale-50 flex-row items-center p-0 sm:scale-75 md:scale-100 md:hover:w-[200px]"
             >
               <svg
                 width="20px"
@@ -35,7 +41,7 @@ export default function Navigation({ headerItems, aboutSectionRef }) {
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
-                className="back-button h-10 w-0 rotate-180 rounded opacity-0 [transition:opacity_1s,width_0.5s,padding_1s,margin_0.1s,transform_0.25s] group-hover-[.logo]:mr-3 group-hover-[.logo]:rotate-0 group-hover-[.logo]:ease-[cubic-bezier(0.175,0.885,0.32,1.275)] md:group-hover-[.logo]:w-10 md:group-hover-[.logo]:p-2 md:group-hover-[.logo]:opacity-50"
+                className="h-10 w-0 rotate-180 rounded opacity-0 [transition:opacity_1s,width_0.5s,padding_1s,margin_0.1s,transform_0.25s] group-hover-[.logo]:mr-3 group-hover-[.logo]:rotate-0 group-hover-[.logo]:ease-[cubic-bezier(0.175,0.885,0.32,1.275)] md:group-hover-[.logo]:w-10 md:group-hover-[.logo]:p-2 md:group-hover-[.logo]:opacity-50"
               >
                 <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <path
@@ -61,7 +67,7 @@ export default function Navigation({ headerItems, aboutSectionRef }) {
               </svg>
             </Link>
           </div>
-          <div className="header-info-links mt-2 flex flex-row">
+          <div className="mt-2 flex flex-row">
             <ThemeSwitch />
             {headerItems.map(
               (link, i) =>
@@ -88,4 +94,6 @@ export default function Navigation({ headerItems, aboutSectionRef }) {
       </Container>
     </div>
   );
-}
+};
+
+export default Navigation;

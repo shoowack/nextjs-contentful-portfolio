@@ -1,10 +1,10 @@
 import type ContainerType from '@interfaces/container';
 import classnames from 'classnames';
 
-export default function Container({ children, className, style }: ContainerType) {
-  return (
-    <div className={classnames(className, 'mx-auto max-w-7xl px-4 sm:px-6')} style={style}>
-      {children}
-    </div>
-  );
-}
+const Container: React.FC<ContainerType> = ({ children, className, style }: ContainerType) => (
+  <div className={classnames(className, 'mx-auto max-w-7xl px-4 sm:px-6')} style={style}>
+    {children}
+  </div>
+);
+
+export default Container;

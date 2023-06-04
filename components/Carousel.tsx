@@ -8,15 +8,26 @@ import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import LightGallery from 'lightgallery/react';
 // import FsLightbox from 'fslightbox-react';
+import { ContentfulDataType } from '@interfaces/contentful-data';
+import { Gallery } from '@interfaces/gallery';
 
-export default function Carousel({
+type Props = {
+  fields: Gallery['fields'];
+  sys: ContentfulDataType['sys'];
+  i: number;
+  windowWidth: number;
+  galleryLength: number;
+  isOdd: number;
+};
+
+const Carousel: React.FC<Props> = ({
   fields: { type, images, deviceBezel, browserThemeColor },
   sys: { id },
   i,
   windowWidth,
   galleryLength,
   isOdd,
-}) {
+}) => {
   const iphone = type === 'iPhone';
   const website = type === 'Website';
   const desktopApp = type === 'Desktop App';
@@ -187,21 +198,19 @@ export default function Carousel({
               description,
             },
             sys: { id: imageId },
-          }) => {
-            return (
-              <SwiperSlide
-                key={`gallery-slide-${imageId}`}
-                className={classnames('select-none', {
-                  'rounded-[26px]': windowWidth >= 768 && iphone,
-                  'rounded-[10px]': windowWidth < 768 && iphone,
-                  'rounded-[7px]': windowWidth > 550 && ipad,
-                  'rounded-[4px]':
-                    ipads || ((website || webApp || desktopApp) && windowWidth < 1024),
-                  'rounded-[11px]': desktopApp && windowWidth >= 1024,
-                  'rounded-b-[11px]': (website || webApp) && windowWidth >= 1024,
-                })}
-              >
-                {/* <a
+          }) => (
+            <SwiperSlide
+              key={`gallery-slide-${imageId}`}
+              className={classnames('select-none', {
+                'rounded-[26px]': windowWidth >= 768 && iphone,
+                'rounded-[10px]': windowWidth < 768 && iphone,
+                'rounded-[7px]': windowWidth > 550 && ipad,
+                'rounded-[4px]': ipads || ((website || webApp || desktopApp) && windowWidth < 1024),
+                'rounded-[11px]': desktopApp && windowWidth >= 1024,
+                'rounded-b-[11px]': (website || webApp) && windowWidth >= 1024,
+              })}
+            >
+              {/* <a
                     data-lg-size={`${width}-${height}`}
                     className="gallery-item hover:cursor-zoom-in"
                     data-src={url}
@@ -215,27 +224,26 @@ export default function Carousel({
                     }}
                     aria-hidden
                   > */}
-                <ContentfulImage
-                  quality={100}
-                  src={url}
-                  alt={description}
-                  height={height}
-                  width={width}
-                  className="select-none"
-                  sizes={
-                    website || desktopApp || webApp
-                      ? '(max-width: 768px) 100vw, 60vw'
-                      : iphone
-                      ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
-                      : ipads
-                      ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
-                      : '1vw'
-                  }
-                />
-                {/* </a> */}
-              </SwiperSlide>
-            );
-          },
+              <ContentfulImage
+                quality={100}
+                src={url}
+                alt={description}
+                height={height}
+                width={width}
+                className="select-none"
+                sizes={
+                  website || desktopApp || webApp
+                    ? '(max-width: 768px) 100vw, 60vw'
+                    : iphone
+                    ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
+                    : ipads
+                    ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
+                    : '1vw'
+                }
+              />
+              {/* </a> */}
+            </SwiperSlide>
+          ),
         )}
         {/* </LightGallery> */}
       </Swiper>
@@ -304,4 +312,6 @@ export default function Carousel({
       </Container>
     </div>
   );
-}
+};
+
+export default Carousel;

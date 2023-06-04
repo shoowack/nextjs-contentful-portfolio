@@ -4,13 +4,24 @@ import useScrollDirection from '@lib/useScrollDirection';
 import cn from 'classnames';
 import { LayoutGroup, motion } from 'framer-motion';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { AiFillHome } from 'react-icons/ai';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { HiPaintBrush } from 'react-icons/hi2';
 import { TbAppWindowFilled } from 'react-icons/tb';
 
-export default function NavigationBar({ aboutSectionRef, slug, width, sections, sliderRef }) {
+type Props = {
+  aboutSectionRef: MutableRefObject<HTMLDivElement>;
+  slug: string;
+  width: number;
+  sections: {
+    fields: { title: string; appLogo: { fields: { file: { url: string } } } };
+    sys: { id: string };
+  }[];
+  sliderRef: MutableRefObject<any[]>;
+};
+
+const NavigationBar: React.FC<Props> = ({ aboutSectionRef, slug, width, sections, sliderRef }) => {
   const [scrolled, setScrolled] = useState(false);
   const [currentSection, setCurrentSection] = useState('');
   const throttleInProgress = useRef(null);
@@ -137,4 +148,6 @@ export default function NavigationBar({ aboutSectionRef, slug, width, sections, 
       )}
     </div>
   );
-}
+};
+
+export default NavigationBar;

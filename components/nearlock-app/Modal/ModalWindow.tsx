@@ -2,15 +2,27 @@ import AppButton from '@components/nearlock-app/AppButton';
 import FirstStep from '@components/nearlock-app/Modal/FirstStep';
 import SecondStep from '@components/nearlock-app/Modal/SecondStep';
 import ThirdStep from '@components/nearlock-app/Modal/ThirdStep';
+import { NearLockAppType } from '@interfaces/nearlock-app';
 import classnames from 'classnames';
 import { useState } from 'react';
 
-const Modal = ({
-  isModalOpen,
+type Props = Pick<
+  NearLockAppType,
+  | 'setIsModalOpen'
+  | 'setActiveTab'
+  | 'setIsSetupDone'
+  | 'isModalOpen'
+  | 'isDarkMode'
+  | 'owner'
+  | 'device'
+>;
+
+const Modal: React.FC<Props> = ({
   setIsModalOpen,
-  isDarkMode,
   setActiveTab,
   setIsSetupDone,
+  isModalOpen,
+  isDarkMode,
   owner,
   device,
 }) => {
@@ -30,7 +42,7 @@ const Modal = ({
     setIsSetupDone(false);
   };
 
-  const renderStep = (step) => {
+  const renderStep = (step: number) => {
     switch (step) {
       case 1:
         return <FirstStep owner={owner} device={device} />;

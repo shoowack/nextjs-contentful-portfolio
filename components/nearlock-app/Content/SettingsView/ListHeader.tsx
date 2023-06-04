@@ -3,7 +3,7 @@ type Props = {
   desc: string;
 };
 
-const ListHeader = ({ title, desc }: Props) => (
+const ListHeader: React.FC<Props> = ({ title, desc }) => (
   <div className="pb-3">
     <h4 className="m-0">{title}</h4>
     <small>{desc}</small>

@@ -16,10 +16,13 @@ import {
   yesNo,
 } from '@components/nearlock-app/Content/SettingsView/SettingsIcons';
 import { Tab } from '@headlessui/react';
+import { NearLockAppType } from '@interfaces/nearlock-app';
 import classnames from 'classnames';
 
-export default function Setup({ setActiveTab, isDarkMode }) {
-  const setupData = [
+type Props = Pick<NearLockAppType, 'setActiveTab' | 'isDarkMode'>;
+
+const Settings: React.FC<Props> = ({ setActiveTab, isDarkMode }) => {
+  const settingsData = [
     {
       id: 1,
       title: 'Near Lock',
@@ -149,9 +152,9 @@ export default function Setup({ setActiveTab, isDarkMode }) {
   return (
     <Tab.Panel>
       <div className="mx-5 flex h-full flex-col py-4">
-        {setupData.map(({ id, title, desc, items }, i) => (
-          <div key={`setup_list-${id}`}>
-            <ListHeader title={title} desc={desc} key={`setup_list-header-${id}`} />{' '}
+        {settingsData.map(({ id, title, desc, items }, i) => (
+          <div key={`settings_list-${id}`}>
+            <ListHeader title={title} desc={desc} key={`settings_list-header-${id}`} />{' '}
             {items.map((props) => (
               <ListItem
                 {...props}
@@ -160,7 +163,7 @@ export default function Setup({ setActiveTab, isDarkMode }) {
                 isDarkMode={isDarkMode}
               />
             ))}
-            {i < setupData.length - 1 && (
+            {i < settingsData.length - 1 && (
               <hr
                 className={classnames('my-4 h-px w-full border-0', {
                   'bg-white/[.05]': isDarkMode,
@@ -173,4 +176,6 @@ export default function Setup({ setActiveTab, isDarkMode }) {
       </div>
     </Tab.Panel>
   );
-}
+};
+
+export default Settings;

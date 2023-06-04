@@ -49,7 +49,7 @@ const AnimatedText = ({ text }) => {
 
   return (
     <motion.div
-      className="align-self-center text-nowrap flex overflow-hidden text-3xl font-black leading-[78px] text-[#333333] dark:text-[#eeeeee] md:text-[60px]"
+      className="flex overflow-hidden whitespace-nowrap text-3xl font-black leading-[78px] text-[#333333] dark:text-[#eeeeee] md:text-[60px]"
       variants={container}
       ref={ref}
       animate={controls}

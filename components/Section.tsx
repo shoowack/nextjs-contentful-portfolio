@@ -3,19 +3,31 @@ import Carousel from '@components/Carousel';
 import Container from '@components/Container';
 import StackIcon from '@components/StackIcon';
 import NearLockApp from '@components/nearlock-app/NearLockApp';
+import { ContentfulDataType } from '@interfaces/contentful-data';
 import { designsSlug } from '@lib/constants';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
 import RichText from '@madebyconnor/rich-text-to-jsx';
 import classnames from 'classnames';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { MutableRefObject, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import Balancer from 'react-wrap-balancer';
+
+type Props = {
+  isMobile: boolean;
+  windowWidth: number;
+  i: number;
+  storeLink: string;
+  sliderRef: MutableRefObject<any[]>;
+  galleryLength: number;
+  isOdd: boolean;
+  stack: ContentfulDataType['stack'][];
+};
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({
+const Section: React.FC<ContentfulDataType & Props> = ({
   title,
   description,
   gallery,
@@ -69,6 +81,7 @@ const Section = ({
           <Container className="py-2">
             <div className={classnames('flex items-center justify-center')}>
               {/* "clipboard-title" class is needed for share section link */}
+              {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
               <div className="clipboard-title group flex items-center justify-center md:-mr-8 md:ml-4">
                 {/* <AnimatedText text={title} /> */}
                 <h2 className="whitespace-nowrap text-3xl font-black leading-[78px] text-[#333333] [transition:font-size_0.2s] dark:text-[#eeeeee] md:text-[60px]">
@@ -78,6 +91,7 @@ const Section = ({
                   <button
                     type="button"
                     color="link"
+                    // eslint-disable-next-line tailwindcss/no-custom-classname
                     className="clipboard-btn text-[#333333] opacity-0 [transition:opacity_0.25s_1500ms] dark:text-[#eeeeee] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms] md:ml-4"
                     onClick={() =>
                       copyToClipboard(`${window.location.origin}/${slug}#${sectionSlug}`)
@@ -110,7 +124,6 @@ const Section = ({
                 </Container>
               </>
             )}
-
             {description && (
               <div className="pb-8 text-[#333333] dark:text-[#aaa] sm:text-center">
                 <ConditionalWrapper
@@ -143,6 +156,7 @@ const Section = ({
       {title === 'Near Lock App' && slug === designsSlug && (
         <div
           id="near-lock-interactive-app"
+          // eslint-disable-next-line tailwindcss/no-custom-classname
           className={classnames(
             {
               dark: isDarkMode,
@@ -159,6 +173,7 @@ const Section = ({
             <button
               type="button"
               onClick={toggleDarkMode}
+              // eslint-disable-next-line tailwindcss/no-custom-classname
               className={classnames(
                 'nearlock-app-wrapper-theme-toggler group absolute right-12 top-10 z-[1] flex h-12 w-12 items-center justify-center rounded-full [transition:background_0.5s]',
                 isDarkMode ? 'bg-[#211C21]' : 'bg-white',
@@ -180,6 +195,7 @@ const Section = ({
             })}
           >
             <Container className={`${windowWidth >= 1120 && 'pb-12'} lighter text-center`}>
+              {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
               <div className="clipboard-title mr-md-n5 group flex items-center justify-center">
                 <Balancer>
                   <p className="mb-0 leading-6 text-white">
@@ -189,6 +205,7 @@ const Section = ({
                 {typeof window !== 'undefined' && windowWidth > 768 && (
                   <button
                     type="button"
+                    // eslint-disable-next-line tailwindcss/no-custom-classname
                     className="clipboard-btn ml-2 opacity-0 [transition:opacity_0.25s_1500ms] sm:group-hover-[.clipboard-title]:opacity-100 sm:group-hover-[.clipboard-title]:[transition:opacity_0.25s_0ms]"
                     onClick={() =>
                       copyToClipboard(`${window.location.origin}/${slug}#near-lock-interactive-app`)

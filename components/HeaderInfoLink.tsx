@@ -1,11 +1,12 @@
 import { Popover, Transition } from '@headlessui/react';
+import { HeaderItemsType } from '@interfaces/header-items';
 import classnames from 'classnames';
 import { useTheme } from 'next-themes';
 import { Fragment, createElement, useState } from 'react';
 import * as RI from 'react-icons/ri';
 import sanitizeHtml from 'sanitize-html';
 
-const HeaderInfoLink = ({
+const HeaderInfoLink: React.FC<HeaderItemsType & { i: number; linksLength: number }> = ({
   link,
   tooltipText,
   openInNewTab = false,
@@ -27,7 +28,7 @@ const HeaderInfoLink = ({
         target={openInNewTab ? '_blank' : ''}
         rel="noreferrer"
         className={classnames(
-          'group inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+          'group inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75',
           className,
         )}
         onMouseEnter={() => setTooltipOpen(true)}
@@ -58,7 +59,7 @@ const HeaderInfoLink = ({
           )}
         >
           <div
-            className="rounded-lg  px-2 py-1 shadow-lg ring-1 ring-black ring-opacity-5 "
+            className="rounded-lg  px-2 py-1 shadow-lg ring-1 ring-black/5 "
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(tooltipText) }}
           />

@@ -1,13 +1,19 @@
 import ContentfulImage from '@components/ContentfulImage';
 import { Popover, Transition } from '@headlessui/react';
+import { ContentfulDataType } from '@interfaces/contentful-data';
 import { useTheme } from 'next-themes';
 import { Fragment, useEffect, useState } from 'react';
+
+type Props = {
+  item: ContentfulDataType['stack'];
+  isMobile: boolean;
+};
 
 const loader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
 
-export default function StackIcon({
+const StackIcon: React.FC<Props> = ({
   item: {
     fields: {
       name,
@@ -24,7 +30,7 @@ export default function StackIcon({
     },
   },
   isMobile,
-}) {
+}) => {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === 'system' ? systemTheme : theme;
@@ -97,4 +103,6 @@ export default function StackIcon({
       </Transition>
     </Popover>
   );
-}
+};
+
+export default StackIcon;

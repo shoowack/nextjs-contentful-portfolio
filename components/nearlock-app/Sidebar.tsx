@@ -1,8 +1,14 @@
 import SidebarHeaderControls from '@components/nearlock-app/SidebarHeaderControls';
 import { Tab } from '@headlessui/react';
+import { NearLockAppType } from '@interfaces/nearlock-app';
 import classnames from 'classnames';
 
-const Sidebar = ({
+type Props = Pick<
+  NearLockAppType,
+  'isSidebarOpen' | 'menuItems' | 'activeTab' | 'toggleTab' | 'isSetupDone' | 'isDarkMode' | 'owner'
+>;
+
+const Sidebar: React.FC<Props> = ({
   isSidebarOpen,
   menuItems,
   activeTab,

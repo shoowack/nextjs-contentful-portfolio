@@ -3,18 +3,19 @@ import Layout from '@components/Layout';
 import Navigation from '@components/Navigation';
 import NavigationBar from '@components/NavigationBar';
 import Section from '@components/Section';
+import { HeaderItemsType } from '@interfaces/header-items';
 import { getHeaderLinks } from '@lib/api';
 import { appsAndWebsitesSlug, designsSlug } from '@lib/constants';
 import { fetchEntries } from '@lib/fetchEntries';
 import useWindowDimensions from '@lib/windowSize';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRef } from 'react';
+import { MutableRefObject, useRef } from 'react';
 
 export default function InnerPage({ entries, headerItems, slug }) {
   const { width } = useWindowDimensions();
   const { sections } = entries[0];
-  const sliderRef = useRef([]);
-  const aboutSectionRef = useRef(null);
+  const sliderRef: MutableRefObject<any[]> = useRef([]);
+  const aboutSectionRef: MutableRefObject<HTMLDivElement> = useRef(null);
 
   return (
     <Layout>
@@ -55,9 +56,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const headerItems = (await getHeaderLinks()) ?? [];
+  const headerItems: HeaderItemsType = (await getHeaderLinks()) ?? [];
 
   const res: any = await fetchEntries(params.slug);
+
   const entries = await res.map((entry) => entry.fields);
 
   return {

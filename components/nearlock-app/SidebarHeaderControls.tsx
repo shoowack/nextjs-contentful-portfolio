@@ -1,20 +1,19 @@
+import { NearLockAppType } from '@interfaces/nearlock-app';
 import classnames from 'classnames';
 
 type Props = {
-  isDarkMode?: string;
+  isDarkMode?: NearLockAppType['isDarkMode'];
   className: string;
 };
 
-export default function SidebarHeaderControls({ isDarkMode, className }: Props) {
-  return (
-    <div className={classnames('group/sidebar-header-controls flex flex-row gap-2.5', className)}>
-      {Array.from({ length: 3 }, (_, i) => ({ id: i })).map((arr) => (
-        <div
-          key={`sidebar-header-controls__item-${arr.id}`}
-          className={classnames(
-            `relative
+const SidebarHeaderControls: React.FC<Props> = ({ isDarkMode, className }) => (
+  <div className={classnames('group/sidebar-header-controls flex flex-row gap-2.5', className)}>
+    {Array.from({ length: 3 }, (_, i) => ({ id: i })).map((arr) => (
+      <div
+        key={`sidebar-header-controls__item-${arr.id}`}
+        className={classnames(
+          `relative
             h-3
-
             w-3
 
             rounded-full before:absolute
@@ -72,15 +71,15 @@ export default function SidebarHeaderControls({ isDarkMode, className }: Props) 
             [&:nth-child(3)]:after:border-l-transparent
             [&:nth-child(3)]:after:border-r-black/[0.4]
             [&:nth-child(3)]:after:border-t-transparent`,
-            {
-              // remove rings in Dark mode
-              '[&:nth-child(1)]:ring-1 [&:nth-child(2)]:ring-1 [&:nth-child(3)]:ring-1':
-                !isDarkMode,
-              '[&:nth-child(1)]:ring-0 [&:nth-child(2)]:ring-0 [&:nth-child(3)]:ring-0': isDarkMode,
-            },
-          )}
-        />
-      ))}
-    </div>
-  );
-}
+          {
+            // remove rings in Dark mode
+            '[&:nth-child(1)]:ring-1 [&:nth-child(2)]:ring-1 [&:nth-child(3)]:ring-1': !isDarkMode,
+            '[&:nth-child(1)]:ring-0 [&:nth-child(2)]:ring-0 [&:nth-child(3)]:ring-0': isDarkMode,
+          },
+        )}
+      />
+    ))}
+  </div>
+);
+
+export default SidebarHeaderControls;

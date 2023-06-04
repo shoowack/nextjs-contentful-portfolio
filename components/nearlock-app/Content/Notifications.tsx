@@ -1,10 +1,11 @@
 import AppButton from '@components/nearlock-app/AppButton';
 import { Tab } from '@headlessui/react';
+import { NearLockAppType } from '@interfaces/nearlock-app';
 import classnames from 'classnames';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 
-export default function Notifications({ isDarkMode }) {
+const Notifications: React.FC<{ isDarkMode: NearLockAppType['isDarkMode'] }> = ({ isDarkMode }) => {
   const [dateState, setDateState] = useState(dayjs().format('ddd MMM D h:mm A'));
   const [notificationShow, setNotificationShow] = useState(false);
 
@@ -87,4 +88,6 @@ export default function Notifications({ isDarkMode }) {
       />
     </Tab.Panel>
   );
-}
+};
+
+export default Notifications;

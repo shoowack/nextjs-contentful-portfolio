@@ -2,10 +2,11 @@ import ContentView from '@components/nearlock-app/ContentView';
 import Modal from '@components/nearlock-app/Modal/ModalWindow';
 import Sidebar from '@components/nearlock-app/Sidebar';
 import { Tab } from '@headlessui/react';
+import { NearLockAppType } from '@interfaces/nearlock-app';
 import classnames from 'classnames';
 import { useRef, useState } from 'react';
 
-function NearLockApp({ isDarkMode }) {
+const NearLockApp: React.FC<{ isDarkMode: NearLockAppType['isDarkMode'] }> = ({ isDarkMode }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -39,7 +40,7 @@ function NearLockApp({ isDarkMode }) {
   const owner = 'Ivan';
   const device = 'iPhone 14 Pro';
 
-  const menuItems = [
+  const menuItems: NearLockAppType['menuItems'] = [
     {
       id: 0,
       title: 'Welcome',
@@ -110,23 +111,24 @@ function NearLockApp({ isDarkMode }) {
     },
   ];
 
-  const props = {
-    isDarkMode,
-    isSidebarOpen,
-    setIsSidebarOpen,
-    isSearchOpen,
-    setIsSearchOpen,
-    isSetupDone,
-    setIsSetupDone,
-    toggleSidebar,
-    toggleSearch,
-    activeTab,
+  const props: Omit<NearLockAppType, 'searchRef'> = {
     setActiveTab,
-    isModalOpen,
     setIsModalOpen,
+    setIsSearchOpen,
+    setIsSetupDone,
+    setIsSidebarOpen,
+    toggleSearch,
+    toggleSidebar,
+    toggleTab,
+    activeTab,
+    device,
+    isDarkMode,
+    isModalOpen,
+    isSearchOpen,
+    isSetupDone,
+    isSidebarOpen,
     menuItems,
     owner,
-    device,
   };
 
   return (
@@ -148,6 +150,6 @@ function NearLockApp({ isDarkMode }) {
       </Tab.Group>
     </div>
   );
-}
+};
 
 export default NearLockApp;
