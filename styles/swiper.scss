@@ -116,8 +116,11 @@
         }
     }
 
-    &.website .swiper-slide.swiper-slide-active {
-        @apply rounded-t-none
+    &.web-app,
+    &.website {
+        .swiper-slide.swiper-slide-active {
+            @apply rounded-t-none
+        }
     }
 
     .swiper-pagination {
