@@ -206,7 +206,7 @@ const Carousel: React.FC<Props> = ({
                 'rounded-[10px]': windowWidth < 768 && iphone,
                 'rounded-[7px]': windowWidth > 550 && ipad,
                 'rounded-[4px]': ipads || ((website || webApp || desktopApp) && windowWidth < 1024),
-                'rounded-[11px]': desktopApp && windowWidth >= 1024,
+                'rounded-[11px]': (desktopApp || website || webApp) && windowWidth >= 1024,
                 'rounded-b-[11px]': (website || webApp) && windowWidth >= 1024,
               })}
             >
@@ -230,7 +230,7 @@ const Carousel: React.FC<Props> = ({
                 alt={description}
                 height={height}
                 width={width}
-                className="select-none"
+                className="w-full select-none"
                 sizes={
                   website || desktopApp || webApp
                     ? '(max-width: 768px) 100vw, 60vw'

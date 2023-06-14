@@ -116,6 +116,10 @@
         }
     }
 
+    &.website .swiper-slide.swiper-slide-active {
+        @apply rounded-t-none
+    }
+
     .swiper-pagination {
         bottom: -170px;
         display: none;
