@@ -1,29 +1,27 @@
-import { useState } from 'react';
-import Container from '@components/Container';
-import RichText from '@madebyconnor/rich-text-to-jsx';
-import { StickyContainer, Sticky } from '@dior/react-sticky';
-import { useRouter } from 'next/router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import classnames from 'classnames';
-import StackIcon from '@components/StackIcon';
-import Link from 'next/link';
-import Balancer from 'react-wrap-balancer';
-import useCopyToClipboard from '@lib/useCopyToClipboard';
-import NearLockApp from '@components/nearlock-app/NearLockApp';
 import Carousel from '@components/Carousel';
+import Container from '@components/Container';
+import NearLockApp from '@components/nearlock-app/NearLockApp';
+import { Sticky, StickyContainer } from '@dior/react-sticky';
+import { faAngleLeft, faAngleRight, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useCopyToClipboard from '@lib/useCopyToClipboard';
+import { PortableText } from '@portabletext/react';
+import classnames from 'classnames';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Balancer from 'react-wrap-balancer';
 import AppStoreDownloadBadge from './AppStoreDownloadBadge';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo, storeLink }) => {
+const Section = ({ title, sectionSlug, description, gallery, stack, windowWidth, i, appLogo, storeLink }) => {
   const {
     query: { slug },
   } = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [copyToClipboard, { copyIcon }] = useCopyToClipboard();
-  const sectionSlug = title.toLowerCase().split(' ').join('-');
   const isOdd = i % 2;
 
   const toggleDarkMode = () => {
@@ -168,14 +166,14 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo, 
                       </table>
                     )}
                   >
-                    {stack.map((item) => (
+                    {/* {stack.map((logo, name) => (
                       <StackIcon
-                        key={`${sectionSlug}-${item.replace(/ /g, '-').toLowerCase()}`}
+                        key={`${sectionSlug}-${item.name.replace(/ /g, '-').toLowerCase()}`}
                         stackIcon={item}
                         isMobile={windowWidth < 768}
                         section={title}
                       />
-                    ))}
+                    ))} */}
                   </ConditionalWrapper>
                 </Container>
               </>
@@ -186,7 +184,10 @@ const Section = ({ title, description, gallery, stack, windowWidth, i, appLogo, 
                   condition={windowWidth >= 640}
                   wrapper={(children) => <Balancer>{children}</Balancer>}
                 >
-                  <RichText richText={description} />
+                  <PortableText
+                    value={description}
+                    // components={/* optional object of custom components to use */}
+                  />
                 </ConditionalWrapper>
               </div>
             )}

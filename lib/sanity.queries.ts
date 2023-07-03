@@ -1,66 +1,34 @@
-import { groq } from 'next-sanity'
+import { groq } from 'next-sanity';
 
-const postFields = groq`
-  _id,
-  title,
-  date,
-  excerpt,
-  coverImage,
-  "slug": slug.current,
-  "author": author->{name, picture},
-  "projects": *[_type == "project" && project._ref in *[_type=="project"]._id ]{...}
-`
-
-export const settingsQuery = groq`*[_type == "settings"][0]`
-
-export const indexQuery = groq`
-*[_type == "section"] | order(date desc, _updatedAt desc) {
-  ${postFields}
-}`
-
-export const postAndMoreStoriesQuery = groq`
-{
-  "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
-    content,
-    ${postFields}
-  },
-  "morePosts": *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
-    content,
-    ${postFields}
+export const projectsQuery = groq`
+*[ _type == "section" && slug.current == $slug][0] {
+  // ...,
+  "projects": *[_id in ^.projects[]._ref]{
+    "description": body,
+    title,
+    "sectionSlug": slug.current,
+    "stack": *[_id in ^.stack[]._ref] {
+      name,
+      logo
+    }
   }
 }`
 
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
-`
-
-export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {
-  ${postFields}
-}
-`
-
-export interface Author {
-  name?: string
-  picture?: any
+export interface Section {
+  projects: Project[] | undefined;
 }
 
-export interface Post {
-  _id: string
-  title?: string
-  coverImage?: any
-  date?: string
-  excerpt?: string
-  author?: Author
-  slug?: string
-  content?: any
-  projects?: any
+export interface Project {
+  title: string
+  sectionSlug: string
+  description?: string
+  stack?: Stack[]
 }
 
-export interface Settings {
+export interface Stack {
   title?: string
   description?: any[]
-  ogImage?: {
-    title?: string
+  image?: {
+    url: string
   }
 }

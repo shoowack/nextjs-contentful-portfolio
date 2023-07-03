@@ -10,5 +10,26 @@ export default defineType({
             title: 'Name',
             type: 'string',
         }),
-    ]
+        defineField({
+            name: 'logo',
+            title: 'Logo',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+            fields: [
+                {
+                    name: 'alt',
+                    type: 'string',
+                    title: 'Alternative Text',
+                }
+            ]
+        }),
+    ],
+    preview: {
+        select: {
+            title: 'name',
+            media: 'logo'
+        }
+    }
 })

@@ -3,29 +3,20 @@ import Navigation from '@components/Navigation';
 import Section from '@components/Section';
 import Layout from '@components/layout';
 import { getHeaderLinks } from '@lib/api';
-import { fetchEntries } from '@lib/fetchEntries';
-import { getAllPosts } from '@lib/sanity.client';
+import { getProjects } from '@lib/sanity.client';
 import useWindowDimensions from '@lib/windowSize';
-import { Provider } from 'react-wrap-balancer';
 
-export default function InnerPage({ entries, headerItems, studioData }) {
+export default function InnerPage({ entries, headerItems }) {
   const { width } = useWindowDimensions();
 
-  console.log(studioData, 'studioData')
+  console.log(entries, 'entries')
 
   return (
     <Layout>
       <div className="z-[2] mb-[360px] min-h-full overflow-hidden shadow-[0_10px_30px_-5px_rgba(0,0,0,.2)] dark:shadow-[0_10px_30px_rgba(0,0,0,.5)] sm:mb-[300px] md:mb-[400px] md:shadow-[0_10px_60px_-10px_rgba(0,0,0,.2)] md:dark:shadow-[0_10px_60px_rgba(0,0,0,.5)]">
         <Navigation headerItems={headerItems} />
-        {/* filter sections by environment tags (production, development) */}
-        {entries[0].sections.map(
-          (entry, i) =>
-            entry.metadata.tags.some((tags) => tags.sys.id === process.env.NODE_ENV) && (
-              <Provider key={`provider-${entry.sys.id}`}>
-                <Section windowWidth={width} {...entry.fields} i={i} />
-              </Provider>
-            ),
-        )}
+        {entries.map(
+          (entry, i) => <Section windowWidth={width} {...entry} i={i} />)}
         <Footer />
       </div>
     </Layout>
@@ -41,21 +32,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const headerItems = (await getHeaderLinks()) ?? [];
-  const studioData = await getAllPosts()
-
-  console.log(studioData, 'studio stuff')
-
-  const res = await fetchEntries(params.slug);
-  const entries = await res.map((entry) => {
-    return entry.fields;
-  });
+  const studioData = await getProjects(params.slug);
 
   return {
     props: {
       slug: params.slug,
-      entries,
+      entries: studioData.projects,
       headerItems,
-      studioData
     },
   };
 }
