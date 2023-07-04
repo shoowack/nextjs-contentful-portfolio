@@ -1,34 +1,28 @@
 import ContentfulImage from '@components/ContentfulImage';
 import { Popover, Transition } from '@headlessui/react';
-import { ContentfulDataType } from '@interfaces/contentful-data';
+import { urlForImage } from '@sanity/lib/image';
 import { useTheme } from 'next-themes';
 import { Fragment, useEffect, useState } from 'react';
 
 type Props = {
-  item: ContentfulDataType['stack'];
+  name: string;
+  logo: { asset: { _type: string; _ref: string }; alt?: string };
   isMobile: boolean;
 };
 
-const loader = ({ src, width, quality }) => {
-  return `${src}?w=${width}&q=${quality || 75}`;
-};
-
 const StackIcon: React.FC<Props> = ({
-  item: {
-    fields: {
-      name,
-      darkLogo: {
-        fields: {
-          file: { url: darkLogoUrl },
-        },
-      },
-      lightLogo: {
-        fields: {
-          file: { url: lightLogoUrl },
-        },
-      },
-    },
-  },
+  name,
+  // darkLogo: {
+  //   fields: {
+  //     file: { url: darkLogoUrl },
+  //   },
+  // },
+  // lightLogo: {
+  //   fields: {
+  //     file: { url: lightLogoUrl },
+  //   },
+  // },
+  logo,
   isMobile,
 }) => {
   const [mounted, setMounted] = useState(false);
@@ -44,6 +38,7 @@ const StackIcon: React.FC<Props> = ({
   if (!mounted) {
     return null;
   }
+  const imgUrl = urlForImage(logo).url();
 
   // eslint-disable-next-line consistent-return
   return isMobile ? (
@@ -54,10 +49,10 @@ const StackIcon: React.FC<Props> = ({
             quality={100}
             fill
             aria-hidden
-            src={currentTheme === 'light' ? darkLogoUrl : lightLogoUrl}
+            // src={currentTheme === 'light' ? darkLogoUrl : lightLogoUrl}
+            src={imgUrl}
             alt={name}
             className="inline object-contain"
-            loader={loader}
             onMouseEnter={() => setTooltipOpen(true)}
             onMouseLeave={() => setTooltipOpen(false)}
             sizes="(max-width: 768px) 20vw, 10vw"
@@ -71,13 +66,15 @@ const StackIcon: React.FC<Props> = ({
   ) : (
     <Popover className="relative">
       <div className="relative mx-2 h-8 w-8">
+        {/* <Image src={imgUrl} className="" loader={loader} fill alt={logo?.alt} /> */}
+        {/* <img src={imgUrl} className="" alt={logo?.alt} /> */}
         <ContentfulImage
           quality={100}
           aria-hidden
-          src={currentTheme === 'light' ? darkLogoUrl : lightLogoUrl}
-          alt={name}
+          // src={currentTheme === 'light' ? darkLogoUrl : lightLogoUrl}
+          src={imgUrl}
+          alt={logo?.alt}
           className="inline object-contain"
-          loader={loader}
           fill
           onMouseEnter={() => setTooltipOpen(true)}
           onMouseLeave={() => setTooltipOpen(false)}

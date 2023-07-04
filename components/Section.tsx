@@ -6,7 +6,7 @@ import NearLockApp from '@components/nearlock-app/NearLockApp';
 import { ContentfulDataType } from '@interfaces/contentful-data';
 import { designsSlug } from '@lib/constants';
 import useCopyToClipboard from '@lib/useCopyToClipboard';
-import RichText from '@madebyconnor/rich-text-to-jsx';
+import { PortableText } from '@portabletext/react';
 import classnames from 'classnames';
 import { useRouter } from 'next/router';
 import { MutableRefObject, useState } from 'react';
@@ -22,6 +22,7 @@ type Props = {
   galleryLength: number;
   isOdd: boolean;
   stack: ContentfulDataType['stack'][];
+  sectionSlug: string;
 };
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
@@ -37,13 +38,13 @@ const Section: React.FC<ContentfulDataType & Props> = ({
   storeLink,
   sys,
   sliderRef,
+  sectionSlug
 }) => {
   const {
     query: { slug },
   } = useRouter();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [copyToClipboard, { copyIcon }] = useCopyToClipboard();
-  const sectionSlug = title.toLowerCase().split(' ').join('-');
   const isOdd = i % 2;
 
   const toggleDarkMode = () => {
@@ -63,7 +64,7 @@ const Section: React.FC<ContentfulDataType & Props> = ({
           isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
         )}
         id={sectionSlug}
-        data-sysid={sys.id}
+        // data-sysid={sys.id}
         // eslint-disable-next-line no-return-assign, no-param-reassign
         ref={(el) => (sliderRef.current[i] = el)}
       >
@@ -117,8 +118,12 @@ const Section: React.FC<ContentfulDataType & Props> = ({
                       </table>
                     )}
                   >
-                    {stack.map((item) => (
-                      <StackIcon key={item.sys.id} item={item} isMobile={windowWidth < 768} />
+                    {stack.map(({name, logo}) => (
+                      <StackIcon 
+                      // key={item.sys.id}
+                      name={name}
+                      logo={logo}
+                      isMobile={windowWidth < 768} />
                     ))}
                   </ConditionalWrapper>
                 </Container>
@@ -130,7 +135,10 @@ const Section: React.FC<ContentfulDataType & Props> = ({
                   condition={windowWidth >= 640}
                   wrapper={(children) => <Balancer>{children}</Balancer>}
                 >
-                  <RichText richText={description} />
+                  <PortableText
+                    value={description}
+                  // components={/* optional object of custom components to use */}
+                  />
                 </ConditionalWrapper>
               </div>
             )}
