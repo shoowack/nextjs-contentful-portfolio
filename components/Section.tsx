@@ -59,12 +59,11 @@ const Section: React.FC<ContentfulDataType & Props> = ({
   return (
     <>
       <section
-        data-parent="New project"
         className={classnames(
           `w-full overflow-hidden border-b border-[#e1e4e8] text-black/75  dark:border-[#30363d] md:px-0 md:py-10`,
           isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
           {
-            'relative before:absolute before:-right-11 before:top-6 before:z-[10] before:rotate-45 before:bg-[#DD0B31] before:px-10 before:py-1 before:text-xs before:font-medium before:uppercase before:text-white before:content-[attr(data-parent)] before:md:-right-14 before:md:top-9 before:md:py-3 md:before:px-16 before:md:text-base':
+            'relative before:absolute before:-right-12 before:top-2 before:z-[10] before:rotate-45 before:bg-[#DD0B31] before:px-14 before:py-1 before:text-[10px] before:font-medium before:uppercase before:leading-3 before:text-white before:content-["New"] before:md:py-3 md:before:px-16 before:md:text-base':
               newProject,
           },
         )}
@@ -154,6 +153,7 @@ const Section: React.FC<ContentfulDataType & Props> = ({
               windowWidth={windowWidth}
               galleryLength={filteredGalleries.length}
               i={index}
+              storeLink={storeLink}
             />
           ))}
         </div>

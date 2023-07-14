@@ -18,6 +18,7 @@ type Props = {
   windowWidth: number;
   galleryLength: number;
   isOdd: number;
+  storeLink: string;
 };
 
 const Carousel: React.FC<Props> = ({
@@ -27,6 +28,7 @@ const Carousel: React.FC<Props> = ({
   windowWidth,
   galleryLength,
   isOdd,
+  storeLink,
 }) => {
   const iphone = type === 'iPhone';
   const website = type === 'Website';
@@ -51,7 +53,7 @@ const Carousel: React.FC<Props> = ({
 
   return (
     <div key={`gallery-container-${id} relative`}>
-      {(!website || !webApp) && (
+      {!website && (
         <Container>
           <h3
             className={classnames(
@@ -59,7 +61,7 @@ const Carousel: React.FC<Props> = ({
               {
                 'md:mb-10': deviceBezel && windowWidth >= 768 && iphone,
                 'md:mb-16': deviceBezel && windowWidth >= 900 && ipads,
-                'md:mb-14': (website || webApp) && windowWidth >= 768,
+                'md:mt-16': storeLink && windowWidth >= 900,
               },
             )}
           >
@@ -138,6 +140,7 @@ const Carousel: React.FC<Props> = ({
             'before:w-[250px] after:w-[300px]': windowWidth > 991 && windowWidth <= 1200 && iphone,
             'before:w-[400px] after:w-[400px]': windowWidth > 1200 && iphone,
             'before:w-[15%] after:w-[15%]': windowWidth >= 768 && (desktopApp || webApp || website),
+            'md:mt-16': webApp || website,
           },
         )}
         modules={[Pagination, Navigation]}
