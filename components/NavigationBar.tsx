@@ -68,7 +68,7 @@ const NavigationBar: React.FC<Props> = ({ aboutSectionRef, slug, width, sections
   return (
     <div
       className={cn(
-        'transition-all items-center overflow-hidden fixed w-[90%] left-1/2 -translate-x-1/2 z-10 backdrop-blur-[12px] rounded-full bg-accent-2/70 dark:bg-accent-7/70 dark:border-accent-2/10 shadow-medium border border-accent-7/10 flex justify-between',
+        'transition-all items-center overflow-hidden fixed w-[90%] left-1/2 -translate-x-1/2 z-20 backdrop-blur-[12px] rounded-full bg-accent-2/70 dark:bg-accent-7/70 dark:border-accent-2/10 shadow-medium border border-accent-7/10 flex justify-between',
         {
           'xl:w-[50%] lg:w-[60%] md:w-[78%]': slug === designsSlug,
           'lg:w-[40%] md:w-[90%]': slug === appsAndWebsitesSlug,

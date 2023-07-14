@@ -15,4 +15,5 @@ export interface ContentfulDataType {
     };
     sys: { id: string };
   };
+  newProject: boolean;
 }
