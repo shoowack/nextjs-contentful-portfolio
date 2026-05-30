@@ -1,5 +1,5 @@
 import Container from '@components/Container';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import cn from 'classnames';
 import { useState } from 'react';
 import { FaCheck, FaCircleNotch, FaPaperPlane } from 'react-icons/fa';
@@ -37,7 +37,7 @@ export default function Footer() {
           }, 5000);
         }, 2000);
       })
-      .catch(({ response }) => {
+      .catch((error: AxiosError<{ errors: any[] }>) => {
         setErrors(null);
         setIsLoading(true);
         setSentState(false);
@@ -45,7 +45,7 @@ export default function Footer() {
         setTimeout(() => {
           setIsLoading(false);
           setSentState(true);
-          setErrors(response.data.errors);
+          setErrors(error.response?.data?.errors);
 
           setTimeout(() => {
             setSentState(false);
