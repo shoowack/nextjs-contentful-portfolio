@@ -1,5 +1,5 @@
 import BreakpointIndicator from '@components/BreakpointIndicator';
-import localFont from '@next/font/local';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
