@@ -1,6 +1,8 @@
 {
   "private": true,
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "next",
     "build": "next build",
     "start": "next start",
