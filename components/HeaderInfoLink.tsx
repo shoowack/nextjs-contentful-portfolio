@@ -28,7 +28,7 @@ const HeaderInfoLink: React.FC<HeaderItemsType & { i: number; linksLength: numbe
         target={openInNewTab ? '_blank' : ''}
         rel="noreferrer"
         className={classnames(
-          'group inline-flex h-9 w-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75',
+          'group inline-flex size-9 items-center justify-center rounded-md bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75',
           className,
         )}
         onMouseEnter={() => setTooltipOpen(true)}

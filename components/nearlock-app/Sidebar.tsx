@@ -44,7 +44,7 @@ const Sidebar: React.FC<Props> = ({
             className={classnames(
               'flex items-center rounded-lg px-[8px] py-[7px] text-sm font-normal [transition:color_0.5s] hover:bg-black/[0.09] focus:outline-0',
               {
-                hidden: !showInMenu,
+                'hidden': !showInMenu,
                 'bg-black/[0.09]': activeTab === id,
                 'opacity-50 hover:bg-transparent': disabled,
                 'hover:cursor-pointer': !disabled,
@@ -84,7 +84,7 @@ const Sidebar: React.FC<Props> = ({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/nearlock-app/menu/iphone.svg" className="ml-1 mr-2 h-[17px]" alt="" />
           {owner}&apos;s iPhone
-          <div className="ml-auto mr-1 h-2 w-2 rounded bg-gradient-to-b from-[#2dff1a] to-[#13e600] shadow-[0_0_0_1px_hsla(0,0%,0%,0.1),0_0_0_2px_hsla(0,0%,0%,0.05),0_0_10px_0px_hsla(121,100%,59%,0.75)]" />
+          <div className="ml-auto mr-1 size-2 rounded bg-gradient-to-b from-[#2dff1a] to-[#13e600] shadow-[0_0_0_1px_hsla(0,0%,0%,0.1),0_0_0_2px_hsla(0,0%,0%,0.05),0_0_10px_0px_hsla(121,100%,59%,0.75)]" />
         </div>
       )}
     </div>

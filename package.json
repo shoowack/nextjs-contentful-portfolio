@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc",
-    "lint": "next lint"
+    "lint": "next lint --max-warnings=0",
+    "prettier": "prettier --check .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.4.0",

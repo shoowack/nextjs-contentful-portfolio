@@ -14,7 +14,7 @@ import { MutableRefObject, useRef } from 'react';
 export default function InnerPage({ entries, headerItems, slug }) {
   const { width } = useWindowDimensions();
   const { sections } = entries[0];
-  const sliderRef: MutableRefObject<any[]> = useRef([]);
+  const sliderRef: MutableRefObject<HTMLElement[]> = useRef([]);
   const aboutSectionRef: MutableRefObject<HTMLDivElement> = useRef(null);
 
   return (
@@ -58,9 +58,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const headerItems: HeaderItemsType = (await getHeaderLinks()) ?? [];
 
-  const res: any = await fetchEntries(params.slug);
+  const res = (await fetchEntries(params.slug)) || [];
 
-  const entries = await res.map((entry) => entry.fields);
+  const entries = res.map((entry) => entry.fields);
 
   return {
     props: {

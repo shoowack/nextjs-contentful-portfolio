@@ -24,10 +24,10 @@ export async function fetchEntries(entryType) {
   }
 
   const entries = await client.getEntries({
-    content_type: 'section',
+    'content_type': 'section',
     'fields.title': type,
     // 'metadata.tags.sys.id[all]': 'prod, dev',
-    include: 2, //! necessary to get the gallery images
+    'include': 2, //! necessary to get the gallery images
   });
 
   if (entries.items) return entries.items;

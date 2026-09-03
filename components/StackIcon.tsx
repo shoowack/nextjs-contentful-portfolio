@@ -49,7 +49,7 @@ const StackIcon: React.FC<Props> = ({
   return isMobile ? (
     <tr>
       <td className="text-right">
-        <div className="relative h-7 w-7">
+        <div className="relative size-7">
           <ContentfulImage
             quality={100}
             fill
@@ -70,7 +70,7 @@ const StackIcon: React.FC<Props> = ({
     </tr>
   ) : (
     <Popover className="relative">
-      <div className="relative mx-2 h-8 w-8">
+      <div className="relative mx-2 size-8">
         <ContentfulImage
           quality={100}
           aria-hidden

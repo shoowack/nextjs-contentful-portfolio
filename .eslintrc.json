@@ -9,9 +9,7 @@
     "prettier",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     // ** prettier rules **
     "prettier/prettier": [
@@ -26,18 +24,11 @@
     ],
     // ** turn off eslint rules to avoid conflict with prettier **
     // doesn't recognize mandatory semicolons after arrow functions in classes
-    "semi": [
-      "off",
-      "never"
-    ],
+    "semi": ["off", "never"],
     // causes double commas
-    "comma-dangle": [
-      "off"
-    ],
+    "comma-dangle": ["off"],
     // conflicts with prettier
-    "indent": [
-      "off"
-    ],
+    "indent": ["off"],
     "import/no-unresolved": "off",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/anchor-is-valid": "off",
@@ -55,20 +46,14 @@
     "no-console": [
       "warn",
       {
-        "allow": [
-          "warn",
-          "error"
-        ]
+        "allow": ["warn", "error"]
       }
     ],
     "import/no-extraneous-dependencies": "off",
     "jsx-a11y/label-has-associated-control": [
       2,
       {
-        "controlComponents": [
-          "Field",
-          "Input"
-        ],
+        "controlComponents": ["Field", "Input"],
         "depth": 3
       }
     ],
@@ -79,20 +64,13 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ]
   },
   "overrides": [
     {
-      "files": [
-        "./*.{ts,tsx}"
-      ],
+      "files": ["./*.{ts,tsx}"],
       "rules": {
         "prettier/prettier": "off",
         "func-names": "off",
@@ -186,8 +164,7 @@
     "browser": true,
     "jquery": true
   },
-  "globals": {
-  },
+  "globals": {},
   "parserOptions": {
     "ecmaVersion": 2020
   }

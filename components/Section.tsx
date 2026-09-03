@@ -18,7 +18,7 @@ type Props = {
   windowWidth: number;
   i: number;
   storeLink: string;
-  sliderRef: MutableRefObject<any[]>;
+  sliderRef: MutableRefObject<HTMLElement[]>;
   galleryLength: number;
   isOdd: boolean;
   stack: ContentfulDataType['stack'][];
@@ -63,7 +63,7 @@ const Section: React.FC<ContentfulDataType & Props> = ({
           `w-full overflow-hidden border-b border-[#e1e4e8] text-black/75  dark:border-[#30363d] md:px-0 md:py-10`,
           isOdd ? 'lighter bg-[#f7f8fa] dark:bg-[#0d1117]' : 'darker bg-white dark:bg-[#010409]',
           {
-            'relative before:absolute before:-right-12 before:top-2 before:z-[10] before:rotate-45 before:bg-[#DD0B31] before:px-14 before:py-1 before:text-[10px] before:font-medium before:uppercase before:leading-3 before:text-white before:content-["New"] before:md:py-3 md:before:px-16 before:md:text-base':
+            'relative before:absolute before:-right-12 before:top-2 before:z-10 before:rotate-45 before:bg-[#DD0B31] before:px-14 before:py-1 before:text-[10px] before:font-medium before:uppercase before:leading-3 before:text-white before:content-["New"] before:md:py-3 md:before:px-16 before:md:text-base':
               newProject,
           },
         )}
@@ -181,7 +181,7 @@ const Section: React.FC<ContentfulDataType & Props> = ({
               onClick={toggleDarkMode}
               // eslint-disable-next-line tailwindcss/no-custom-classname
               className={classnames(
-                'nearlock-app-wrapper-theme-toggler group absolute right-12 top-10 z-[1] flex h-12 w-12 items-center justify-center rounded-full [transition:background_0.5s]',
+                'nearlock-app-wrapper-theme-toggler group absolute right-12 top-10 z-[1] flex size-12 items-center justify-center rounded-full [transition:background_0.5s]',
                 isDarkMode ? 'bg-[#211C21]' : 'bg-white',
                 {
                   dark: isDarkMode,
@@ -189,9 +189,9 @@ const Section: React.FC<ContentfulDataType & Props> = ({
               )}
             >
               {isDarkMode ? (
-                <FaSun className="rotate-0 scale-100 text-yellow-400  transition-transform duration-1000 group-active-[.nearlock-app-wrapper-theme-toggler]:rotate-180 group-active-[.nearlock-app-wrapper-theme-toggler]:scale-50 group-active-[.nearlock-app-wrapper-theme-toggler]:duration-[100ms]" />
+                <FaSun className="rotate-0 scale-100 text-yellow-400  transition-transform duration-1000 group-active-[.nearlock-app-wrapper-theme-toggler]:rotate-180 group-active-[.nearlock-app-wrapper-theme-toggler]:scale-50 group-active-[.nearlock-app-wrapper-theme-toggler]:duration-100" />
               ) : (
-                <FaMoon className="rotate-0 scale-100 text-[#368EFC] transition-transform duration-1000 group-active-[.nearlock-app-wrapper-theme-toggler]:rotate-180 group-active-[.nearlock-app-wrapper-theme-toggler]:scale-50 group-active-[.nearlock-app-wrapper-theme-toggler]:duration-[100ms]" />
+                <FaMoon className="rotate-0 scale-100 text-[#368EFC] transition-transform duration-1000 group-active-[.nearlock-app-wrapper-theme-toggler]:rotate-180 group-active-[.nearlock-app-wrapper-theme-toggler]:scale-50 group-active-[.nearlock-app-wrapper-theme-toggler]:duration-100" />
               )}
             </button>
           )}

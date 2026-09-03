@@ -53,7 +53,7 @@ const ListItem: React.FC = ({
           {
             'relative shadow-[0_0_0_3px_#368EFC_inset] before:absolute before:right-0 before:top-0 before:border-0 before:border-b-[30px] before:border-r-[30px] before:border-solid before:border-y-transparent before:border-l-transparent before:border-r-[#368EFC] before:content-[""]':
               isChecked,
-            'bg-[#EAEAEA]': !isDarkMode,
+            'bg-accent-2': !isDarkMode,
             'bg-white/[0.075]': isDarkMode,
           },
         )}
@@ -62,13 +62,10 @@ const ListItem: React.FC = ({
         <img src={icon?.src} alt="" />
         {isChecked && (
           <FaCheck
-            className={classnames(
-              'absolute right-[6px] top-[6px] h-2 w-2 [transition:color_0.5s]',
-              {
-                'text-black': isDarkMode,
-                'text-white': !isDarkMode,
-              },
-            )}
+            className={classnames('absolute right-[6px] top-[6px] size-2 [transition:color_0.5s]', {
+              'text-black': isDarkMode,
+              'text-white': !isDarkMode,
+            })}
           />
         )}
       </div>

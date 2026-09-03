@@ -90,7 +90,7 @@ const ContentHeader: React.FC<Props> = ({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/nearlock-app/search-close.svg"
-        className={classnames('absolute right-5 h-3.5 w-3.5', {
+        className={classnames('absolute right-5 size-3.5', {
           hidden: !isSearchOpen,
         })}
         onClick={toggleSearch}

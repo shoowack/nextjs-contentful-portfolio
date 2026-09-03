@@ -54,7 +54,7 @@ const Index: React.FC<FrontPage> = ({ allCategories }) => (
                 src={url}
                 sizes="(max-width: 768px) 100vw, 70vw" // 50vw because the image is wider than 33% on hover
                 fill
-                className="absolute -z-10 h-full w-full object-cover"
+                className="absolute -z-10 size-full object-cover"
                 alt={description}
               />
             )}
