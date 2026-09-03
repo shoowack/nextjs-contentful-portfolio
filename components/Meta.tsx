@@ -2,9 +2,15 @@ import { SITE_URL } from '@lib/constants';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 
-export default function Meta() {
-  const title = 'Ivan Suvak Martinovic | Full Stack Developer';
-  const desc = 'Creative Full Stack developer living in Canada. Check out some of my work.';
+interface MetaProps {
+  title?: string;
+  description?: string;
+}
+
+export default function Meta({ title: titleOverride, description: descOverride }: MetaProps = {}) {
+  const title = titleOverride ?? 'Ivan Suvak Martinovic | Full Stack Developer';
+  const desc =
+    descOverride ?? 'Creative Full Stack developer living in Canada. Check out some of my work.';
   const ogImgRelativePath = '/og.png';
 
   const siteURL = SITE_URL;
