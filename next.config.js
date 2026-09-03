@@ -2,9 +2,9 @@
 
 /**
  * @type {import('next').NextConfig}
- **/
+ * */
 
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   images: {
@@ -28,6 +28,6 @@ module.exports = {
         destination: 'https://shoowack.com/:path*',
         permanent: true,
       },
-    ]
+    ];
   },
-}
+};
