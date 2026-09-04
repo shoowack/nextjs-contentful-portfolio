@@ -39,11 +39,16 @@ Lifecycle:
 Statuses in use: `Considering`, `Backlog`, `Ready`, `In progress`, `In review`, `Done`,
 `Not doing`.
 
-## Deploys
+## CI and deploys
 
-Deploys happen automatically via **Vercel's Git integration** (pushes/merges to `main` deploy to
-production; PRs get preview deployments). There is no deploy workflow or script to maintain in
-this repo.
+Deploys run through GitHub Actions, not Vercel's Git integration: `.github/workflows/preview.yaml`
+deploys any non-`main` push as a Vercel preview, and `production.yaml` deploys `main` pushes to
+production, both via the Vercel CLI using the `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and
+`VERCEL_PROJECT_ID` repo secrets.
+
+`.github/workflows/pull-request-checks.yml` runs ESLint and `tsc` on every PR; both are required
+status checks on `main` and `develop` branch protection. There is no automated test suite or
+Prettier check wired into CI yet (see Testing below).
 
 ## Environment variables (Contentful)
 
@@ -60,9 +65,9 @@ These values must stay in sync across **four places**:
 
 1. Local env file (`.env.local`, based on `.env.local.example`) — for local development.
 2. `README.md` — documenting which variables are required and what they're for.
-3. CI — any variables a CI workflow needs to build/test the project. This repo does not have a
-   CI workflow yet; if one is added, its secrets must be kept in sync with the other three
-   places.
+3. CI — GitHub Actions repo secrets (`VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`; no
+   Contentful secrets are needed directly by CI since `vercel pull` fetches the project's Vercel
+   environment variables at deploy time).
 4. Vercel project settings — the environment variables configured for the deployed app.
 
 When adding, renaming, or removing a Contentful (or other) environment variable, update all four
