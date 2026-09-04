@@ -44,11 +44,18 @@
 
     @media (prefers-reduced-motion: no-preference) {
       & > .sun {
-        transition: transform 0.5s var(--ease-2), stroke 0.5s, fill 0.5s;
+        transition:
+          transform 0.5s var(--ease-2),
+          stroke 0.5s,
+          fill 0.5s;
       }
 
       & > .sun-beams {
-        transition: transform 0.5s var(--ease-1), opacity 0.5s var(--ease-3), stroke 0.5s, fill 0.5s;
+        transition:
+          transform 0.5s var(--ease-1),
+          opacity 0.5s var(--ease-3),
+          stroke 0.5s,
+          fill 0.5s;
       }
 
       & .moon > circle {
