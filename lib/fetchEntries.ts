@@ -35,4 +35,6 @@ export async function fetchEntries(entryType) {
   return console.log(`Error getting Entries for ${type}.`);
 }
 
-export default { fetchEntries };
+const fetchEntriesModule = { fetchEntries };
+
+export default fetchEntriesModule;

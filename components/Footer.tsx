@@ -148,13 +148,13 @@ export default function Footer() {
             {errors && (
               <div>
                 <p className="mb-0 text-base text-red-500">Errors:</p>
-                {errors.map((error) =>
+                {errors.map((error, index) =>
                   error.field ? (
-                    <p className="mb-0 text-base text-red-300">
+                    <p className="mb-0 text-base text-red-300" key={`${error.field}-${index}`}>
                       <span className="capitalize">{error.field}</span>: {error.message}
                     </p>
                   ) : (
-                    <p>{error.message}</p>
+                    <p key={`general-${index}`}>{error.message}</p>
                   ),
                 )}
               </div>
