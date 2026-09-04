@@ -8,3 +8,7 @@ pnpm-lock.yaml
 assets/font/
 public/favicon/site.webmanifest
 components/nearlock-app/Content/*.json
+
+# Exact byte-for-byte form is owned by firstmate's fm-ensure-agents-md.sh convention;
+# Prettier's markdown formatter would insert a blank line after the HTML comment.
+CLAUDE.md
