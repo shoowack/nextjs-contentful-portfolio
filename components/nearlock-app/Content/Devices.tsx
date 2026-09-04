@@ -3,7 +3,7 @@ import btConnect from '@components/nearlock-app/Content/btConnect.json';
 import { Tab } from '@headlessui/react';
 import { NearLockAppType } from '@interfaces/nearlock-app';
 import classnames from 'classnames';
-import Lottie from 'lottie-react';
+import { Lottie } from 'lottie-react';
 
 type Props = Pick<
   NearLockAppType,
@@ -104,7 +104,7 @@ const Devices: React.FC<Props> = ({
     ) : (
       <div className="flex justify-center">
         <Lottie
-          animationData={btConnect}
+          src={btConnect}
           loop
           autoplay
           className="absolute left-1/2 top-[-200px] h-[800px] w-[800px] -translate-x-1/2"
