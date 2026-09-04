@@ -92,7 +92,7 @@ const Modal: React.FC<Props> = ({
                   <div
                     // eslint-disable-next-line react/no-array-index-key
                     key={`dot-${i}`}
-                    className={classnames('mx-2 h-2.5 w-2.5 rounded-full border', {
+                    className={classnames('mx-2 size-2.5 rounded-full border', {
                       'mt-px h-[7px] w-[7px] border-0': currentStep === i + 2,
                       'border-[#4C4C4C]': !isDarkMode,
                       'border-[#808080]': isDarkMode,

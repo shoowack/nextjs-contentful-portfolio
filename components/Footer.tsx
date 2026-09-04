@@ -4,6 +4,8 @@ import cn from 'classnames';
 import { useState } from 'react';
 import { FaCheck, FaCircleNotch, FaPaperPlane } from 'react-icons/fa';
 
+type FormError = { field?: string; message: string };
+
 export default function Footer() {
   const [isLoading, setIsLoading] = useState(false);
   const [sentState, setSentState] = useState(false);
@@ -37,7 +39,7 @@ export default function Footer() {
           }, 5000);
         }, 2000);
       })
-      .catch((error: AxiosError<{ errors: any[] }>) => {
+      .catch((error: AxiosError<{ errors: FormError[] }>) => {
         setErrors(null);
         setIsLoading(true);
         setSentState(false);
@@ -82,7 +84,7 @@ export default function Footer() {
           <form onSubmit={handleSubmit} className="grid gap-x-5 gap-y-2 py-4 sm:grid-cols-2">
             <label
               htmlFor="email"
-              className="self-center font-graphik text-sm font-medium text-[#333] dark:text-white sm:justify-self-end"
+              className="self-center font-graphik text-sm font-medium text-accent-7 dark:text-white sm:justify-self-end"
             >
               Your Email:
             </label>
@@ -100,7 +102,7 @@ export default function Footer() {
             </div>
             <label
               htmlFor="message"
-              className="mt-1 font-graphik text-sm font-medium text-[#333] dark:text-white sm:justify-self-end"
+              className="mt-1 font-graphik text-sm font-medium text-accent-7 dark:text-white sm:justify-self-end"
             >
               Your Message:
             </label>
@@ -127,17 +129,17 @@ export default function Footer() {
                 {isLoading ? (
                   <>
                     Sending
-                    <FaCircleNotch size="sm" className="ml-2 inline h-3 w-3 animate-spin" />
+                    <FaCircleNotch size="sm" className="ml-2 inline size-3 animate-spin" />
                   </>
                 ) : !errors && sentState ? (
                   <>
                     Sent
-                    <FaCheck className="ml-2 inline h-3 w-3" />
+                    <FaCheck className="ml-2 inline size-3" />
                   </>
                 ) : (
                   <>
                     Send
-                    <FaPaperPlane className="ml-2 inline h-3 w-3" />
+                    <FaPaperPlane className="ml-2 inline size-3" />
                   </>
                 )}
               </button>
