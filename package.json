@@ -1,10 +1,14 @@
 {
   "private": true,
   "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "next",
     "build": "next build",
+    "postbuild": "node scripts/generate-static-meta.mjs",
     "start": "next start",
     "typecheck": "tsc",
     "lint": "next lint --max-warnings=0",
@@ -54,7 +58,6 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",

@@ -1,3 +1,4 @@
+import { SITE_URL } from '@lib/constants';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 
@@ -6,7 +7,7 @@ export default function Meta() {
   const desc = 'Creative Full Stack developer living in Canada. Check out some of my work.';
   const ogImgRelativePath = '/og.png';
 
-  const siteURL = 'https://shoowack.com';
+  const siteURL = SITE_URL;
   const ogImageURL = `${siteURL}${ogImgRelativePath}`;
   const asPath = useRouter()?.asPath;
   const pageURL = asPath === '/' ? siteURL : siteURL + asPath;
