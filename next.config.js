@@ -2,9 +2,9 @@
 
 /**
  * @type {import('next').NextConfig}
- **/
+ * */
 
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   images: {
@@ -15,4 +15,19 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-}
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'nextjs-contentful-portfolio.vercel.app',
+          },
+        ],
+        destination: 'https://shoowack.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
+};
