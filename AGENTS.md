@@ -24,6 +24,23 @@ use `pnpm install`, `pnpm dev`, `pnpm build`, `pnpm typecheck`, `pnpm lint`, etc
 - To cut a release, `develop` is merged into `main` with a regular **merge commit** (not squashed),
   so `main`'s history reflects each release point.
 
+## Versioning and releases
+
+`package.json` has a `version` field (semver: `major.minor.patch`). Bump it as part of the PR that
+warrants a release:
+
+- **patch** — small fixes, chores, dependency bumps.
+- **minor** — new features or other meaningful additions.
+- **major** — breaking changes.
+
+Not every PR needs a bump (e.g. a PR merged before a release cut can share the next bump with
+other PRs in the same release), but every push to `main` should land with a `version` that hasn't
+been released yet, since `.github/workflows/release.yaml` reads `package.json`'s `version` on every
+push to `main` and creates a matching GitHub Release (tag `v<version>`, notes auto-generated from
+merged PRs) if one doesn't already exist. It's idempotent — a push to `main` that doesn't bump the
+version (or a rerun) is a no-op, it does not error or duplicate the release. It can also be run
+manually via `workflow_dispatch` (e.g. to verify the check without waiting for a `main` push).
+
 ## GitHub Project board
 
 Work is tracked on the project board at
@@ -49,6 +66,9 @@ production, both via the Vercel CLI using the `VERCEL_TOKEN`, `VERCEL_ORG_ID`, a
 `.github/workflows/pull-request-checks.yml` runs ESLint and `tsc` on every PR; both are required
 status checks on `main` and `develop` branch protection. There is no automated test suite or
 Prettier check wired into CI yet (see Testing below).
+
+`.github/workflows/release.yaml` also runs on every `main` push (see Versioning and releases
+above) and creates the GitHub Release for that push's `package.json` version.
 
 ## Environment variables (Contentful)
 
