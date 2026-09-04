@@ -243,27 +243,41 @@
     overflow: hidden;
     opacity: 0.5;
     filter: saturate(1.9) grayscale(1) contrast(2);
-    transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition:
+      opacity 0.2s ease-in-out,
+      filter 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
 
     img {
-      transition: filter 0.25s, transform 0.25s;
+      transition:
+        filter 0.25s,
+        transform 0.25s;
 
       &.isLoading {
         transform: scale(1.02);
         filter: blur(10px);
-        transition: filter 0.25s, transform 0.25s;
+        transition:
+          filter 0.25s,
+          transform 0.25s;
       }
     }
 
     &-active {
       opacity: 1;
       filter: saturate(1) grayscale(0) contrast(1);
-      transition: opacity 0.2s ease-in-out, box-shadow 0.35s ease-in-out,
-        border-radius 0.2s ease-in-out 0.1s, filter 0.2s ease-in-out;
-      box-shadow: 0 35px 55px rgb(0 0 0 / 8%), 0 25px 63px rgb(0 0 0 / 8%);
+      transition:
+        opacity 0.2s ease-in-out,
+        box-shadow 0.35s ease-in-out,
+        border-radius 0.2s ease-in-out 0.1s,
+        filter 0.2s ease-in-out;
+      box-shadow:
+        0 35px 55px rgb(0 0 0 / 8%),
+        0 25px 63px rgb(0 0 0 / 8%);
 
       @media (min-width: 768px) {
-        box-shadow: 0 25px 30px rgb(0 0 0 / 30%), 0 35px 55px rgb(0 0 0 / 8%),
+        box-shadow:
+          0 25px 30px rgb(0 0 0 / 30%),
+          0 35px 55px rgb(0 0 0 / 8%),
           0 25px 63px rgb(0 0 0 / 8%);
       }
     }
