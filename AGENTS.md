@@ -68,6 +68,18 @@ These values must stay in sync across **four places**:
 When adding, renaming, or removing a Contentful (or other) environment variable, update all four
 places in the same change, not just the one you're touching.
 
+## Generated files
+
+`public/sitemap.xml`, `public/robots.txt`, and `public/llms.txt` are generated — never hand-edit
+them. `pnpm build` runs `scripts/generate-static-meta.mjs` as a `postbuild` step; it derives all
+three from `pages/` and the `*Slug`/`SITE_URL` constants in `lib/constants.ts`. A new static page
+needs a matching entry in that script's `PAGE_DESCRIPTIONS` map or the build fails (drift check).
+
+This is the Pages Router (`pages/`), not the App Router — there is no `app/` directory.
+
+Local `pnpm build` needs Contentful credentials in `.env.local` (see `.env.local.example`);
+without them `getStaticProps` for `/[slug]` fails before `postbuild` ever runs.
+
 ## Testing
 
 There is no automated test suite (e.g. Cypress) in this repository yet. Do not invent test

@@ -8,6 +8,7 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "next",
     "build": "next build",
+    "postbuild": "node scripts/generate-static-meta.mjs",
     "start": "next start",
     "typecheck": "tsc",
     "lint": "next lint"
