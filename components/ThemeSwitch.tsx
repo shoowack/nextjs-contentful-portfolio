@@ -15,7 +15,7 @@ const ThemeSwitch = () => {
         rel="noreferrer"
         // eslint-disable-next-line tailwindcss/no-custom-classname
         className={classnames(
-          'theme-toggle flex h-9 w-9 items-center justify-center rounded-md bg-transparent p-[9px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75',
+          'theme-toggle flex size-9 items-center justify-center rounded-md bg-transparent p-[9px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75',
         )}
         onClick={toggleTheme}
         aria-hidden

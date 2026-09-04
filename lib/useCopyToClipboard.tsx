@@ -8,17 +8,17 @@ type CopiedResult = [Function, { value: CopiedValue; copyIcon: ReactNode }];
 
 export default function useCopyToClipboard(): CopiedResult {
   const [value, setValue] = useState<CopiedValue>(null);
-  const [copyIcon, setCopyIcon] = useState(<FaLink className="inline h-5 w-5" />);
+  const [copyIcon, setCopyIcon] = useState(<FaLink className="inline size-5" />);
 
   const copyToClipboard = (text, options) => {
     const result = copy(text, options);
     if (result) setValue(text);
 
     if (result) {
-      setCopyIcon(<FaCheck className="inline h-5 w-5" />);
+      setCopyIcon(<FaCheck className="inline size-5" />);
 
       setTimeout(() => {
-        setCopyIcon(<FaLink className="inline h-5 w-5" />);
+        setCopyIcon(<FaLink className="inline size-5" />);
       }, 2100);
     }
   };

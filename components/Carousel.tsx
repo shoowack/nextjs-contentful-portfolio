@@ -129,7 +129,7 @@ const Carousel: React.FC<Props> = ({
             ? ' before:from-[#f7f8fa] after:from-[#f7f8fa] dark:before:from-[#0d1117] dark:after:from-[#0d1117]'
             : 'before:from-white after:from-white dark:before:from-[#010409] dark:after:from-[#010409]',
           {
-            'before:absolute before:inset-y-0 before:left-0 before:z-[10] before:h-full before:bg-gradient-to-r before:content-[""] after:absolute after:inset-y-0 after:right-0 after:z-[2] after:h-full after:bg-gradient-to-l after:content-[""]':
+            'before:absolute before:inset-y-0 before:left-0 before:z-10 before:h-full before:bg-gradient-to-r before:content-[""] after:absolute after:inset-y-0 after:right-0 after:z-[2] after:h-full after:bg-gradient-to-l after:content-[""]':
               (windowWidth > 550 && iphone) ||
               (windowWidth > 900 && ipads) ||
               (windowWidth >= 768 && desktopApp) ||
@@ -158,7 +158,7 @@ const Carousel: React.FC<Props> = ({
           <div
             aria-hidden
             className={classnames(
-              'pointer-events-none absolute left-[50%] z-50 w-full -translate-x-1/2 select-none',
+              'pointer-events-none absolute left-1/2 z-50 w-full -translate-x-1/2 select-none',
               {
                 'top-[-2.3%] h-[104.5%]': iphone,
                 'left-[50.03%] top-[-3.64%] h-[107%]': ipad,
@@ -181,7 +181,7 @@ const Carousel: React.FC<Props> = ({
             aria-hidden
             style={{ background: browserThemeColor || '#eee' }}
             className={classnames(
-              'pointer-events-none absolute left-[50%] top-[-35px] z-50 flex h-[35px] w-[calc(100%-30px)] -translate-x-1/2 select-none items-center justify-between rounded-t-[11px] md:w-[60%]',
+              'pointer-events-none absolute left-1/2 top-[-35px] z-50 flex h-[35px] w-[calc(100%-30px)] -translate-x-1/2 select-none items-center justify-between rounded-t-[11px] md:w-3/5',
             )}
           >
             <SidebarHeaderControls className="ml-2 scale-75" />
@@ -271,7 +271,7 @@ const Carousel: React.FC<Props> = ({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="h-5 w-5"
+                className="size-5"
               >
                 <path
                   fillRule="evenodd"
@@ -297,7 +297,7 @@ const Carousel: React.FC<Props> = ({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="h-5 w-5"
+                className="size-5"
               >
                 <path
                   fillRule="evenodd"

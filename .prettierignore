@@ -1,0 +1,10 @@
+.next
+out
+build
+coverage
+pnpm-lock.yaml
+
+# Vendor/generated assets, not hand-authored — reformatting just churns diffs
+assets/font/
+public/favicon/site.webmanifest
+components/nearlock-app/Content/*.json

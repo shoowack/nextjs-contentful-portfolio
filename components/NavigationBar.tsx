@@ -18,7 +18,7 @@ type Props = {
     fields: { title: string; appLogo: { fields: { file: { url: string } } } };
     sys: { id: string };
   }[];
-  sliderRef: MutableRefObject<any[]>;
+  sliderRef: MutableRefObject<HTMLElement[]>;
 };
 
 const NavigationBar: React.FC<Props> = ({ aboutSectionRef, slug, width, sections, sliderRef }) => {
@@ -115,7 +115,7 @@ const NavigationBar: React.FC<Props> = ({ aboutSectionRef, slug, width, sections
               className="absolute left-1/2 flex items-center whitespace-nowrap"
             >
               {fields.appLogo?.fields.file.url && (
-                <div className="relative mr-2 inline h-6 w-6">
+                <div className="relative mr-2 inline size-6">
                   <ContentfulImage
                     src={fields.appLogo.fields.file.url}
                     className="object-contain"
@@ -140,7 +140,7 @@ const NavigationBar: React.FC<Props> = ({ aboutSectionRef, slug, width, sections
           {width > 639 ? (
             <FaAngleRight className="ml-2 inline" />
           ) : slug === designsSlug ? (
-            <TbAppWindowFilled className="h-5 w-5" />
+            <TbAppWindowFilled className="size-5" />
           ) : (
             <HiPaintBrush />
           )}
