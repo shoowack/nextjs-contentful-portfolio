@@ -50,7 +50,10 @@ const PAGE_DESCRIPTIONS = new Map([
   ['', ['Home', 'Landing page linking to the Designs and Apps & Websites portfolio sections']],
   ['designs', ['Designs', 'Portfolio of design work']],
   ['apps-and-websites', ['Apps & Websites', 'Portfolio of applications and websites built']],
-  ['for-llms', ['For LLMs', 'AI-facing profile with identity, canonical links, and attribution guidance']],
+  [
+    'for-llms',
+    ['For LLMs', 'AI-facing profile with identity, canonical links, and attribution guidance'],
+  ],
 ]);
 
 /** Collects static page routes ('' for home, 'about', ...) from the pages directory. */
