@@ -69,8 +69,9 @@ const Section: React.FC<ContentfulDataType & Props> = ({
         )}
         id={sectionSlug}
         data-sysid={sys.id}
-        // eslint-disable-next-line no-return-assign, no-param-reassign
-        ref={(el) => (sliderRef.current[i] = el)}
+        ref={(el) => {
+          sliderRef.current[i] = el;
+        }}
       >
         <header
           className={classnames(

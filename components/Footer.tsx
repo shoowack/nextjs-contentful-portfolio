@@ -1,6 +1,7 @@
 import Container from '@components/Container';
 import axios, { AxiosError } from 'axios';
 import cn from 'classnames';
+import Link from 'next/link';
 import { useState } from 'react';
 import { FaCheck, FaCircleNotch, FaPaperPlane } from 'react-icons/fa';
 
@@ -148,13 +149,13 @@ export default function Footer() {
             {errors && (
               <div>
                 <p className="mb-0 text-base text-red-500">Errors:</p>
-                {errors.map((error) =>
+                {errors.map((error, index) =>
                   error.field ? (
-                    <p className="mb-0 text-base text-red-300">
+                    <p className="mb-0 text-base text-red-300" key={`${error.field}-${index}`}>
                       <span className="capitalize">{error.field}</span>: {error.message}
                     </p>
                   ) : (
-                    <p>{error.message}</p>
+                    <p key={`general-${index}`}>{error.message}</p>
                   ),
                 )}
               </div>
@@ -162,6 +163,11 @@ export default function Footer() {
             {!errors && sentState ? 'Your message has been sent!' : ''}
           </form>
         </div>
+        <p className="pb-4 text-center text-xs text-[#333]/60 dark:text-white/50">
+          <Link href="/for-llms" className="underline underline-offset-2 hover:text-[#2189ff]">
+            Info for LLMs &amp; AI tools
+          </Link>
+        </p>
       </Container>
     </div>
   );

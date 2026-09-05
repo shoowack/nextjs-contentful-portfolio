@@ -9,6 +9,9 @@ on:
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -24,4 +27,54 @@ jobs:
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --archive=tgz --token=${{ secrets.VERCEL_TOKEN }}
+        id: deploy
+        run: |
+          url=$(vercel deploy --prebuilt --archive=tgz --token=${{ secrets.VERCEL_TOKEN }} | tail -n 1)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Comment preview URL on pull request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const previewUrl = ${{ toJSON(steps.deploy.outputs.url) }};
+            const branch = context.ref.replace('refs/heads/', '');
+
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: `${context.repo.owner}:${branch}`,
+            });
+
+            if (prs.length === 0) {
+              console.log(`No open pull request for branch ${branch}; skipping comment.`);
+              return;
+            }
+
+            const marker = '<!-- vercel-preview-url-comment -->';
+            const body = `${marker}\n🔗 Vercel preview deployment: ${previewUrl}`;
+
+            for (const pr of prs) {
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+              });
+
+              const existing = comments.find((comment) => comment.body.includes(marker));
+
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body,
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body,
+                });
+              }
+            }

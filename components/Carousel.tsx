@@ -90,26 +90,26 @@ const Carousel: React.FC<Props> = ({
           website || desktopApp || webApp
             ? 1
             : iphone
-            ? windowWidth > 550
-              ? windowWidth > 991
-                ? windowWidth > 1200
-                  ? windowWidth > 2200
-                    ? windowWidth > 2600
-                      ? 7
-                      : 6
-                    : 5
-                  : 4
-                : 3
-              : 1
-            : ipads
-            ? windowWidth > 900
-              ? windowWidth > 1400
-                ? windowWidth > 2600
-                  ? 4
+              ? windowWidth > 550
+                ? windowWidth > 991
+                  ? windowWidth > 1200
+                    ? windowWidth > 2200
+                      ? windowWidth > 2600
+                        ? 7
+                        : 6
+                      : 5
+                    : 4
                   : 3
-                : 2
-              : 1
-            : 3
+                : 1
+              : ipads
+                ? windowWidth > 900
+                  ? windowWidth > 1400
+                    ? windowWidth > 2600
+                      ? 4
+                      : 3
+                    : 2
+                  : 1
+                : 3
         }
         centeredSlides
         pagination={{
@@ -239,10 +239,10 @@ const Carousel: React.FC<Props> = ({
                   website || desktopApp || webApp
                     ? '(max-width: 768px) 100vw, 60vw'
                     : iphone
-                    ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
-                    : ipads
-                    ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
-                    : '1vw'
+                      ? '(max-width: 550px) 100vw, (max-width: 991px) 44vw, (max-width: 2200px) 29vw, (max-width: 2600px) 18vw, 20vw'
+                      : ipads
+                        ? '(max-width: 900px) 90vw, (max-width: 1400px) 45vw, 31vw'
+                        : '1vw'
                 }
               />
               {/* </a> */}

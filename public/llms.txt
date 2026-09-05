@@ -12,3 +12,4 @@ Key facts:
 - [Home](https://shoowack.com): Landing page linking to the Designs and Apps & Websites portfolio sections
 - [Designs](https://shoowack.com/designs): Portfolio of design work
 - [Apps & Websites](https://shoowack.com/apps-and-websites): Portfolio of applications and websites built
+- [For LLMs](https://shoowack.com/for-llms): AI-facing profile with identity, canonical links, and attribution guidance
